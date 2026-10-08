@@ -149,7 +149,7 @@ const Header = () => {
             </Button>
 
             <Button
-              href="#franchise"
+              href="/franchise"
               variant="outline"
               className="min-h-[38px] whitespace-nowrap px-3.5 text-[10px] 2xl:px-4"
             >
