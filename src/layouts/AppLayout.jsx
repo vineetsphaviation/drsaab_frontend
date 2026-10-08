@@ -1,17 +1,19 @@
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
       <Header />
-      <main className="pt-[62px]">
+
+      <main className="pt-[68px]">
         <Outlet />
       </main>
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default AppLayout;
