@@ -30,7 +30,7 @@ export default function StatsStrip() {
             key={label}
             className={`
               flex
-              min-h-[74px]
+              min-h-[84px]
               items-center
               justify-center
               gap-2
@@ -68,7 +68,7 @@ export default function StatsStrip() {
               <strong
                 className="
                   block
-                  text-[16px]
+                  text-[19px]
                   font-black
                   leading-none
                   text-brand-900
@@ -81,7 +81,7 @@ export default function StatsStrip() {
                 className="
                   mt-1
                   block
-                  text-[8px]
+                  text-[11px]
                   leading-[1.25]
                   text-[#687675]
                 "

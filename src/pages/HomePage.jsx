@@ -10,7 +10,7 @@ import {
 
 const HomePage = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 sm:space-y-8 lg:space-y-10">
       <Hero />
       <TrustStrip />
       <ServicesSection />

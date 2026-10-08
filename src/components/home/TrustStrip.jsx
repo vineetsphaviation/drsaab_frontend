@@ -67,7 +67,7 @@ export default function TrustStrip() {
             key={`${item.icon}-${index}`}
             className={`
               flex
-              min-h-[78px]
+              min-h-[88px]
               items-center
               justify-center
               gap-2
@@ -104,12 +104,12 @@ export default function TrustStrip() {
             {/* Text */}
             <span
               className="
-                text-[9px]
+                text-[11px]
                 font-bold
                 leading-[1.3]
                 text-[#152627]
 
-                sm:text-[9.5px]
+                sm:text-[12px]
               "
             >
               {item.text}

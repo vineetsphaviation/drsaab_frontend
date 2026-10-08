@@ -42,7 +42,7 @@ export default function Hero() {
       className="
         relative
         overflow-hidden
-        bg-[#eaf5f7]
+        bg-brand-5
       "
     >
       {/* =========================
@@ -79,8 +79,8 @@ export default function Hero() {
             left-0
             w-[35%]
             bg-gradient-to-r
-            from-[#eaf5f7]
-            via-[#eaf5f7]/75
+            from-brand-5
+            via-brand-5/75
             to-transparent
           "
         />
@@ -94,14 +94,14 @@ export default function Hero() {
         className="
           relative
           z-10
-          min-h-[455px]
+          min-h-[470px]
           lg:min-h-[386px]
         "
       >
         <div
           className="
             flex
-            min-h-[455px]
+            min-h-[470px]
             flex-col
             items-center
             justify-center
@@ -137,9 +137,9 @@ export default function Hero() {
               font-black
               leading-[0.88]
               tracking-[-3px]
-              text-brand-900
+              text-brand-95
 
-              text-[clamp(2.5rem,14vw,3.625rem)]
+            text-[clamp(2.75rem,14vw,3.625rem)]
 
               sm:text-[58px]
 
@@ -162,7 +162,7 @@ export default function Hero() {
               className="
                 mt-2
                 block
-                whitespace-nowrap
+                sm:whitespace-nowrap
                 text-[clamp(1.05rem,5.8vw,1.75rem)]
                 tracking-[-1px]
               "
@@ -179,7 +179,7 @@ export default function Hero() {
               text-[13px]
               font-bold
               leading-tight
-              text-brand-800
+              text-brand-80
 
               sm:text-[14px]
             "
@@ -219,7 +219,7 @@ export default function Hero() {
                     w-[clamp(42px,14vw,57px)]
                     overflow-hidden
                     rounded-full
-                    bg-[#edf7f2]
+                    bg-brand-5
                   "
                 >
                   <img
@@ -240,7 +240,7 @@ export default function Hero() {
                     text-[7px]
                     font-extrabold
                     leading-[1.15]
-                    text-[#152627]
+                    text-brand-ink
                   "
                 >
                   {service.title}
@@ -261,15 +261,15 @@ export default function Hero() {
               text-[12px]
               font-extrabold
               tracking-[-0.2px]
-              text-[#152627]
+              text-brand-ink
 
               sm:text-[13px]
             "
           >
             One Vehicle
-            <span className="px-1.5 text-brand-700">|</span>
+            <span className="px-1.5 text-brand-70">|</span>
             Multi Services
-            <span className="px-1.5 text-brand-700">|</span>
+            <span className="px-1.5 text-brand-70">|</span>
             Many Villages
           </p>
 
@@ -303,16 +303,16 @@ export default function Hero() {
             </Button>
 
             <Button
-              href="#panchayat"
+              to="/panchayat-modal"
               variant="outline"
               className="
                 min-w-[171px]
                 rounded-[6px]
-                border-brand-700
+                border-brand-70
                 px-4
                 py-[11px]
                 text-[10px]
-                text-brand-900
+                text-brand-90
               "
             >
               View Panchayat Model
@@ -330,7 +330,9 @@ export default function Hero() {
         className="
           relative
           block
-          h-[235px]
+          h-[250px]
+
+          sm:h-[320px]
           overflow-hidden
 
           lg:hidden

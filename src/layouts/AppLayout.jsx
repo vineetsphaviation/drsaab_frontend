@@ -6,7 +6,7 @@ const AppLayout = () => {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white">
       <Header />
-      <main>
+      <main className="pt-[62px]">
         <Outlet />
       </main>
       <Footer />

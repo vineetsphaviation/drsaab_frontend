@@ -47,7 +47,7 @@ export default function ImpactSection() {
         className="
           grid
           grid-cols-1
-          gap-2
+          gap-4
           lg:grid-cols-[1.02fr_1.15fr_1.02fr]
         "
       >
@@ -56,7 +56,7 @@ export default function ImpactSection() {
         <article
           className="
             relative
-            min-h-[192px]
+            min-h-[230px]
             overflow-hidden
             rounded
           "
@@ -88,7 +88,7 @@ export default function ImpactSection() {
             className="
               relative
               z-10
-              p-5
+              p-6
             "
           >
             <Eyebrow>Our Impact</Eyebrow>
@@ -97,7 +97,7 @@ export default function ImpactSection() {
               className="
                 mt-1
                 max-w-[220px]
-                text-[18px]
+                text-[24px]
                 font-black
                 leading-tight
                 text-ink
@@ -112,7 +112,7 @@ export default function ImpactSection() {
               className="
                 mt-2
                 max-w-[220px]
-                text-[9px]
+                text-[12px]
                 leading-[1.45]
                 text-ink
               "
@@ -126,7 +126,7 @@ export default function ImpactSection() {
                 mt-2
                 px-3
                 py-2
-                text-[9px]
+                text-[11px]
               "
             >
               Our Impact&nbsp; →
@@ -142,7 +142,7 @@ export default function ImpactSection() {
             border
             border-[#e2e8e5]
             bg-white
-            p-4
+            p-5
           "
         >
           <Eyebrow>Use Cases</Eyebrow>
@@ -152,7 +152,7 @@ export default function ImpactSection() {
               mt-3
               grid
               grid-cols-3
-              gap-3
+              gap-4
             "
           >
             {useCases.map(([icon, text], index) => (
@@ -160,7 +160,7 @@ export default function ImpactSection() {
                 key={index}
                 className="
                   text-center
-                  text-[8px]
+                  text-[11px]
                   font-bold
                   leading-[1.25]
                   text-ink
@@ -171,8 +171,8 @@ export default function ImpactSection() {
                     mx-auto
                     mb-1
                     grid
-                    h-10
-                    w-10
+                    h-12
+                    w-12
                     place-items-center
                     rounded-full
                     bg-brand-50
@@ -195,7 +195,7 @@ export default function ImpactSection() {
           id="franchise"
           className="
             relative
-            min-h-[192px]
+            min-h-[230px]
             overflow-hidden
             rounded
             bg-brand-950
@@ -229,7 +229,7 @@ export default function ImpactSection() {
             className="
               relative
               z-10
-              p-5
+              p-6
             "
           >
             <Eyebrow light>Franchise Opportunity</Eyebrow>
@@ -238,7 +238,7 @@ export default function ImpactSection() {
               className="
                 mt-2
                 w-[62%]
-                text-[20px]
+                text-[24px]
                 font-black
                 leading-[1.05]
               "
@@ -252,7 +252,7 @@ export default function ImpactSection() {
               className="
                 mt-2
                 w-[62%]
-                text-[9px]
+                text-[12px]
                 leading-[1.4]
               "
             >
@@ -267,7 +267,7 @@ export default function ImpactSection() {
                 mt-2
                 px-3
                 py-2
-                text-[9px]
+                text-[11px]
               "
             >
               Apply for Franchise&nbsp; →

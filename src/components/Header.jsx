@@ -8,7 +8,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 shadow-[0_2px_12px_rgba(21,38,39,0.06)] backdrop-blur">
       <SectionContainer className="relative flex h-[62px] items-center gap-5">
         <Link to="/" className="shrink-0">
           <img src={logo} alt="Dr. Saab" className="h-auto w-[143px]" />
@@ -44,7 +44,7 @@ const Header = () => {
           aria-expanded={open}
           aria-controls="mobile-navigation"
           onClick={() => setOpen(!open)}
-          className="ml-auto rounded p-2 text-xl text-brand-900 xl:hidden"
+          className="ml-auto inline-flex min-h-11 min-w-11 items-center justify-center rounded text-2xl text-brand-900 hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-600/30 xl:hidden"
         >
           ☰
         </button>
@@ -52,7 +52,7 @@ const Header = () => {
         {open && (
           <div
             id="mobile-navigation"
-            className="absolute left-0 right-0 top-full max-h-[calc(100vh-62px)] overflow-y-auto bg-white p-4 shadow-lg xl:hidden"
+            className="absolute left-0 right-0 top-full max-h-[calc(100vh-64px)] overflow-y-auto border-t border-brand-100 bg-white p-4 shadow-lg xl:hidden"
           >
             <nav className="grid gap-1">
               {navItems.map(({ label, href }) => (

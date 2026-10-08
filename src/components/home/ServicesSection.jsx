@@ -26,7 +26,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-white">
+    <section id="services" className="bg-white py-1 sm:py-2">
       <SectionContainer
         className="
           grid
@@ -50,10 +50,12 @@ export default function ServicesSection() {
             via-[#034e37]
             to-[#062f26]
             px-6
-            py-6
+            py-7
             text-white
 
-            lg:min-h-[288px]
+            sm:px-8
+            sm:py-8
+            lg:min-h-[310px]
           "
         >
           {/* Subtle background effect */}
@@ -77,7 +79,7 @@ export default function ServicesSection() {
             <h2
               className="
                 mt-4
-                text-[26px]
+                text-[30px]
                 font-black
                 leading-[1.02]
                 tracking-[-0.7px]
@@ -97,7 +99,7 @@ export default function ServicesSection() {
               className="
                 mt-4
                 max-w-[185px]
-                text-[10px]
+                text-[13px]
                 leading-[1.5]
                 text-white/80
               "
@@ -114,7 +116,7 @@ export default function ServicesSection() {
                 bg-[#17905f]
                 px-3.5
                 py-[9px]
-                text-[9px]
+                text-[11px]
                 text-white
                 hover:bg-[#0b6f4f]
               "
@@ -144,13 +146,13 @@ export default function ServicesSection() {
             <h2
               className="
                 mt-1
-                text-[19px]
+                text-[24px]
                 font-black
                 leading-[1.08]
                 tracking-[-0.4px]
                 text-[#152627]
 
-                sm:text-[20px]
+                sm:text-[26px]
               "
             >
               Complete Post-Sales Support
@@ -167,7 +169,7 @@ export default function ServicesSection() {
               grid-cols-2
               gap-2
 
-              lg:grid-cols-4
+              sm:grid-cols-4
             "
           >
             {services.map(([image, title, description]) => (
@@ -191,7 +193,10 @@ export default function ServicesSection() {
                 <div
                   className="
                       flex
-                      h-[88px]
+                      h-[112px]
+
+                      sm:h-[100px]
+                      lg:h-[112px]
                       w-full
                       items-center
                       justify-center
@@ -217,12 +222,12 @@ export default function ServicesSection() {
                   className="
                       mt-2
                       min-h-[28px]
-                      text-[11px]
+                      text-[13px]
                       font-black
                       leading-[1.2]
                       text-[#152627]
 
-                      sm:text-[12px]
+                      sm:text-[14px]
                     "
                 >
                   {title}
@@ -234,11 +239,11 @@ export default function ServicesSection() {
                   className="
                       mt-1
                       min-h-[38px]
-                      text-[8.5px]
+                      text-[11px]
                       leading-[1.4]
                       text-[#687675]
 
-                      sm:text-[9px]
+                      sm:text-[11px]
                     "
                 >
                   {description}
@@ -252,13 +257,13 @@ export default function ServicesSection() {
                       mt-2
                       inline-flex
                       items-center
-                      text-[8.5px]
+                      text-[11px]
                       font-black
                       text-[#0b6f4f]
                       transition-colors
                       hover:text-[#034e37]
 
-                      sm:text-[9px]
+                      sm:text-[11px]
                     "
                 >
                   Know More
@@ -280,7 +285,7 @@ export default function ServicesSection() {
             border
             border-[#d4e8df]
             bg-[#e8f5f0]
-            p-4
+            p-5
 
             lg:mt-[7px]
           "
@@ -290,7 +295,7 @@ export default function ServicesSection() {
           <h3
             className="
               mt-1
-              text-[18px]
+              text-[23px]
               font-black
               leading-[1.02]
               tracking-[-0.3px]
@@ -305,7 +310,7 @@ export default function ServicesSection() {
           <p
             className="
               mt-2
-              text-[9px]
+              text-[12px]
               leading-[1.4]
               text-[#687675]
             "
@@ -328,7 +333,7 @@ export default function ServicesSection() {
               border-[#d4dedb]
               bg-white
               px-2
-              text-[8.5px]
+              text-[12px]
               text-[#687675]
               outline-none
               focus:border-[#0b6f4f]
@@ -354,7 +359,7 @@ export default function ServicesSection() {
               rounded-[4px]
               px-2
               py-[9px]
-              text-[9px]
+              text-[11px]
             "
           >
             Book Now
@@ -389,7 +394,7 @@ export default function ServicesSection() {
                 border-[#0b6f4f]
                 px-1.5
                 py-[8px]
-                text-[8.5px]
+                text-[11px]
                 text-[#034e37]
               "
             >

@@ -25,17 +25,17 @@ export default function ImpactBand() {
             flex
             min-h-[51px]
             items-center
-            bg-brand-900
+            bg-brand-90
             px-5
             text-white
           "
         >
           <h2
             className="
-              text-[15px]
+            text-[18px]
               font-black
               leading-tight
-              sm:text-[16px]
+            sm:text-[20px]
             "
           >
             A Cleaner, Brighter &amp; More Connected Rural India
@@ -59,7 +59,7 @@ export default function ImpactBand() {
               key={label}
               className="
                 flex
-                min-h-[51px]
+                min-h-[64px]
                 items-center
                 justify-center
                 gap-2
@@ -67,7 +67,7 @@ export default function ImpactBand() {
                 border-[#e2e8e5]
                 px-2
                 text-center
-                text-[8px]
+                text-[11px]
                 text-ink
                 last:border-r-0
               "

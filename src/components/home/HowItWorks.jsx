@@ -114,8 +114,8 @@ export default function HowItWorks() {
       id="how"
       className="
         bg-white
-        py-4
-        sm:py-5
+        py-2
+        sm:py-4
       "
     >
       <SectionContainer
@@ -188,8 +188,8 @@ export default function HowItWorks() {
                       font-bold
                       text-[#0875a8]
 
-                      sm:h-[48px]
-                      sm:w-[48px]
+                      sm:h-[52px]
+                      sm:w-[52px]
                     "
                 >
                   {icon}
@@ -201,7 +201,7 @@ export default function HowItWorks() {
                   className="
                       mt-1
                       block
-                      text-[9px]
+                      text-[11px]
                       font-black
                       leading-none
                       text-[#152627]
@@ -216,10 +216,12 @@ export default function HowItWorks() {
                   className="
                       mt-1
                       block
-                      text-[8px]
+                      text-[10px]
                       font-medium
                       leading-[1.2]
                       text-[#152627]
+
+                      sm:text-[11px]
                     "
                 >
                   {label}
@@ -294,7 +296,9 @@ export default function HowItWorks() {
                 <div
                   className="
                     flex
-                    h-[52px]
+                    h-[64px]
+
+                    sm:h-[70px]
                     w-full
                     items-center
                     justify-center
@@ -307,7 +311,9 @@ export default function HowItWorks() {
                     src={image}
                     alt=""
                     className="
-                      h-[48px]
+                      h-[58px]
+
+                      sm:h-[64px]
                       w-full
                       object-contain
                     "
@@ -320,12 +326,12 @@ export default function HowItWorks() {
                   className="
                     mt-1
                     block
-                    text-[7px]
+                    text-[10px]
                     font-medium
                     leading-[1.15]
                     text-[#152627]
 
-                    sm:text-[7.5px]
+                    sm:text-[11px]
                   "
                 >
                   {label}
