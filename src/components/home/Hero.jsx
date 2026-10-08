@@ -1,11 +1,11 @@
-import { SectionContainer, Button, Eyebrow } from "./ui";
+import { SectionContainer, Button, Eyebrow } from "../ui/UI";
 
-import heroVisual from "../assets/hero_visual.png";
-import iconEv from "../assets/icon_ev.png";
-import iconDrone from "../assets/icon_drone.png";
-import iconSolar from "../assets/icon_solar.png";
-import iconBattery from "../assets/icon_battery.png";
-import iconRepair from "../assets/icon_repair.png";
+import heroVisual from "../../assets/hero_visual.png";
+import iconEv from "../../assets/icon_ev.png";
+import iconDrone from "../../assets/icon_drone.png";
+import iconSolar from "../../assets/icon_solar.png";
+import iconBattery from "../../assets/icon_battery.png";
+import iconRepair from "../../assets/icon_repair.png";
 
 const services = [
   {
@@ -103,13 +103,17 @@ export default function Hero() {
             flex
             min-h-[455px]
             flex-col
+            items-center
             justify-center
             py-8
+            text-center
 
             lg:min-h-[386px]
             lg:w-[58%]
+            lg:items-start
             lg:justify-center
             lg:py-5
+            lg:text-left
           "
         >
           {/* Eyebrow */}
@@ -135,7 +139,7 @@ export default function Hero() {
               tracking-[-3px]
               text-brand-900
 
-              text-[50px]
+              text-[clamp(2.5rem,14vw,3.625rem)]
 
               sm:text-[58px]
 
@@ -159,12 +163,8 @@ export default function Hero() {
                 mt-2
                 block
                 whitespace-nowrap
-                text-[23px]
+                text-[clamp(1.05rem,5.8vw,1.75rem)]
                 tracking-[-1px]
-
-                sm:text-[27px]
-
-                lg:text-[28px]
               "
             >
               PANCHAYAT SERVICE-ON-WHEELS
@@ -197,7 +197,7 @@ export default function Hero() {
               flex
               items-start
               justify-center
-              gap-2
+              gap-1
 
               lg:justify-start
               lg:gap-2.5
@@ -207,7 +207,7 @@ export default function Hero() {
               <div
                 key={service.title}
                 className="
-                  w-[58px]
+                  w-[clamp(42px,14vw,58px)]
                   shrink-0
                   text-center
                 "
@@ -215,8 +215,8 @@ export default function Hero() {
                 <div
                   className="
                     mx-auto
-                    h-[57px]
-                    w-[57px]
+                    h-[clamp(42px,14vw,57px)]
+                    w-[clamp(42px,14vw,57px)]
                     overflow-hidden
                     rounded-full
                     bg-[#edf7f2]

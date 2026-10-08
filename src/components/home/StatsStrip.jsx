@@ -1,4 +1,4 @@
-import { SectionContainer, CircleIcon } from "./ui";
+import { SectionContainer, CircleIcon } from "../ui/UI";
 
 const stats = [
   ["▣", "1", "Mobile Workshop"],

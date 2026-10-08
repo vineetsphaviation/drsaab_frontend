@@ -1,4 +1,4 @@
-import { SectionContainer } from "./ui";
+import { SectionContainer } from "../ui/UI";
 
 const points = [
   ["⌁", "Local Employment"],

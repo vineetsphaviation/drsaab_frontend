@@ -1,4 +1,4 @@
-import { SectionContainer, CircleIcon } from "./ui";
+import { SectionContainer, CircleIcon } from "../ui/UI";
 
 const items = [
   {
@@ -81,7 +81,7 @@ export default function TrustStrip() {
 
               ${index !== items.length - 1 ? "lg:border-r" : ""}
 
-              ${index >= 4 ? "md:border-b-0" : ""}
+              ${index >= 3 ? "md:border-b-0" : ""}
 
               lg:border-b-0
             `}

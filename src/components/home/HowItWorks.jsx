@@ -1,12 +1,12 @@
-import { SectionContainer, Eyebrow } from "./ui";
+import { Eyebrow, SectionContainer } from "../ui/UI";
 
-import diagnostic from "../assets/equip_diagnostic.png";
-import battery from "../assets/equip_battery.png";
-import evCharger from "../assets/equip_evcharger.png";
-import drone from "../assets/equip_drone.png";
-import solar from "../assets/equip_solar.png";
-import toolkit from "../assets/equip_toolkit.png";
-import safety from "../assets/equip_safety.png";
+import diagnostic from "../../assets/equip_diagnostic.png";
+import battery from "../../assets/equip_battery.png";
+import evCharger from "../../assets/equip_evcharger.png";
+import drone from "../../assets/equip_drone.png";
+import solar from "../../assets/equip_solar.png";
+import toolkit from "../../assets/equip_toolkit.png";
+import safety from "../../assets/equip_safety.png";
 
 const steps = [
   [

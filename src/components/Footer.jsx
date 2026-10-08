@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { SectionContainer } from "./ui";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { SectionContainer } from "../components/ui/UI";
 import logo from "../assets/logo_footer.png";
 
 const quickLinks = [
@@ -20,7 +26,33 @@ const supportLinks = [
   "Contact Us",
 ];
 
-export default function Footer() {
+const FooterLinks = ({ title, links }) => {
+  return (
+    <div>
+      <h4 className="text-[11px] font-black text-ink">{title}</h4>
+
+      <div className="mt-2 space-y-2">
+        {links.map((link) => (
+          <a
+            key={link}
+            href="#"
+            className="
+              block
+              text-[9px]
+              text-muted
+              transition-colors
+              hover:text-brand-700
+            "
+          >
+            {link}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Footer = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
@@ -42,8 +74,6 @@ export default function Footer() {
         className="
           grid
           gap-7
-          border-b
-          border-line
           pb-6
           md:grid-cols-2
           lg:grid-cols-[1.4fr_0.8fr_0.8fr_1.2fr]
@@ -72,68 +102,20 @@ export default function Footer() {
           {/* Social Icons */}
 
           <div className="mt-4 flex gap-2">
-            <span
-              className="
-                grid
-                h-6
-                w-6
-                place-items-center
-                rounded
-                bg-brand-50
-                text-[9px]
-                font-bold
-                text-brand-900
-              "
-            >
-              in
+            <span className="grid h-6 w-6 place-items-center rounded bg-brand-50 text-brand-900">
+              <FaLinkedinIn aria-label="LinkedIn" className="h-3.5 w-3.5" />
             </span>
 
-            <span
-              className="
-                grid
-                h-6
-                w-6
-                place-items-center
-                rounded
-                bg-brand-50
-                text-[9px]
-                font-bold
-                text-brand-900
-              "
-            >
-              ▶
+            <span className="grid h-6 w-6 place-items-center rounded bg-brand-50 text-brand-900">
+              <FaYoutube aria-label="YouTube" className="h-3.5 w-3.5" />
             </span>
 
-            <span
-              className="
-                grid
-                h-6
-                w-6
-                place-items-center
-                rounded
-                bg-brand-50
-                text-[9px]
-                font-bold
-                text-brand-900
-              "
-            >
-              ◎
+            <span className="grid h-6 w-6 place-items-center rounded bg-brand-50 text-brand-900">
+              <FaInstagram aria-label="Instagram" className="h-3.5 w-3.5" />
             </span>
 
-            <span
-              className="
-                grid
-                h-6
-                w-6
-                place-items-center
-                rounded
-                bg-brand-50
-                text-[9px]
-                font-bold
-                text-brand-900
-              "
-            >
-              f
+            <span className="grid h-6 w-6 place-items-center rounded bg-brand-50 text-brand-900">
+              <FaFacebookF aria-label="Facebook" className="h-3.5 w-3.5" />
             </span>
           </div>
         </div>
@@ -154,7 +136,7 @@ export default function Footer() {
             NEWSLETTER
         ========================== */}
 
-        <div>
+        <div className="border-t border-slate-50">
           <h4 className="text-[11px] font-black text-ink">Newsletter</h4>
 
           <p
@@ -240,7 +222,7 @@ export default function Footer() {
           COPYRIGHT
       ========================== */}
 
-      <div className="border-t border-line">
+      <div>
         <SectionContainer
           className="
             flex
@@ -267,30 +249,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
 
-function FooterLinks({ title, links }) {
-  return (
-    <div>
-      <h4 className="text-[11px] font-black text-ink">{title}</h4>
-
-      <div className="mt-2 space-y-2">
-        {links.map((link) => (
-          <a
-            key={link}
-            href="#"
-            className="
-              block
-              text-[9px]
-              text-muted
-              transition-colors
-              hover:text-brand-700
-            "
-          >
-            {link}
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
+export default Footer;

@@ -1,7 +1,7 @@
-import { SectionContainer, Eyebrow, Button } from "./ui";
+import { SectionContainer, Eyebrow, Button } from "../ui/UI";
 
-import impact from "../assets/impact.png";
-import franchise from "../assets/franchise.png";
+import impact from "../../assets/impact.png";
+import franchise from "../../assets/franchise.png";
 
 const useCases = [
   [
