@@ -1,8 +1,9 @@
 import { SectionContainer, CircleIcon } from "../ui/UI";
+import { BadgeCheck, CircleDollarSign, Headphones, Leaf, ShieldCheck, UsersRound } from "lucide-react";
 
 const items = [
   {
-    icon: "✓",
+    icon: <BadgeCheck size={18} />,
     text: (
       <>
         Doorstep Service
@@ -12,7 +13,7 @@ const items = [
     ),
   },
   {
-    icon: "◷",
+    icon: <Headphones size={18} />,
     text: (
       <>
         Emergency Support
@@ -22,15 +23,15 @@ const items = [
     ),
   },
   {
-    icon: "♟",
+    icon: <UsersRound size={18} />,
     text: <>Trained Technicians</>,
   },
   {
-    icon: "₹",
+    icon: <CircleDollarSign size={18} />,
     text: <>Affordable Service</>,
   },
   {
-    icon: "⌁",
+    icon: <Leaf size={18} />,
     text: (
       <>
         Cleaner &amp; Greener
@@ -40,24 +41,19 @@ const items = [
     ),
   },
   {
-    icon: "✓",
+    icon: <ShieldCheck size={18} />,
     text: <>Trusted &amp; Transparent</>,
   },
 ];
 
 export default function TrustStrip() {
   return (
-    <section
-      className="
-        border-y
-        border-[#dce4e1]
-        bg-white
-      "
-    >
+    <section className="bg-white">
       <SectionContainer
         className="
           grid
           grid-cols-2
+          gap-2
           md:grid-cols-3
           lg:grid-cols-6
         "
@@ -73,17 +69,11 @@ export default function TrustStrip() {
               gap-2
               px-3
               py-3
-
-              border-b
-              border-[#dce4e1]
+              rounded-xl
+              bg-[#f8fbfa]
+              shadow-[0_3px_12px_rgba(3,78,55,0.035)]
 
               md:px-4
-
-              ${index !== items.length - 1 ? "lg:border-r" : ""}
-
-              ${index >= 3 ? "md:border-b-0" : ""}
-
-              lg:border-b-0
             `}
           >
             {/* Icon */}
@@ -95,7 +85,7 @@ export default function TrustStrip() {
                 bg-[#e5f4ed]
                 text-[18px]
                 font-black
-                text-brand-900
+                text-brand-90
               "
             >
               {item.icon}

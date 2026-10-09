@@ -1,20 +1,21 @@
 import { SectionContainer } from "../ui/UI";
+import { BriefcaseBusiness, Gauge, Leaf, Zap } from "lucide-react";
 
 const points = [
-  ["⌁", "Local Employment"],
-  ["✓", "Reduced Downtime"],
-  ["🛠", "Supports EV Adoption"],
-  ["✓", "Builds Rural Ecosystem"],
+  [<BriefcaseBusiness size={15} />, "Local Employment"],
+  [<Gauge size={15} />, "Reduced Downtime"],
+  [<Zap size={15} />, "Supports EV Adoption"],
+  [<Leaf size={15} />, "Builds Rural Ecosystem"],
 ];
 
 export default function ImpactBand() {
   return (
-    <section className="bg-white">
+    <section className="bg-white mb-2">
       <SectionContainer
         className="
           grid
           grid-cols-1
-          overflow-hidden
+          gap-2
           lg:grid-cols-[1.35fr_2fr]
         "
       >
@@ -48,9 +49,8 @@ export default function ImpactBand() {
           className="
             grid
             grid-cols-2
-            border
-            border-[#e2e8e5]
-            bg-white
+            gap-2
+            bg-transparent
             md:grid-cols-4
           "
         >
@@ -63,13 +63,13 @@ export default function ImpactBand() {
                 items-center
                 justify-center
                 gap-2
-                border-r
-                border-[#e2e8e5]
+                rounded-xl
+                bg-[#f8fbfa]
+                shadow-[0_3px_12px_rgba(3,78,55,0.035)]
                 px-2
                 text-center
                 text-[11px]
                 text-ink
-                last:border-r-0
               "
             >
               <span
@@ -82,7 +82,7 @@ export default function ImpactBand() {
                   rounded-full
                   bg-[#edf7f2]
                   text-[14px]
-                  text-brand-700
+                  text-brand-70
                 "
               >
                 {icon}

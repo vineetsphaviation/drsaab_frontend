@@ -5,13 +5,11 @@ import {
   Check,
   ChevronDown,
   GraduationCap,
-  Handshake,
   Mail,
   MapPin,
   MessageSquare,
   Newspaper,
   Phone,
-  Send,
   ShieldCheck,
   Truck,
   UserRound,
@@ -20,6 +18,7 @@ import {
   X,
   Landmark,
   WalletCards,
+  MessageCircle,
 } from "lucide-react";
 
 import {
@@ -28,6 +27,8 @@ import {
   Eyebrow,
   SectionContainer,
 } from "../components/ui/UI";
+
+import supprtImage from "../assets/images/contact_us_hero.png";
 
 const enquiryOptions = [
   {
@@ -119,6 +120,191 @@ const initialForm = {
   enquiry: "",
   message: "",
   consent: false,
+};
+
+/* =========================================================
+   CONTACT HERO
+========================================================= */
+
+const ContactUsHero = () => {
+  return (
+    <section className="relative isolate min-h-[540px] overflow-hidden bg-brand-95">
+      {/* Background Image */}
+      <img
+        src={supprtImage}
+        alt="People having a professional conversation"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      {/* Brand Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-95 via-brand-95/85 to-brand-95/35" />
+
+      {/* Bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-95/70 to-transparent" />
+
+      <SectionContainer className="relative z-10 flex min-h-[540px] items-center py-20 lg:py-24">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_420px]">
+          
+          {/* Left Content */}
+          <div className="max-w-[680px]">
+            <Eyebrow light>GET IN TOUCH</Eyebrow>
+
+            <h1 className="mt-4 max-w-[650px] text-4xl font-black leading-[1.02] tracking-[-1.5px] text-white sm:text-5xl lg:text-[64px]">
+              Let’s Start
+              <br />
+              <span className="text-brand-lime">a Conversation.</span>
+            </h1>
+
+            <p className="mt-6 max-w-[590px] text-base leading-7 text-white/80 sm:text-lg">
+              Whether you need technical assistance, want to explore a
+              partnership, or simply have a question, our team is here to
+              help you find the right way forward.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button
+                href="#contact-form"
+                variant="lime"
+                className="h-11 px-5"
+              >
+                Send an Enquiry
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+
+              <Button
+                href="mailto:info@drsaab.in"
+                variant="light"
+                className="h-11 px-5"
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Email Us
+              </Button>
+            </div>
+
+            {/* Trust Line */}
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[11px] font-bold uppercase tracking-[1px] text-white/65">
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
+                Clear Communication
+              </span>
+
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
+                Guided Assistance
+              </span>
+
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
+                Human Support
+              </span>
+            </div>
+          </div>
+
+          {/* Contact Card */}
+          <div className="relative">
+            <div className="rounded-2xl border border-white/15 bg-white/[0.94] p-6 shadow-2xl backdrop-blur-md sm:p-7">
+              
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[1.5px] text-brand-70">
+                    CONTACT DESK
+                  </p>
+
+                  <h2 className="mt-2 text-2xl font-black tracking-tight text-brand-95">
+                    How can we help?
+                  </h2>
+                </div>
+
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-5 text-brand-90">
+                  <MessageCircle className="h-5 w-5" />
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {/* Email */}
+                <a
+                  href="mailto:info@drsaab.in"
+                  className="group flex items-center gap-4 rounded-xl border border-brand-90/10 bg-brand-5/60 p-4 transition hover:border-brand-60/50 hover:bg-brand-5"
+                >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-brand-90 shadow-sm">
+                    <Mail className="h-4 w-4" />
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
+                      Email
+                    </p>
+                    <p className="mt-1 truncate text-sm font-bold text-brand-95">
+                      info@drsaab.in
+                    </p>
+                  </div>
+                </a>
+
+                {/* Phone */}
+                <a
+                  href="tel:+911800000000"
+                  className="group flex items-center gap-4 rounded-xl border border-brand-90/10 bg-brand-5/60 p-4 transition hover:border-brand-60/50 hover:bg-brand-5"
+                >
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-brand-90 shadow-sm">
+                    <Phone className="h-4 w-4" />
+                  </div>
+
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
+                      Phone
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-brand-95">
+                      +91 1800 000 000
+                    </p>
+                  </div>
+                </a>
+
+                {/* Location */}
+                <div className="flex items-center gap-4 rounded-xl border border-brand-90/10 bg-brand-5/60 p-4">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-brand-90 shadow-sm">
+                    <MapPin className="h-4 w-4" />
+                  </div>
+
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
+                      Service Network
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-brand-95">
+                      Rural + Urban Support
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Response note */}
+              <div className="mt-5 flex items-center gap-2 border-t border-brand-90/10 pt-5 text-[11px] font-semibold text-brand-ink/60">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-brand-60" />
+                Our team is ready to assist you.
+              </div>
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-white/15 bg-brand-95 px-4 py-3 shadow-xl sm:block">
+              <div className="flex items-center gap-3">
+                <div className="grid h-9 w-9 place-items-center rounded-full bg-brand-lime text-brand-95">
+                  <MessageCircle className="h-4 w-4" />
+                </div>
+
+                <div>
+                  <p className="text-[9px] font-black uppercase tracking-[1px] text-brand-lime">
+                    Support
+                  </p>
+                  <p className="mt-0.5 text-xs font-bold text-white">
+                    We’re here to help
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
 };
 
 const ContactUs = () => {
@@ -247,124 +433,13 @@ const ContactUs = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        <div className="absolute inset-0">
-          <div className="absolute -left-32 top-[-180px] h-[480px] w-[480px] rounded-full bg-brand-70/20 blur-3xl" />
-
-          <div className="absolute bottom-[-200px] right-[-120px] h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
-
-          <div
-            className="absolute inset-0 opacity-[0.07]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-              backgroundSize: "54px 54px",
-            }}
-          />
-        </div>
-
-        <SectionContainer className="relative">
-          <div className="grid min-h-[480px] items-center gap-14 py-20 lg:grid-cols-[1.15fr_.85fr]">
-            <div className="max-w-[720px]">
-              <Eyebrow light>CONTACT DR. SAAB</Eyebrow>
-
-              <h1 className="mt-5 text-4xl font-black leading-[1.04] tracking-[-1.5px] sm:text-5xl lg:text-[60px]">
-                Let's Build a More
-                <span className="block text-brand-lime">Connected Service</span>
-                Network Together.
-              </h1>
-
-              <p className="mt-7 max-w-[640px] text-[15px] leading-7 text-white/65 sm:text-[17px]">
-                Tell us what you need and we'll route your enquiry to the
-                appropriate Dr. Saab team.
-              </p>
-
-              <div className="mt-9 flex flex-wrap gap-2">
-                {[
-                  "Customers",
-                  "Mechanics",
-                  "Entrepreneurs",
-                  "Fleets",
-                  "OEMs",
-                  "Institutions",
-                  "Financial Partners",
-                ].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[.7px] text-white/55"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Hero contact console */}
-            <div className="relative mx-auto w-full max-w-[390px]">
-              <div className="rounded-[22px] border border-white/10 bg-white/[0.05] p-5 shadow-2xl backdrop-blur-sm">
-                <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <div>
-                    <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
-                      SUPPORT DESK
-                    </div>
-
-                    <div className="mt-1 text-[13px] font-bold text-white">
-                      Where should we route you?
-                    </div>
-                  </div>
-
-                  <div className="grid h-9 w-9 place-items-center rounded-full bg-brand-lime text-brand-95">
-                    <Send size={16} />
-                  </div>
-                </div>
-
-                <div className="mt-5 space-y-3">
-                  {[
-                    ["Customer", "Service & technical support"],
-                    ["Partner", "Franchise & business enquiries"],
-                    ["Enterprise", "OEM, fleet & institutional"],
-                    ["Learning", "Training & mechanic registration"],
-                  ].map(([title, text]) => (
-                    <div
-                      key={title}
-                      className="flex items-center gap-3 rounded-[11px] border border-white/8 bg-white/[0.035] p-3"
-                    >
-                      <div className="h-2 w-2 rounded-full bg-brand-lime" />
-
-                      <div>
-                        <div className="text-[11px] font-black text-white">
-                          {title}
-                        </div>
-
-                        <div className="mt-0.5 text-[9px] text-white/40">
-                          {text}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 rounded-[11px] bg-brand-lime p-4 text-brand-95">
-                  <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[.8px]">
-                    <ShieldCheck size={15} />
-                    Structured Enquiry Routing
-                  </div>
-
-                  <div className="mt-1.5 text-[9px] font-semibold leading-4 opacity-70">
-                    One form. The right team. A clearer next step.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <ContactUsHero />
 
       {/* =========================================================
           SUCCESS STATE
       ========================================================== */}
       {submitted && (
-        <section className="border-b border-brand-900/10 bg-brand-5 py-8">
+        <section className="bg-brand-5 py-8">
           <SectionContainer>
             <div className="flex items-start gap-4 rounded-[14px] border border-brand-60/20 bg-white p-5 shadow-sm sm:items-center">
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-60 text-white">
@@ -425,7 +500,7 @@ const ContactUs = () => {
                   className={`group relative text-left rounded-[14px] border p-5 transition-all duration-200 hover:-translate-y-1 ${
                     selected
                       ? "border-brand-60 bg-brand-5 shadow-[0_12px_35px_rgba(23,144,95,.10)]"
-                      : "border-brand-900/10 bg-white hover:border-brand-60/25 hover:shadow-[0_12px_35px_rgba(3,78,55,.07)]"
+                      : "border-brand-90/10 bg-white shadow-[0_2px_10px_rgba(3,78,55,.025)] hover:border-brand-60/25 hover:shadow-[0_12px_35px_rgba(3,78,55,.07)]"
                   }`}
                 >
                   {selected && (
@@ -534,7 +609,7 @@ const ContactUs = () => {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="rounded-[18px] border border-brand-900/10 bg-white p-6 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-8"
+              className="rounded-[18px] border border-brand-90/10 bg-white p-6 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-8"
             >
               {/* Personal */}
               <FormSection
@@ -671,7 +746,7 @@ const ContactUs = () => {
                     rows={6}
                     placeholder="Tell us about your requirement..."
                     className={`w-full resize-none rounded-[9px] border bg-white px-4 py-3 text-[12px] text-brand-ink outline-none transition placeholder:text-brand-ink/25 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
-                      errors.message ? "border-red-400" : "border-brand-900/10"
+                      errors.message ? "border-red-400" : "border-brand-90/10"
                     }`}
                   />
 
@@ -733,7 +808,7 @@ const ContactUs = () => {
       {/* =========================================================
           TRUST STRIP
       ========================================================== */}
-      <section className="border-t border-brand-900/10 bg-white py-12">
+      <section className="bg-white py-12">
         <SectionContainer>
           <div className="grid gap-5 sm:grid-cols-3">
             <TrustItem
@@ -785,7 +860,7 @@ const ContactUs = () => {
       </section>
     </div>
   );
-}
+};
 
 /* =========================================================
    FORM COMPONENTS
@@ -808,7 +883,7 @@ function FormSection({ number, title, description }) {
 }
 
 function FormDivider() {
-  return <div className="my-8 h-px bg-brand-900/8" />;
+  return <div className="my-8 h-px bg-brand-90/8" />;
 }
 
 function InputField({
@@ -836,7 +911,7 @@ function InputField({
         onChange={onChange}
         placeholder={placeholder}
         className={`h-[44px] w-full rounded-[9px] border bg-white px-4 text-[12px] text-brand-ink outline-none transition placeholder:text-brand-ink/25 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
-          error ? "border-red-400" : "border-brand-900/10"
+          error ? "border-red-400" : "border-brand-90/10"
         }`}
       />
 
@@ -869,7 +944,7 @@ function SelectField({
           onChange={onChange}
           className={`h-[44px] w-full appearance-none rounded-[9px] border bg-white px-4 pr-10 text-[12px] outline-none transition focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
             value ? "text-brand-ink" : "text-brand-ink/30"
-          } ${error ? "border-red-400" : "border-brand-900/10"}`}
+          } ${error ? "border-red-400" : "border-brand-90/10"}`}
         >
           <option value="" disabled>
             {placeholder}
@@ -903,7 +978,7 @@ function FieldError({ children }) {
 
 function ContactMiniCard({ icon, title, value }) {
   return (
-    <div className="flex items-center gap-3 rounded-[12px] border border-brand-900/10 bg-white p-4">
+    <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-4 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
       <CircleIcon className="h-9 w-9 bg-brand-5 text-brand-70">
         {icon}
       </CircleIcon>
@@ -919,7 +994,7 @@ function ContactMiniCard({ icon, title, value }) {
 
 function TrustItem({ icon, title, text }) {
   return (
-    <div className="rounded-[13px] border border-brand-900/10 bg-brand-5/40 p-5">
+    <div className="rounded-[13px] border border-brand-90/10 bg-brand-5/40 p-5">
       <div className="text-brand-70">{icon}</div>
 
       <h3 className="mt-4 text-[12px] font-black text-brand-95">{title}</h3>
@@ -928,6 +1003,5 @@ function TrustItem({ icon, title, text }) {
     </div>
   );
 }
-
 
 export default ContactUs;

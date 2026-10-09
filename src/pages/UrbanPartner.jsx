@@ -27,6 +27,9 @@ import {
   Users,
   Wrench,
   Zap,
+  CheckCircle2,
+  CircleDot,
+  Radio,
 } from "lucide-react";
 
 import {
@@ -35,6 +38,8 @@ import {
   Eyebrow,
   SectionContainer,
 } from "../components/ui/UI";
+
+import urbanCityLandscape from "../assets/images/urban_city_landscape.png";
 
 const OPERATING_FORMATS = [
   {
@@ -84,49 +89,6 @@ const OPERATING_FORMATS = [
       "Fast breakdown response for eligible EV and energy-related service needs.",
     icon: <Navigation size={21} />,
     tag: "RESPONSE",
-  },
-];
-
-const URBAN_SERVICES = [
-  {
-    title: "EV Diagnostics",
-    description:
-      "Identify common EV faults and coordinate the right technical response.",
-    icon: <Gauge size={22} />,
-    metric: "DIAGNOSE",
-  },
-  {
-    title: "Roadside Assistance",
-    description:
-      "Fast field response for eligible breakdown and mobility-support requirements.",
-    icon: <Navigation size={22} />,
-    metric: "RESPOND",
-  },
-  {
-    title: "Battery Health",
-    description: "Battery testing and health-oriented technical assessment.",
-    icon: <BatteryCharging size={22} />,
-    metric: "ASSESS",
-  },
-  {
-    title: "Charging Support",
-    description:
-      "Support for charging-related issues and technical coordination.",
-    icon: <Bolt size={22} />,
-    metric: "POWER",
-  },
-  {
-    title: "Fleet Maintenance",
-    description:
-      "Structured support for commercial EV operators and distributed fleets.",
-    icon: <Truck size={22} />,
-    metric: "FLEETS",
-  },
-  {
-    title: "Spare Parts",
-    description: "Coordination for genuine and compatible service parts.",
-    icon: <Package size={22} />,
-    metric: "SUPPLY",
   },
 ];
 
@@ -344,6 +306,476 @@ function ServiceFormatCard({ item }) {
   );
 }
 
+/* =========================================================
+   URBAN PARTNER HERO DATA
+========================================================= */
+
+const URBAN_SERVICES = [
+  {
+    label: "EV",
+    icon: Zap,
+  },
+  {
+    label: "Battery",
+    icon: BatteryCharging,
+  },
+  {
+    label: "Fleet",
+    icon: Truck,
+  },
+  {
+    label: "Roadside",
+    icon: Wrench,
+  },
+];
+
+const SERVICE_POINTS = [
+  {
+    label: "Point A",
+    className: "left-[13%] top-[29%]",
+  },
+  {
+    label: "Point B",
+    className: "left-[25%] top-[66%]",
+  },
+  {
+    label: "Point C",
+    className: "left-[48%] top-[18%]",
+  },
+  {
+    label: "Point D",
+    className: "right-[12%] top-[32%]",
+  },
+  {
+    label: "Point E",
+    className: "right-[21%] bottom-[23%]",
+  },
+  {
+    label: "Point F",
+    className: "left-[47%] bottom-[15%]",
+  },
+];
+
+/* =========================================================
+   SERVICE POINT
+========================================================= */
+
+function ServicePoint({ label, className }) {
+  return (
+    <div className={`absolute ${className}`}>
+      <div className="relative flex items-center gap-1.5">
+        <div className="relative grid h-7 w-7 place-items-center rounded-full border border-brand-10 bg-white text-brand-70 shadow-[0_5px_18px_rgba(7,95,69,0.12)]">
+          <CircleDot size={12} />
+
+          <span className="absolute inset-0 animate-ping rounded-full border border-brand-60/20" />
+        </div>
+
+        <span className="hidden rounded-md bg-white/90 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-90 shadow-sm backdrop-blur-md sm:block">
+          {label}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* =========================================================
+   URBAN SERVICE HERO
+========================================================= */
+
+function UrbanPartnerHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="max-w-[500px]">
+            <Eyebrow>DR. SAAB CITY SERVICE PARTNER</Eyebrow>
+
+            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              Fast.
+              <span className="block text-brand-70">Organised.</span>
+              <span className="block">Accessible.</span>
+            </h1>
+
+            <p className="mt-5 max-w-[460px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Build a trusted technical service presence in your city with EV,
+              battery, fleet, charging and roadside support delivered through a
+              connected urban partner network.
+            </p>
+
+            {/* Service pills */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {URBAN_SERVICES.map(({ label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-1.5 rounded-full border border-brand-10 bg-white px-3 py-1.5 shadow-sm"
+                >
+                  <Icon size={11} className="text-brand-70" />
+
+                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="/contact-us">
+                Apply for Your City
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="#urban-services" variant="outline">
+                Explore Services
+              </Button>
+            </div>
+
+            {/* Urban partner indicators */}
+            <div className="mt-7 grid max-w-[470px] grid-cols-3 border-t border-brand-10 pt-5">
+              <div className="border-r border-brand-10 pr-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  CITY
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Focused
+                </div>
+              </div>
+
+              <div className="border-r border-brand-10 px-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  24/7
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Requests
+                </div>
+              </div>
+
+              <div className="pl-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  360°
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Service
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT — URBAN NETWORK
+          ================================================== */}
+
+          <div className="relative min-h-[470px] sm:min-h-[520px]">
+            <div className="absolute inset-0 overflow-hidden rounded-[28px] border border-brand-10 bg-[#e8f2ed] shadow-[0_25px_70px_rgba(7,95,69,0.10)]">
+              {/* =================================================
+                  DUMMY CITY IMAGE
+              ================================================== */}
+
+              <img
+                src={urbanCityLandscape}
+                alt="Urban city landscape"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+
+              {/* Green overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-5/65 via-brand-5/45 to-brand-10/60" />
+
+              {/* =================================================
+                  HEADER CARD
+              ================================================== */}
+
+              <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                    CITY SERVICE NETWORK
+                  </div>
+
+                  <div className="mt-1 text-[12px] font-black text-brand-95 sm:text-[14px]">
+                    Connected Urban Coverage
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
+
+                  <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+                    Network Live
+                  </span>
+                </div>
+              </div>
+
+              {/* =================================================
+                  NETWORK ROUTES
+              ================================================== */}
+
+              <svg
+                className="absolute inset-0 z-[2] h-full w-full"
+                viewBox="0 0 800 600"
+                preserveAspectRatio="none"
+              >
+                {/* Main network routes */}
+                <path
+                  d="M400 315 L120 175"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 315 L190 430"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 315 L390 105"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 315 L665 185"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 315 L635 430"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 315 L390 500"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                {/* Secondary network */}
+                <path
+                  d="M120 175 Q280 75 390 105"
+                  stroke="#17905f"
+                  strokeWidth="1"
+                  strokeDasharray="5 8"
+                  fill="none"
+                  opacity="0.3"
+                />
+
+                <path
+                  d="M190 430 Q400 520 635 430"
+                  stroke="#17905f"
+                  strokeWidth="1"
+                  strokeDasharray="5 8"
+                  fill="none"
+                  opacity="0.3"
+                />
+              </svg>
+
+              {/* =================================================
+                  SERVICE POINTS
+              ================================================== */}
+
+              <div className="absolute inset-0 z-10">
+                {SERVICE_POINTS.map((point) => (
+                  <ServicePoint
+                    key={point.label}
+                    label={point.label}
+                    className={point.className}
+                  />
+                ))}
+              </div>
+
+              {/* =================================================
+                  CENTRAL PARTNER HUB
+              ================================================== */}
+
+              <div className="absolute left-1/2 top-[53%] z-20 -translate-x-1/2 -translate-y-1/2">
+                <div className="absolute -inset-10 animate-pulse rounded-full border border-brand-60/10" />
+
+                <div className="absolute -inset-5 rounded-full border border-brand-60/20" />
+
+                <div className="relative grid h-[90px] w-[90px] place-items-center rounded-full border-[6px] border-white bg-brand-90 text-white shadow-[0_15px_40px_rgba(3,78,55,0.25)]">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-70">
+                    <Truck size={24} strokeWidth={1.8} />
+                  </div>
+                </div>
+
+                <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-brand-95 px-3 py-2 text-center shadow-lg">
+                  <div className="text-[7px] font-bold uppercase tracking-[1px] text-brand-lime">
+                    CITY PARTNER
+                  </div>
+
+                  <div className="mt-0.5 text-[10px] font-black text-white">
+                    Dr. Saab Service Hub
+                  </div>
+                </div>
+              </div>
+
+              {/* =================================================
+                  SERVICE MARKERS
+              ================================================== */}
+
+              <div className="absolute left-[10%] top-[47%] z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Zap size={10} />
+                </span>
+
+                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  EV
+                </span>
+              </div>
+
+              <div className="absolute right-[8%] top-[46%] z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <BatteryCharging size={10} />
+                </span>
+
+                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Battery
+                </span>
+              </div>
+
+              <div className="absolute bottom-[22%] left-[27%] z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Users size={10} />
+                </span>
+
+                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Fleet
+                </span>
+              </div>
+
+              <div className="absolute bottom-[21%] right-[20%] z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md">
+                <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Wrench size={10} />
+                </span>
+
+                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Roadside
+                </span>
+              </div>
+
+              {/* =================================================
+                  BOTTOM NETWORK STATUS
+              ================================================== */}
+
+              <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-white/70 bg-white/90 p-3.5 shadow-[0_12px_30px_rgba(7,95,69,0.10)] backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5">
+                <div className="grid grid-cols-3 divide-x divide-brand-10">
+                  <div className="px-2 text-center first:pl-0">
+                    <div className="text-[16px] font-black text-brand-95">
+                      08
+                    </div>
+
+                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                      Service Points
+                    </div>
+                  </div>
+
+                  <div className="px-2 text-center">
+                    <div className="text-[16px] font-black text-brand-95">
+                      24/7
+                    </div>
+
+                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                      Requests
+                    </div>
+                  </div>
+
+                  <div className="px-2 text-center last:pr-0">
+                    <div className="text-[16px] font-black text-brand-95">
+                      360°
+                    </div>
+
+                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                      Support
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — RESPONSE
+            ================================================== */}
+
+            <div className="absolute -left-4 top-[145px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Clock3 size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    RESPONSE
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Nearby Partner
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — VERIFIED
+            ================================================== */}
+
+            <div className="absolute -right-4 bottom-[135px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+                  <ShieldCheck size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    SERVICE
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Verified Support
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
 const UrbanPartner = () => {
   const [activeJourney, setActiveJourney] = useState(0);
 
@@ -360,193 +792,7 @@ const UrbanPartner = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        {/* City grid */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.06]">
-          <div
-            className="h-full w-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, #b7d96b 1px, transparent 1px),
-                linear-gradient(to bottom, #b7d96b 1px, transparent 1px)
-              `,
-              backgroundSize: "48px 48px",
-            }}
-          />
-        </div>
-
-        <div className="pointer-events-none absolute -right-32 -top-32 h-[520px] w-[520px] rounded-full border border-brand-lime/10" />
-
-        <SectionContainer className="relative py-16 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1.5">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-lime" />
-                <span className="text-[9px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                  CITY SERVICE NETWORK
-                </span>
-              </div>
-
-              <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[0.98] tracking-[-2.5px] sm:text-5xl lg:text-[68px]">
-                Fast.
-                <span className="text-brand-lime"> Organised.</span>
-                <span className="block">Accessible.</span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-lg font-medium leading-8 text-white/70 sm:text-xl">
-                Your City's EV & Energy Service Partner
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="#apply" className="px-6 py-3">
-                  Apply for Your City
-                  <ArrowRight className="ml-2" size={15} />
-                </Button>
-
-                <Button
-                  href="#urban-services"
-                  variant="light"
-                  className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
-                >
-                  Explore Services
-                  <ChevronRight className="ml-2" size={15} />
-                </Button>
-              </div>
-
-              {/* Response strip */}
-              <div className="mt-10 flex flex-wrap gap-2">
-                {["EV Diagnostics", "Roadside", "Battery", "Fleet"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-[9px] font-bold uppercase tracking-[0.7px] text-white/55"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
-              </div>
-            </div>
-
-            {/* Urban hero visual */}
-            <div className="relative min-h-[440px]">
-              <div className="absolute inset-0 rounded-[32px] border border-white/10 bg-white/[0.025]" />
-
-              {/* city blocks */}
-              <div className="absolute bottom-0 left-0 right-0 flex h-[150px] items-end gap-1 px-5 opacity-40">
-                {[45, 75, 55, 110, 82, 135, 65, 100, 52, 125, 80, 145].map(
-                  (height, index) => (
-                    <div
-                      key={index}
-                      className="flex-1 rounded-t-sm bg-brand-80/60"
-                      style={{ height }}
-                    >
-                      <div className="grid grid-cols-2 gap-1 p-2 opacity-30">
-                        {Array.from({ length: 8 }).map((_, i) => (
-                          <span
-                            key={i}
-                            className="h-1 rounded-full bg-brand-lime"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  ),
-                )}
-              </div>
-
-              {/* Radius */}
-              <div className="absolute left-1/2 top-[45%] h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-brand-lime/20" />
-
-              <div className="absolute left-1/2 top-[45%] h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-lime/10" />
-
-              {/* central partner */}
-              <div className="absolute left-1/2 top-[45%] z-10 w-[190px] -translate-x-1/2 -translate-y-1/2">
-                <div className="rounded-[25px] border border-brand-lime/20 bg-brand-90 p-5 shadow-2xl shadow-black/30">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                      CITY PARTNER
-                    </span>
-
-                    <span className="flex items-center gap-1.5 text-[8px] font-bold text-white/45">
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
-                      ONLINE
-                    </span>
-                  </div>
-
-                  <div className="mt-5 rounded-2xl bg-brand-95 p-4">
-                    <div className="relative mx-auto h-20 w-32">
-                      <div className="absolute bottom-2 left-1 right-1 h-9 rounded-xl border border-brand-lime/30 bg-brand-80" />
-
-                      <div className="absolute bottom-0 left-5 h-5 w-5 rounded-full border-2 border-brand-95 bg-brand-lime" />
-
-                      <div className="absolute bottom-0 right-5 h-5 w-5 rounded-full border-2 border-brand-95 bg-brand-lime" />
-
-                      <div className="absolute bottom-7 left-12 h-6 w-14 rounded-t-lg border border-white/10 bg-brand-70" />
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between text-[8px] text-white/45">
-                    <span>Territory Active</span>
-                    <span className="text-brand-lime">LIVE</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating status cards */}
-              <div className="absolute left-4 top-10 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-lime text-brand-95">
-                    <Clock3 size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Response
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Fast Dispatch
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute right-4 top-20 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:right-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <Navigation size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Territory
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Defined Area
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-10 left-4 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <Truck size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Support
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Fleet Ready
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <UrbanPartnerHero />
 
       {/* =========================================================
           WHAT IS URBAN PARTNER
@@ -593,31 +839,23 @@ const UrbanPartner = () => {
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {URBAN_SERVICES.map((service, index) => (
               <div
-                key={service.title}
+                key={service.label}
                 className="group rounded-2xl border border-brand-10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/30 hover:shadow-xl hover:shadow-brand-95/5"
               >
                 <div className="flex items-center justify-between">
-                  <CircleIcon>{service.icon}</CircleIcon>
+                  <CircleIcon>
+                    <service.icon size={19} />
+                  </CircleIcon>
 
                   <span className="text-[8px] font-black uppercase tracking-[1px] text-brand-60/60">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <div className="mt-6 flex items-center gap-2">
+                <div className="mt-6 flex items-center justify-between gap-2">
                   <h3 className="text-base font-black text-brand-95">
-                    {service.title}
+                    {service.label}
                   </h3>
-                </div>
-
-                <p className="mt-2 text-xs leading-6 text-slate-500">
-                  {service.description}
-                </p>
-
-                <div className="mt-5 flex items-center justify-between border-t border-brand-10 pt-4">
-                  <span className="text-[8px] font-black uppercase tracking-[1px] text-brand-60">
-                    {service.metric}
-                  </span>
 
                   <ArrowRight
                     size={14}

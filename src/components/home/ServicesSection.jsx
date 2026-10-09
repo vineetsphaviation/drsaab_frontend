@@ -1,4 +1,5 @@
 import { SectionContainer, Eyebrow, Button } from "../ui/UI";
+import { Link } from "react-router-dom";
 
 import evService from "../../assets/ev_service.png";
 import droneService from "../../assets/drone_service.png";
@@ -109,7 +110,7 @@ export default function ServicesSection() {
             </p>
 
             <Button
-              href="#about"
+              to="/about-us"
               className="
                 mt-4
                 border-[#17905f]
@@ -178,9 +179,7 @@ export default function ServicesSection() {
                 className="
                     min-w-0
                     rounded-[5px]
-                    border
-                    border-[#dce4e1]
-                    bg-white
+                    border border-brand-10 bg-white
                     p-2
                     shadow-[0_1px_4px_rgba(21,38,39,0.04)]
                     transition-shadow
@@ -251,8 +250,8 @@ export default function ServicesSection() {
 
                 {/* Link */}
 
-                <a
-                  href="#"
+                <Link
+                  to="/our-services"
                   className="
                       mt-2
                       inline-flex
@@ -268,7 +267,7 @@ export default function ServicesSection() {
                 >
                   Know More
                   <span className="ml-1 text-[11px]">→</span>
-                </a>
+                </Link>
               </article>
             ))}
           </div>
@@ -282,9 +281,7 @@ export default function ServicesSection() {
           id="book"
           className="
             rounded-[5px]
-            border
-            border-[#d4e8df]
-            bg-[#e8f5f0]
+            border border-brand-10 bg-[#e8f5f0]
             p-5
 
             lg:mt-[7px]

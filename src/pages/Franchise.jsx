@@ -33,6 +33,13 @@ import {
   Wrench,
   X,
   Zap,
+  CheckCircle2,
+  CircleDollarSign,
+  CloudCog,
+  Drone,
+  MapPinned,
+  Network,
+  Sun,
 } from "lucide-react";
 
 import {
@@ -90,70 +97,6 @@ const APPLICANT_TYPES = [
   { title: "New Technical Entrepreneurs", icon: <Cpu size={19} /> },
 ];
 
-const SUPPORT_ITEMS = [
-  {
-    number: "01",
-    title: "Brand Support",
-    description:
-      "Identity, branding and launch support to help establish a consistent Dr. Saab service presence.",
-    icon: <BadgeCheck size={21} />,
-  },
-  {
-    number: "02",
-    title: "Technical Training",
-    description:
-      "Training across EV, battery, drone, solar and essential safety practices.",
-    icon: <GraduationCap size={21} />,
-  },
-  {
-    number: "03",
-    title: "Equipment",
-    description:
-      "Recommended tools and diagnostic equipment aligned with the service model.",
-    icon: <Wrench size={21} />,
-  },
-  {
-    number: "04",
-    title: "Technology",
-    description:
-      "CRM, GPS, booking, billing and digital customer service records.",
-    icon: <Cpu size={21} />,
-  },
-  {
-    number: "05",
-    title: "Business Support",
-    description: "Orientation, territory planning, SOPs and marketing support.",
-    icon: <BriefcaseBusiness size={21} />,
-  },
-  {
-    number: "06",
-    title: "Technical Escalation",
-    description:
-      "Higher-level technical coordination when specialised support is required.",
-    icon: <Route size={21} />,
-  },
-  {
-    number: "07",
-    title: "Spare-Parts Facilitation",
-    description:
-      "Coordination for genuine and compatible parts required for eligible services.",
-    icon: <Package size={21} />,
-  },
-  {
-    number: "08",
-    title: "Refresher Training",
-    description:
-      "Continued learning as EV, battery and energy technologies evolve.",
-    icon: <Zap size={21} />,
-  },
-  {
-    number: "09",
-    title: "Finance Facilitation",
-    description:
-      "Support through the applicable finance process for eligible applicants.",
-    icon: <Landmark size={21} />,
-  },
-];
 
 const APPLICATION_STEPS = [
   {
@@ -342,6 +285,387 @@ function FranchiseModelCard({ model }) {
   );
 }
 
+/* =========================================================
+   FRANCHISE HERO
+========================================================= */
+
+const BUSINESS_VERTICALS = [
+  {
+    label: "EV",
+    icon: Zap,
+  },
+  {
+    label: "Battery",
+    icon: BatteryCharging,
+  },
+  {
+    label: "Drone",
+    icon: Drone,
+  },
+  {
+    label: "Solar",
+    icon: Sun,
+  },
+];
+
+const SUPPORT_ITEMS = [
+  {
+    number: "01",
+    title: "Territory",
+    icon: MapPinned,
+  },
+  {
+    number: "02",
+    title: "Training",
+    icon: GraduationCap,
+  },
+  {
+    number: "03",
+    title: "Service Network",
+    icon: Network,
+  },
+  {
+    number: "04",
+    title: "Digital Support",
+    icon: Smartphone,
+  },
+];
+
+/* =========================================================
+   FRANCHISE HERO
+========================================================= */
+
+function FranchiseHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none absolute -right-48 -top-48 h-[560px] w-[560px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[520px] w-[520px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="max-w-[510px]">
+            <Eyebrow>DR. SAAB FRANCHISE</Eyebrow>
+
+            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.9px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              Become the Dr. Saab
+              <span className="block text-brand-70">of Your Area.</span>
+            </h1>
+
+            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Start a future-ready technical service enterprise combining EV,
+              battery, agricultural drone and solar support — backed by an
+              organised service ecosystem.
+            </p>
+
+            {/* Business verticals */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {BUSINESS_VERTICALS.map(({ label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-1.5 rounded-full border border-brand-10 bg-white px-3 py-1.5 shadow-sm"
+                >
+                  <Icon size={11} className="text-brand-70" />
+
+                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="/contact-us">
+                Apply Now
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="#territory-checker" variant="outline">
+                Check Your Territory
+              </Button>
+            </div>
+
+            {/* Trust points */}
+            <div className="mt-7 grid max-w-[470px] grid-cols-3 border-t border-brand-10 pt-5">
+              <div className="border-r border-brand-10 pr-3">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-brand-60" />
+
+                  <span className="text-[9px] font-black text-brand-95">
+                    Training
+                  </span>
+                </div>
+
+                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                  Technical capability
+                </p>
+              </div>
+
+              <div className="border-r border-brand-10 px-3">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-brand-60" />
+
+                  <span className="text-[9px] font-black text-brand-95">
+                    Network
+                  </span>
+                </div>
+
+                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                  Connected support
+                </p>
+              </div>
+
+              <div className="pl-3">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 size={13} className="text-brand-60" />
+
+                  <span className="text-[9px] font-black text-brand-95">
+                    Territory
+                  </span>
+                </div>
+
+                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                  Local opportunity
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT — FRANCHISE OPPORTUNITY DASHBOARD
+          ================================================== */}
+
+          <div id="territory-checker" className="relative">
+            <div className="relative overflow-hidden rounded-[28px] border border-brand-10 bg-white p-4 shadow-[0_25px_70px_rgba(7,95,69,0.11)] sm:p-5 lg:p-6">
+              {/* =================================================
+                  DASHBOARD HEADER
+              ================================================== */}
+
+              <div className="flex items-center justify-between border-b border-brand-5 pb-5">
+                <div>
+                  <div className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-60">
+                    FRANCHISE OPPORTUNITY
+                  </div>
+
+                  <div className="mt-1 text-[15px] font-black text-brand-95 sm:text-[17px]">
+                    Build Your Local Service Business
+                  </div>
+                </div>
+
+                <div className="grid h-9 w-9 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <CircleDollarSign size={17} />
+                </div>
+              </div>
+
+              {/* =================================================
+                  FRANCHISE TYPES
+              ================================================== */}
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-brand-10 bg-brand-5 p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-white text-brand-70">
+                      <Truck size={16} />
+                    </div>
+
+                    <span className="rounded-full bg-brand-lime/50 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-95">
+                      Rural
+                    </span>
+                  </div>
+
+                  <div className="mt-4 text-[12px] font-black text-brand-95">
+                    Panchayat Franchise
+                  </div>
+
+                  <p className="mt-1 text-[9px] leading-4 text-brand-ink/50">
+                    Mobile service enterprise for a Panchayat and surrounding
+                    villages.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-brand-10 bg-white p-4 shadow-sm">
+                  <div className="flex items-center justify-between">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-brand-5 text-brand-70">
+                      <Wrench size={16} />
+                    </div>
+
+                    <span className="rounded-full bg-brand-5 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-70">
+                      Urban
+                    </span>
+                  </div>
+
+                  <div className="mt-4 text-[12px] font-black text-brand-95">
+                    City Franchise
+                  </div>
+
+                  <p className="mt-1 text-[9px] leading-4 text-brand-ink/50">
+                    Connected EV, battery, fleet and roadside service network.
+                  </p>
+                </div>
+              </div>
+
+              {/* =================================================
+                  TECHNOLOGY COVERAGE
+              ================================================== */}
+
+              <div className="mt-5">
+                <div className="flex items-center justify-between">
+                  <div className="text-[8px] font-black uppercase tracking-[0.9px] text-brand-ink/45">
+                    BUSINESS VERTICALS
+                  </div>
+
+                  <div className="text-[8px] font-bold text-brand-60">
+                    04 ACTIVE
+                  </div>
+                </div>
+
+                <div className="mt-2 grid grid-cols-4 gap-2">
+                  {BUSINESS_VERTICALS.map(({ label, icon: Icon }) => (
+                    <div
+                      key={label}
+                      className="flex flex-col items-center rounded-xl border border-brand-10 bg-white py-3"
+                    >
+                      <Icon size={15} className="text-brand-70" />
+
+                      <span className="mt-1.5 text-[7px] font-black uppercase tracking-[0.4px] text-brand-90">
+                        {label}
+                      </span>
+
+                      <Check size={10} className="mt-1 text-brand-60" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* =================================================
+                  SUPPORT ECOSYSTEM
+              ================================================== */}
+
+              <div className="mt-5 rounded-2xl bg-brand-95 p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-lime">
+                      DR. SAAB ECOSYSTEM
+                    </div>
+
+                    <div className="mt-1 text-[12px] font-black text-white">
+                      What supports your journey
+                    </div>
+                  </div>
+
+                  <ShieldCheck size={18} className="text-brand-lime" />
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  {SUPPORT_ITEMS.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <div
+                        key={item.number}
+                        className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 p-2.5"
+                      >
+                        <div className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-white/10 text-brand-lime">
+                          <Icon size={13} />
+                        </div>
+
+                        <div>
+                          <div className="text-[7px] font-bold text-white/40">
+                            {item.number}
+                          </div>
+
+                          <div className="text-[8px] font-black uppercase tracking-[0.4px] text-white">
+                            {item.title}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* =================================================
+                  BOTTOM CTA STATUS
+              ================================================== */}
+
+              <div className="mt-4 flex items-center gap-3 rounded-xl border border-brand-10 bg-brand-5 px-3.5 py-3">
+                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-brand-70">
+                  <MapPinned size={14} />
+                </div>
+
+                <div className="flex-1">
+                  <div className="text-[8px] font-black uppercase tracking-[0.7px] text-brand-90">
+                    Find Your Opportunity
+                  </div>
+
+                  <p className="mt-0.5 text-[8px] leading-3.5 text-brand-ink/50">
+                    Check whether your preferred territory is available.
+                  </p>
+                </div>
+
+                <ArrowRight size={14} className="shrink-0 text-brand-70" />
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — BUSINESS
+            ================================================== */}
+
+            <div className="absolute -left-4 top-[125px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Users size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    PARTNER
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Local Entrepreneur
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — DIGITAL
+            ================================================== */}
+
+            <div className="absolute -right-4 bottom-[150px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+                  <CloudCog size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    SUPPORT
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Digital Ecosystem
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
 const Franchise = () => {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -409,205 +733,7 @@ const Franchise = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        {/* Background grid */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.045]">
-          <div
-            className="h-full w-full"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, #b7d96b 1px, transparent 1px),
-                linear-gradient(to bottom, #b7d96b 1px, transparent 1px)
-              `,
-              backgroundSize: "52px 52px",
-            }}
-          />
-        </div>
-
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full border border-brand-lime/10" />
-
-        <div className="pointer-events-none absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 translate-y-1/2 rounded-full bg-brand-60/10 blur-3xl" />
-
-        <SectionContainer className="relative py-16 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.85fr] lg:gap-16">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1.5">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-lime" />
-
-                <span className="text-[9px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                  DR. SAAB FRANCHISE NETWORK
-                </span>
-              </div>
-
-              <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[0.97] tracking-[-2.5px] sm:text-5xl lg:text-[66px]">
-                Become the
-                <span className="block text-brand-lime">Dr. Saab</span>
-                of Your Area
-              </h1>
-
-              <p className="mt-6 max-w-xl text-lg font-medium leading-8 text-white/70 sm:text-xl">
-                Start a Future-Ready Technical Service Enterprise
-              </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {["EV", "Battery", "Drone", "Solar"].map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.05] px-3.5 py-2 text-[9px] font-black uppercase tracking-[0.9px] text-white/60"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Button href="#apply" className="px-7 py-3">
-                  Apply Now
-                  <ArrowRight className="ml-2" size={15} />
-                </Button>
-
-                <Button
-                  href="#territory-checker"
-                  variant="light"
-                  className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
-                >
-                  Check Your Territory
-                  <MapPin className="ml-2" size={15} />
-                </Button>
-              </div>
-
-              <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-[9px] font-black uppercase tracking-[0.9px] text-white/35">
-                <span className="flex items-center gap-2">
-                  <Check size={12} className="text-brand-lime" />
-                  Panchayat
-                </span>
-
-                <span className="flex items-center gap-2">
-                  <Check size={12} className="text-brand-lime" />
-                  City
-                </span>
-
-                <span className="flex items-center gap-2">
-                  <Check size={12} className="text-brand-lime" />
-                  Technical Network
-                </span>
-              </div>
-            </div>
-
-            {/* Hero conversion visual */}
-            <div className="relative min-h-[430px]">
-              <div className="absolute inset-0 rounded-[34px] border border-white/10 bg-white/[0.025]" />
-
-              <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-brand-lime/15" />
-
-              <div className="absolute left-1/2 top-1/2 h-[210px] w-[210px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-
-              {/* Central opportunity card */}
-              <div className="absolute left-1/2 top-1/2 z-10 w-[225px] -translate-x-1/2 -translate-y-1/2">
-                <div className="rounded-[26px] border border-brand-lime/20 bg-brand-90 p-5 shadow-2xl shadow-black/30">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                      YOUR TERRITORY
-                    </span>
-
-                    <Target size={18} className="text-brand-lime" />
-                  </div>
-
-                  <div className="mt-5 rounded-2xl bg-brand-95 p-5">
-                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border-4 border-brand-lime/20">
-                      <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-lime text-brand-95">
-                        <MapPin size={22} />
-                      </div>
-                    </div>
-
-                    <div className="mt-4 text-center">
-                      <div className="text-xs font-black text-white">
-                        Service Opportunity
-                      </div>
-
-                      <div className="mt-1 text-[8px] uppercase tracking-[1px] text-white/35">
-                        EV + Energy
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <div className="rounded-lg bg-white/[0.05] p-2.5 text-center">
-                      <div className="text-sm font-black text-brand-lime">
-                        01
-                      </div>
-                      <div className="mt-1 text-[7px] uppercase tracking-[0.7px] text-white/35">
-                        Territory
-                      </div>
-                    </div>
-
-                    <div className="rounded-lg bg-white/[0.05] p-2.5 text-center">
-                      <div className="text-sm font-black text-brand-lime">
-                        04+
-                      </div>
-                      <div className="mt-1 text-[7px] uppercase tracking-[0.7px] text-white/35">
-                        Technologies
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating cards */}
-              <div className="absolute left-4 top-8 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-lime text-brand-95">
-                    <Truck size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Model
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Panchayat
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute right-4 top-16 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:right-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <Building2 size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Model
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      City
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-12 left-5 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <Handshake size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/35">
-                      Support
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Network
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <FranchiseHero />
 
       {/* =========================================================
           CHOOSE YOUR MODEL
@@ -706,30 +832,34 @@ const Franchise = () => {
           />
 
           <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {SUPPORT_ITEMS.map((item) => (
-              <div
-                key={item.number}
-                className="group rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-lime/20 hover:bg-white/[0.055]"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-lime text-brand-95">
-                    {item.icon}
+            {SUPPORT_ITEMS.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.number}
+                  className="group rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-lime/20 hover:bg-white/[0.055]"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                      <Icon size={21} />
+                    </div>
+
+                    <span className="text-[9px] font-black text-white/20">
+                      {item.number}
+                    </span>
                   </div>
 
-                  <span className="text-[9px] font-black text-white/20">
-                    {item.number}
-                  </span>
+                  <h3 className="mt-6 text-sm font-black text-white">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-6 text-white/45">
+                    {item.description}
+                  </p>
                 </div>
-
-                <h3 className="mt-6 text-sm font-black text-white">
-                  {item.title}
-                </h3>
-
-                <p className="mt-2 text-xs leading-6 text-white/45">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-8 flex items-center gap-3 rounded-2xl border border-brand-lime/10 bg-brand-lime/[0.04] p-5">
@@ -1195,6 +1325,6 @@ const Franchise = () => {
       </section>
     </div>
   );
-}
+};
 
 export default Franchise;

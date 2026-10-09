@@ -1,31 +1,27 @@
 import { SectionContainer, CircleIcon } from "../ui/UI";
+import { Leaf, MapPinned, PanelsTopLeft, UsersRound, Wrench } from "lucide-react";
 
 const stats = [
-  ["▣", "1", "Mobile Workshop"],
-  ["◷", "4+", "Service Categories"],
-  ["⌖", "100+", "Villages (Target per District)"],
-  ["♟", "Trained", "Local Technicians"],
-  ["⌁", "Cleaner", "Environment"],
+  [<Wrench size={18} />, "1", "Mobile Workshop"],
+  [<PanelsTopLeft size={18} />, "4+", "Service Categories"],
+  [<MapPinned size={18} />, "100+", "Villages (Target per District)"],
+  [<UsersRound size={18} />, "Trained", "Local Technicians"],
+  [<Leaf size={18} />, "Cleaner", "Environment"],
 ];
 
 export default function StatsStrip() {
   return (
-    <section
-      className="
-        border-y
-        border-[#dce4e1]
-        bg-white
-      "
-    >
+    <section className="bg-white">
       <SectionContainer
         className="
           grid
           grid-cols-2
+          gap-2
           md:grid-cols-3
           lg:grid-cols-5
         "
       >
-        {stats.map(([icon, value, label], index) => (
+        {stats.map(([icon, value, label]) => (
           <div
             key={label}
             className={`
@@ -36,14 +32,11 @@ export default function StatsStrip() {
               gap-2
               px-3
               py-2
-
-              border-b
-              border-[#dce4e1]
+              rounded-xl
+              bg-[#f8fbfa]
+              shadow-[0_3px_12px_rgba(3,78,55,0.035)]
 
               md:px-4
-
-              lg:border-b-0
-              ${index !== stats.length - 1 ? "lg:border-r" : ""}
             `}
           >
             {/* Icon */}
@@ -56,7 +49,7 @@ export default function StatsStrip() {
                 bg-[#e8f5ef]
                 text-[17px]
                 font-black
-                text-brand-900
+                text-brand-90
               "
             >
               {icon}
@@ -71,7 +64,7 @@ export default function StatsStrip() {
                   text-[19px]
                   font-black
                   leading-none
-                  text-brand-900
+                  text-brand-90
                 "
               >
                 {value}

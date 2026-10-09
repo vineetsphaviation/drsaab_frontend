@@ -5,16 +5,21 @@ import {
   BatteryCharging,
   Bike,
   Bot,
+  CalendarCheck,
+  CheckCircle2,
   ChevronDown,
   ChevronRight,
   Clock3,
+  Headphones,
   HelpCircle,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
+  PhoneCall,
   Search,
   ShieldCheck,
+  Smartphone,
   SolarPanel,
   Truck,
   Wrench,
@@ -259,6 +264,335 @@ function SupportOptionCard({ option }) {
   );
 }
 
+
+/* =========================================================
+   SUPPORT HERO
+========================================================= */
+
+const SUPPORT_ACTIONS = [
+  {
+    title: "Book a Service",
+    description: "Need technical assistance?",
+    icon: CalendarCheck,
+  },
+  {
+    title: "Technical Help",
+    description: "Have a technical issue?",
+    icon: Wrench,
+  },
+  {
+    title: "Roadside Support",
+    description: "Need urgent assistance?",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Follow-up",
+    description: "Check an existing request",
+    icon: Search,
+  },
+];
+
+function SupportAction({ action, active, onClick }) {
+  const Icon = action.icon;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group w-full rounded-2xl border p-3.5 text-left transition-all duration-200 sm:p-4 ${
+        active
+          ? "border-brand-60 bg-brand-90 text-white shadow-[0_12px_30px_rgba(7,95,69,0.18)]"
+          : "border-brand-10 bg-white text-brand-95 hover:-translate-y-0.5 hover:border-brand-60 hover:shadow-sm"
+      }`}
+    >
+      <div className="flex items-center gap-3">
+        <div
+          className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
+            active ? "bg-white/10 text-brand-lime" : "bg-brand-5 text-brand-70"
+          }`}
+        >
+          <Icon size={16} />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div
+            className={`text-[10px] font-black uppercase tracking-[0.4px] ${
+              active ? "text-white" : "text-brand-95"
+            }`}
+          >
+            {action.title}
+          </div>
+
+          <div
+            className={`mt-1 text-[8px] leading-3.5 ${
+              active ? "text-white/55" : "text-brand-ink/45"
+            }`}
+          >
+            {action.description}
+          </div>
+        </div>
+
+        <ChevronRight
+          size={14}
+          className={`shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 ${
+            active ? "text-brand-lime" : "text-brand-ink/25"
+          }`}
+        />
+      </div>
+    </button>
+  );
+}
+
+function SupportHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[480px] w-[480px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="max-w-[500px]">
+            <Eyebrow>DR. SAAB SUPPORT</Eyebrow>
+
+            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              How Can We
+              <span className="block text-brand-70">Help You?</span>
+            </h1>
+
+            <p className="mt-5 max-w-[450px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Get the right support path without searching through multiple
+              channels. Tell us what you need and we'll help you take the next
+              step.
+            </p>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="/contact-us">
+                Book a Service
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="tel:+911800000000" variant="outline">
+                <PhoneCall className="mr-2 h-3.5 w-3.5" />
+                Talk to Support
+              </Button>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-10 pt-5">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Clear Assistance
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Guided Support
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  One Place
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT — SUPPORT CONSOLE
+          ================================================== */}
+
+          <SupportConsole />
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
+/* =========================================================
+   SUPPORT CONSOLE
+========================================================= */
+
+function SupportConsole() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <div className="relative">
+      <div className="overflow-hidden rounded-[28px] border border-brand-10 bg-white p-4 shadow-[0_25px_70px_rgba(7,95,69,0.11)] sm:p-5 lg:p-6">
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-brand-5 pb-5">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-90 text-white">
+              <Headphones size={18} />
+            </div>
+
+            <div>
+              <div className="text-[8px] font-black uppercase tracking-[1.1px] text-brand-60">
+                SUPPORT DESK
+              </div>
+
+              <div className="mt-1 text-[14px] font-black text-brand-95 sm:text-[16px]">
+                What do you need help with?
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
+
+            <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+              Online
+            </span>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
+          {SUPPORT_ACTIONS.map((action, index) => (
+            <SupportAction
+              key={action.title}
+              action={action}
+              active={active === index}
+              onClick={() => setActive(index)}
+            />
+          ))}
+        </div>
+
+        {/* Active request panel */}
+        <div className="mt-5 overflow-hidden rounded-2xl bg-brand-95 p-4 sm:p-5">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-lime">
+                SELECTED SUPPORT
+              </div>
+
+              <div className="mt-1 text-[15px] font-black text-white">
+                {SUPPORT_ACTIONS[active].title}
+              </div>
+
+              <p className="mt-1 max-w-[320px] text-[9px] leading-4 text-white/50">
+                {SUPPORT_ACTIONS[active].description} We'll guide you to the
+                appropriate next step.
+              </p>
+            </div>
+
+            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/10 text-brand-lime">
+              {(() => {
+                const Icon = SUPPORT_ACTIONS[active].icon;
+                return <Icon size={16} />;
+              })()}
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a
+              href="/contact-us"
+              className="inline-flex items-center rounded-lg bg-brand-lime px-3 py-2 text-[8px] font-black uppercase tracking-[0.5px] text-brand-95 transition hover:-translate-y-0.5"
+            >
+              Continue
+              <ArrowRight size={11} className="ml-1.5" />
+            </a>
+
+            <a
+              href="https://wa.me/911800000000"
+              className="inline-flex items-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-[8px] font-black uppercase tracking-[0.5px] text-white transition hover:bg-white/10"
+            >
+              <MessageCircle size={11} className="mr-1.5" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        {/* Response information */}
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <div className="flex items-center gap-2 rounded-xl bg-brand-5 px-3 py-2.5">
+            <Clock3 size={13} className="text-brand-70" />
+
+            <div>
+              <div className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
+                SUPPORT
+              </div>
+
+              <div className="text-[9px] font-black text-brand-90">
+                Guided Assistance
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 rounded-xl bg-brand-5 px-3 py-2.5">
+            <Smartphone size={13} className="text-brand-70" />
+
+            <div>
+              <div className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
+                CHANNELS
+              </div>
+
+              <div className="text-[9px] font-black text-brand-90">
+                Digital + Phone
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating support card */}
+      <div className="absolute -left-4 top-[130px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+        <div className="flex items-center gap-2">
+          <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+            <MessageCircle size={13} />
+          </div>
+
+          <div>
+            <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+              SUPPORT
+            </div>
+
+            <div className="text-[9px] font-black text-brand-95">
+              Talk to Us
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating status */}
+      <div className="absolute -right-4 bottom-[115px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+        <div className="flex items-center gap-2">
+          <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+            <CheckCircle2 size={13} />
+          </div>
+
+          <div>
+            <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+              STATUS
+            </div>
+
+            <div className="text-[9px] font-black text-brand-95">
+              Help Available
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Support = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
@@ -280,170 +614,7 @@ const Support = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full border border-brand-lime/10" />
-
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-brand-60/10 blur-3xl" />
-
-        <SectionContainer className="relative py-16 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.75fr] lg:gap-20">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-lime/20 bg-brand-lime/5 px-3 py-1.5">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-lime" />
-
-                <span className="text-[9px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                  DR. SAAB SUPPORT CENTRE
-                </span>
-              </div>
-
-              <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[0.98] tracking-[-2.5px] sm:text-5xl lg:text-[66px]">
-                How Can We
-                <span className="block text-brand-lime">Help You?</span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-lg leading-8 text-white/65 sm:text-xl">
-                Technical support, service booking, FAQs and assistance — all in
-                one place.
-              </p>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Button href="#support-options" className="px-6 py-3">
-                  Get Support
-                  <ArrowRight className="ml-2" size={15} />
-                </Button>
-
-                <Button
-                  href="#faqs"
-                  variant="light"
-                  className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
-                >
-                  Browse FAQs
-                  <HelpCircle className="ml-2" size={15} />
-                </Button>
-              </div>
-
-              <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-[9px] font-black uppercase tracking-[0.9px] text-white/35">
-                <span className="flex items-center gap-2">
-                  <Clock3 size={12} className="text-brand-lime" />
-                  Support
-                </span>
-
-                <span className="flex items-center gap-2">
-                  <Wrench size={12} className="text-brand-lime" />
-                  Service
-                </span>
-
-                <span className="flex items-center gap-2">
-                  <HelpCircle size={12} className="text-brand-lime" />
-                  FAQs
-                </span>
-              </div>
-            </div>
-
-            {/* Hero support console */}
-            <div className="relative min-h-[380px]">
-              <div className="absolute inset-0 rounded-[32px] border border-white/10 bg-white/[0.025]" />
-
-              <div className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-brand-lime/15" />
-
-              <div className="absolute left-1/2 top-1/2 h-[175px] w-[175px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-
-              {/* Central */}
-              <div className="absolute left-1/2 top-1/2 z-10 w-[200px] -translate-x-1/2 -translate-y-1/2">
-                <div className="rounded-[25px] border border-brand-lime/20 bg-brand-90 p-5 shadow-2xl shadow-black/30">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                      SUPPORT HUB
-                    </span>
-
-                    <span className="flex items-center gap-1.5 text-[8px] font-bold text-white/40">
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
-                      ACTIVE
-                    </span>
-                  </div>
-
-                  <div className="mt-5 grid place-items-center rounded-2xl bg-brand-95 py-6">
-                    <div className="grid h-16 w-16 place-items-center rounded-full bg-brand-lime text-brand-95">
-                      <HeadsetIcon />
-                    </div>
-
-                    <div className="mt-3 text-xs font-black text-white">
-                      We're Here to Help
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-3 gap-1.5">
-                    {[
-                      ["CALL", <Phone size={12} />],
-                      ["CHAT", <MessageCircle size={12} />],
-                      ["SERVICE", <Wrench size={12} />],
-                    ].map(([label, icon]) => (
-                      <div
-                        key={label}
-                        className="flex flex-col items-center gap-1 rounded-lg bg-white/[0.05] py-2 text-[7px] font-black text-white/45"
-                      >
-                        {icon}
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute left-3 top-8 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-brand-lime text-brand-95">
-                    <Phone size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/30">
-                      Support
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Call
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute right-3 top-14 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:right-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <MessageCircle size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/30">
-                      Support
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      WhatsApp
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-8 left-4 rounded-xl border border-white/10 bg-brand-90/90 p-3 backdrop-blur-md sm:left-8">
-                <div className="flex items-center gap-2.5">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-brand-lime">
-                    <MapPin size={15} />
-                  </div>
-
-                  <div>
-                    <div className="text-[8px] font-black uppercase tracking-[0.8px] text-white/30">
-                      Availability
-                    </div>
-                    <div className="mt-0.5 text-xs font-black text-white">
-                      Check Area
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <SupportHero />
 
       {/* =========================================================
           SUPPORT OPTIONS
@@ -750,7 +921,7 @@ const Support = () => {
       </section>
     </div>
   );
-}
+};
 
 function HeadsetIcon() {
   return (

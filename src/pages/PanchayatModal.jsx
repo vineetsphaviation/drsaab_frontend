@@ -7,10 +7,12 @@ import {
   Check,
   ChevronRight,
   CircleDollarSign,
+  CircleDot,
   ClipboardCheck,
   CloudCog,
   Cpu,
   CreditCard,
+  Drone,
   Droplets,
   Factory,
   FileCheck2,
@@ -28,6 +30,7 @@ import {
   Smartphone,
   SolarPanel,
   Store,
+  Sun,
   Truck,
   Users,
   Wrench,
@@ -40,6 +43,7 @@ import {
   Eyebrow,
   SectionContainer,
 } from "../components/ui/UI";
+import panchayatHeroBg from "../assets/images/panchayat_hero_bg.png";
 
 const TECHNOLOGIES = [
   {
@@ -334,6 +338,460 @@ function NetworkNode({ label, type }) {
   );
 }
 
+
+/* =========================================================
+   PANCHAYAT HERO
+========================================================= */
+
+const PANCHAYAT_SERVICES = [
+  {
+    label: "EV",
+    icon: Zap,
+  },
+  {
+    label: "Battery",
+    icon: BatteryCharging,
+  },
+  {
+    label: "Drone",
+    icon: Drone,
+  },
+  {
+    label: "Solar",
+    icon: Sun,
+  },
+];
+
+const VILLAGES = [
+  {
+    className: "left-[8%] top-[26%]",
+    label: "Village A",
+  },
+  {
+    className: "left-[22%] top-[68%]",
+    label: "Village B",
+  },
+  {
+    className: "right-[13%] top-[22%]",
+    label: "Village C",
+  },
+  {
+    className: "right-[7%] top-[68%]",
+    label: "Village D",
+  },
+  {
+    className: "left-[43%] top-[8%]",
+    label: "Village E",
+  },
+];
+
+function VillageNode({ className, label }) {
+  return (
+    <div className={`absolute ${className}`}>
+      <div className="group flex items-center gap-1.5">
+        <div className="relative grid h-7 w-7 place-items-center rounded-full border border-brand-10 bg-white text-brand-70 shadow-[0_5px_15px_rgba(7,95,69,0.10)]">
+          <CircleDot size={12} />
+
+          <span className="absolute inset-0 animate-ping rounded-full border border-brand-60/20" />
+        </div>
+
+        <span className="hidden rounded-md bg-white/90 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-90 shadow-sm backdrop-blur-sm sm:block">
+          {label}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function ServiceMarker({ icon: Icon, label, className }) {
+  return (
+    <div
+      className={`absolute ${className} flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md`}
+    >
+      <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
+        <Icon size={10} />
+      </span>
+
+      <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function PanchayatHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
+          
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="max-w-[500px]">
+            <Eyebrow>PANCHAYAT SERVICE-ON-WHEELS</Eyebrow>
+
+            <h1 className="mt-4 text-[39px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              One Panchayat.
+              <span className="block text-brand-70">
+                One Dr. Saab.
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              A mobile technical service enterprise bringing EV, battery,
+              agricultural drone, solar and energy support closer to rural
+              customers — one Panchayat and its surrounding villages at a
+              time.
+            </p>
+
+            {/* Technology pills */}
+            <div className="mt-6 flex flex-wrap gap-2">
+              {PANCHAYAT_SERVICES.map(({ label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-1.5 rounded-full border border-brand-10 bg-white px-3 py-1.5 shadow-sm"
+                >
+                  <Icon size={11} className="text-brand-70" />
+
+                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="/contact-us">
+                Apply for Your Panchayat
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="#territory" variant="outline">
+                Check Territory
+              </Button>
+            </div>
+
+            {/* Trust / model indicators */}
+            <div className="mt-7 grid max-w-[470px] grid-cols-3 border-t border-brand-10 pt-5">
+              <div className="border-r border-brand-10 pr-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  01
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Panchayat
+                </div>
+              </div>
+
+              <div className="border-r border-brand-10 px-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  4+
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Tech Verticals
+                </div>
+              </div>
+
+              <div className="pl-3">
+                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                  01
+                </div>
+
+                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                  Mobile Unit
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT — TERRITORY VISUAL
+          ================================================== */}
+
+          <div
+            id="territory"
+            className="relative min-h-[470px] sm:min-h-[520px]"
+          >
+            {/* Main visual container */}
+            <div className="absolute inset-0 overflow-hidden rounded-[28px] border border-brand-10 bg-[#e8f2ed] shadow-[0_25px_70px_rgba(7,95,69,0.10)]">
+              
+              {/* =================================================
+                  DUMMY RURAL IMAGE
+              ================================================== */}
+
+              <img
+                src={panchayatHeroBg}
+                alt="Rural landscape"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+
+              {/* Green map overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-5/65 via-brand-5/45 to-brand-10/60" />
+
+              {/* =================================================
+                  TOP CARD
+              ================================================== */}
+
+              <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                    PANCHAYAT SERVICE NETWORK
+                  </div>
+
+                  <div className="mt-1 text-[12px] font-black text-brand-95 sm:text-[14px]">
+                    One Local Hub. Multiple Villages.
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
+
+                  <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+                    Network Active
+                  </span>
+                </div>
+              </div>
+
+              {/* =================================================
+                  NETWORK ROUTES
+              ================================================== */}
+
+              <svg
+                className="absolute inset-0 z-[2] h-full w-full"
+                viewBox="0 0 800 600"
+                preserveAspectRatio="none"
+              >
+                {/* Main routes */}
+                <path
+                  d="M400 310 L110 170"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 310 L170 430"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 310 L650 150"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 310 L690 430"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                <path
+                  d="M400 310 L420 100"
+                  stroke="#17905f"
+                  strokeWidth="2"
+                  strokeDasharray="8 8"
+                  fill="none"
+                  opacity="0.65"
+                />
+
+                {/* Secondary routes */}
+                <path
+                  d="M110 170 Q250 100 420 100"
+                  stroke="#17905f"
+                  strokeWidth="1"
+                  strokeDasharray="5 8"
+                  fill="none"
+                  opacity="0.3"
+                />
+
+                <path
+                  d="M170 430 Q420 520 690 430"
+                  stroke="#17905f"
+                  strokeWidth="1"
+                  strokeDasharray="5 8"
+                  fill="none"
+                  opacity="0.3"
+                />
+              </svg>
+
+              {/* =================================================
+                  VILLAGE NODES
+              ================================================== */}
+
+              <div className="absolute inset-0 z-10">
+                {VILLAGES.map((village) => (
+                  <VillageNode
+                    key={village.label}
+                    className={village.className}
+                    label={village.label}
+                  />
+                ))}
+              </div>
+
+              {/* =================================================
+                  CENTRAL DR SAAB HUB
+              ================================================== */}
+
+              <div className="absolute left-1/2 top-[52%] z-20 -translate-x-1/2 -translate-y-1/2">
+                {/* pulse rings */}
+                <div className="absolute -inset-8 animate-pulse rounded-full border border-brand-60/15" />
+
+                <div className="absolute -inset-4 rounded-full border border-brand-60/20" />
+
+                <div className="relative grid h-[86px] w-[86px] place-items-center rounded-full border-[6px] border-white bg-brand-90 text-white shadow-[0_15px_35px_rgba(3,78,55,0.25)]">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-brand-70">
+                    <Truck size={24} strokeWidth={1.8} />
+                  </div>
+                </div>
+
+                <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-brand-95 px-3 py-2 text-center shadow-lg">
+                  <div className="text-[7px] font-bold uppercase tracking-[1px] text-brand-lime">
+                    SERVICE HUB
+                  </div>
+
+                  <div className="mt-0.5 text-[10px] font-black text-white">
+                    Dr. Saab Mobile Unit
+                  </div>
+                </div>
+              </div>
+
+              {/* =================================================
+                  SERVICE MARKERS
+              ================================================== */}
+
+              <ServiceMarker
+                icon={Zap}
+                label="EV"
+                className="left-[9%] top-[45%]"
+              />
+
+              <ServiceMarker
+                icon={BatteryCharging}
+                label="Battery"
+                className="right-[7%] top-[42%]"
+              />
+
+              <ServiceMarker
+                icon={Drone}
+                label="Drone"
+                className="left-[28%] top-[17%]"
+              />
+
+              <ServiceMarker
+                icon={Sun}
+                label="Solar"
+                className="right-[24%] bottom-[18%]"
+              />
+
+              {/* =================================================
+                  COVERAGE CARD
+              ================================================== */}
+
+              <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-white/70 bg-white/90 p-3.5 shadow-[0_12px_30px_rgba(7,95,69,0.10)] backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-2.5">
+                    <div className="grid h-9 w-9 place-items-center rounded-full bg-brand-5 text-brand-70">
+                      <Navigation size={15} />
+                    </div>
+
+                    <div>
+                      <div className="text-[7px] font-black uppercase tracking-[0.8px] text-brand-60">
+                        SERVICE TERRITORY
+                      </div>
+
+                      <div className="mt-0.5 text-[11px] font-black text-brand-95">
+                        Panchayat + Surrounding Villages
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden items-center gap-1.5 sm:flex">
+                    <Route size={13} className="text-brand-60" />
+
+                    <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-70">
+                      Connected Coverage
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — TRAINED SUPPORT
+            ================================================== */}
+
+            <div className="absolute -left-4 top-[145px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Wrench size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    SUPPORT
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Trained Technician
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING CARD — DIGITAL
+            ================================================== */}
+
+            <div className="absolute -right-4 bottom-[130px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+                  <Smartphone size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    DIGITAL
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Service Records
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
+
 const PanchayatModal = () => {
   const [activeLaunchStep, setActiveLaunchStep] = useState(0);
 
@@ -352,164 +810,7 @@ const PanchayatModal = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        {/* Decorative background */}
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full border border-brand-lime/10" />
-        <div className="pointer-events-none absolute -right-20 -top-20 h-[360px] w-[360px] rounded-full border border-brand-lime/10" />
-
-        <div className="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-brand-70/15 blur-3xl" />
-
-        <SectionContainer className="relative py-16 sm:py-20 lg:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            <div>
-              <Eyebrow light>DR. SAAB PANCHAYAT SERVICE-ON-WHEELS</Eyebrow>
-
-              <h1 className="mt-5 max-w-3xl text-4xl font-black leading-[0.98] tracking-[-2.5px] sm:text-5xl lg:text-[68px]">
-                One Panchayat.
-                <span className="block text-brand-lime">One Dr. Saab.</span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-lg font-medium leading-8 text-white/75 sm:text-xl">
-                Mobile EV, Drone, Solar & Battery Support Enterprise
-              </p>
-
-              <div className="mt-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2.5">
-                <div className="grid h-8 w-8 place-items-center rounded-full bg-brand-lime text-brand-95">
-                  <MapPin size={16} />
-                </div>
-
-                <div>
-                  <div className="text-[9px] font-black uppercase tracking-[1.2px] text-white/45">
-                    Supporting
-                  </div>
-                  <div className="text-xs font-bold text-white">
-                    One Panchayat + Surrounding Villages
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Button href="#apply" className="px-6 py-3">
-                  Apply for Your Panchayat
-                  <ArrowRight className="ml-2" size={15} />
-                </Button>
-
-                <Button
-                  href="#territory"
-                  variant="light"
-                  className="border-white/20 bg-white/10 text-white hover:bg-white"
-                >
-                  Check Territory
-                  <MapPin className="ml-2" size={15} />
-                </Button>
-              </div>
-
-              <div className="mt-10 grid max-w-xl grid-cols-3 border-t border-white/10 pt-6">
-                <div>
-                  <div className="text-xl font-black text-white">01</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.8px] text-white/45">
-                    Panchayat
-                  </div>
-                </div>
-
-                <div className="border-l border-white/10 pl-5">
-                  <div className="text-xl font-black text-white">04+</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.8px] text-white/45">
-                    Technologies
-                  </div>
-                </div>
-
-                <div className="border-l border-white/10 pl-5">
-                  <div className="text-xl font-black text-white">01</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.8px] text-white/45">
-                    Digital Network
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero visual */}
-            <div className="relative min-h-[430px]">
-              <div className="absolute inset-0 rounded-[34px] border border-white/10 bg-white/[0.035]" />
-
-              <div className="absolute inset-5 rounded-[28px] border border-brand-lime/10 bg-gradient-to-br from-brand-80/30 to-transparent" />
-
-              {/* Orbit */}
-              <div className="absolute left-1/2 top-1/2 h-[285px] w-[285px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-brand-lime/20 sm:h-[330px] sm:w-[330px]" />
-
-              <div className="absolute left-1/2 top-1/2 h-[205px] w-[205px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
-
-              {/* Central vehicle */}
-              <div className="absolute left-1/2 top-1/2 z-10 w-[220px] -translate-x-1/2 -translate-y-1/2">
-                <div className="rounded-[26px] border border-brand-lime/20 bg-brand-90 p-5 shadow-2xl shadow-black/20">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-black uppercase tracking-[1.3px] text-brand-lime">
-                      Mobile Workshop
-                    </span>
-
-                    <Truck size={19} className="text-brand-lime" />
-                  </div>
-
-                  <div className="mt-5 h-20 rounded-2xl bg-brand-95 p-4">
-                    <div className="relative h-full">
-                      <div className="absolute bottom-2 left-4 right-3 h-9 rounded-xl border border-brand-lime/30 bg-brand-80">
-                        <div className="absolute -bottom-2 left-4 h-5 w-5 rounded-full border-2 border-brand-95 bg-brand-lime" />
-                        <div className="absolute -bottom-2 right-4 h-5 w-5 rounded-full border-2 border-brand-95 bg-brand-lime" />
-                      </div>
-
-                      <div className="absolute bottom-7 left-10 h-5 w-12 rounded-t-lg border border-white/15 bg-brand-70" />
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-4 gap-1.5">
-                    {["EV", "BAT", "DRONE", "SOLAR"].map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-md bg-white/[0.06] py-2 text-center text-[7px] font-black tracking-[0.4px] text-white/65"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Orbit technology cards */}
-              <div className="absolute left-4 top-10 sm:left-8">
-                <TechnologyPill
-                  icon={<Zap size={15} />}
-                  title="EV"
-                  subtitle="Mobility"
-                />
-              </div>
-
-              <div className="absolute right-4 top-20 sm:right-8">
-                <TechnologyPill
-                  icon={<BatteryCharging size={15} />}
-                  title="Battery"
-                  subtitle="Power"
-                />
-              </div>
-
-              <div className="absolute bottom-20 left-2 sm:left-6">
-                <TechnologyPill
-                  icon={<Bot size={15} />}
-                  title="Drone"
-                  subtitle="Agri-Tech"
-                />
-              </div>
-
-              <div className="absolute bottom-8 right-4 sm:right-8">
-                <TechnologyPill
-                  icon={<SolarPanel size={15} />}
-                  title="Solar"
-                  subtitle="Energy"
-                />
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <PanchayatHero />
 
       {/* =========================================================
           WHAT IS THE MODEL

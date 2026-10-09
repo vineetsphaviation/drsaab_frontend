@@ -18,6 +18,11 @@ import {
   Truck,
   UserCheck,
   Wrench,
+  CalendarCheck,
+  CheckCircle2,
+  FileCheck2,
+  SearchCheck,
+  Zap,
   X,
 } from "lucide-react";
 
@@ -27,100 +32,11 @@ import {
   SectionContainer,
   CircleIcon,
 } from "../components/ui/UI";
+import howItWorksBg from "../assets/images/how_it_works_bg.png";
 
 /* ============================================================
    JOURNEY DATA
 ============================================================ */
-
-const JOURNEY_STEPS = [
-  {
-    number: "01",
-    shortTitle: "Book",
-    title: "Book Your Service",
-    description:
-      "Submit your service requirement through the channel that is most convenient for you.",
-    icon: ClipboardCheck,
-    color: "lime",
-    channels: [
-      {
-        icon: Globe,
-        label: "Website",
-      },
-      {
-        icon: MessageCircle,
-        label: "WhatsApp",
-      },
-      {
-        icon: Smartphone,
-        label: "Application",
-      },
-      {
-        icon: Phone,
-        label: "Support Number",
-      },
-    ],
-  },
-
-  {
-    number: "02",
-    shortTitle: "Assign",
-    title: "Technician Assigned",
-    description:
-      "An available Dr. Saab technician in your service area receives the request.",
-    icon: UserCheck,
-    color: "green",
-  },
-
-  {
-    number: "03",
-    shortTitle: "Diagnose",
-    title: "Problem Diagnosed",
-    description:
-      "The technician visits you, checks the vehicle or equipment and identifies the problem.",
-    icon: Search,
-    color: "lime",
-  },
-
-  {
-    number: "04",
-    shortTitle: "Service",
-    title: "Service At Site",
-    description:
-      "Eligible repairs, maintenance and technical support are provided at the site.",
-    icon: Wrench,
-    color: "green",
-  },
-
-  {
-    number: "05",
-    shortTitle: "Escalate",
-    title: "Specialist Escalation",
-    description:
-      "Major or specialised work is referred to an appropriate authorised facility.",
-    icon: Navigation,
-    color: "lime",
-  },
-
-  {
-    number: "06",
-    shortTitle: "Record",
-    title: "Digital Service Record",
-    description:
-      "Service details and invoice are digitally recorded for transparency and future reference.",
-    icon: FileText,
-    color: "green",
-  },
-
-  {
-    number: "07",
-    shortTitle: "Feedback",
-    title: "Feedback & Follow-up",
-    description:
-      "Your feedback and recommended future maintenance are captured after the service.",
-    icon: MessageCircle,
-    color: "lime",
-  },
-];
 
 /* ============================================================
    CUSTOMER BENEFITS
@@ -195,118 +111,319 @@ const BOOKING_CHANNELS = [
    STEP CARD
 ============================================================ */
 
-const JourneyStep = ({ step, index, active, onClick }) => {
+
+const JOURNEY_STEPS = [
+  {
+    number: "01",
+    title: "BOOK",
+    label: "Request Service",
+    icon: CalendarCheck,
+    channels: BOOKING_CHANNELS,
+  },
+  {
+    number: "02",
+    title: "ASSIGN",
+    label: "Technician Matched",
+    icon: UserCheck,
+  },
+  {
+    number: "03",
+    title: "DIAGNOSE",
+    label: "Problem Identified",
+    icon: SearchCheck,
+  },
+  {
+    number: "04",
+    title: "SERVICE",
+    label: "Repair & Support",
+    icon: Wrench,
+  },
+  {
+    number: "05",
+    title: "ESCALATE",
+    label: "Expert Support",
+    icon: ShieldCheck,
+  },
+  {
+    number: "06",
+    title: "RECORD",
+    label: "Digital History",
+    icon: FileCheck2,
+  },
+  {
+    number: "07",
+    title: "FEEDBACK",
+    label: "Close the Loop",
+    icon: MessageCircle,
+  },
+];
+
+function JourneyStep({ step, active }) {
   const Icon = step.icon;
 
   return (
-    <button
-      type="button"
-      onClick={() => onClick(index)}
-      className={`
-        group
-        relative
-        flex
-        w-full
-        min-w-[155px]
-        flex-col
-        items-center
-        text-center
-        lg:min-w-0
-        ${active ? "opacity-100" : "opacity-65 hover:opacity-100"}
-      `}
-    >
-      {/* Connector */}
-      {index < JOURNEY_STEPS.length - 1 && (
-        <span
-          className="
-            absolute
-            left-[calc(50%+34px)]
-            top-[34px]
-            hidden
-            h-[2px]
-            w-[calc(100%-68px)]
-            bg-brand-10
-            lg:block
-          "
-        >
-          <span
-            className={`
-              absolute
-              left-0
-              top-0
-              h-full
-              bg-brand-lime
-              transition-all
-              duration-700
-              ${active ? "w-full" : "w-0"}
-            `}
-          />
-        </span>
-      )}
-
-      {/* Icon */}
+    <div className="relative z-10 flex min-w-[82px] flex-1 flex-col items-center text-center">
       <div
-        className={`
-          relative
-          z-10
-          grid
-          h-[68px]
-          w-[68px]
-          place-items-center
-          rounded-full
-          border-[5px]
-          border-white
-          shadow-lg
-          transition-all
-          duration-300
-          ${
-            active
-              ? "scale-110 bg-brand-70 text-white ring-4 ring-brand-10"
-              : "bg-brand-5 text-brand-70 group-hover:bg-brand-70 group-hover:text-white"
-          }
-        `}
+        className={`relative grid h-11 w-11 place-items-center rounded-full border-2 transition-all duration-300 ${
+          active
+            ? "border-brand-60 bg-brand-90 text-white shadow-[0_8px_20px_rgba(7,95,69,0.2)]"
+            : "border-brand-10 bg-white text-brand-70"
+        }`}
       >
-        <Icon size={25} strokeWidth={1.8} />
+        <Icon size={16} strokeWidth={2.2} />
 
-        <span
-          className={`
-            absolute
-            -right-1
-            -top-1
-            grid
-            h-6
-            w-6
-            place-items-center
-            rounded-full
-            text-[8px]
-            font-black
-            ${active ? "bg-brand-lime text-brand-95" : "bg-brand-95 text-white"}
-          `}
-        >
-          {step.number}
-        </span>
+        {active && (
+          <span className="absolute -right-1 -top-1 grid h-3.5 w-3.5 place-items-center rounded-full bg-brand-lime text-brand-95">
+            <CheckCircle2 size={9} />
+          </span>
+        )}
       </div>
 
-      {/* Text */}
-      <span
-        className={`
-          mt-4
-          text-[11px]
-          font-black
-          uppercase
-          tracking-[.5px]
-          ${active ? "text-brand-90" : "text-brand-ink"}
-        `}
-      >
-        {step.shortTitle}
-      </span>
+      <div className="mt-2">
+        <div className="text-[8px] font-black tracking-[1px] text-brand-60">
+          {step.number}
+        </div>
 
-      <span className="mt-1 hidden text-[9px] text-gray-400 lg:block">
-        Step {step.number}
-      </span>
-    </button>
+        <div className="mt-0.5 text-[9px] font-black tracking-[0.4px] text-brand-95">
+          {step.title}
+        </div>
+
+        <div className="mt-0.5 hidden text-[8px] leading-3 text-brand-ink/50 sm:block">
+          {step.label}
+        </div>
+      </div>
+    </div>
   );
-};
+}
+
+function HowItWorksHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[360px] w-[360px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.85fr_1.15fr]">
+          
+          {/* =====================================================
+              LEFT CONTENT
+          ====================================================== */}
+          <div className="max-w-[500px]">
+            <Eyebrow>HOW DR. SAAB WORKS</Eyebrow>
+
+            <h1 className="mt-4 max-w-[500px] text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[52px] xl:text-[56px]">
+              From Service Request
+              <span className="block text-brand-70">
+                to Support.
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[440px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Dr. Saab brings structure, transparency and technical expertise
+              to every service request — from the moment you book to the
+              moment your service is completed.
+            </p>
+
+            {/* Feature pills */}
+            <div className="mt-6 flex max-w-[470px] flex-wrap gap-2">
+              {[
+                "Simple Booking",
+                "Verified Technicians",
+                "Digital Records",
+                "Transparent Support",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-brand-10 bg-white px-3 py-1.5 text-[8px] font-black uppercase tracking-[0.5px] text-brand-80 shadow-sm sm:text-[9px]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="/contact-us">
+                Book a Service
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="#journey" variant="outline">
+                See How It Works
+              </Button>
+            </div>
+
+            {/* Mini trust row */}
+            <div className="mt-7 flex max-w-[450px] items-center gap-3 border-t border-brand-10 pt-5">
+              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-90 text-white">
+                <Zap size={15} />
+              </div>
+
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[0.8px] text-brand-95">
+                  One Connected Journey
+                </div>
+
+                <p className="mt-0.5 text-[9px] leading-4 text-brand-ink/50">
+                  Every request moves through a structured service process.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* =====================================================
+              RIGHT SERVICE JOURNEY CARD
+          ====================================================== */}
+          <div className="relative">
+            <div className="overflow-hidden rounded-[24px] border border-brand-10 bg-white p-4 shadow-[0_20px_60px_rgba(7,95,69,0.10)] sm:p-5 lg:p-6">
+
+              {/* Card heading */}
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-60">
+                    LIVE SERVICE JOURNEY
+                  </div>
+
+                  <h2 className="mt-1 text-[14px] font-black text-brand-95 sm:text-[16px]">
+                    Your request, step by step
+                  </h2>
+                </div>
+
+                <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
+
+                  <span className="text-[7px] font-black uppercase tracking-[0.8px] text-brand-70">
+                    Connected
+                  </span>
+                </div>
+              </div>
+
+              {/* =================================================
+                  IMAGE
+              ================================================== */}
+              <div className="relative mt-4 h-[190px] overflow-hidden rounded-[16px] sm:h-[220px] lg:h-[235px]">
+                <img
+                  src={howItWorksBg}
+                  alt="Technician servicing a vehicle"
+                  className="h-full w-full object-cover"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-95/80 via-brand-95/5 to-transparent" />
+
+                {/* Image status */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/10 bg-brand-95/80 px-3.5 py-2.5 backdrop-blur-md sm:px-4 sm:py-3">
+                  <div>
+                    <div className="text-[7px] font-bold uppercase tracking-[1px] text-brand-lime">
+                      CURRENT STATUS
+                    </div>
+
+                    <div className="mt-0.5 text-[11px] font-black text-white sm:text-[12px]">
+                      Technician Assigned
+                    </div>
+                  </div>
+
+                  <div className="grid h-8 w-8 place-items-center rounded-full bg-brand-lime text-brand-95">
+                    <UserCheck size={14} />
+                  </div>
+                </div>
+              </div>
+
+              {/* =================================================
+                  JOURNEY
+              ================================================== */}
+              <div
+                id="journey"
+                className="relative mt-6 overflow-x-auto pb-1"
+              >
+                <div className="relative flex min-w-[620px] justify-between px-1">
+                  
+                  {/* Base connector */}
+                  <div className="absolute left-[25px] right-[25px] top-[22px] h-px bg-brand-10" />
+
+                  {/* Active progress */}
+                  <div className="absolute left-[25px] top-[22px] h-px w-[28%] bg-brand-60" />
+
+                  {JOURNEY_STEPS.map((step, index) => (
+                    <JourneyStep
+                      key={step.number}
+                      step={step}
+                      active={index === 1}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* =================================================
+                  BOTTOM INFORMATION
+              ================================================== */}
+              <div className="mt-5 flex items-center gap-3 rounded-xl bg-brand-5 px-3.5 py-3">
+                <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-brand-70">
+                  <ClipboardCheck size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[8px] font-black uppercase tracking-[0.8px] text-brand-90">
+                    Nothing gets lost
+                  </div>
+
+                  <p className="mt-0.5 text-[8px] leading-3.5 text-brand-ink/50 sm:text-[9px]">
+                    Service details, diagnosis, actions and follow-ups can be
+                    maintained as part of your digital service record.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING REQUEST CARD
+            ================================================== */}
+            <div className="absolute -left-4 top-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <CalendarCheck size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    Request
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Received
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING FEEDBACK CARD
+            ================================================== */}
+            <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+                  <CheckCircle2 size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    Final Step
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Feedback
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
 
 /* ============================================================
    PAGE
@@ -354,111 +471,7 @@ const HowItWorks = () => {
           HERO
       ========================================================= */}
 
-      <section className="relative overflow-hidden bg-brand-95">
-        {/* Decorative background */}
-        <div className="pointer-events-none absolute -right-44 -top-44 h-[560px] w-[560px] rounded-full border border-white/10" />
-
-        <div className="pointer-events-none absolute right-10 top-20 h-72 w-72 rounded-full bg-brand-70/20 blur-3xl" />
-
-        <div className="pointer-events-none absolute -bottom-32 left-10 h-72 w-72 rounded-full bg-brand-lime/10 blur-3xl" />
-
-        <SectionContainer className="relative grid min-h-[520px] items-center gap-12 py-16 lg:grid-cols-[1fr_.9fr] lg:py-20">
-          {/* Hero content */}
-          <div>
-            <Eyebrow light>How Dr. Saab Works</Eyebrow>
-
-            <h1 className="mt-3 max-w-3xl text-[42px] font-black leading-[1.02] tracking-[-1.5px] text-white sm:text-5xl md:text-6xl lg:text-[64px]">
-              From Service Request to Support —{" "}
-              <span className="text-brand-lime">
-                Simple, Digital & Transparent
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
-              A clear seven-step journey designed to connect customers with the
-              right technician, the right support and the right next step.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button
-                href="#book-service"
-                variant="lime"
-                className="px-6 py-3.5"
-              >
-                Book Your Service
-                <ArrowRight size={15} />
-              </Button>
-
-              <Button href="#journey" variant="light" className="px-6 py-3.5">
-                Explore the Journey
-                <ArrowDown size={15} />
-              </Button>
-            </div>
-          </div>
-
-          {/* Hero visual */}
-          <div className="relative">
-            <div className="relative mx-auto max-w-[470px]">
-              {/* Outer circle */}
-              <div className="absolute inset-0 m-auto aspect-square rounded-full border border-white/10" />
-
-              <div className="absolute inset-8 m-auto aspect-square rounded-full border border-white/10" />
-
-              {/* Center */}
-              <div className="relative flex aspect-square items-center justify-center">
-                <div className="relative z-10 flex h-36 w-36 flex-col items-center justify-center rounded-full bg-white shadow-2xl ring-8 ring-white/10">
-                  <Truck
-                    size={48}
-                    strokeWidth={1.5}
-                    className="text-brand-70"
-                  />
-
-                  <span className="mt-2 text-[9px] font-black uppercase tracking-[1.5px] text-brand-90">
-                    Dr. Saab
-                  </span>
-                </div>
-
-                {/* Orbit items */}
-                {[
-                  {
-                    icon: ClipboardCheck,
-                    label: "Book",
-                    position: "left-0 top-[18%]",
-                  },
-                  {
-                    icon: UserCheck,
-                    label: "Assign",
-                    position: "right-0 top-[18%]",
-                  },
-                  {
-                    icon: Search,
-                    label: "Diagnose",
-                    position: "right-[-3%] bottom-[20%]",
-                  },
-                  {
-                    icon: FileText,
-                    label: "Record",
-                    position: "left-[-3%] bottom-[20%]",
-                  },
-                ].map(({ icon: Icon, label, position }) => (
-                  <div
-                    key={label}
-                    className={`absolute ${position} flex flex-col items-center`}
-                  >
-                    <div className="grid h-12 w-12 place-items-center rounded-2xl border border-white/20 bg-white/10 text-brand-lime backdrop-blur">
-                      <Icon size={21} />
-                    </div>
-
-                    <span className="mt-1 text-[8px] font-bold uppercase tracking-wide text-white/60">
-                      {label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <HowItWorksHero />
 
       {/* ========================================================
           INTRO STRIP
@@ -633,26 +646,28 @@ const HowItWorks = () => {
                     </h4>
 
                     <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                      {selectedStep.channels.map(({ icon: Icon, label }) => (
-                        <div
-                          key={label}
-                          className="flex items-center gap-3 rounded-xl border border-brand-10 bg-white p-4"
-                        >
-                          <CircleIcon>
-                            <Icon size={19} />
-                          </CircleIcon>
+                      {selectedStep.channels.map(
+                        ({ icon: Icon, title, description }) => (
+                          <div
+                            key={title}
+                            className="flex items-center gap-3 rounded-xl border border-brand-10 bg-white p-4"
+                          >
+                            <CircleIcon>
+                              <Icon size={19} />
+                            </CircleIcon>
 
-                          <div>
-                            <p className="text-xs font-black text-brand-95">
-                              {label}
-                            </p>
+                            <div>
+                              <p className="text-xs font-black text-brand-95">
+                                {title}
+                              </p>
 
-                            <p className="mt-0.5 text-[9px] text-gray-500">
-                              Service request
-                            </p>
+                              <p className="mt-0.5 text-[9px] text-gray-500">
+                                {description}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ),
+                      )}
                     </div>
                   </>
                 ) : (

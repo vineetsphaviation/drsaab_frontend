@@ -20,6 +20,11 @@ import {
   Truck,
   Wrench,
   X,
+  Drone,
+  FileCheck2,
+  Sun,
+  Users,
+  Zap,
 } from "lucide-react";
 
 import {
@@ -28,6 +33,8 @@ import {
   SectionContainer,
   CircleIcon,
 } from "../components/ui/UI";
+
+import heroImageServices from "../assets/images/our_services_image.png";
 
 const SERVICES = [
   {
@@ -299,6 +306,30 @@ const SERVICE_JOURNEY = [
   },
 ];
 
+function ServicePromise({ text }) {
+  return (
+    <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.7px] text-brand-ink/45">
+      <span className="grid h-4 w-4 place-items-center rounded-full bg-brand-10 text-brand-70">
+        <Check size={9} strokeWidth={3} />
+      </span>
+
+      {text}
+    </div>
+  );
+}
+
+function ImageTech({ icon, label }) {
+  return (
+    <div className="flex items-center gap-2 rounded-[8px] border border-white/10 bg-white/[0.06] px-3 py-2">
+      <span className="text-brand-lime">{icon}</span>
+
+      <span className="text-[8px] font-black uppercase tracking-[0.5px] text-white/60">
+        {label}
+      </span>
+    </div>
+  );
+}
+
 const OurServices = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeService, setActiveService] = useState(null);
@@ -322,145 +353,160 @@ const OurServices = () => {
   return (
     <>
       {/* =========================================================
-          HERO
-      ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95">
-        {/* Background decoration */}
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full border border-white/10" />
+    HERO — OUR SERVICES
+========================================================= */}
+      <section className="relative overflow-hidden bg-brand-5">
+        <SectionContainer>
+          <div className="grid min-h-[600px] items-center gap-10 py-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:py-16">
+            {/* =====================================================
+          LEFT CONTENT
+      ====================================================== */}
+            <div className="relative z-10 py-8 lg:py-12">
+              <Eyebrow>OUR SERVICES</Eyebrow>
 
-        <div className="pointer-events-none absolute -right-20 top-20 h-[300px] w-[300px] rounded-full bg-brand-70/20 blur-3xl" />
+              <h1 className="mt-5 max-w-[620px] text-4xl font-black leading-[1.02] tracking-[-1.8px] text-brand-95 sm:text-5xl lg:text-[60px]">
+                Technical Support.
+                <span className="block text-brand-70">Where You Need It.</span>
+              </h1>
 
-        <SectionContainer className="relative grid min-h-[560px] items-center gap-12 py-14 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
-          {/* Hero content */}
-          <div>
-            <Eyebrow light>Our Services</Eyebrow>
+              <p className="mt-7 max-w-[540px] text-[15px] leading-7 text-brand-ink/65 sm:text-[17px]">
+                Access organised technical support for electric vehicles,
+                batteries, agricultural drones, solar systems and related
+                technologies through the Dr. Saab service network.
+              </p>
 
-            <h1 className="mt-3 max-w-3xl text-[40px] font-black leading-[1.03] tracking-[-1.5px] text-white sm:text-5xl md:text-6xl lg:text-[62px]">
-              Complete Post-Sales Support for{" "}
-              <span className="text-brand-lime">
-                EVs, Batteries, Drones & Energy
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-              Doorstep diagnostics, preventive maintenance, minor repairs,
-              battery support and technical coordination through the Dr. Saab
-              network.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button
-                href="#book-service"
-                variant="lime"
-                className="px-6 py-3.5"
-              >
-                Book a Service
-                <ArrowRight size={15} />
-              </Button>
-
-              <Button
-                href="#service-categories"
-                variant="light"
-                className="px-6 py-3.5"
-              >
-                Find Your Dr. Saab
-                <MapPin size={15} />
-              </Button>
-            </div>
-
-            {/* Hero trust points */}
-            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6">
-              {[
-                "Doorstep Support",
-                "Trained Technicians",
-                "Emergency Assistance",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 text-[11px] font-semibold text-white/70"
-                >
-                  <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-lime text-brand-95">
-                    <Check size={11} strokeWidth={3} />
-                  </span>
-
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Hero visual */}
-          <div className="relative">
-            <div className="absolute -inset-5 rounded-[35px] bg-brand-70/20 blur-3xl" />
-
-            <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/10 p-3 backdrop-blur">
-              <div className="relative min-h-[380px] overflow-hidden rounded-[20px] bg-gradient-to-br from-brand-5 via-white to-brand-10">
-                {/* Decorative background */}
-                <div className="absolute -left-10 top-10 h-40 w-40 rounded-full bg-brand-lime/30 blur-3xl" />
-
-                <div className="absolute -bottom-10 right-0 h-48 w-48 rounded-full bg-brand-60/20 blur-3xl" />
-
-                {/* Central service vehicle */}
-                <div className="absolute left-1/2 top-1/2 w-[78%] -translate-x-1/2 -translate-y-1/2">
-                  <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-white shadow-xl ring-8 ring-brand-10">
-                    <Truck
-                      size={60}
-                      strokeWidth={1.4}
-                      className="text-brand-70"
-                    />
-                  </div>
-
-                  <div className="mx-auto mt-5 max-w-[280px] rounded-2xl bg-brand-95 px-5 py-5 text-center shadow-xl">
-                    <p className="text-[9px] font-black uppercase tracking-[2px] text-brand-lime">
-                      Service-On-Wheels
-                    </p>
-
-                    <p className="mt-2 text-xl font-black text-white">
-                      One Vehicle.
-                    </p>
-
-                    <p className="text-xl font-black text-white">
-                      Multiple Services.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Floating service icons */}
+              {/* Technology tags */}
+              <div className="mt-7 flex flex-wrap gap-2">
                 {[
-                  {
-                    icon: Bike,
-                    title: "EV",
-                    className: "left-5 top-7",
-                  },
-                  {
-                    icon: Bot,
-                    title: "Drone",
-                    className: "right-5 top-10",
-                  },
-                  {
-                    icon: SolarPanel,
-                    title: "Solar",
-                    className: "bottom-8 left-7",
-                  },
-                  {
-                    icon: BatteryCharging,
-                    title: "Battery",
-                    className: "bottom-7 right-7",
-                  },
-                ].map(({ icon: Icon, title, className }) => (
-                  <div
-                    key={title}
-                    className={`absolute ${className} flex flex-col items-center`}
+                  "Electric Vehicles",
+                  "Batteries",
+                  "Agricultural Drones",
+                  "Solar Systems",
+                ].map((item, index) => (
+                  <span
+                    key={item}
+                    className={`rounded-full border px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.7px] ${
+                      index === 0
+                        ? "border-brand-70 bg-brand-70 text-white"
+                        : "border-brand-90/10 bg-white text-brand-95"
+                    }`}
                   >
-                    <CircleIcon className="h-11 w-11 bg-white text-brand-70 shadow-lg">
-                      <Icon size={21} />
-                    </CircleIcon>
-
-                    <span className="mt-1 text-[9px] font-black uppercase text-brand-90">
-                      {title}
-                    </span>
-                  </div>
+                    {item}
+                  </span>
                 ))}
+              </div>
+
+              {/* CTA */}
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button href="/contact-us">
+                  Book a Service
+                  <ArrowRight size={14} className="ml-2" />
+                </Button>
+
+                <Button href="#services" variant="outline">
+                  Explore Services
+                </Button>
+              </div>
+
+              {/* Service promises */}
+              <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+                <ServicePromise text="Technical Support" />
+                <ServicePromise text="Doorstep Service" />
+                <ServicePromise text="Digital Records" />
+              </div>
+            </div>
+
+            {/* =====================================================
+          RIGHT IMAGE
+      ====================================================== */}
+            <div className="relative">
+              {/* Main image frame */}
+              <div className="relative overflow-hidden rounded-[26px] bg-brand-90 shadow-[0_25px_70px_rgba(3,78,55,0.16)]">
+                {/* Dummy image */}
+                <img
+                  src={heroImageServices}
+                  alt="Technician working on an electric vehicle"
+                  className="h-[390px] w-full object-cover sm:h-[470px] lg:h-[530px]"
+                />
+
+                {/* Image overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-95/70 via-transparent to-transparent" />
+
+                {/* Top status */}
+                <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-brand-95/70 px-3 py-2 backdrop-blur-md">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-brand-lime" />
+
+                  <span className="text-[9px] font-black uppercase tracking-[1px] text-white">
+                    Service Network
+                  </span>
+                </div>
+
+                {/* Bottom image information */}
+                <div className="absolute bottom-5 left-5 right-5">
+                  <div className="rounded-[16px] border border-white/15 bg-brand-95/80 p-5 backdrop-blur-md">
+                    <div className="flex items-start justify-between gap-5">
+                      <div>
+                        <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-lime">
+                          DR. SAAB
+                        </div>
+
+                        <div className="mt-1 text-[18px] font-black text-white">
+                          Technical Service
+                        </div>
+
+                        <p className="mt-1.5 max-w-[390px] text-[10px] leading-5 text-white/55">
+                          Diagnostics, maintenance and technical support for
+                          emerging mobility and energy technologies.
+                        </p>
+                      </div>
+
+                      <div className="hidden h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-lime text-brand-95 sm:grid">
+                        <Wrench size={19} />
+                      </div>
+                    </div>
+
+                    {/* Technology indicators */}
+                    <div className="mt-4 grid grid-cols-4 gap-2">
+                      <ImageTech label="EV" icon={<Zap size={13} />} />
+                      <ImageTech
+                        label="Battery"
+                        icon={<BatteryCharging size={13} />}
+                      />
+                      <ImageTech label="Drone" icon={<Drone size={13} />} />
+                      <ImageTech label="Solar" icon={<Sun size={13} />} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating service card */}
+              <div className="absolute -bottom-5 -left-3 hidden w-[205px] rounded-[14px] border border-brand-900/10 bg-white p-4 shadow-[0_15px_40px_rgba(3,78,55,.12)] sm:block lg:-left-8">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-5 text-brand-70">
+                    <ShieldCheck size={17} />
+                  </div>
+
+                  <div>
+                    <div className="text-[10px] font-black uppercase tracking-[.7px] text-brand-95">
+                      Trained Support
+                    </div>
+
+                    <div className="mt-1 text-[9px] leading-4 text-brand-ink/45">
+                      Service routed through the Dr. Saab network.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating location card */}
+              <div className="absolute -right-3 top-8 hidden rounded-[12px] border border-brand-900/10 bg-white px-4 py-3 shadow-[0_15px_40px_rgba(3,78,55,.10)] sm:block lg:-right-6">
+                <div className="flex items-center gap-2">
+                  <MapPin size={14} className="text-brand-70" />
+
+                  <span className="text-[9px] font-black uppercase tracking-[.7px] text-brand-95">
+                    Rural + Urban
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -604,21 +650,22 @@ const OurServices = () => {
           </div>
 
           {/* Filter */}
-          <div className="mt-9 overflow-x-auto pb-2">
-            <div className="flex min-w-max gap-2">
+          <div className="mt-9">
+            <div className="flex flex-wrap justify-center gap-2">
               {categories.map((category) => (
                 <button
                   key={category}
                   type="button"
                   onClick={() => setSelectedCategory(category)}
                   className={`
-                    rounded-full border px-4 py-2.5
-                    text-[10px] font-black
+                    flex h-11 w-[calc((100%-0.5rem)/2)] items-center justify-center rounded-full border px-3 text-center
+                    sm:w-[calc((100%-1rem)/3)] lg:w-[calc((100%-2rem)/5)]
+                    text-[10px] font-bold leading-tight
                     transition-all duration-200
                     ${
                       selectedCategory === category
                         ? "border-brand-70 bg-brand-70 text-white"
-                        : "border-brand-10 bg-white text-brand-ink hover:border-brand-60 hover:text-brand-70"
+                        : "border-brand-90/10 bg-brand-5/40 text-brand-ink/70 hover:border-brand-60/30 hover:bg-brand-5 hover:text-brand-70"
                     }
                   `}
                 >

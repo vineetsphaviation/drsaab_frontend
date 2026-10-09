@@ -288,7 +288,7 @@ export default function Hero() {
             "
           >
             <Button
-              href="#book"
+              to="/contact-us"
               className="
                 min-w-[143px]
                 rounded-[6px]

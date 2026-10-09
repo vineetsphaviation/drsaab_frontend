@@ -121,6 +121,7 @@ export default function ImpactSection() {
             </p>
 
             <Button
+              to="/panchayat-modal"
               variant="outline"
               className="
                 mt-2
@@ -139,9 +140,7 @@ export default function ImpactSection() {
         <article
           className="
             rounded
-            border
-            border-[#e2e8e5]
-            bg-white
+            border border-brand-10 bg-white
             p-5
           "
         >
@@ -261,7 +260,7 @@ export default function ImpactSection() {
             </p>
 
             <Button
-              href="#contact"
+              to="/franchise"
               variant="light"
               className="
                 mt-2

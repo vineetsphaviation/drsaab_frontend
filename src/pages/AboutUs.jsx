@@ -17,6 +17,14 @@ import {
   Users,
   Wrench,
   Zap,
+  CheckCircle2,
+  ClipboardCheck,
+  Ear,
+  Eye,
+  FileCheck2,
+  MessageCircle,
+  SearchCheck,
+  Stethoscope,
 } from "lucide-react";
 
 import {
@@ -25,6 +33,8 @@ import {
   Eyebrow,
   SectionContainer,
 } from "../components/ui/UI";
+
+import aboutHero from "../assets/images/about_hero.png";
 
 const missionPoints = [
   {
@@ -184,125 +194,278 @@ const diagnosticSteps = [
   },
 ];
 
+/* =========================================================
+   APPROACH STEPS
+========================================================= */
+
+const APPROACH_STEPS = [
+  {
+    number: "01",
+    label: "LISTEN",
+    icon: Ear,
+  },
+  {
+    number: "02",
+    label: "INSPECT",
+    icon: Eye,
+  },
+  {
+    number: "03",
+    label: "DIAGNOSE",
+    icon: SearchCheck,
+  },
+  {
+    number: "04",
+    label: "EXPLAIN",
+    icon: MessageCircle,
+  },
+  {
+    number: "05",
+    label: "SERVICE",
+    icon: Wrench,
+  },
+  {
+    number: "06",
+    label: "RECORD",
+    icon: FileCheck2,
+  },
+];
+
+/* =========================================================
+   APPROACH STEP
+========================================================= */
+
+function ApproachStep({ step, active }) {
+  const Icon = step.icon;
+
+  return (
+    <div
+      className={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all duration-300 ${
+        active
+          ? "bg-white shadow-[0_8px_25px_rgba(7,95,69,0.10)]"
+          : "bg-white/40"
+      }`}
+    >
+      <div
+        className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg ${
+          active ? "bg-brand-90 text-white" : "bg-brand-5 text-brand-70"
+        }`}
+      >
+        <Icon size={13} />
+      </div>
+
+      <div className="flex-1">
+        <div className="text-[7px] font-bold tracking-[0.7px] text-brand-60">
+          {step.number}
+        </div>
+
+        <div className="text-[9px] font-black tracking-[0.6px] text-brand-95">
+          {step.label}
+        </div>
+      </div>
+
+      {active && <CheckCircle2 size={12} className="text-brand-60" />}
+    </div>
+  );
+}
+
+/* =========================================================
+   ABOUT HERO
+========================================================= */
+
+function AboutHero() {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* =====================================================
+          BACKGROUND
+      ====================================================== */}
+
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[480px] w-[480px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 xl:gap-16">
+          {/* =================================================
+              LEFT CONTENT
+          ================================================== */}
+
+          <div className="max-w-[520px]">
+            <Eyebrow>ABOUT DR. SAAB</Eyebrow>
+
+            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.9px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              Mechanic Ka Upgrade.
+              <span className="block text-brand-70">
+                Customer Ki Guarantee.
+              </span>
+            </h1>
+
+            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Dr. Saab is building an organised after-sales service and
+              technical entrepreneurship ecosystem for India's evolving EV,
+              battery, drone and energy landscape.
+            </p>
+
+            <p className="mt-3 max-w-[440px] text-[11px] leading-5 text-brand-ink/50">
+              We believe technical service should be easier to access, easier to
+              understand and easier to trust.
+            </p>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button href="#our-approach">
+                Our Approach
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="/contact-us" variant="outline">
+                Talk to Dr. Saab
+              </Button>
+            </div>
+
+            {/* Trust line */}
+            <div className="mt-7 flex items-center gap-3 border-t border-brand-10 pt-5">
+              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-90 text-white">
+                <Stethoscope size={15} />
+              </div>
+
+              <div>
+                <div className="text-[9px] font-black uppercase tracking-[0.8px] text-brand-95">
+                  A Different Approach to Technical Service
+                </div>
+
+                <p className="mt-0.5 text-[9px] leading-4 text-brand-ink/50">
+                  Diagnose first. Explain clearly. Service responsibly.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* =================================================
+              RIGHT — EDITORIAL IMAGE
+          ================================================== */}
+
+          <div className="relative">
+            {/* Main image */}
+            <div className="relative overflow-hidden rounded-[28px] border border-brand-10 bg-brand-10 shadow-[0_25px_70px_rgba(7,95,69,0.12)]">
+              <div className="relative h-[430px] sm:h-[500px] lg:h-[530px]">
+                <img
+                  src={aboutHero}
+                  alt="Technical professional working on equipment"
+                  className="h-full w-full object-cover"
+                />
+
+                {/* Image treatment */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-95/75 via-transparent to-brand-95/5" />
+
+                {/* Image caption */}
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-brand-95/75 p-4 backdrop-blur-md">
+                  <div className="flex items-start gap-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-lime text-brand-95">
+                      <ShieldCheck size={16} />
+                    </div>
+
+                    <div>
+                      <div className="text-[8px] font-black uppercase tracking-[1px] text-brand-lime">
+                        THE DR. SAAB PRINCIPLE
+                      </div>
+
+                      <div className="mt-1 text-[13px] font-black text-white">
+                        Technical work should inspire confidence.
+                      </div>
+
+                      <p className="mt-1 text-[9px] leading-4 text-white/55">
+                        Every interaction should leave the customer knowing what
+                        happened, why it happened and what comes next.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING APPROACH CARD
+            ================================================== */}
+
+            <div
+              id="our-approach"
+              className="absolute -left-5 top-12 hidden w-[205px] rounded-2xl border border-brand-10 bg-white p-3 shadow-[0_18px_45px_rgba(7,95,69,0.14)] sm:block"
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                    OUR APPROACH
+                  </div>
+
+                  <div className="mt-1 text-[10px] font-black text-brand-95">
+                    Like a Good Doctor
+                  </div>
+                </div>
+
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
+                  <Stethoscope size={13} />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                {APPROACH_STEPS.slice(0, 4).map((step, index) => (
+                  <ApproachStep
+                    key={step.number}
+                    step={step}
+                    active={index === 2}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* =================================================
+                FLOATING TRUST CARD
+            ================================================== */}
+
+            <div className="absolute -right-4 top-[145px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
+                  <CheckCircle2 size={13} />
+                </div>
+
+                <div>
+                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                    PRINCIPLE
+                  </div>
+
+                  <div className="text-[9px] font-black text-brand-95">
+                    Service You Can Trust
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =================================================
+                BOTTOM FLOATING LABEL
+            ================================================== */}
+
+            <div className="absolute -bottom-4 left-8 hidden items-center gap-2 rounded-full border border-brand-10 bg-white px-3.5 py-2.5 shadow-[0_10px_25px_rgba(7,95,69,0.10)] sm:flex">
+              <div className="h-2 w-2 rounded-full bg-brand-60" />
+
+              <span className="text-[8px] font-black uppercase tracking-[0.7px] text-brand-90">
+                Built Around Trust
+              </span>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+    </section>
+  );
+}
+
 const About = () => {
   return (
     <div className="bg-white text-brand-ink">
       {/* =========================================================
           HERO
       ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-95 text-white">
-        <div className="absolute inset-0">
-          <div className="absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-brand-70/20 blur-3xl" />
-          <div className="absolute -right-32 bottom-[-180px] h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
-
-          <div
-            className="absolute inset-0 opacity-[0.08]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-              backgroundSize: "54px 54px",
-            }}
-          />
-        </div>
-
-        <SectionContainer className="relative">
-          <div className="grid items-center gap-10 py-14 sm:min-h-[570px] sm:gap-14 sm:py-20 lg:grid-cols-[1.05fr_.95fr] lg:py-24">
-            <div className="max-w-[690px]">
-              <Eyebrow light>ABOUT DR. SAAB</Eyebrow>
-
-              <h1 className="mt-5 max-w-[680px] text-4xl font-black leading-[1.03] tracking-[-1.8px] sm:text-5xl lg:text-[64px]">
-                Mechanic Ka Upgrade.
-                <span className="block text-brand-lime">
-                  Customer Ki Guarantee.
-                </span>
-              </h1>
-
-              <p className="mt-7 max-w-[620px] text-[16px] leading-7 text-white/80 sm:text-[18px]">
-                Building an organised after-sales service and technical
-                entrepreneurship ecosystem across rural and urban India.
-              </p>
-
-              <div className="mt-9 flex flex-wrap gap-3">
-                <Button href="/our-services" variant="light">
-                  Explore Our Services
-                </Button>
-
-                <Button
-                  href="/how-it-works"
-                  variant="outline"
-                  className="border-white/30 bg-white/5 text-white hover:bg-white/10"
-                >
-                  How Dr. Saab Works
-                  <ArrowRight size={14} className="ml-2" />
-                </Button>
-              </div>
-
-              <div className="mt-9 flex flex-wrap gap-x-5 gap-y-2 text-[11px] font-bold uppercase tracking-[1px] text-white/70 sm:mt-12 sm:gap-x-7 sm:gap-y-3">
-                <span>EV</span>
-                <span>•</span>
-                <span>BATTERIES</span>
-                <span>•</span>
-                <span>DRONES</span>
-                <span>•</span>
-                <span>SOLAR</span>
-              </div>
-            </div>
-
-            {/* Hero visual */}
-            <div className="relative mx-auto w-full max-w-[500px]">
-              <div className="relative aspect-[5/4] rounded-[24px] border border-white/10 bg-white/[0.045] p-4 shadow-2xl backdrop-blur-sm sm:aspect-square sm:rounded-[28px] sm:p-5">
-                <div className="absolute inset-8 rounded-[22px] border border-brand-lime/15" />
-                <div className="absolute inset-16 rounded-[18px] border border-white/10" />
-
-                <div className="absolute left-1/2 top-1/2 grid h-[145px] w-[145px] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-brand-lime/40 bg-brand-80 shadow-[0_0_80px_rgba(183,217,107,.12)]">
-                  <div className="text-center">
-                    <div className="mx-auto mb-2 grid h-11 w-11 place-items-center rounded-full bg-brand-lime text-brand-95">
-                      <StethoscopeIcon />
-                    </div>
-
-                    <div className="text-[11px] font-black uppercase tracking-[1.5px]">
-                      DR. SAAB
-                    </div>
-
-                    <div className="mt-1 text-[10px] font-semibold text-white/70">
-                      TECHNICAL NETWORK
-                    </div>
-                  </div>
-                </div>
-
-                <HeroNode
-                  icon={<Zap size={18} />}
-                  label="EV"
-                  className="left-6 top-16"
-                />
-
-                <HeroNode
-                  icon={<BatteryCharging size={18} />}
-                  label="BATTERY"
-                  className="right-6 top-24"
-                />
-
-                <HeroNode
-                  icon={<Tractor size={18} />}
-                  label="DRONES"
-                  className="bottom-24 left-5"
-                />
-
-                <HeroNode
-                  icon={<SolarPanel size={18} />}
-                  label="SOLAR"
-                  className="bottom-12 right-8"
-                />
-
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-bold uppercase tracking-[1px] text-white/75 sm:bottom-5 sm:px-4">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
-                  Rural + Urban India
-                </div>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
+      <AboutHero />
 
       {/* =========================================================
           WHO WE ARE

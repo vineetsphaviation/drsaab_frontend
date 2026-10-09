@@ -116,7 +116,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-brand-10 bg-white">
+    <footer className="bg-white">
       {/* =========================================================
           MAIN FOOTER
       ========================================================== */}

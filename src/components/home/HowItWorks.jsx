@@ -258,9 +258,7 @@ export default function HowItWorks() {
           className="
             min-w-0
             rounded-[5px]
-            border
-            border-[#dce5e2]
-            bg-white
+            border border-brand-10 bg-white
             px-3
             py-3
 
