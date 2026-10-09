@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Building2,
   Check,
-  ChevronDown,
   GraduationCap,
   Mail,
   MapPin,
@@ -29,6 +28,7 @@ import {
 } from "../components/ui/UI";
 
 import supprtImage from "../assets/images/contact_us_hero.png";
+import ContactUsForm from "../components/forms/ContactUsForm";
 
 const enquiryOptions = [
   {
@@ -96,32 +96,6 @@ const enquiryOptions = [
   },
 ];
 
-const enquiryTypes = [
-  "Book a Service",
-  "Franchise",
-  "Mechanic Registration",
-  "Training",
-  "OEM Partnership",
-  "Fleet Partnership",
-  "Government Partnership",
-  "College Partnership",
-  "Finance Partnership",
-  "Media",
-];
-
-const initialForm = {
-  name: "",
-  mobile: "",
-  email: "",
-  organisation: "",
-  designation: "",
-  state: "",
-  district: "",
-  enquiry: "",
-  message: "",
-  consent: false,
-};
-
 /* =========================================================
    CONTACT HERO
 ========================================================= */
@@ -144,7 +118,6 @@ const ContactUsHero = () => {
 
       <SectionContainer className="relative z-10 flex min-h-[540px] items-center py-20 lg:py-24">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_420px]">
-          
           {/* Left Content */}
           <div className="max-w-[680px]">
             <Eyebrow light>GET IN TOUCH</Eyebrow>
@@ -157,16 +130,12 @@ const ContactUsHero = () => {
 
             <p className="mt-6 max-w-[590px] text-base leading-7 text-white/80 sm:text-lg">
               Whether you need technical assistance, want to explore a
-              partnership, or simply have a question, our team is here to
-              help you find the right way forward.
+              partnership, or simply have a question, our team is here to help
+              you find the right way forward.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button
-                href="#contact-form"
-                variant="lime"
-                className="h-11 px-5"
-              >
+              <Button href="#contact-form" variant="lime" className="h-11 px-5">
                 Send an Enquiry
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -203,7 +172,6 @@ const ContactUsHero = () => {
           {/* Contact Card */}
           <div className="relative">
             <div className="rounded-2xl border border-white/15 bg-white/[0.94] p-6 shadow-2xl backdrop-blur-md sm:p-7">
-              
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[1.5px] text-brand-70">
@@ -308,40 +276,18 @@ const ContactUsHero = () => {
 };
 
 const ContactUs = () => {
-  const [form, setForm] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const [selectedEnquiryCategory, setSelectedEnquiryCategory] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
 
   const selectedEnquiry = useMemo(
-    () => enquiryOptions.find((item) => item.category === form.enquiry),
-    [form.enquiry],
+    () =>
+      enquiryOptions.find((item) => item.category === selectedEnquiryCategory),
+    [selectedEnquiryCategory],
   );
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-
-    setForm((current) => ({
-      ...current,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-
-    setErrors((current) => ({
-      ...current,
-      [name]: "",
-    }));
-  };
-
   const selectEnquiry = (category) => {
-    setForm((current) => ({
-      ...current,
-      enquiry: category,
-    }));
-
-    setErrors((current) => ({
-      ...current,
-      enquiry: "",
-    }));
+    setSelectedEnquiryCategory(category);
 
     document.getElementById("contact-form")?.scrollIntoView({
       behavior: "smooth",
@@ -349,83 +295,23 @@ const ContactUs = () => {
     });
   };
 
-  const validate = () => {
-    const nextErrors = {};
+  const handleContactSubmit = async (data) => {
+    // Connect your real API here.
+    // Example:
+    // await contactApi(data);
 
-    if (!form.name.trim()) {
-      nextErrors.name = "Please enter your name.";
-    }
+    console.log("Contact enquiry:", data);
 
-    if (!form.mobile.trim()) {
-      nextErrors.mobile = "Please enter your mobile number.";
-    } else if (!/^[6-9]\d{9}$/.test(form.mobile.replace(/\s+/g, ""))) {
-      nextErrors.mobile = "Enter a valid 10-digit mobile number.";
-    }
+    // Keep this only temporarily while testing the UI.
+    await new Promise((resolve) => setTimeout(resolve, 900));
 
-    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      nextErrors.email = "Enter a valid email address.";
-    }
+    setSubmitted(true);
+    setSelectedEnquiryCategory("");
 
-    if (!form.state.trim()) {
-      nextErrors.state = "Please enter your state.";
-    }
-
-    if (!form.district.trim()) {
-      nextErrors.district = "Please enter your district.";
-    }
-
-    if (!form.enquiry) {
-      nextErrors.enquiry = "Please select an enquiry type.";
-    }
-
-    if (!form.message.trim()) {
-      nextErrors.message = "Please tell us how we can help.";
-    }
-
-    if (!form.consent) {
-      nextErrors.consent =
-        "Please agree to be contacted regarding your enquiry.";
-    }
-
-    setErrors(nextErrors);
-
-    return Object.keys(nextErrors).length === 0;
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!validate()) return;
-
-    setSubmitting(true);
-
-    try {
-      /*
-       * Replace this demo block with your API call.
-       *
-       * Example:
-       *
-       * await fetch(`${import.meta.env.VITE_API_URL}/api/v1/contact`, {
-       *   method: "POST",
-       *   headers: {
-       *     "Content-Type": "application/json",
-       *   },
-       *   body: JSON.stringify(form),
-       * });
-       */
-
-      await new Promise((resolve) => setTimeout(resolve, 900));
-
-      setSubmitted(true);
-      setForm(initialForm);
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    } finally {
-      setSubmitting(false);
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -490,7 +376,7 @@ const ContactUs = () => {
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {enquiryOptions.map((item) => {
-              const selected = form.enquiry === item.category;
+              const selected = selectedEnquiryCategory === item.category;
 
               return (
                 <button
@@ -606,201 +492,10 @@ const ContactUs = () => {
             </div>
 
             {/* Form */}
-            <form
-              onSubmit={handleSubmit}
-              noValidate
-              className="rounded-[18px] border border-brand-90/10 bg-white p-6 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-8"
-            >
-              {/* Personal */}
-              <FormSection
-                number="01"
-                title="Personal"
-                description="How can we reach you?"
-              />
-
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <InputField
-                  label="Name"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your full name"
-                  required
-                  error={errors.name}
-                />
-
-                <InputField
-                  label="Mobile Number"
-                  name="mobile"
-                  value={form.mobile}
-                  onChange={handleChange}
-                  placeholder="10-digit mobile number"
-                  type="tel"
-                  required
-                  error={errors.mobile}
-                />
-
-                <InputField
-                  label="Email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  type="email"
-                  error={errors.email}
-                  className="sm:col-span-2"
-                />
-              </div>
-
-              <FormDivider />
-
-              {/* Organisation */}
-              <FormSection
-                number="02"
-                title="Organisation"
-                description="Tell us about your organisation, if applicable."
-              />
-
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <InputField
-                  label="Organisation"
-                  name="organisation"
-                  value={form.organisation}
-                  onChange={handleChange}
-                  placeholder="Organisation / company name"
-                />
-
-                <InputField
-                  label="Designation"
-                  name="designation"
-                  value={form.designation}
-                  onChange={handleChange}
-                  placeholder="Your designation"
-                />
-              </div>
-
-              <FormDivider />
-
-              {/* Location */}
-              <FormSection
-                number="03"
-                title="Location"
-                description="Where are you based?"
-              />
-
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <InputField
-                  label="State"
-                  name="state"
-                  value={form.state}
-                  onChange={handleChange}
-                  placeholder="State"
-                  required
-                  error={errors.state}
-                />
-
-                <InputField
-                  label="District"
-                  name="district"
-                  value={form.district}
-                  onChange={handleChange}
-                  placeholder="District"
-                  required
-                  error={errors.district}
-                />
-              </div>
-
-              <FormDivider />
-
-              {/* Enquiry */}
-              <FormSection
-                number="04"
-                title="Enquiry"
-                description="What would you like to discuss?"
-              />
-
-              <div className="mt-6">
-                <SelectField
-                  label="Enquiry Type"
-                  name="enquiry"
-                  value={form.enquiry}
-                  onChange={handleChange}
-                  options={enquiryTypes}
-                  placeholder="Select enquiry type"
-                  required
-                  error={errors.enquiry}
-                />
-              </div>
-
-              <div className="mt-5">
-                <label className="block">
-                  <span className="mb-2 block text-[10px] font-black uppercase tracking-[.8px] text-brand-95">
-                    Message
-                    <span className="ml-1 text-brand-70">*</span>
-                  </span>
-
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={6}
-                    placeholder="Tell us about your requirement..."
-                    className={`w-full resize-none rounded-[9px] border bg-white px-4 py-3 text-[12px] text-brand-ink outline-none transition placeholder:text-brand-ink/25 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
-                      errors.message ? "border-red-400" : "border-brand-90/10"
-                    }`}
-                  />
-
-                  {errors.message && <FieldError>{errors.message}</FieldError>}
-                </label>
-              </div>
-
-              <FormDivider />
-
-              {/* Consent */}
-              <div>
-                <label className="flex cursor-pointer items-start gap-3">
-                  <input
-                    type="checkbox"
-                    name="consent"
-                    checked={form.consent}
-                    onChange={handleChange}
-                    className="mt-0.5 h-4 w-4 shrink-0 accent-[#075f45]"
-                  />
-
-                  <span className="text-[11px] leading-5 text-brand-ink/55">
-                    I agree to be contacted by the Dr. Saab team regarding my
-                    enquiry.
-                  </span>
-                </label>
-
-                {errors.consent && <FieldError>{errors.consent}</FieldError>}
-              </div>
-
-              <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-[380px] text-[10px] leading-5 text-brand-ink/35">
-                  Your information will be used to understand and respond to
-                  your enquiry.
-                </p>
-
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="inline-flex min-h-[44px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-6 py-3 text-[11px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {submitting ? (
-                    <>
-                      <span className="mr-2 h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                      Submitting...
-                    </>
-                  ) : (
-                    <>
-                      Submit Enquiry
-                      <ArrowRight size={14} className="ml-2" />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
+            <ContactUsForm
+              defaultEnquiry={selectedEnquiryCategory}
+              onSubmit={handleContactSubmit}
+            />
           </div>
         </SectionContainer>
       </section>
@@ -865,116 +560,6 @@ const ContactUs = () => {
 /* =========================================================
    FORM COMPONENTS
 ========================================================= */
-
-function FormSection({ number, title, description }) {
-  return (
-    <div className="flex items-start gap-4">
-      <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-95 text-[9px] font-black text-brand-lime">
-        {number}
-      </div>
-
-      <div>
-        <h3 className="text-[15px] font-black text-brand-95">{title}</h3>
-
-        <p className="mt-1 text-[11px] text-brand-ink/45">{description}</p>
-      </div>
-    </div>
-  );
-}
-
-function FormDivider() {
-  return <div className="my-8 h-px bg-brand-90/8" />;
-}
-
-function InputField({
-  label,
-  name,
-  value,
-  onChange,
-  placeholder,
-  type = "text",
-  required = false,
-  error,
-  className = "",
-}) {
-  return (
-    <label className={className}>
-      <span className="mb-2 block text-[10px] font-black uppercase tracking-[.8px] text-brand-95">
-        {label}
-        {required && <span className="ml-1 text-brand-70">*</span>}
-      </span>
-
-      <input
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={`h-[44px] w-full rounded-[9px] border bg-white px-4 text-[12px] text-brand-ink outline-none transition placeholder:text-brand-ink/25 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
-          error ? "border-red-400" : "border-brand-90/10"
-        }`}
-      />
-
-      {error && <FieldError>{error}</FieldError>}
-    </label>
-  );
-}
-
-function SelectField({
-  label,
-  name,
-  value,
-  onChange,
-  options,
-  placeholder,
-  required = false,
-  error,
-}) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-[10px] font-black uppercase tracking-[.8px] text-brand-95">
-        {label}
-        {required && <span className="ml-1 text-brand-70">*</span>}
-      </span>
-
-      <div className="relative">
-        <select
-          name={name}
-          value={value}
-          onChange={onChange}
-          className={`h-[44px] w-full appearance-none rounded-[9px] border bg-white px-4 pr-10 text-[12px] outline-none transition focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10 ${
-            value ? "text-brand-ink" : "text-brand-ink/30"
-          } ${error ? "border-red-400" : "border-brand-90/10"}`}
-        >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-
-        <ChevronDown
-          size={15}
-          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-brand-ink/35"
-        />
-      </div>
-
-      {error && <FieldError>{error}</FieldError>}
-    </label>
-  );
-}
-
-function FieldError({ children }) {
-  return (
-    <span className="mt-1.5 block text-[10px] font-semibold text-red-500">
-      {children}
-    </span>
-  );
-}
 
 function ContactMiniCard({ icon, title, value }) {
   return (
