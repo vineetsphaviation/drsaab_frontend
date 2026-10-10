@@ -196,7 +196,7 @@ function JourneyStep({ step, active }) {
   );
 }
 
-function HowItWorksHero() {
+function HowItWorksHero({ onSeeJourney }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">
       {/* Background decoration */}
@@ -245,12 +245,19 @@ function HowItWorksHero() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button href="/contact-us">
+              <Button
+                to="/our-services"
+                state={{ openBookingForm: true }}
+              >
                 Book a Service
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <Button href="#journey" variant="outline">
+              <Button
+                type="button"
+                onClick={onSeeJourney}
+                variant="outline"
+              >
                 See How It Works
               </Button>
             </div>
@@ -334,7 +341,7 @@ function HowItWorksHero() {
                   JOURNEY
               ================================================== */}
               <div
-                id="journey"
+                id="journey-preview"
                 className="relative mt-6 overflow-x-auto pb-1"
               >
                 <div className="relative flex min-w-[620px] justify-between px-1">
@@ -471,7 +478,7 @@ const HowItWorks = () => {
           HERO
       ========================================================= */}
 
-      <HowItWorksHero />
+      <HowItWorksHero onSeeJourney={scrollToJourney} />
 
       {/* ========================================================
           INTRO STRIP
@@ -1024,7 +1031,12 @@ const HowItWorks = () => {
           </p>
 
           <div className="mt-8">
-            <Button href="#" variant="lime" className="px-7 py-3.5">
+            <Button
+              to="/our-services"
+              state={{ openBookingForm: true }}
+              variant="lime"
+              className="px-7 py-3.5"
+            >
               Book Your Service
               <ArrowRight size={15} />
             </Button>

@@ -473,7 +473,7 @@ function PanchayatHero({ onApply }) {
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <Button href="#territory" variant="outline">
+              <Button href="/contact-us" variant="outline">
                 Check Territory
               </Button>
             </div>
@@ -1347,7 +1347,7 @@ const PanchayatModal = () => {
                 </Button>
 
                 <Button
-                  href="#territory"
+                  href="/contact-us"
                   variant="light"
                   className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
                 >

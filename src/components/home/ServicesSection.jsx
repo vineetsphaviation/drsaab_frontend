@@ -1,5 +1,6 @@
 import { SectionContainer, Eyebrow, Button } from "../ui/UI";
 import { Link } from "react-router-dom";
+import { ArrowRight, MapPin, Phone, Wrench } from "lucide-react";
 
 import evService from "../../assets/ev_service.png";
 import droneService from "../../assets/drone_service.png";
@@ -280,139 +281,70 @@ export default function ServicesSection() {
         <aside
           id="book"
           className="
-            rounded-[5px]
-            border border-brand-10 bg-[#e8f5f0]
+            relative
+            isolate
+            flex
+            flex-col
+            overflow-hidden
+            rounded-xl
+            border
+            border-brand-90/10
+            bg-gradient-to-br
+            from-brand-5
+            via-white
+            to-brand-10/60
             p-5
-
+            shadow-[0_10px_30px_rgba(3,78,55,0.07)]
             lg:mt-[7px]
           "
         >
-          <Eyebrow>NEED IMMEDIATE HELP?</Eyebrow>
+          <div className="pointer-events-none absolute -right-10 -top-10 -z-10 h-32 w-32 rounded-full border border-brand-70/10" />
 
-          <h3
-            className="
-              mt-1
-              text-[23px]
-              font-black
-              leading-[1.02]
-              tracking-[-0.3px]
-              text-[#034e37]
-            "
-          >
-            Book a Service
-            <br />
-            Now
-          </h3>
-
-          <p
-            className="
-              mt-2
-              text-[12px]
-              leading-[1.4]
-              text-[#687675]
-            "
-          >
-            Our mobile service team
-            <br />
-            will reach you.
-          </p>
-
-          {/* Panchayat Select */}
-
-          <select
-            className="
-              my-2
-              h-[32px]
-              w-full
-              appearance-none
-              rounded-[4px]
-              border
-              border-[#d4dedb]
-              bg-white
-              px-2
-              text-[12px]
-              text-[#687675]
-              outline-none
-              focus:border-[#0b6f4f]
-              focus:ring-1
-              focus:ring-[#0b6f4f]/20
-            "
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select Your Panchayat / District
-            </option>
-
-            <option value="district">District Service Area</option>
-
-            <option value="panchayat">Panchayat Service Unit</option>
-          </select>
-
-          {/* Book Now */}
-
-          <Button
-            className="
-              w-full
-              rounded-[4px]
-              px-2
-              py-[9px]
-              text-[11px]
-            "
-          >
-            Book Now
-            <span className="ml-1.5 text-[12px]">→</span>
-          </Button>
-
-          {/* Divider */}
-
-          <div
-            className="
-              my-2
-              flex
-              items-center
-              gap-2
-              text-[8px]
-              text-[#687675]
-            "
-          >
-            <span className="h-px flex-1 bg-[#cbded6]" />
-            <span>or</span>
-            <span className="h-px flex-1 bg-[#cbded6]" />
+          <div className="flex items-center justify-between gap-3">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-90 text-brand-lime shadow-sm">
+              <Wrench size={20} />
+            </div>
+            <span className="rounded-full border border-brand-90/10 bg-white/80 px-2.5 py-1 text-[8px] font-black uppercase tracking-[0.7px] text-brand-80">
+              Service support
+            </span>
           </div>
 
-          {/* Call / WhatsApp */}
+          <Eyebrow className="mt-5">NEED A HAND?</Eyebrow>
 
-          <div className="grid grid-cols-2 gap-2">
+          <h3 className="mt-2 text-[21px] font-black leading-[1.08] tracking-[-0.4px] text-brand-95">
+            Expert help,
+            <span className="block text-brand-70">closer to home.</span>
+          </h3>
+
+          <p className="mt-3 text-[12px] leading-5 text-brand-ink/65">
+            Tell us what you need and we’ll help connect you with service
+            support.
+          </p>
+
+          <div className="mt-4 flex items-center gap-2 rounded-lg border border-brand-90/10 bg-white/75 px-3 py-2.5">
+            <MapPin size={15} className="shrink-0 text-brand-70" />
+            <span className="text-[10px] font-semibold leading-4 text-brand-ink/70">
+              Rural and urban service areas
+            </span>
+          </div>
+
+          <div className="mt-5 grid gap-2">
             <Button
-              variant="outline"
-              className="
-                min-w-0
-                rounded-[4px]
-                border-[#0b6f4f]
-                px-1.5
-                py-[8px]
-                text-[11px]
-                text-[#034e37]
-              "
+              to="/our-services"
+              state={{ openBookingForm: true }}
+              className="w-full justify-between rounded-lg px-3 py-3 text-[11px]"
             >
-              <span className="mr-1 text-[11px]">☎</span>
-              Call Now
+              Book a Service
+              <ArrowRight size={15} />
             </Button>
 
             <Button
+              href="tel:+919999999999"
               variant="outline"
-              className="
-                min-w-0
-                rounded-[4px]
-                border-[#0b6f4f]
-                px-1.5
-                py-[8px]
-                text-[8.5px]
-                text-[#034e37]
-              "
+              className="w-full rounded-lg border-brand-90/15 bg-white/80 px-3 py-2.5 text-[11px] text-brand-90"
             >
-              <span className="mr-1 text-[11px]">◉</span>
-              WhatsApp
+              <Phone size={14} />
+              Call Now
             </Button>
           </div>
         </aside>

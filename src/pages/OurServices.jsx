@@ -43,6 +43,7 @@ const SERVICES = [
     id: "ev",
     number: "01",
     category: "Electric Vehicle Services",
+    requestCategory: "EV",
     title: "Keep Your EV Moving",
     description:
       "Support for electric scooters, motorcycles, e-rickshaws, cargo vehicles and selected fleet vehicles.",
@@ -70,6 +71,7 @@ const SERVICES = [
     id: "rickshaw",
     number: "02",
     category: "E-Rickshaw & Electric Cargo Vehicles",
+    requestCategory: "EV",
     title: "Gaadi Band Toh Roz Ki Kamai Band.",
     description:
       "Roadside and preventive support for commercial electric vehicles that keep local businesses moving.",
@@ -95,6 +97,7 @@ const SERVICES = [
     id: "battery",
     number: "03",
     category: "Battery & Charging Support",
+    requestCategory: "BATTERY",
     title: "Battery Ki Health. Vehicle Ki Reliability.",
     description:
       "Battery and charging support designed to improve reliability and reduce unexpected downtime.",
@@ -117,6 +120,7 @@ const SERVICES = [
     id: "drone",
     number: "04",
     category: "Agricultural Drone Services",
+    requestCategory: "DRONE",
     title: "Support When Your Farm Can't Wait.",
     description:
       "Field-level support for agricultural drone operators, including battery, connector and minor repair assistance.",
@@ -138,6 +142,7 @@ const SERVICES = [
     id: "solar",
     number: "05",
     category: "Solar & Inverter Services",
+    requestCategory: "SOLAR_INVERTER",
     title: "Reliable Energy Starts With Reliable Support.",
     description:
       "Support for solar, inverter and small energy-storage systems serving homes, businesses and rural communities.",
@@ -158,6 +163,7 @@ const SERVICES = [
     id: "roadside",
     number: "06",
     category: "Roadside Assistance",
+    requestCategory: "ROADSIDE_ASSISTANCE",
     title: "When Your Vehicle Stops, Dr. Saab Comes Closer.",
     description:
       "First-level assistance for breakdowns, battery issues and minor roadside problems.",
@@ -177,6 +183,7 @@ const SERVICES = [
     id: "fleet",
     number: "07",
     category: "Fleet Maintenance",
+    requestCategory: "FLEET",
     title: "Keep Your Fleet Ready.",
     description:
       "Structured maintenance and technical support for businesses operating multiple electric vehicles.",
@@ -203,6 +210,7 @@ const SERVICES = [
     id: "spares",
     number: "08",
     category: "Genuine & Compatible Spare Parts",
+    requestCategory: "SPARE_PARTS",
     title: "The Right Parts. The Right Support.",
     description:
       "Common service components and spare-parts coordination to help technicians complete repairs efficiently.",
@@ -338,6 +346,7 @@ const OurServices = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeService, setActiveService] = useState(null);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [bookingServiceCategory, setBookingServiceCategory] = useState("");
   const bookingFormRef = useRef(null);
 
   useEffect(() => {
@@ -390,7 +399,9 @@ const OurServices = () => {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const openBookingForm = () => {
+  const openBookingForm = (serviceCategory = "") => {
+    setBookingServiceCategory(serviceCategory);
+
     if (isBookingOpen) {
       bookingFormRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -927,7 +938,7 @@ const OurServices = () => {
                 type="button"
                 variant="lime"
                 className="shrink-0 px-5 py-3"
-                onClick={scrollToBooking}
+                href="/contact-us"
               >
                 Check Availability
                 <ArrowRight size={15} />
@@ -988,6 +999,7 @@ const OurServices = () => {
       {isBookingOpen && (
         <div ref={bookingFormRef} className="scroll-mt-28">
           <ServiceRequestForm
+            defaultServiceCategory={bookingServiceCategory}
             onSubmit=""
             onClose={() => setIsBookingOpen(false)}
           />
@@ -1095,7 +1107,7 @@ const OurServices = () => {
                 className="w-full py-3"
                 onClick={() => {
                   setActiveService(null);
-                  scrollToBooking();
+                  openBookingForm(activeService.requestCategory);
                 }}
               >
                 {activeService.cta}

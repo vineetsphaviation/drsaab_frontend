@@ -288,7 +288,8 @@ export default function Hero() {
             "
           >
             <Button
-              to="/contact-us"
+              to="/our-services"
+              state={{ openBookingForm: true }}
               className="
                 min-w-[143px]
                 rounded-[6px]
