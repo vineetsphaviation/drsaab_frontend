@@ -1,6 +1,6 @@
 import { SectionContainer, Button, Eyebrow } from "../ui/UI";
 
-import heroVisual from "../../assets/hero_visual.png";
+import heroVisual from "../../assets/hero_visual.webp";
 import iconEv from "../../assets/icon_ev.png";
 import iconDrone from "../../assets/icon_drone.png";
 import iconSolar from "../../assets/icon_solar.png";
@@ -49,6 +49,15 @@ export default function Hero() {
           HERO IMAGE
       ========================== */}
 
+      <div className="pointer-events-none absolute inset-0 lg:hidden">
+        <img
+          src={heroVisual}
+          alt=""
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-5/95 via-brand-5/85 to-brand-5/60" />
+      </div>
+
       <div
         className="
           pointer-events-none
@@ -70,6 +79,8 @@ export default function Hero() {
             object-left
           "
         />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/15 to-white/30" />
 
         {/* Soft fade so the image blends into the content area */}
         <div
@@ -323,33 +334,6 @@ export default function Hero() {
         </div>
       </SectionContainer>
 
-      {/* =========================
-          MOBILE HERO IMAGE
-      ========================== */}
-
-      <div
-        className="
-          relative
-          block
-          h-[250px]
-
-          sm:h-[320px]
-          overflow-hidden
-
-          lg:hidden
-        "
-      >
-        <img
-          src={heroVisual}
-          alt="Dr. Saab Panchayat service-on-wheels"
-          className="
-            h-full
-            w-full
-            object-cover
-            object-center
-          "
-        />
-      </div>
     </section>
   );
 }

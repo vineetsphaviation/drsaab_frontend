@@ -2,10 +2,10 @@ import { SectionContainer, Eyebrow, Button } from "../ui/UI";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Phone, Wrench } from "lucide-react";
 
-import evService from "../../assets/ev_service.png";
-import droneService from "../../assets/drone_service.png";
-import solarService from "../../assets/solar_service.png";
-import batteryService from "../../assets/battery_service.png";
+import evService from "../../assets/ev_service.webp";
+import droneService from "../../assets/drone_service.webp";
+import solarService from "../../assets/solar_service.webp";
+import batteryService from "../../assets/battery_service.webp";
 
 const services = [
   [evService, "EV Services", "Scooters, E-Rickshaw, Electric Cargo & More"],
