@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   BatteryCharging,
@@ -35,6 +36,7 @@ import {
 } from "../components/ui/UI";
 
 import heroImageServices from "../assets/images/our_services_image.png";
+import ServiceRequestForm from "../components/forms/ServiceRequestForm";
 
 const SERVICES = [
   {
@@ -331,8 +333,46 @@ function ImageTech({ icon, label }) {
 }
 
 const OurServices = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeService, setActiveService] = useState(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const bookingFormRef = useRef(null);
+
+  useEffect(() => {
+    if (isBookingOpen) {
+      bookingFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isBookingOpen]);
+
+  useEffect(() => {
+    if (!location.state?.openBookingForm) return;
+
+    if (isBookingOpen) {
+      bookingFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      setIsBookingOpen(true);
+    }
+
+    navigate(`${location.pathname}${location.search}${location.hash}`, {
+      replace: true,
+      state: null,
+    });
+  }, [
+    isBookingOpen,
+    location.hash,
+    location.pathname,
+    location.search,
+    location.state,
+    navigate,
+  ]);
 
   const categories = useMemo(
     () => ["All", ...SERVICES.map((service) => service.category)],
@@ -348,6 +388,18 @@ const OurServices = () => {
     document
       .getElementById("book-service")
       ?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const openBookingForm = () => {
+    if (isBookingOpen) {
+      bookingFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    setIsBookingOpen(true);
   };
 
   return (
@@ -398,12 +450,12 @@ const OurServices = () => {
 
               {/* CTA */}
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button href="/contact-us">
+                <Button type="button" onClick={openBookingForm}>
                   Book a Service
                   <ArrowRight size={14} className="ml-2" />
                 </Button>
 
-                <Button href="#services" variant="outline">
+                <Button href="#service-categories" variant="outline">
                   Explore Services
                 </Button>
               </div>
@@ -911,7 +963,12 @@ const OurServices = () => {
           </p>
 
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button href="#" variant="lime" className="px-7 py-3.5">
+            <Button
+              type="button"
+              onClick={openBookingForm}
+              variant="lime"
+              className="px-7 py-3.5"
+            >
               Book a Service
               <ArrowRight size={15} />
             </Button>
@@ -927,6 +984,15 @@ const OurServices = () => {
           </div>
         </SectionContainer>
       </section>
+
+      {isBookingOpen && (
+        <div ref={bookingFormRef} className="scroll-mt-28">
+          <ServiceRequestForm
+            onSubmit=""
+            onClose={() => setIsBookingOpen(false)}
+          />
+        </div>
+      )}
 
       {/* =========================================================
           SERVICE DETAIL MODAL

@@ -140,7 +140,8 @@ const Header = () => {
           ====================================================== */}
           <div className="ml-4 hidden shrink-0 items-center gap-2 xl:flex">
             <Button
-              href="#book-service"
+              to="/our-services"
+              state={{ openBookingForm: true }}
               variant="primary"
               className="min-h-[38px] whitespace-nowrap px-3.5 text-[10px] 2xl:px-4"
             >
@@ -300,7 +301,8 @@ const Header = () => {
               {/* Mobile actions */}
               <div className="mt-4 grid gap-2 border-t border-brand-10 pt-4 sm:grid-cols-2">
                 <Button
-                  href="#book-service"
+                  to="/our-services"
+                  state={{ openBookingForm: true }}
                   variant="primary"
                   className="min-h-[44px] w-full"
                   onClick={() => setOpen(false)}

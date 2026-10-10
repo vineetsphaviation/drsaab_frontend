@@ -18,6 +18,9 @@ import {
   Landmark,
   WalletCards,
   MessageCircle,
+  Handshake,
+  Wallet,
+  Megaphone,
 } from "lucide-react";
 
 import {
@@ -33,66 +36,80 @@ import ContactUsForm from "../components/forms/ContactUsForm";
 const enquiryOptions = [
   {
     id: "service",
+    category: "BOOK_SERVICE",
     title: "Book a Service",
-    description: "Need technical support?",
-    icon: <UserRound size={22} />,
-    category: "Book a Service",
-  },
-  {
-    id: "mechanic",
-    title: "Mechanic Registration",
-    description: "Want to upgrade your skills?",
-    icon: <Wrench size={22} />,
-    category: "Mechanic Registration",
+    description: "Get help with a service requirement.",
+    icon: <Wrench />,
   },
   {
     id: "franchise",
-    title: "Franchise Enquiry",
-    description: "Want to become a Dr. Saab?",
-    icon: <Truck size={22} />,
-    category: "Franchise",
+    category: "FRANCHISE",
+    title: "Franchise",
+    description: "Explore franchise opportunities.",
+    icon: <Handshake />,
   },
   {
-    id: "oem",
-    title: "OEM Partnership",
-    description: "Explore after-sales collaboration.",
-    icon: <Building2 size={22} />,
-    category: "OEM Partnership",
-  },
-  {
-    id: "fleet",
-    title: "Fleet Partnership",
-    description: "Build fleet-service support.",
-    icon: <Truck size={22} />,
-    category: "Fleet Partnership",
+    id: "mechanic",
+    category: "MECHANIC_REGISTRATION",
+    title: "Mechanic Registration",
+    description: "Join the Dr. Saab service network.",
+    icon: <Users />,
   },
   {
     id: "training",
-    title: "Training Enquiry",
-    description: "Explore technical training.",
-    icon: <GraduationCap size={22} />,
-    category: "Training",
+    category: "TRAINING",
+    title: "Training",
+    description: "Enquire about technical training.",
+    icon: <GraduationCap />,
+  },
+  {
+    id: "oem",
+    category: "OEM_PARTNERSHIP",
+    title: "OEM Partnership",
+    description: "Discuss an OEM collaboration.",
+    icon: <Building2 />,
+  },
+  {
+    id: "fleet",
+    category: "FLEET_PARTNERSHIP",
+    title: "Fleet Partnership",
+    description: "Discuss fleet service requirements.",
+    icon: <Truck />,
   },
   {
     id: "government",
+    category: "GOVERNMENT_PARTNERSHIP",
     title: "Government Partnership",
-    description: "Discuss institutional opportunities.",
-    icon: <Landmark size={22} />,
-    category: "Government Partnership",
+    description: "Explore government initiatives.",
+    icon: <Landmark />,
+  },
+  {
+    id: "college",
+    category: "COLLEGE_PARTNERSHIP",
+    title: "College Partnership",
+    description: "Explore institutional collaboration.",
+    icon: <GraduationCap />,
   },
   {
     id: "finance",
+    category: "FINANCE_PARTNERSHIP",
     title: "Finance Partnership",
-    description: "Explore ecosystem collaboration.",
-    icon: <WalletCards size={22} />,
-    category: "Finance Partnership",
+    description: "Discuss financing collaborations.",
+    icon: <Wallet />,
   },
   {
     id: "media",
-    title: "Media Enquiry",
-    description: "Press and media communication.",
-    icon: <Newspaper size={22} />,
-    category: "Media",
+    category: "MEDIA",
+    title: "Media",
+    description: "Media and communication enquiries.",
+    icon: <Megaphone />,
+  },
+  {
+    id: "general",
+    category: "GENERAL",
+    title: "General Enquiry",
+    description: "For anything else you would like to discuss.",
+    icon: <MessageSquare />,
   },
 ];
 
@@ -296,14 +313,22 @@ const ContactUs = () => {
   };
 
   const handleContactSubmit = async (data) => {
-    // Connect your real API here.
-    // Example:
-    // await contactApi(data);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/v1/contact-enquiries`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
 
-    console.log("Contact enquiry:", data);
+    const result = await response.json().catch(() => null);
 
-    // Keep this only temporarily while testing the UI.
-    await new Promise((resolve) => setTimeout(resolve, 900));
+    if (!response.ok) {
+      throw new Error(result?.message || "Failed to submit your enquiry.");
+    }
 
     setSubmitted(true);
     setSelectedEnquiryCategory("");
@@ -494,6 +519,7 @@ const ContactUs = () => {
             {/* Form */}
             <ContactUsForm
               defaultEnquiry={selectedEnquiryCategory}
+              enquiryOptions={enquiryOptions}
               onSubmit={handleContactSubmit}
             />
           </div>
