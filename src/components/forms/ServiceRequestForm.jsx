@@ -294,9 +294,9 @@ export default function ServiceRequestForm({
         id={formId}
         className="w-full overflow-hidden rounded-3xl border border-brand-90/10 bg-white my-2"
       >
-        <div className="grid grid-cols-1 items-start lg:grid-cols-[0.78fr_1.22fr]">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.78fr_1.22fr]">
           {/* Visual panel */}
-          <aside className="relative isolate self-start overflow-hidden bg-brand-95 text-white">
+          <aside className="relative isolate overflow-hidden bg-brand-95 text-white">
             {imageSrc ? (
               <img
                 src={imageSrc}
@@ -357,7 +357,7 @@ export default function ServiceRequestForm({
           </aside>
 
           {/* Form panel */}
-          <div className="min-w-0 self-start bg-white p-4 sm:p-6 lg:p-7">
+          <div className="min-w-0 bg-white p-4 sm:p-6 lg:p-7">
             <div className="mb-8">
               <div className="flex items-start justify-between gap-4">
                 <div>

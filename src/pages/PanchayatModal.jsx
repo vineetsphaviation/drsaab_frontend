@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BatteryCharging,
@@ -44,6 +44,7 @@ import {
   SectionContainer,
 } from "../components/ui/UI";
 import panchayatHeroBg from "../assets/images/panchayat_hero_bg.png";
+import PanchayatModalForm from "../components/forms/PanchayatModalForm";
 
 const TECHNOLOGIES = [
   {
@@ -338,7 +339,6 @@ function NetworkNode({ label, type }) {
   );
 }
 
-
 /* =========================================================
    PANCHAYAT HERO
 ========================================================= */
@@ -419,7 +419,7 @@ function ServiceMarker({ icon: Icon, label, className }) {
   );
 }
 
-function PanchayatHero() {
+function PanchayatHero({ onApply }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">
       {/* =====================================================
@@ -432,7 +432,6 @@ function PanchayatHero() {
 
       <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
-          
           {/* =================================================
               LEFT CONTENT
           ================================================== */}
@@ -442,16 +441,13 @@ function PanchayatHero() {
 
             <h1 className="mt-4 text-[39px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
               One Panchayat.
-              <span className="block text-brand-70">
-                One Dr. Saab.
-              </span>
+              <span className="block text-brand-70">One Dr. Saab.</span>
             </h1>
 
             <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
               A mobile technical service enterprise bringing EV, battery,
               agricultural drone, solar and energy support closer to rural
-              customers — one Panchayat and its surrounding villages at a
-              time.
+              customers — one Panchayat and its surrounding villages at a time.
             </p>
 
             {/* Technology pills */}
@@ -472,7 +468,7 @@ function PanchayatHero() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button href="/contact-us">
+              <Button type="button" onClick={onApply}>
                 Apply for Your Panchayat
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
@@ -526,7 +522,6 @@ function PanchayatHero() {
           >
             {/* Main visual container */}
             <div className="absolute inset-0 overflow-hidden rounded-[28px] border border-brand-10 bg-[#e8f2ed] shadow-[0_25px_70px_rgba(7,95,69,0.10)]">
-              
               {/* =================================================
                   DUMMY RURAL IMAGE
               ================================================== */}
@@ -791,9 +786,10 @@ function PanchayatHero() {
   );
 }
 
-
 const PanchayatModal = () => {
   const [activeLaunchStep, setActiveLaunchStep] = useState(0);
+  const [isPanchayatFormOpen, setIsPanchayatFormOpen] = useState(false);
+  const panchayatFormRef = useRef(null);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -803,14 +799,35 @@ const PanchayatModal = () => {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (isPanchayatFormOpen) {
+      panchayatFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isPanchayatFormOpen]);
+
   const totalCost = useMemo(() => "₹11.00 L", []);
+
+  const openPanchayatForm = () => {
+    if (isPanchayatFormOpen) {
+      panchayatFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    setIsPanchayatFormOpen(true);
+  };
 
   return (
     <div className="overflow-hidden bg-white">
       {/* =========================================================
           HERO
       ========================================================== */}
-      <PanchayatHero />
+      <PanchayatHero onApply={openPanchayatForm} />
 
       {/* =========================================================
           WHAT IS THE MODEL
@@ -1320,7 +1337,11 @@ const PanchayatModal = () => {
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button href="/apply-panchayat" className="px-7 py-3">
+                <Button
+                  type="button"
+                  onClick={openPanchayatForm}
+                  className="px-7 py-3"
+                >
                   Apply for Your Panchayat
                   <ArrowRight className="ml-2" size={15} />
                 </Button>
@@ -1355,6 +1376,15 @@ const PanchayatModal = () => {
           </div>
         </SectionContainer>
       </section>
+
+      {isPanchayatFormOpen && (
+        <div ref={panchayatFormRef} className="mt-8 scroll-mt-24">
+          <PanchayatModalForm
+            onClose={() => setIsPanchayatFormOpen(false)}
+            onSubmit=""
+          />
+        </div>
+      )}
     </div>
   );
 };
