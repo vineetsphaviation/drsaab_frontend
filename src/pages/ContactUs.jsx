@@ -32,6 +32,7 @@ import {
 
 import supprtImage from "../assets/images/contact_us_hero.png";
 import ContactUsForm from "../components/forms/ContactUsForm";
+import { useCreateContactEnquiryMutation } from "../features/contactEnquiries/contactEnquiryApi";
 
 const enquiryOptions = [
   {
@@ -297,6 +298,9 @@ const ContactUs = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
+  const [createContactEnquiry, { isLoading, isSuccess, error }] =
+    useCreateContactEnquiryMutation();
+
   const selectedEnquiry = useMemo(
     () =>
       enquiryOptions.find((item) => item.category === selectedEnquiryCategory),
@@ -313,30 +317,33 @@ const ContactUs = () => {
   };
 
   const handleContactSubmit = async (data) => {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/v1/contact-enquiries`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      },
-    );
+    const payload = {
+      fullName: data.fullName?.trim() || data.name?.trim() || "",
+      organisation: data.organisation?.trim() || "",
+      designation: data.designation?.trim() || "",
+      mobile: data.mobile?.trim() || "",
+      email: data.email?.trim() || "",
+      state: data.state?.trim() || "",
+      district: data.district?.trim() || "",
+      enquiryCategory:
+        selectedEnquiryCategory || data.enquiryCategory || data.enquiry || "",
+      message: data.message?.trim() || "",
+      consent: Boolean(data.consent),
+    };
 
-    const result = await response.json().catch(() => null);
+    try {
+      await createContactEnquiry(payload).unwrap();
 
-    if (!response.ok) {
-      throw new Error(result?.message || "Failed to submit your enquiry.");
+      setSelectedEnquiryCategory("");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } catch (err) {
+      // RTK Query's `error` state will handle displaying the error.
+      console.error("Contact enquiry submission failed:", err);
     }
-
-    setSubmitted(true);
-    setSelectedEnquiryCategory("");
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -349,7 +356,7 @@ const ContactUs = () => {
       {/* =========================================================
           SUCCESS STATE
       ========================================================== */}
-      {submitted && (
+      {isSuccess && (
         <section className="bg-brand-5 py-8">
           <SectionContainer>
             <div className="flex items-start gap-4 rounded-[14px] border border-brand-60/20 bg-white p-5 shadow-sm sm:items-center">
@@ -370,7 +377,7 @@ const ContactUs = () => {
 
               <button
                 type="button"
-                onClick={() => setSubmitted(false)}
+                onClick={() => createContactEnquiry.reset()}
                 className="text-brand-ink/35 transition hover:text-brand-95"
                 aria-label="Close success message"
               >
@@ -516,11 +523,24 @@ const ContactUs = () => {
               </div>
             </div>
 
+            {error && (
+              <div
+                role="alert"
+                className="mb-4 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+              >
+                {error?.data?.message ||
+                  error?.data?.errors?.[0]?.message ||
+                  error?.error ||
+                  "Unable to submit your enquiry. Please try again."}
+              </div>
+            )}
+
             {/* Form */}
             <ContactUsForm
               defaultEnquiry={selectedEnquiryCategory}
               enquiryOptions={enquiryOptions}
               onSubmit={handleContactSubmit}
+              isSubmitting={isLoading}
             />
           </div>
         </SectionContainer>
