@@ -9,7 +9,7 @@ import {
 import { ArrowRight, Check, Leaf, Mail, MapPin, Phone } from "lucide-react";
 
 import { SectionContainer } from "../components/ui/UI";
-import logo from "../assets/logo_footer.png";
+import logo from "/dr.saab-logo.png";
 import { quickLinks, supportLinks } from "../utils/constant";
 
 const socialLinks = [
@@ -130,7 +130,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Dr. Saab"
-                className="w-[175px] sm:w-[190px]"
+                className="w-[200px] sm:w-[250px]"
               />
             </Link>
 
@@ -392,7 +392,7 @@ const Footer = () => {
       <div className="border-t border-brand-10 bg-white">
         <SectionContainer className="flex flex-col gap-3 py-4 text-[9px] text-gray-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © 2024 Dr. Saab. All rights reserved. An initiative by Techsmart
+            © 2026 Dr. Saab. All rights reserved. An initiative by Techsmart
             Ventures Pvt Limited.
           </p>
 
