@@ -34,6 +34,7 @@ import {
   SectionContainer,
 } from "../components/ui/UI";
 import MechanicForm from "../components/forms/MechanicForm";
+import { useCreateMechanicApplicationMutation } from "../features/mechanicApplications/mechanicApplicationApi";
 
 const SUPPORT_OPTIONS = [
   {
@@ -598,6 +599,10 @@ const Support = () => {
   const [openFaq, setOpenFaq] = useState(0);
   const [isMechanicFormOpen, setIsMechanicFormOpen] = useState(false);
   const isMechanicFormRef = useRef(null);
+  const [
+    createMechanicApplication,
+    { isLoading, isSuccess, error, reset: resetMechanicApplication },
+  ] = useCreateMechanicApplicationMutation();
 
   useEffect(() => {
     if (isMechanicFormOpen) {
@@ -609,6 +614,8 @@ const Support = () => {
   }, [isMechanicFormOpen]);
 
   const openMechanicForm = () => {
+    resetMechanicApplication();
+
     if (isMechanicFormOpen) {
       isMechanicFormRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -618,6 +625,15 @@ const Support = () => {
     }
 
     setIsMechanicFormOpen(true);
+  };
+
+  const handleMechanicApplicationSubmit = async (payload) => {
+    try {
+      await createMechanicApplication(payload).unwrap();
+    } catch (err) {
+      console.error("Mechanic application submission failed:", err);
+      throw err;
+    }
   };
 
   const filteredFaqs = useMemo(() => {
@@ -950,8 +966,14 @@ const Support = () => {
       {isMechanicFormOpen && (
         <div ref={isMechanicFormRef} className="mt-8 scroll-mt-24">
           <MechanicForm
-            onClose={() => setIsMechanicFormOpen(false)}
-            onSubmit=""
+            onClose={() => {
+              setIsMechanicFormOpen(false);
+              resetMechanicApplication();
+            }}
+            onSubmit={handleMechanicApplicationSubmit}
+            isLoading={isLoading}
+            isSuccess={isSuccess}
+            apiError={error}
           />
         </div>
       )}

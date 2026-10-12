@@ -45,6 +45,7 @@ import {
 } from "../components/ui/UI";
 import panchayatHeroBg from "../assets/images/panchayat_hero_bg.png";
 import PanchayatModalForm from "../components/forms/PanchayatModalForm";
+import { useCreatePartnerApplicationMutation } from "../features/partnerApplications/partnerApplicationApi";
 
 const TECHNOLOGIES = [
   {
@@ -419,7 +420,6 @@ function ServiceMarker({ icon: Icon, label, className }) {
   );
 }
 
-
 function PanchayatHero({ onApply }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">
@@ -791,6 +791,10 @@ const PanchayatModal = () => {
   const [activeLaunchStep, setActiveLaunchStep] = useState(0);
   const [isPanchayatFormOpen, setIsPanchayatFormOpen] = useState(false);
   const panchayatFormRef = useRef(null);
+  const [
+    createPartnerApplication,
+    { isLoading, isSuccess, error, reset: resetPartnerApplication },
+  ] = useCreatePartnerApplicationMutation();
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -812,6 +816,8 @@ const PanchayatModal = () => {
   const totalCost = useMemo(() => "₹11.00 L", []);
 
   const openPanchayatForm = () => {
+    resetPartnerApplication();
+
     if (isPanchayatFormOpen) {
       panchayatFormRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -821,6 +827,15 @@ const PanchayatModal = () => {
     }
 
     setIsPanchayatFormOpen(true);
+  };
+
+  const handlePanchayatApplicationSubmit = async (payload) => {
+    try {
+      await createPartnerApplication(payload).unwrap();
+    } catch (err) {
+      console.error("Panchayat application submission failed:", err);
+      throw err;
+    }
   };
 
   return (
@@ -1381,8 +1396,14 @@ const PanchayatModal = () => {
       {isPanchayatFormOpen && (
         <div ref={panchayatFormRef} className="mt-8 scroll-mt-24">
           <PanchayatModalForm
-            onClose={() => setIsPanchayatFormOpen(false)}
-            onSubmit=""
+            onClose={() => {
+              setIsPanchayatFormOpen(false);
+              resetPartnerApplication();
+            }}
+            onSubmit={handlePanchayatApplicationSubmit}
+            isLoading={isLoading}
+            isSuccess={isSuccess}
+            apiError={error}
           />
         </div>
       )}

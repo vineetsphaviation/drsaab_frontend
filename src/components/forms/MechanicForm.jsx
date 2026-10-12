@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useController, useForm } from "react-hook-form";
 import {
   ArrowLeft,
   ArrowRight,
@@ -15,6 +15,8 @@ import FormSelect from "./fields/FormSelect";
 import FormTextarea from "./fields/FormTextarea";
 import FormCheckbox from "./fields/FormCheckbox";
 import FormError from "./fields/FormError";
+import FormErrorSummary from "./fields/FormErrorSummary";
+import { getFormErrorMessages } from "./fields/formErrorUtils";
 
 const MECHANIC_OCCUPATIONS = [
   "MECHANIC",
@@ -152,18 +154,20 @@ export default function MechanicForm({
   onSubmit,
   onClose,
   defaultValues = {},
+  isLoading = false,
+  isSuccess = false,
+  apiError = null,
 }) {
   const [activeStep, setActiveStep] = useState(0);
   const [submissionError, setSubmissionError] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
     trigger,
     watch,
-    setValue,
-    formState: { errors, isSubmitting },
+    control,
+    formState: { errors },
   } = useForm({
     defaultValues: {
       ...DEFAULT_VALUES,
@@ -173,11 +177,26 @@ export default function MechanicForm({
     mode: "onTouched",
   });
 
+  const {
+    field: trainingField,
+    fieldState: { error: trainingError },
+  } = useController({
+    control,
+    name: "interestedTraining",
+    rules: {
+      validate: (value) =>
+        (Array.isArray(value) && value.length > 0) ||
+        "Select at least one training program.",
+    },
+  });
+
   const currentStep = STEPS[activeStep];
   const StepIcon = currentStep.icon;
   const progress = ((activeStep + 1) / STEPS.length) * 100;
 
-  const selectedTraining = watch("interestedTraining") || [];
+  const selectedTraining = Array.isArray(trainingField.value)
+    ? trainingField.value
+    : [];
   const existingWorkshop = watch("existingWorkshop");
 
   const fieldRules = {
@@ -216,11 +235,6 @@ export default function MechanicForm({
     },
     occupation: {
       required: REQUIRED_MESSAGES.occupation,
-    },
-    interestedTraining: {
-      validate: (value) =>
-        (Array.isArray(value) && value.length > 0) ||
-        "Select at least one training program.",
     },
     preferredTrainingMode: {
       required: REQUIRED_MESSAGES.preferredTrainingMode,
@@ -278,17 +292,17 @@ export default function MechanicForm({
       };
 
       await onSubmit(payload);
-      setSubmitted(true);
     } catch (error) {
       setSubmissionError(
-        error?.data?.message ||
-          error?.message ||
+        getFormErrorMessages(
+          error,
           "We couldn't submit your application. Please try again.",
+        ).join(" "),
       );
     }
   };
 
-  if (submitted) {
+  if (isSuccess) {
     return (
       <div className="w-full rounded-3xl border border-brand-90/10 bg-white p-6 text-center sm:p-10">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-5 text-brand-90">
@@ -638,6 +652,7 @@ export default function MechanicForm({
                         name="interestedTraining"
                         value={training}
                         checked={selectedTraining.includes(training)}
+                        onBlur={trainingField.onBlur}
                         onChange={(event) => {
                           const nextValues = event.target.checked
                             ? [...selectedTraining, training]
@@ -645,26 +660,15 @@ export default function MechanicForm({
                                 (item) => item !== training,
                               );
 
-                          setValue("interestedTraining", nextValues, {
-                            shouldDirty: true,
-                            shouldTouch: true,
-                            shouldValidate: true,
-                          });
+                          trainingField.onChange(nextValues);
                         }}
                       />
                     ))}
                   </div>
 
-                  <input
-                    type="hidden"
-                    {...register(
-                      "interestedTraining",
-                      fieldRules.interestedTraining,
-                    )}
-                  />
-
                   <FormError>
-                    {getErrorMessage(errors, "interestedTraining")}
+                    {trainingError?.message ||
+                      getErrorMessage(errors, "interestedTraining")}
                   </FormError>
                 </div>
 
@@ -693,14 +697,7 @@ export default function MechanicForm({
               </div>
             )}
 
-            {submissionError && (
-              <div
-                role="alert"
-                className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-700"
-              >
-                {submissionError}
-              </div>
-            )}
+            <FormErrorSummary error={apiError} fallback={submissionError} />
 
             {/* Navigation */}
             <div className="mt-8 flex flex-col gap-3 border-t border-brand-90/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
@@ -731,11 +728,11 @@ export default function MechanicForm({
               ) : (
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-90 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-95 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-60/30"
                 >
-                  {isSubmitting ? "Submitting..." : "Submit Application"}
-                  {!isSubmitting && <ArrowRight size={17} />}
+                  {isLoading ? "Submitting..." : "Submit Application"}
+                  {!isLoading && <ArrowRight size={17} />}
                 </button>
               )}
             </div>

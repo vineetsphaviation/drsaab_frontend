@@ -6,7 +6,8 @@ import FormInput from "./fields/FormInput";
 import FormSelect from "./fields/FormSelect";
 import FormTextarea from "./fields/FormTextarea";
 import FormCheckbox from "./fields/FormCheckbox";
-import FormError from "./fields/FormError";
+import FormErrorSummary from "./fields/FormErrorSummary";
+import { getFormErrorMessages } from "./fields/formErrorUtils";
 
 const DEFAULT_VALUES = {
   fullName: "",
@@ -88,7 +89,10 @@ const ContactUsForm = ({ defaultEnquiry = "", onSubmit }) => {
       });
     } catch (error) {
       setSubmitError(
-        error?.message || "Unable to submit your enquiry. Please try again.",
+        getFormErrorMessages(
+          error,
+          "Unable to submit your enquiry. Please try again.",
+        ).join(" "),
       );
     }
   };
@@ -301,11 +305,7 @@ const ContactUsForm = ({ defaultEnquiry = "", onSubmit }) => {
         })}
       />
 
-      {submitError && (
-        <div className="mt-5 rounded-lg border border-red-200 bg-red-50 p-3">
-          <FormError>{submitError}</FormError>
-        </div>
-      )}
+      <FormErrorSummary fallback={submitError} className="mt-5" />
 
       {/* SUBMIT */}
       <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

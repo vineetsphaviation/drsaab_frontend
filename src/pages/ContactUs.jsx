@@ -32,6 +32,7 @@ import {
 
 import supprtImage from "../assets/images/contact_us_hero.png";
 import ContactUsForm from "../components/forms/ContactUsForm";
+import FormErrorSummary from "../components/forms/fields/FormErrorSummary";
 import { useCreateContactEnquiryMutation } from "../features/contactEnquiries/contactEnquiryApi";
 
 const enquiryOptions = [
@@ -523,17 +524,11 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {error && (
-              <div
-                role="alert"
-                className="mb-4 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
-              >
-                {error?.data?.message ||
-                  error?.data?.errors?.[0]?.message ||
-                  error?.error ||
-                  "Unable to submit your enquiry. Please try again."}
-              </div>
-            )}
+            <FormErrorSummary
+              error={error}
+              fallback="Unable to submit your enquiry. Please try again."
+              className="mb-4 mt-0"
+            />
 
             {/* Form */}
             <ContactUsForm

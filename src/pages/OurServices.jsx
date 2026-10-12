@@ -37,6 +37,7 @@ import {
 
 import heroImageServices from "../assets/images/our_services_image.png";
 import ServiceRequestForm from "../components/forms/ServiceRequestForm";
+import { useCreateServiceRequestMutation } from "../features/serviceRequests/serviceRequestApi";
 
 const SERVICES = [
   {
@@ -349,6 +350,11 @@ const OurServices = () => {
   const [bookingServiceCategory, setBookingServiceCategory] = useState("");
   const bookingFormRef = useRef(null);
 
+  const [
+    createServiceRequest,
+    { isLoading, isSuccess, error, reset: resetServiceRequest },
+  ] = useCreateServiceRequestMutation();
+
   useEffect(() => {
     if (isBookingOpen) {
       bookingFormRef.current?.scrollIntoView({
@@ -393,13 +399,8 @@ const OurServices = () => {
       ? SERVICES
       : SERVICES.filter((service) => service.category === selectedCategory);
 
-  const scrollToBooking = () => {
-    document
-      .getElementById("book-service")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const openBookingForm = (serviceCategory = "") => {
+    resetServiceRequest();
     setBookingServiceCategory(serviceCategory);
 
     if (isBookingOpen) {
@@ -411,6 +412,18 @@ const OurServices = () => {
     }
 
     setIsBookingOpen(true);
+  };
+
+  const handleServiceRequestSubmit = async (payload) => {
+    try {
+      await createServiceRequest(payload).unwrap();
+    } catch (err) {
+      console.error("Service request submission failed:", err);
+
+      // Preserve the rejected request so the form can display
+      // the error from RTK Query.
+      throw err;
+    }
   };
 
   return (
@@ -1000,8 +1013,14 @@ const OurServices = () => {
         <div ref={bookingFormRef} className="scroll-mt-28">
           <ServiceRequestForm
             defaultServiceCategory={bookingServiceCategory}
-            onSubmit=""
-            onClose={() => setIsBookingOpen(false)}
+            onSubmit={handleServiceRequestSubmit}
+            onClose={() => {
+              setIsBookingOpen(false);
+              resetServiceRequest();
+            }}
+            isLoading={isLoading}
+            isSuccess={isSuccess}
+            apiError={error}
           />
         </div>
       )}

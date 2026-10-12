@@ -16,6 +16,8 @@ import FormInput from "./fields/FormInput";
 import FormSelect from "./fields/FormSelect";
 import FormTextarea from "./fields/FormTextarea";
 import FormError from "./fields/FormError";
+import FormErrorSummary from "./fields/FormErrorSummary";
+import { getFormErrorMessages } from "./fields/formErrorUtils";
 import { SectionContainer } from "../ui/UI";
 
 const SERVICE_CATEGORIES = [
@@ -179,13 +181,14 @@ export default function ServiceRequestForm({
   onSubmit,
   onClose,
   imageSrc,
+  isLoading = false,
+  isSuccess = false,
+  apiError = null,
 }) {
   const formId = useId();
 
   const [activeStep, setActiveStep] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     register,
@@ -238,24 +241,21 @@ export default function ServiceRequestForm({
       return;
     }
 
-    setIsSubmitting(true);
     setSubmissionError("");
 
     try {
       await onSubmit(toPayload(values));
-      setIsSubmitted(true);
     } catch (error) {
       setSubmissionError(
-        error?.data?.message ||
-          error?.message ||
+        getFormErrorMessages(
+          error,
           "We couldn't submit your request. Please try again.",
+        ).join(" "),
       );
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
-  if (isSubmitted) {
+  if (isSuccess) {
     return (
       <div className="w-full rounded-3xl border border-brand-90/10 bg-white px-5 py-14 text-center sm:px-10 sm:py-16">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-10 text-brand-90">
@@ -711,11 +711,11 @@ export default function ServiceRequestForm({
                   ) : (
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isLoading}
                       className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-90 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-95 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-60/30"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Request"}
-                      {!isSubmitting && <ArrowRight size={17} />}
+                      {isLoading ? "Submitting..." : "Submit Request"}
+                      {!isLoading && <ArrowRight size={17} />}
                     </button>
                   )}
                 </div>
@@ -726,14 +726,10 @@ export default function ServiceRequestForm({
                 </p>
               </div>
 
-              {submissionError && (
-                <div
-                  role="alert"
-                  className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-700"
-                >
-                  {submissionError}
-                </div>
-              )}
+              <FormErrorSummary
+                error={apiError}
+                fallback={submissionError}
+              />
             </form>
           </div>
         </div>

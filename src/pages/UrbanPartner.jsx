@@ -41,6 +41,7 @@ import {
 
 import urbanCityLandscape from "../assets/images/urban_city_landscape.png";
 import PanchayatModalForm from "../components/forms/PanchayatModalForm";
+import { useCreatePartnerApplicationMutation } from "../features/partnerApplications/partnerApplicationApi";
 
 const OPERATING_FORMATS = [
   {
@@ -781,6 +782,10 @@ const UrbanPartner = () => {
   const [activeJourney, setActiveJourney] = useState(0);
   const [isUrbanPartnerFormOpen, setIsUrbanPartnerFormOpen] = useState(false);
   const urbanPartnerFormRef = useRef(null);
+  const [
+    createPartnerApplication,
+    { isLoading, isSuccess, error, reset: resetPartnerApplication },
+  ] = useCreatePartnerApplicationMutation();
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -800,6 +805,8 @@ const UrbanPartner = () => {
   }, [isUrbanPartnerFormOpen]);
 
   const openUrbanPartnerForm = () => {
+    resetPartnerApplication();
+
     if (isUrbanPartnerFormOpen) {
       urbanPartnerFormRef.current?.scrollIntoView({
         behavior: "smooth",
@@ -809,6 +816,15 @@ const UrbanPartner = () => {
     }
 
     setIsUrbanPartnerFormOpen(true);
+  };
+
+  const handleUrbanPartnerApplicationSubmit = async (payload) => {
+    try {
+      await createPartnerApplication(payload).unwrap();
+    } catch (err) {
+      console.error("Urban partner application submission failed:", err);
+      throw err;
+    }
   };
 
   return (
@@ -1186,9 +1202,15 @@ const UrbanPartner = () => {
       {isUrbanPartnerFormOpen && (
         <div ref={urbanPartnerFormRef} className="mt-8 scroll-mt-24">
           <PanchayatModalForm
-            onClose={() => setIsUrbanPartnerFormOpen(false)}
+            onClose={() => {
+              setIsUrbanPartnerFormOpen(false);
+              resetPartnerApplication();
+            }}
             franchiseType="URBAN_CITY"
-            onSubmit=""
+            onSubmit={handleUrbanPartnerApplicationSubmit}
+            isLoading={isLoading}
+            isSuccess={isSuccess}
+            apiError={error}
           />
         </div>
       )}

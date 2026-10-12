@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { CalendarDays, Handshake, Menu, X, ChevronRight } from "lucide-react";
 
 import { SectionContainer, Button } from "../components/ui/UI";
-import logo from "../assets/logo_header.png";
+import logo from "/dr.saab-logo.png";
 import { navItems } from "../utils/constant";
 
 const Header = () => {

@@ -13,6 +13,8 @@ import FormInput from "./fields/FormInput";
 import FormSelect from "./fields/FormSelect";
 import FormTextarea from "./fields/FormTextarea";
 import FormCheckbox from "./fields/FormCheckbox";
+import FormErrorSummary from "./fields/FormErrorSummary";
+import { getFormErrorMessages } from "./fields/formErrorUtils";
 import { SectionContainer } from "../ui/UI";
 
 const OCCUPATION_OPTIONS = [
@@ -158,10 +160,12 @@ export default function PanchayatModalForm({
   onClose,
   defaultValues = {},
   franchiseType = "RURAL_PANCHAYAT",
+  isLoading = false,
+  isSuccess = false,
+  apiError = null,
 }) {
   const [activeStep, setActiveStep] = useState(0);
   const [submissionError, setSubmissionError] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
@@ -169,7 +173,7 @@ export default function PanchayatModalForm({
     trigger,
     watch,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       ...DEFAULT_VALUES,
@@ -285,17 +289,17 @@ export default function PanchayatModalForm({
       };
 
       await onSubmit(payload);
-      setSubmitted(true);
     } catch (error) {
       setSubmissionError(
-        error?.data?.message ||
-          error?.message ||
+        getFormErrorMessages(
+          error,
           "We couldn't submit your application. Please try again.",
+        ).join(" "),
       );
     }
   };
 
-  if (submitted) {
+  if (isSuccess) {
     return (
       <div className="w-full rounded-3xl border border-brand-90/10 bg-white p-6 text-center sm:p-10">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-5 text-brand-90">
@@ -718,14 +722,10 @@ export default function PanchayatModalForm({
                 </div>
               )}
 
-              {submissionError && (
-                <div
-                  role="alert"
-                  className="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-700"
-                >
-                  {submissionError}
-                </div>
-              )}
+              <FormErrorSummary
+                error={apiError}
+                fallback={submissionError}
+              />
 
               {/* Navigation */}
               <div className="mt-8 flex flex-col gap-3 border-t border-brand-90/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
@@ -756,11 +756,11 @@ export default function PanchayatModalForm({
                 ) : (
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isLoading}
                     className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-90 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-95 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-60/30"
                   >
-                    {isSubmitting ? "Submitting..." : "Submit Application"}
-                    {!isSubmitting && <ArrowRight size={17} />}
+                    {isLoading ? "Submitting..." : "Submit Application"}
+                    {!isLoading && <ArrowRight size={17} />}
                   </button>
                 )}
               </div>
