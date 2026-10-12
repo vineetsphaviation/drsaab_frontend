@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   AlertTriangle,
   ArrowRight,
@@ -33,6 +33,7 @@ import {
   Eyebrow,
   SectionContainer,
 } from "../components/ui/UI";
+import MechanicForm from "../components/forms/MechanicForm";
 
 const SUPPORT_OPTIONS = [
   {
@@ -55,7 +56,7 @@ const SUPPORT_OPTIONS = [
     title: "Book a Service",
     description: "Request a technician for your service requirement.",
     action: "Book Service",
-    href: "/book-service",
+    href: "/contact-us",
     icon: <Wrench size={23} />,
     badge: "SERVICE REQUEST",
   },
@@ -63,7 +64,7 @@ const SUPPORT_OPTIONS = [
     title: "Find Service Area",
     description: "Check Dr. Saab availability in your area.",
     action: "Check Availability",
-    href: "/franchise#territory-checker",
+    href: "/contact-us",
     icon: <MapPin size={23} />,
     badge: "AVAILABILITY",
   },
@@ -264,7 +265,6 @@ function SupportOptionCard({ option }) {
   );
 }
 
-
 /* =========================================================
    SUPPORT HERO
 ========================================================= */
@@ -343,7 +343,7 @@ function SupportAction({ action, active, onClick }) {
   );
 }
 
-function SupportHero() {
+function SupportHero({ onApply }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">
       {/* =====================================================
@@ -376,8 +376,8 @@ function SupportHero() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button href="/contact-us">
-                Book a Service
+              <Button type="button" onClick={onApply}>
+                Mechanic Registration
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
@@ -596,6 +596,29 @@ function SupportConsole() {
 const Support = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
+  const [isMechanicFormOpen, setIsMechanicFormOpen] = useState(false);
+  const isMechanicFormRef = useRef(null);
+
+  useEffect(() => {
+    if (isMechanicFormOpen) {
+      isMechanicFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isMechanicFormOpen]);
+
+  const openMechanicForm = () => {
+    if (isMechanicFormOpen) {
+      isMechanicFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    setIsMechanicFormOpen(true);
+  };
 
   const filteredFaqs = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
@@ -614,7 +637,7 @@ const Support = () => {
       {/* =========================================================
           HERO
       ========================================================== */}
-      <SupportHero />
+      <SupportHero onApply={openMechanicForm} />
 
       {/* =========================================================
           SUPPORT OPTIONS
@@ -901,8 +924,12 @@ const Support = () => {
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button href="/book-service" className="px-7 py-3">
-                  Book a Service
+                <Button
+                  type="button"
+                  onClick={openMechanicForm}
+                  className="px-7 py-3"
+                >
+                  Mechanic Upgrade Registration
                   <ArrowRight className="ml-2" size={15} />
                 </Button>
 
@@ -919,28 +946,17 @@ const Support = () => {
           </div>
         </SectionContainer>
       </section>
+
+      {isMechanicFormOpen && (
+        <div ref={isMechanicFormRef} className="mt-8 scroll-mt-24">
+          <MechanicForm
+            onClose={() => setIsMechanicFormOpen(false)}
+            onSubmit=""
+          />
+        </div>
+      )}
     </div>
   );
 };
-
-function HeadsetIcon() {
-  return (
-    <svg
-      width="25"
-      height="25"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-      <path d="M21 19a2 2 0 0 1-2 2h-2v-6h4v4Z" />
-      <path d="M3 19a2 2 0 0 0 2 2h2v-6H3v4Z" />
-      <path d="M17 21h-2" />
-    </svg>
-  );
-}
 
 export default Support;

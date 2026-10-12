@@ -39,7 +39,14 @@ const OCCUPATION_OPTIONS = [
 }));
 
 const FRANCHISE_OPTIONS = [
-  { value: "RURAL_PANCHAYAT", label: "Rural Panchayat Franchise" },
+  {
+    value: "RURAL_PANCHAYAT",
+    label: "Rural Panchayat Franchise",
+  },
+  {
+    value: "URBAN_CITY",
+    label: "Urban City Franchise",
+  },
 ];
 
 const TIMELINE_OPTIONS = [
@@ -150,6 +157,7 @@ export default function PanchayatModalForm({
   onSubmit,
   onClose,
   defaultValues = {},
+  franchiseType = "RURAL_PANCHAYAT",
 }) {
   const [activeStep, setActiveStep] = useState(0);
   const [submissionError, setSubmissionError] = useState("");
@@ -166,7 +174,7 @@ export default function PanchayatModalForm({
     defaultValues: {
       ...DEFAULT_VALUES,
       ...defaultValues,
-      franchiseType: "RURAL_PANCHAYAT",
+      franchiseType,
     },
     mode: "onTouched",
   });
@@ -273,7 +281,7 @@ export default function PanchayatModalForm({
         financeRequired: Boolean(values.financeRequired),
         existingPremises: Boolean(values.existingPremises),
         consent: Boolean(values.consent),
-        franchiseType: "RURAL_PANCHAYAT",
+        franchiseType,
       };
 
       await onSubmit(payload);
@@ -603,6 +611,7 @@ export default function PanchayatModalForm({
                     options={FRANCHISE_OPTIONS}
                     required
                     {...register("franchiseType", fieldRules.franchiseType)}
+                    disabled
                   />
 
                   <div className="sm:col-span-2">

@@ -389,7 +389,7 @@ function FranchiseHero() {
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <Button href="#territory-checker" variant="outline">
+              <Button href="/contact-us" variant="outline">
                 Check Your Territory
               </Button>
             </div>
@@ -1042,14 +1042,14 @@ const Franchise = () => {
       {/* =========================================================
           TERRITORY CHECKER
       ========================================================== */}
-      <section
+      {/* <section
         id="territory-checker"
         className="bg-white py-16 sm:py-20 lg:py-24"
       >
         <SectionContainer>
           <div className="overflow-hidden rounded-[32px] border border-brand-10 bg-brand-5">
             <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-              {/* Left */}
+              
               <div className="relative overflow-hidden bg-brand-95 p-7 text-white sm:p-10 lg:p-12">
                 <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-brand-lime/10" />
 
@@ -1090,7 +1090,7 @@ const Franchise = () => {
                 </div>
               </div>
 
-              {/* Form */}
+              
               <div className="p-7 sm:p-10 lg:p-12">
                 <form onSubmit={handleTerritoryCheck}>
                   <div className="grid gap-5 sm:grid-cols-2">
@@ -1256,7 +1256,7 @@ const Franchise = () => {
             </div>
           </div>
         </SectionContainer>
-      </section>
+      </section> */}
 
       {/* =========================================================
           FINAL CTA
@@ -1288,19 +1288,19 @@ const Franchise = () => {
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button href="/apply" className="px-7 py-3">
+                <Button href="/contact-us" className="px-7 py-3">
                   Apply Now
                   <ArrowRight className="ml-2" size={15} />
                 </Button>
 
-                <Button
+                {/* <Button
                   href="#territory-checker"
                   variant="light"
                   className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
                 >
                   Check Your Territory
                   <MapPin className="ml-2" size={15} />
-                </Button>
+                </Button> */}
               </div>
 
               <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[9px] font-black uppercase tracking-[0.8px] text-white/30">

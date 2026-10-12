@@ -396,26 +396,6 @@ const Footer = () => {
             Ventures Pvt Limited.
           </p>
 
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <Link
-              to="/privacy-policy"
-              className="transition hover:text-brand-70"
-            >
-              Privacy Policy
-            </Link>
-
-            <span className="text-brand-10">|</span>
-
-            <Link to="/terms" className="transition hover:text-brand-70">
-              Terms & Conditions
-            </Link>
-
-            <span className="text-brand-10">|</span>
-
-            <Link to="/disclaimer" className="transition hover:text-brand-70">
-              Disclaimer
-            </Link>
-          </div>
         </SectionContainer>
       </div>
     </footer>

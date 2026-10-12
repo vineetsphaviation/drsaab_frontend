@@ -41,28 +41,11 @@ export const quickLinks = [
 
 export const supportLinks = [
   {
-    label: "FAQs",
-    href: "/support/faqs",
-  },
-  {
-    label: "Service Areas",
-    href: "/support/service-areas",
-  },
-  {
-    label: "Partner With Us",
-    href: "/partner",
-  },
-  {
-    label: "Blog / Updates",
-    href: "/blog",
-  },
-  {
-    label: "Careers",
-    href: "/careers",
+    label: "Support",
+    href: "/support",
   },
   {
     label: "Contact Us",
     href: "/contact-us",
   },
 ];
-

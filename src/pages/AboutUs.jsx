@@ -111,48 +111,48 @@ const ecosystemNodes = [
   {
     title: "Customers",
     icon: <Users size={19} />,
-    className: "lg:col-start-3",
+    description: "Reliable help when it matters.",
   },
   {
     title: "Mechanics",
     icon: <Wrench size={19} />,
-    className: "lg:col-start-1",
+    description: "Skills, tools and new opportunity.",
   },
   {
     title: "Dr. Saab Network",
     icon: <Network size={23} />,
     central: true,
-    className: "lg:col-start-3",
+    description: "The network that makes support work.",
   },
   {
     title: "Entrepreneurs",
     icon: <Building2 size={19} />,
-    className: "lg:col-start-5",
+    description: "Local enterprises built for growth.",
   },
   {
     title: "OEMs",
     icon: <Cpu size={19} />,
-    className: "lg:col-start-1",
+    description: "Stronger service and product linkages.",
   },
   {
     title: "Fleets",
     icon: <Zap size={19} />,
-    className: "lg:col-start-3",
+    description: "More uptime for essential mobility.",
   },
   {
     title: "Training",
     icon: <GraduationCap size={19} />,
-    className: "lg:col-start-5",
+    description: "Practical learning for real work.",
   },
   {
     title: "Technology",
     icon: <BrainCircuit size={19} />,
-    className: "lg:col-start-3",
+    description: "Data-led tools and better diagnosis.",
   },
   {
     title: "Financial Partners",
     icon: <Handshake size={19} />,
-    className: "lg:col-start-3",
+    description: "Capital that helps local services scale.",
   },
 ];
 
@@ -388,10 +388,7 @@ function AboutHero() {
                 FLOATING APPROACH CARD
             ================================================== */}
 
-            <div
-              id="our-approach"
-              className="absolute -left-5 top-12 hidden w-[205px] rounded-2xl border border-brand-10 bg-white p-3 shadow-[0_18px_45px_rgba(7,95,69,0.14)] sm:block"
-            >
+            <div className="absolute -left-5 top-12 hidden w-[205px] rounded-2xl border border-brand-10 bg-white p-3 shadow-[0_18px_45px_rgba(7,95,69,0.14)] sm:block">
               <div className="mb-3 flex items-center justify-between">
                 <div>
                   <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
@@ -472,18 +469,45 @@ const About = () => {
       ========================================================== */}
       <section className="bg-white py-14 sm:py-20 lg:py-24">
         <SectionContainer>
-          <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div>
-              <Eyebrow>WHO WE ARE</Eyebrow>
+          <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:gap-14">
+            <div className="relative overflow-hidden rounded-[28px] bg-brand-95 p-7 text-white sm:p-9 lg:min-h-[510px] lg:p-10">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border border-white/10" />
+              <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-brand-60/25 blur-3xl" />
 
-              <h2 className="mt-3 max-w-[500px] text-3xl font-black leading-tight tracking-[-1px] text-brand-95 sm:text-4xl">
-                Building the people and systems behind the next generation of
-                service.
-              </h2>
+              <div className="relative flex h-full flex-col">
+                <Eyebrow light>WHO WE ARE</Eyebrow>
+
+                <h2 className="mt-4 max-w-[430px] text-3xl font-black leading-tight tracking-[-1px] sm:text-4xl">
+                  Building the people and systems behind the next generation of
+                  service.
+                </h2>
+
+                <p className="mt-5 max-w-[410px] text-sm leading-7 text-white/70">
+                  We bring capable local technicians, trusted processes and
+                  emerging technology into one practical service model.
+                </p>
+
+                <div className="mt-auto pt-10">
+                  <div className="flex items-center gap-3 border-t border-white/10 pt-5">
+                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                      <Network size={21} />
+                    </div>
+
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-[.14em] text-brand-lime">
+                        One connected model
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-white/65">
+                        Rural reach. Urban capability. Local trust.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <p className="text-[16px] leading-8 text-brand-ink/80">
+            <div className="py-2 lg:py-5">
+              <p className="max-w-[680px] text-[16px] leading-8 text-brand-ink/80">
                 Dr. Saab is positioned as a rural and urban after-sales service,
                 mechanic-upgradation and technical-entrepreneurship initiative.
               </p>
@@ -495,13 +519,27 @@ const About = () => {
                 trustworthy.
               </p>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {technologyAreas.map((item) => (
+              <div className="mt-7 rounded-2xl border border-brand-90/10 bg-brand-5/70 p-4 sm:flex sm:items-center sm:gap-4 sm:p-5">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-brand-70 shadow-sm">
+                  <ShieldCheck size={20} />
+                </div>
+                <p className="mt-3 text-sm leading-6 text-brand-ink/70 sm:mt-0">
+                  Our role is to make technical support feel clear, capable and
+                  dependable—from first diagnosis to the next best action.
+                </p>
+              </div>
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                {technologyAreas.map((item, index) => (
                   <div
                     key={item.title}
-                    className="group rounded-[12px] border border-brand-90/10 bg-brand-5/45 p-5 transition-all duration-200 hover:-translate-y-1 hover:border-brand-60/30 hover:bg-brand-5"
+                    className="group relative overflow-hidden rounded-2xl border border-brand-90/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/35 hover:shadow-[0_14px_30px_rgba(3,78,55,.09)]"
                   >
-                    <CircleIcon className="bg-white text-brand-70 shadow-sm">
+                    <span className="absolute right-4 top-3 text-4xl font-black leading-none text-brand-5 transition-colors group-hover:text-brand-10">
+                      0{index + 1}
+                    </span>
+
+                    <CircleIcon className="relative bg-brand-5 text-brand-70 transition-colors group-hover:bg-brand-70 group-hover:text-white">
                       {item.icon}
                     </CircleIcon>
 
@@ -509,7 +547,7 @@ const About = () => {
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 text-[13px] leading-6 text-brand-ink/75">
+                    <p className="mt-2 max-w-[250px] text-[13px] leading-6 text-brand-ink/70">
                       {item.text}
                     </p>
                   </div>
@@ -595,7 +633,10 @@ const About = () => {
       {/* =========================================================
           WHAT DOES DR SAAB REPRESENT
       ========================================================== */}
-      <section className="overflow-hidden bg-brand-95 py-14 text-white sm:py-20 lg:py-24">
+      <section
+        id="our-approach"
+        className="scroll-mt-20 overflow-hidden bg-brand-95 py-14 text-white sm:py-20 lg:py-24"
+      >
         <SectionContainer>
           <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:items-center">
             <div>
@@ -660,7 +701,7 @@ const About = () => {
       {/* =========================================================
           ECOSYSTEM
       ========================================================== */}
-      <section className="bg-white py-14 sm:py-20 lg:py-24">
+      <section className="overflow-hidden bg-brand-5/50 py-14 sm:py-20 lg:py-24">
         <SectionContainer>
           <div className="mx-auto max-w-[720px] text-center">
             <Eyebrow>OUR ECOSYSTEM</Eyebrow>
@@ -677,93 +718,61 @@ const About = () => {
             </p>
           </div>
 
-          {/* Desktop ecosystem */}
-          <div className="relative mx-auto mt-14 hidden max-w-[850px] lg:block">
-            <div className="grid grid-cols-5 grid-rows-[auto_18px_auto_18px_auto_18px_auto] items-center gap-x-5 gap-y-0">
-              {/* Customers */}
-              <EcosystemNode
-                title="Customers"
-                icon={<Users size={18} />}
-                className="col-start-3 row-start-1"
-              />
+          {/* Compact ecosystem map */}
+          <div className="relative mt-12 overflow-hidden rounded-[28px] bg-brand-95 p-5 shadow-[0_24px_70px_rgba(3,78,55,.16)] sm:p-8 lg:p-10">
+            <div className="pointer-events-none absolute -left-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full border border-white/10" />
+            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-brand-lime/15" />
+            <div className="pointer-events-none absolute bottom-0 left-1/2 h-40 w-[65%] -translate-x-1/2 rounded-full bg-brand-60/15 blur-3xl" />
 
-              <div className="col-start-3 row-start-2 h-full w-px justify-self-center bg-brand-90/15" />
+            {/* Mobile and tablet ecosystem */}
+            <div className="relative grid gap-3 sm:grid-cols-2 lg:hidden">
+              {ecosystemNodes.map((node) => (
+                <EcosystemNode
+                  key={node.title}
+                  title={node.title}
+                  icon={node.icon}
+                  description={node.description}
+                  central={node.central}
+                />
+              ))}
+            </div>
 
-              {/* Mechanics / central / entrepreneurs */}
-              <EcosystemNode
-                title="Mechanics"
-                icon={<Wrench size={18} />}
-                className="col-start-1 row-start-3"
-              />
+            {/* Desktop ecosystem */}
+            <div className="relative hidden grid-cols-[minmax(0,1fr)_minmax(260px,1.15fr)_minmax(0,1fr)] items-center gap-8 lg:grid">
+              <div className="space-y-4">
+                {ecosystemNodes.slice(0, 2).map((node) => (
+                  <EcosystemNode key={node.title} {...node} />
+                ))}
+                <EcosystemNode {...ecosystemNodes[4]} />
+              </div>
 
-              <div className="relative col-start-3 row-start-3">
-                <div className="absolute left-0 right-0 top-1/2 hidden h-px bg-brand-90/15 lg:block" />
+              <div className="relative flex min-h-[352px] items-center justify-center px-8">
+                <div className="absolute inset-x-0 top-1/2 h-px bg-white/15" />
+                <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
+                <div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-lime/25" />
 
-                <div className="relative">
-                  <EcosystemNode
-                    title="Dr. Saab Network"
-                    icon={<Network size={20} />}
-                    central
-                  />
+                <div className="relative w-full">
+                  <EcosystemNode {...ecosystemNodes[2]} central />
+                  <p className="mx-auto mt-5 max-w-[230px] text-center text-xs leading-5 text-white/65">
+                    Coordinating trusted service, capability and opportunity in
+                    every local market.
+                  </p>
                 </div>
               </div>
 
-              <EcosystemNode
-                title="Entrepreneurs"
-                icon={<Building2 size={18} />}
-                className="col-start-5 row-start-3"
-              />
-
-              <div className="col-start-3 row-start-4 h-full w-px justify-self-center bg-brand-90/15" />
-
-              {/* OEM / fleets / training */}
-              <EcosystemNode
-                title="OEMs"
-                icon={<Cpu size={18} />}
-                className="col-start-1 row-start-5"
-              />
-
-              <EcosystemNode
-                title="Fleets"
-                icon={<Zap size={18} />}
-                className="col-start-3 row-start-5"
-              />
-
-              <EcosystemNode
-                title="Training"
-                icon={<GraduationCap size={18} />}
-                className="col-start-5 row-start-5"
-              />
-
-              <div className="col-start-3 row-start-6 h-full w-px justify-self-center bg-brand-90/15" />
-
-              <EcosystemNode
-                title="Technology"
-                icon={<BrainCircuit size={18} />}
-                className="col-start-3 row-start-7"
-              />
+              <div className="space-y-4">
+                {ecosystemNodes.slice(3, 4).map((node) => (
+                  <EcosystemNode key={node.title} {...node} />
+                ))}
+                <EcosystemNode {...ecosystemNodes[5]} />
+                <EcosystemNode {...ecosystemNodes[6]} />
+              </div>
             </div>
 
-            <div className="mx-auto mt-6 h-px w-1/3 bg-brand-90/15" />
-
-            <div className="mx-auto mt-4 max-w-[250px]">
-              <EcosystemNode
-                title="Financial Partners"
-                icon={<Handshake size={18} />}
-              />
+            <div className="relative mt-5 hidden grid-cols-2 gap-4 lg:grid lg:px-[16.5%]">
+              <EcosystemNode {...ecosystemNodes[7]} />
+              <EcosystemNode {...ecosystemNodes[8]} />
             </div>
-          </div>
-
-          {/* Mobile ecosystem */}
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:hidden">
-            {ecosystemNodes.map((node) => (
-              <EcosystemNode
-                key={node.title}
-                title={node.title}
-                icon={node.icon}
-                central={node.central}
-              />
-            ))}
           </div>
         </SectionContainer>
       </section>
@@ -830,7 +839,7 @@ const About = () => {
               <Button
                 href="/how-it-works"
                 variant="outline"
-                className="border-white/30 bg-transparent text-white hover:bg-white/10"
+                className="border-white/30 bg-transparent text-brand-90 "
               >
                 How It Works
                 <ArrowRight size={14} className="ml-2" />
@@ -858,21 +867,40 @@ function HeroNode({ icon, label, className = "" }) {
   );
 }
 
-function EcosystemNode({ icon, title, className = "", central = false }) {
+function EcosystemNode({
+  icon,
+  title,
+  description,
+  className = "",
+  central = false,
+}) {
   return (
     <div
-      className={`flex items-center justify-center gap-3 rounded-[13px] border px-5 py-4 text-center transition-all ${
+      className={`group relative flex min-h-[94px] items-center gap-3 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 ${
         central
-          ? "border-brand-70/30 bg-brand-95 text-white shadow-[0_15px_45px_rgba(3,78,55,.15)]"
-          : "border-brand-90/10 bg-brand-5/60 text-brand-95 hover:-translate-y-1 hover:border-brand-60/25 hover:bg-brand-5"
+          ? "border-brand-lime/50 bg-brand-70 text-white shadow-[0_18px_45px_rgba(0,0,0,.2)]"
+          : "border-white/15 bg-white/[0.07] text-white hover:-translate-y-1 hover:border-brand-lime/45 hover:bg-white/[0.11]"
       } ${className}`}
     >
-      <span className={central ? "text-brand-lime" : "text-brand-70"}>
+      <span
+        className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors ${
+          central
+            ? "bg-brand-lime text-brand-95"
+            : "bg-white/10 text-brand-lime group-hover:bg-brand-lime group-hover:text-brand-95"
+        }`}
+      >
         {icon}
       </span>
 
-      <span className="text-[12px] font-black uppercase tracking-[.8px]">
-        {title}
+      <span>
+        <span className="block text-[12px] font-black uppercase tracking-[.8px]">
+          {title}
+        </span>
+        {description && (
+          <span className="mt-1 block text-[11px] leading-4 text-white/60">
+            {description}
+          </span>
+        )}
       </span>
     </div>
   );

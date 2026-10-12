@@ -419,6 +419,7 @@ function ServiceMarker({ icon: Icon, label, className }) {
   );
 }
 
+
 function PanchayatHero({ onApply }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">

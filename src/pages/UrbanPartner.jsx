@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BatteryCharging,
@@ -40,6 +40,7 @@ import {
 } from "../components/ui/UI";
 
 import urbanCityLandscape from "../assets/images/urban_city_landscape.png";
+import PanchayatModalForm from "../components/forms/PanchayatModalForm";
 
 const OPERATING_FORMATS = [
   {
@@ -382,7 +383,7 @@ function ServicePoint({ label, className }) {
    URBAN SERVICE HERO
 ========================================================= */
 
-function UrbanPartnerHero() {
+function UrbanPartnerHero({ onApply }) {
   return (
     <section className="relative overflow-hidden bg-brand-5">
       {/* =====================================================
@@ -432,7 +433,7 @@ function UrbanPartnerHero() {
 
             {/* CTA */}
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button href="/contact-us">
+              <Button type="button" onClick={onApply}>
                 Apply for Your City
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
@@ -778,6 +779,8 @@ function UrbanPartnerHero() {
 
 const UrbanPartner = () => {
   const [activeJourney, setActiveJourney] = useState(0);
+  const [isUrbanPartnerFormOpen, setIsUrbanPartnerFormOpen] = useState(false);
+  const urbanPartnerFormRef = useRef(null);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -787,12 +790,33 @@ const UrbanPartner = () => {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (isUrbanPartnerFormOpen) {
+      urbanPartnerFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [isUrbanPartnerFormOpen]);
+
+  const openUrbanPartnerForm = () => {
+    if (isUrbanPartnerFormOpen) {
+      urbanPartnerFormRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    setIsUrbanPartnerFormOpen(true);
+  };
+
   return (
     <div className="overflow-hidden bg-white">
       {/* =========================================================
           HERO
       ========================================================== */}
-      <UrbanPartnerHero />
+      <UrbanPartnerHero onApply={openUrbanPartnerForm} />
 
       {/* =========================================================
           WHAT IS URBAN PARTNER
@@ -1119,7 +1143,11 @@ const UrbanPartner = () => {
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button href="/apply-urban-partner" className="px-7 py-3">
+                <Button
+                  type="button"
+                  onClick={openUrbanPartnerForm}
+                  className="px-7 py-3"
+                >
                   Apply for Your City
                   <ArrowRight className="ml-2" size={15} />
                 </Button>
@@ -1154,6 +1182,16 @@ const UrbanPartner = () => {
           </div>
         </SectionContainer>
       </section>
+
+      {isUrbanPartnerFormOpen && (
+        <div ref={urbanPartnerFormRef} className="mt-8 scroll-mt-24">
+          <PanchayatModalForm
+            onClose={() => setIsUrbanPartnerFormOpen(false)}
+            franchiseType="URBAN_CITY"
+            onSubmit=""
+          />
+        </div>
+      )}
     </div>
   );
 };
