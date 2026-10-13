@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  ArrowDown,
   ArrowRight,
-  BatteryCharging,
   Check,
   ClipboardCheck,
   FileText,
@@ -12,7 +10,6 @@ import {
   MessageCircle,
   Navigation,
   Phone,
-  Search,
   ShieldCheck,
   Smartphone,
   Truck,
@@ -23,7 +20,6 @@ import {
   FileCheck2,
   SearchCheck,
   Zap,
-  X,
 } from "lucide-react";
 
 import {
@@ -34,14 +30,7 @@ import {
 } from "../components/ui/UI";
 import howItWorksBg from "../assets/images/how_it_works_bg.png";
 
-/* ============================================================
-   JOURNEY DATA
-============================================================ */
-
-/* ============================================================
-   CUSTOMER BENEFITS
-============================================================ */
-
+// CUSTOMER BENEFITS
 const CUSTOMER_BENEFITS = [
   {
     icon: UserCheck,
@@ -80,10 +69,7 @@ const CUSTOMER_BENEFITS = [
   },
 ];
 
-/* ============================================================
-   BOOKING CHANNELS
-============================================================ */
-
+// BOOKING CHANNELS
 const BOOKING_CHANNELS = [
   {
     icon: Globe,
@@ -107,11 +93,7 @@ const BOOKING_CHANNELS = [
   },
 ];
 
-/* ============================================================
-   STEP CARD
-============================================================ */
-
-
+// JOURNEY STEPS
 const JOURNEY_STEPS = [
   {
     number: "01",
@@ -158,7 +140,8 @@ const JOURNEY_STEPS = [
   },
 ];
 
-function JourneyStep({ step, active }) {
+// JOURNEY STEP COMPONENT
+const JourneyStep = ({ step, active }) => {
   const Icon = step.icon;
 
   return (
@@ -194,9 +177,10 @@ function JourneyStep({ step, active }) {
       </div>
     </div>
   );
-}
+};
 
-function HowItWorksHero({ onSeeJourney }) {
+// HOW IT WORKS HERO COMPONENT
+const HowItWorksHero = ({ onSeeJourney }) => {
   return (
     <section className="relative overflow-hidden bg-brand-5">
       {/* Background decoration */}
@@ -206,24 +190,19 @@ function HowItWorksHero({ onSeeJourney }) {
 
       <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.85fr_1.15fr]">
-          
-          {/* =====================================================
-              LEFT CONTENT
-          ====================================================== */}
+          {/* LEFT CONTENT */}
           <div className="max-w-[500px]">
             <Eyebrow>HOW DR. SAAB WORKS</Eyebrow>
 
             <h1 className="mt-4 max-w-[500px] text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[52px] xl:text-[56px]">
               From Service Request
-              <span className="block text-brand-70">
-                to Support.
-              </span>
+              <span className="block text-brand-70">to Support.</span>
             </h1>
 
             <p className="mt-5 max-w-[440px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
-              Dr. Saab brings structure, transparency and technical expertise
-              to every service request — from the moment you book to the
-              moment your service is completed.
+              Dr. Saab brings structure, transparency and technical expertise to
+              every service request — from the moment you book to the moment
+              your service is completed.
             </p>
 
             {/* Feature pills */}
@@ -245,19 +224,12 @@ function HowItWorksHero({ onSeeJourney }) {
 
             {/* CTA */}
             <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button
-                to="/our-services"
-                state={{ openBookingForm: true }}
-              >
+              <Button to="/our-services" state={{ openBookingForm: true }}>
                 Book a Service
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <Button
-                type="button"
-                onClick={onSeeJourney}
-                variant="outline"
-              >
+              <Button type="button" onClick={onSeeJourney} variant="outline">
                 See How It Works
               </Button>
             </div>
@@ -280,12 +252,9 @@ function HowItWorksHero({ onSeeJourney }) {
             </div>
           </div>
 
-          {/* =====================================================
-              RIGHT SERVICE JOURNEY CARD
-          ====================================================== */}
+          {/* RIGHT SERVICE JOURNEY CARD */}
           <div className="relative">
             <div className="overflow-hidden rounded-[24px] border border-brand-10 bg-white p-4 shadow-[0_20px_60px_rgba(7,95,69,0.10)] sm:p-5 lg:p-6">
-
               {/* Card heading */}
               <div className="flex items-center justify-between">
                 <div>
@@ -307,9 +276,7 @@ function HowItWorksHero({ onSeeJourney }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  IMAGE
-              ================================================== */}
+              {/* BACKGROUND IMAGE */}
               <div className="relative mt-4 h-[190px] overflow-hidden rounded-[16px] sm:h-[220px] lg:h-[235px]">
                 <img
                   src={howItWorksBg}
@@ -337,15 +304,12 @@ function HowItWorksHero({ onSeeJourney }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  JOURNEY
-              ================================================== */}
+              {/* JOURNEY */}
               <div
                 id="journey-preview"
                 className="relative mt-6 overflow-x-auto pb-1"
               >
                 <div className="relative flex min-w-[620px] justify-between px-1">
-                  
                   {/* Base connector */}
                   <div className="absolute left-[25px] right-[25px] top-[22px] h-px bg-brand-10" />
 
@@ -362,9 +326,7 @@ function HowItWorksHero({ onSeeJourney }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  BOTTOM INFORMATION
-              ================================================== */}
+              {/* BOTTOM INFORMATION */}
               <div className="mt-5 flex items-center gap-3 rounded-xl bg-brand-5 px-3.5 py-3">
                 <div className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-brand-70">
                   <ClipboardCheck size={13} />
@@ -383,9 +345,7 @@ function HowItWorksHero({ onSeeJourney }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING REQUEST CARD
-            ================================================== */}
+            {/* FLOATING REQUEST CARD */}
             <div className="absolute -left-4 top-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -404,9 +364,7 @@ function HowItWorksHero({ onSeeJourney }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING FEEDBACK CARD
-            ================================================== */}
+            {/* FLOATING FEEDBACK CARD */}
             <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
@@ -429,12 +387,7 @@ function HowItWorksHero({ onSeeJourney }) {
       </SectionContainer>
     </section>
   );
-}
-
-
-/* ============================================================
-   PAGE
-============================================================ */
+};
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -442,10 +395,7 @@ const HowItWorks = () => {
 
   const journeyRef = useRef(null);
 
-  /* ------------------------------------------------------------
-     Auto-play journey
-  ------------------------------------------------------------ */
-
+  // Auto-play journey
   useEffect(() => {
     if (!isAutoPlaying) return;
 
@@ -474,16 +424,10 @@ const HowItWorks = () => {
 
   return (
     <main>
-      {/* ========================================================
-          HERO
-      ========================================================= */}
-
+      {/* HERO */}
       <HowItWorksHero onSeeJourney={scrollToJourney} />
 
-      {/* ========================================================
-          INTRO STRIP
-      ========================================================= */}
-
+      {/* INTRO STRIP */}
       <section className="border-b border-brand-10 bg-brand-5">
         <SectionContainer className="grid gap-5 py-8 md:grid-cols-3">
           <div className="flex items-center gap-3">
@@ -528,10 +472,7 @@ const HowItWorks = () => {
         </SectionContainer>
       </section>
 
-      {/* ========================================================
-          7 STEP JOURNEY
-      ========================================================= */}
-
+      {/* 7 STEP JOURNEY */}
       <section
         id="journey"
         ref={journeyRef}
@@ -551,10 +492,7 @@ const HowItWorks = () => {
             </p>
           </div>
 
-          {/* ======================================================
-              DESKTOP JOURNEY
-          ======================================================= */}
-
+          {/* DESKTOP JOURNEY */}
           <div className="mt-14 hidden lg:block">
             <div className="grid grid-cols-7 gap-2">
               {JOURNEY_STEPS.map((step, index) => (
@@ -569,10 +507,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
-          {/* ======================================================
-              MOBILE JOURNEY
-          ======================================================= */}
-
+          {/* MOBILE JOURNEY */}
           <div className="mt-10 overflow-x-auto pb-3 lg:hidden">
             <div className="flex min-w-max gap-3">
               {JOURNEY_STEPS.map((step, index) => (
@@ -587,10 +522,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
-          {/* ======================================================
-              ACTIVE STEP DETAIL
-          ======================================================= */}
-
+          {/* ACTIVE STEP DETAIL */}
           <div className="mt-12 overflow-hidden rounded-3xl bg-brand-95">
             <div className="grid lg:grid-cols-[.8fr_1.2fr]">
               {/* Left */}
@@ -763,11 +695,8 @@ const HowItWorks = () => {
         </SectionContainer>
       </section>
 
-      {/* ========================================================
-          VISUAL JOURNEY PATH
-      ========================================================= */}
-
-      <section className="overflow-hidden bg-brand-5 py-16 lg:py-24">
+      {/* VISUAL JOURNEY PATH */}
+      <section className="overflow-hidden bg-brand-5 py-8 lg:py-14">
         <SectionContainer>
           <div className="text-center">
             <Eyebrow>The Dr. Saab Journey</Eyebrow>
@@ -871,11 +800,8 @@ const HowItWorks = () => {
         </SectionContainer>
       </section>
 
-      {/* ========================================================
-          WHAT CUSTOMER GETS
-      ========================================================= */}
-
-      <section className="bg-white py-16 lg:py-24">
+      {/* WHAT CUSTOMER GETS */}
+      <section className="bg-white py-8 lg:py-14">
         <SectionContainer>
           <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
             {/* Heading */}
@@ -947,11 +873,8 @@ const HowItWorks = () => {
         </SectionContainer>
       </section>
 
-      {/* ========================================================
-          BOOKING CHANNELS
-      ========================================================= */}
-
-      <section className="bg-brand-5 py-16 lg:py-20">
+      {/* BOOKING CHANNELS */}
+      <section className="bg-brand-5 py-18 lg:py-12">
         <SectionContainer>
           <div className="text-center">
             <Eyebrow>Start Your Service Request</Eyebrow>
@@ -1000,10 +923,7 @@ const HowItWorks = () => {
         </SectionContainer>
       </section>
 
-      {/* ========================================================
-          FINAL CTA
-      ========================================================= */}
-
+      {/* FINAL CTA */}
       <section
         id="book-service"
         className="relative overflow-hidden bg-brand-70 py-20"
