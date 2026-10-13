@@ -18,7 +18,6 @@ import {
   Wrench,
   Zap,
   CheckCircle2,
-  ClipboardCheck,
   Ear,
   Eye,
   FileCheck2,
@@ -194,10 +193,7 @@ const diagnosticSteps = [
   },
 ];
 
-/* =========================================================
-   APPROACH STEPS
-========================================================= */
-
+// STEPS APPROACH
 const APPROACH_STEPS = [
   {
     number: "01",
@@ -231,11 +227,7 @@ const APPROACH_STEPS = [
   },
 ];
 
-/* =========================================================
-   APPROACH STEP
-========================================================= */
-
-function ApproachStep({ step, active }) {
+const ApproachStep = ({ step, active }) => {
   const Icon = step.icon;
 
   return (
@@ -267,29 +259,19 @@ function ApproachStep({ step, active }) {
       {active && <CheckCircle2 size={12} className="text-brand-60" />}
     </div>
   );
-}
+};
 
-/* =========================================================
-   ABOUT HERO
-========================================================= */
-
-function AboutHero() {
+// HERO SECTION
+const AboutHero = () => {
   return (
     <section className="relative overflow-hidden bg-brand-5">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
-
       <div className="pointer-events-none absolute -bottom-48 -left-48 h-[480px] w-[480px] rounded-full bg-brand-lime/10 blur-3xl" />
 
       <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 xl:gap-16">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================== */}
-
+          {/* LEFT CONTENT */}
           <div className="max-w-[520px]">
             <Eyebrow>ABOUT DR. SAAB</Eyebrow>
 
@@ -341,10 +323,7 @@ function AboutHero() {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — EDITORIAL IMAGE
-          ================================================== */}
-
+          {/* RIGHT IMAGE SECTION */}
           <div className="relative">
             {/* Main image */}
             <div className="relative overflow-hidden rounded-[28px] border border-brand-10 bg-brand-10 shadow-[0_25px_70px_rgba(7,95,69,0.12)]">
@@ -384,10 +363,7 @@ function AboutHero() {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING APPROACH CARD
-            ================================================== */}
-
+            {/* FLOATING CARD */}
             <div className="absolute -left-5 top-12 hidden w-[205px] rounded-2xl border border-brand-10 bg-white p-3 shadow-[0_18px_45px_rgba(7,95,69,0.14)] sm:block">
               <div className="mb-3 flex items-center justify-between">
                 <div>
@@ -416,10 +392,7 @@ function AboutHero() {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING TRUST CARD
-            ================================================== */}
-
+            {/* FLOATING TRUST CARD */}
             <div className="absolute -right-4 top-[145px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
@@ -438,10 +411,7 @@ function AboutHero() {
               </div>
             </div>
 
-            {/* =================================================
-                BOTTOM FLOATING LABEL
-            ================================================== */}
-
+            {/* BOTTOM FLOATING LABEL */}
             <div className="absolute -bottom-4 left-8 hidden items-center gap-2 rounded-full border border-brand-10 bg-white px-3.5 py-2.5 shadow-[0_10px_25px_rgba(7,95,69,0.10)] sm:flex">
               <div className="h-2 w-2 rounded-full bg-brand-60" />
 
@@ -454,20 +424,16 @@ function AboutHero() {
       </SectionContainer>
     </section>
   );
-}
+};
 
 const About = () => {
   return (
     <div className="bg-white text-brand-ink">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO */}
       <AboutHero />
 
-      {/* =========================================================
-          WHO WE ARE
-      ========================================================== */}
-      <section className="bg-white py-14 sm:py-20 lg:py-24">
+      {/* WHO WE ARE */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:gap-14">
             <div className="relative overflow-hidden rounded-[28px] bg-brand-95 p-7 text-white sm:p-9 lg:min-h-[510px] lg:p-10">
@@ -558,10 +524,8 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          VISION
-      ========================================================== */}
-      <section className="relative overflow-hidden bg-brand-5 py-14 sm:py-20 lg:py-24">
+      {/* VISION */}
+      <section className="relative overflow-hidden bg-brand-5 py-8 sm:py-12 lg:py-14">
         <div className="absolute right-[-120px] top-[-120px] h-[360px] w-[360px] rounded-full bg-brand-lime/15 blur-3xl" />
 
         <SectionContainer className="relative">
@@ -586,10 +550,8 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          MISSION
-      ========================================================== */}
-      <section className="bg-white py-14 sm:py-20 lg:py-24">
+      {/* MISSION */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="max-w-[650px]">
             <Eyebrow>OUR MISSION</Eyebrow>
@@ -630,12 +592,10 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          WHAT DOES DR SAAB REPRESENT
-      ========================================================== */}
+      {/* WHAT DOES DR SAAB REPRESENT */}
       <section
         id="our-approach"
-        className="scroll-mt-20 overflow-hidden bg-brand-95 py-14 text-white sm:py-20 lg:py-24"
+        className="scroll-mt-20 overflow-hidden bg-brand-95 py-8 text-white sm:py-12 lg:py-14"
       >
         <SectionContainer>
           <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr] lg:items-center">
@@ -698,10 +658,8 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          ECOSYSTEM
-      ========================================================== */}
-      <section className="overflow-hidden bg-brand-5/50 py-14 sm:py-20 lg:py-24">
+      {/* ECOSYSTEM */}
+      <section className="overflow-hidden bg-brand-5/50 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="mx-auto max-w-[720px] text-center">
             <Eyebrow>OUR ECOSYSTEM</Eyebrow>
@@ -777,10 +735,8 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          INITIATIVE
-      ========================================================== */}
-      <section className="border-y border-brand-90/10 bg-brand-5/50 py-14 sm:py-16 lg:py-20">
+      {/* INITIATIVE */}
+      <section className="border-y border-brand-90/10 bg-brand-5/50 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
@@ -812,10 +768,8 @@ const About = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
-      <section className="bg-brand-90 py-14 text-white sm:py-16 lg:py-20">
+      {/* FINAL CTA */}
+      <section className="bg-brand-90 py-8 text-white sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-[720px]">
@@ -852,28 +806,14 @@ const About = () => {
   );
 };
 
-/* =========================================================
-   SMALL REUSABLE LOCAL COMPONENTS
-========================================================= */
-
-function HeroNode({ icon, label, className = "" }) {
-  return (
-    <div
-      className={`absolute flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-3 py-2 text-[10px] font-black tracking-[.8px] text-white/80 backdrop-blur ${className}`}
-    >
-      <span className="text-brand-lime">{icon}</span>
-      {label}
-    </div>
-  );
-}
-
-function EcosystemNode({
+// REUSEABLE COMPONENTS
+const EcosystemNode = ({
   icon,
   title,
   description,
   className = "",
   central = false,
-}) {
+}) => {
   return (
     <div
       className={`group relative flex min-h-[94px] items-center gap-3 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 ${
@@ -904,24 +844,6 @@ function EcosystemNode({
       </span>
     </div>
   );
-}
-
-function StethoscopeIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      className="h-5 w-5"
-    >
-      <path d="M6 3v5a4 4 0 0 0 8 0V3" />
-      <path d="M3 3h6" />
-      <path d="M15 3h3" />
-      <path d="M14 16a4 4 0 1 0 8 0v-1" />
-      <circle cx="22" cy="13" r="1" />
-    </svg>
-  );
-}
+};
 
 export default About;
