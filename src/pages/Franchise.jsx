@@ -1,37 +1,28 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
-  BadgeCheck,
   BatteryCharging,
-  Bike,
   Bolt,
   BriefcaseBusiness,
   Building2,
   Check,
   ChevronRight,
-  ClipboardCheck,
   Cpu,
   Crosshair,
   FileCheck2,
   FileText,
-  Gauge,
   GraduationCap,
   Handshake,
   Landmark,
   MapPin,
-  Navigation,
-  Package,
-  Route,
   Search,
   ShieldCheck,
   Smartphone,
   SolarPanel,
   Store,
-  Target,
   Truck,
   Users,
   Wrench,
-  X,
   Zap,
   CheckCircle2,
   CircleDollarSign,
@@ -42,12 +33,12 @@ import {
   Sun,
 } from "lucide-react";
 
-import {
-  Button,
-  CircleIcon,
-  Eyebrow,
-  SectionContainer,
-} from "../components/ui/UI";
+import { Button, Eyebrow, SectionContainer } from "../components/ui/UI";
+
+// SETTING ICON
+const SettingsIcon = () => {
+  return <Wrench size={21} />;
+};
 
 const FRANCHISE_MODELS = [
   {
@@ -96,7 +87,6 @@ const APPLICANT_TYPES = [
   { title: "Urban Entrepreneurs", icon: <Building2 size={19} /> },
   { title: "New Technical Entrepreneurs", icon: <Cpu size={19} /> },
 ];
-
 
 const APPLICATION_STEPS = [
   {
@@ -159,44 +149,33 @@ const APPLICATION_STEPS = [
   },
 ];
 
-function SettingsIcon() {
-  return <Wrench size={21} />;
-}
+const BUSINESS_VERTICALS = [
+  {
+    label: "EV",
+    icon: Zap,
+  },
+  {
+    label: "Battery",
+    icon: BatteryCharging,
+  },
+  {
+    label: "Drone",
+    icon: Drone,
+  },
+  {
+    label: "Solar",
+    icon: Sun,
+  },
+];
 
-const TERRITORY_DATA = {
-  available: {
-    label: "Territory Available",
-    description:
-      "This territory appears available for further evaluation. You can proceed with an application.",
-    icon: <Check size={20} />,
-    className: "border-brand-60/30 bg-brand-5 text-brand-90",
-    dot: "bg-brand-60",
-  },
-  evaluation: {
-    label: "Under Evaluation",
-    description:
-      "This territory is currently being evaluated. Submit your details to express interest.",
-    icon: <Navigation size={20} />,
-    className: "border-orange-200 bg-orange-50 text-orange-900",
-    dot: "bg-orange-500",
-  },
-  appointed: {
-    label: "Partner Already Appointed",
-    description:
-      "A Dr. Saab partner may already be operating in this territory. Availability can be confirmed by the team.",
-    icon: <ShieldCheck size={20} />,
-    className: "border-red-200 bg-red-50 text-red-900",
-    dot: "bg-red-500",
-  },
-};
-
-function SectionHeading({
+// REUSABLE HEADING  COMPONENT
+const SectionHeading = ({
   eyebrow,
   title,
   description,
   light = false,
   centered = false,
-}) {
+}) => {
   return (
     <div className={centered ? "mx-auto text-center" : ""}>
       <Eyebrow light={light}>{eyebrow}</Eyebrow>
@@ -220,9 +199,10 @@ function SectionHeading({
       )}
     </div>
   );
-}
+};
 
-function FranchiseModelCard({ model }) {
+// FRANCHISE MODEL CARD
+const FranchiseModelCard = ({ model }) => {
   return (
     <div className="group relative overflow-hidden rounded-[28px] border border-brand-10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/30 hover:shadow-2xl hover:shadow-brand-95/5 sm:p-8">
       <div
@@ -283,30 +263,7 @@ function FranchiseModelCard({ model }) {
       </div>
     </div>
   );
-}
-
-/* =========================================================
-   FRANCHISE HERO
-========================================================= */
-
-const BUSINESS_VERTICALS = [
-  {
-    label: "EV",
-    icon: Zap,
-  },
-  {
-    label: "Battery",
-    icon: BatteryCharging,
-  },
-  {
-    label: "Drone",
-    icon: Drone,
-  },
-  {
-    label: "Solar",
-    icon: Sun,
-  },
-];
+};
 
 const SUPPORT_ITEMS = [
   {
@@ -331,27 +288,17 @@ const SUPPORT_ITEMS = [
   },
 ];
 
-/* =========================================================
-   FRANCHISE HERO
-========================================================= */
-
-function FranchiseHero() {
+// FRANCHISE HERO COMPONENT
+const FranchiseHero = () => {
   return (
     <section className="relative overflow-hidden bg-brand-5">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div className="pointer-events-none absolute -right-48 -top-48 h-[560px] w-[560px] rounded-full bg-brand-10/60 blur-3xl" />
-
       <div className="pointer-events-none absolute -bottom-48 -left-48 h-[520px] w-[520px] rounded-full bg-brand-lime/10 blur-3xl" />
 
       <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================== */}
-
+          {/* LEFT CONTENT */}
           <div className="max-w-[510px]">
             <Eyebrow>DR. SAAB FRANCHISE</Eyebrow>
 
@@ -440,10 +387,7 @@ function FranchiseHero() {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — FRANCHISE OPPORTUNITY DASHBOARD
-          ================================================== */}
-
+          {/* RIGHT — FRANCHISE OPPORTUNITY DASHBOARD */}
           <div id="territory-checker" className="relative">
             <div className="relative overflow-hidden rounded-[28px] border border-brand-10 bg-white p-4 shadow-[0_25px_70px_rgba(7,95,69,0.11)] sm:p-5 lg:p-6">
               {/* =================================================
@@ -466,10 +410,7 @@ function FranchiseHero() {
                 </div>
               </div>
 
-              {/* =================================================
-                  FRANCHISE TYPES
-              ================================================== */}
-
+              {/* FRANCHISE TYPES */}
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl border border-brand-10 bg-brand-5 p-4">
                   <div className="flex items-center justify-between">
@@ -513,10 +454,7 @@ function FranchiseHero() {
                 </div>
               </div>
 
-              {/* =================================================
-                  TECHNOLOGY COVERAGE
-              ================================================== */}
-
+              {/* TECHNOLOGY COVERAGE */}
               <div className="mt-5">
                 <div className="flex items-center justify-between">
                   <div className="text-[8px] font-black uppercase tracking-[0.9px] text-brand-ink/45">
@@ -546,10 +484,7 @@ function FranchiseHero() {
                 </div>
               </div>
 
-              {/* =================================================
-                  SUPPORT ECOSYSTEM
-              ================================================== */}
-
+              {/* SUPPORT ECOSYSTEM */}
               <div className="mt-5 rounded-2xl bg-brand-95 p-4">
                 <div className="flex items-center justify-between">
                   <div>
@@ -593,10 +528,7 @@ function FranchiseHero() {
                 </div>
               </div>
 
-              {/* =================================================
-                  BOTTOM CTA STATUS
-              ================================================== */}
-
+              {/* BOTTOM CTA STATUS */}
               <div className="mt-4 flex items-center gap-3 rounded-xl border border-brand-10 bg-brand-5 px-3.5 py-3">
                 <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-brand-70">
                   <MapPinned size={14} />
@@ -616,10 +548,7 @@ function FranchiseHero() {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — BUSINESS
-            ================================================== */}
-
+            {/* FLOATING CARD — BUSINESS */}
             <div className="absolute -left-4 top-[125px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -638,10 +567,7 @@ function FranchiseHero() {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — DIGITAL
-            ================================================== */}
-
+            {/* FLOATING CARD — DIGITAL */}
             <div className="absolute -right-4 bottom-[150px] z-20 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
@@ -664,35 +590,10 @@ function FranchiseHero() {
       </SectionContainer>
     </section>
   );
-}
+};
 
 const Franchise = () => {
   const [activeStep, setActiveStep] = useState(0);
-
-  const [territoryForm, setTerritoryForm] = useState({
-    state: "",
-    district: "",
-    area: "",
-    pin: "",
-  });
-
-  const [territoryResult, setTerritoryResult] = useState(null);
-  const [checkingTerritory, setCheckingTerritory] = useState(false);
-
-  const territoryStatus = useMemo(() => {
-    const pin = territoryForm.pin.trim();
-
-    if (!pin) return null;
-
-    const numericPin = Number(pin);
-
-    // Demo state only.
-    // Replace this with your territory availability API.
-    if (numericPin % 3 === 0) return "appointed";
-    if (numericPin % 2 === 0) return "evaluation";
-
-    return "available";
-  }, [territoryForm.pin]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -702,43 +603,13 @@ const Franchise = () => {
     return () => window.clearInterval(interval);
   }, []);
 
-  const handleTerritoryCheck = (event) => {
-    event.preventDefault();
-
-    if (
-      !territoryForm.state ||
-      !territoryForm.district ||
-      !territoryForm.area ||
-      territoryForm.pin.length !== 6
-    ) {
-      setTerritoryResult("invalid");
-      return;
-    }
-
-    setCheckingTerritory(true);
-
-    window.setTimeout(() => {
-      setTerritoryResult(territoryStatus || "available");
-      setCheckingTerritory(false);
-    }, 700);
-  };
-
-  const resultConfig =
-    territoryResult && territoryResult !== "invalid"
-      ? TERRITORY_DATA[territoryResult]
-      : null;
-
   return (
     <div className="overflow-hidden bg-white">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO */}
       <FranchiseHero />
 
-      {/* =========================================================
-          CHOOSE YOUR MODEL
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* CHOOSE YOUR MODEL */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="CHOOSE YOUR MODEL"
@@ -755,10 +626,8 @@ const Franchise = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          WHO CAN APPLY
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* WHO CAN APPLY */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
@@ -819,10 +688,8 @@ const Franchise = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          WHAT DR SAAB MAY PROVIDE
-      ========================================================== */}
-      <section className="bg-brand-95 py-16 sm:py-20 lg:py-24">
+      {/* WHAT DR SAAB MAY PROVIDE */}
+      <section className="bg-brand-95 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             light
@@ -874,10 +741,8 @@ const Franchise = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          APPLICATION JOURNEY
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* APPLICATION JOURNEY */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="APPLICATION JOURNEY"
@@ -1039,229 +904,8 @@ const Franchise = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          TERRITORY CHECKER
-      ========================================================== */}
-      {/* <section
-        id="territory-checker"
-        className="bg-white py-16 sm:py-20 lg:py-24"
-      >
-        <SectionContainer>
-          <div className="overflow-hidden rounded-[32px] border border-brand-10 bg-brand-5">
-            <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-              
-              <div className="relative overflow-hidden bg-brand-95 p-7 text-white sm:p-10 lg:p-12">
-                <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full border border-brand-lime/10" />
-
-                <div className="relative">
-                  <Eyebrow light>TERRITORY CHECKER</Eyebrow>
-
-                  <h2 className="mt-4 text-3xl font-black tracking-[-1.2px] sm:text-4xl">
-                    Is Dr. Saab
-                    <span className="block text-brand-lime">
-                      Available in Your Area?
-                    </span>
-                  </h2>
-
-                  <p className="mt-5 text-sm leading-7 text-white/55">
-                    Check your preferred territory before starting your
-                    application.
-                  </p>
-
-                  <div className="mt-10 space-y-3">
-                    {[
-                      "State",
-                      "District",
-                      "City / Block / Panchayat",
-                      "PIN Code",
-                    ].map((label, index) => (
-                      <div
-                        key={label}
-                        className="flex items-center gap-3 text-xs text-white/50"
-                      >
-                        <span className="grid h-7 w-7 place-items-center rounded-full border border-white/10 text-[8px] font-black text-brand-lime">
-                          {index + 1}
-                        </span>
-
-                        {label}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              
-              <div className="p-7 sm:p-10 lg:p-12">
-                <form onSubmit={handleTerritoryCheck}>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="text-[9px] font-black uppercase tracking-[0.9px] text-brand-70">
-                        State
-                      </span>
-
-                      <select
-                        value={territoryForm.state}
-                        onChange={(e) =>
-                          setTerritoryForm((current) => ({
-                            ...current,
-                            state: e.target.value,
-                          }))
-                        }
-                        className="mt-2 w-full rounded-xl border border-brand-10 bg-white px-4 py-3 text-sm font-medium text-brand-ink outline-none transition focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10"
-                      >
-                        <option value="">Select State</option>
-                        <option>Uttar Pradesh</option>
-                        <option>Delhi</option>
-                        <option>Haryana</option>
-                        <option>Rajasthan</option>
-                        <option>Maharashtra</option>
-                        <option>Madhya Pradesh</option>
-                        <option>Bihar</option>
-                        <option>Gujarat</option>
-                        <option>Other</option>
-                      </select>
-                    </label>
-
-                    <label className="block">
-                      <span className="text-[9px] font-black uppercase tracking-[0.9px] text-brand-70">
-                        District
-                      </span>
-
-                      <input
-                        type="text"
-                        value={territoryForm.district}
-                        onChange={(e) =>
-                          setTerritoryForm((current) => ({
-                            ...current,
-                            district: e.target.value,
-                          }))
-                        }
-                        placeholder="Enter district"
-                        className="mt-2 w-full rounded-xl border border-brand-10 bg-white px-4 py-3 text-sm font-medium text-brand-ink outline-none transition placeholder:text-slate-300 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10"
-                      />
-                    </label>
-
-                    <label className="block">
-                      <span className="text-[9px] font-black uppercase tracking-[0.9px] text-brand-70">
-                        City / Block / Panchayat
-                      </span>
-
-                      <input
-                        type="text"
-                        value={territoryForm.area}
-                        onChange={(e) =>
-                          setTerritoryForm((current) => ({
-                            ...current,
-                            area: e.target.value,
-                          }))
-                        }
-                        placeholder="Enter your area"
-                        className="mt-2 w-full rounded-xl border border-brand-10 bg-white px-4 py-3 text-sm font-medium text-brand-ink outline-none transition placeholder:text-slate-300 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10"
-                      />
-                    </label>
-
-                    <label className="block">
-                      <span className="text-[9px] font-black uppercase tracking-[0.9px] text-brand-70">
-                        PIN Code
-                      </span>
-
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        maxLength={6}
-                        value={territoryForm.pin}
-                        onChange={(e) =>
-                          setTerritoryForm((current) => ({
-                            ...current,
-                            pin: e.target.value.replace(/\D/g, ""),
-                          }))
-                        }
-                        placeholder="6-digit PIN"
-                        className="mt-2 w-full rounded-xl border border-brand-10 bg-white px-4 py-3 text-sm font-medium tracking-[2px] text-brand-ink outline-none transition placeholder:tracking-normal placeholder:text-slate-300 focus:border-brand-60 focus:ring-2 focus:ring-brand-60/10"
-                      />
-                    </label>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={checkingTerritory}
-                    className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-brand-90 px-5 py-3.5 text-xs font-black text-white transition-all hover:-translate-y-0.5 hover:bg-brand-80 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    {checkingTerritory ? (
-                      <>
-                        <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-                        Checking Territory...
-                      </>
-                    ) : (
-                      <>
-                        Check Territory
-                        <Search className="ml-2" size={15} />
-                      </>
-                    )}
-                  </button>
-
-                  {territoryResult === "invalid" && (
-                    <div className="mt-5 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800">
-                      <X className="mt-0.5 shrink-0" size={17} />
-
-                      <div>
-                        <div className="text-xs font-black">
-                          Complete the required fields
-                        </div>
-
-                        <p className="mt-1 text-[11px] leading-5">
-                          Enter your state, district, area and a valid six-digit
-                          PIN code.
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  {resultConfig && (
-                    <div
-                      className={`mt-5 rounded-2xl border p-5 ${resultConfig.className}`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className="mt-0.5">{resultConfig.icon}</div>
-
-                        <div>
-                          <div className="flex items-center gap-2 text-sm font-black">
-                            <span
-                              className={`h-2 w-2 rounded-full ${resultConfig.dot}`}
-                            />
-                            {resultConfig.label}
-                          </div>
-
-                          <p className="mt-2 text-xs leading-6 opacity-75">
-                            {resultConfig.description}
-                          </p>
-
-                          <div className="mt-4">
-                            <Button href="#apply" className="px-4 py-2">
-                              Continue Application
-                              <ArrowRight className="ml-2" size={13} />
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <p className="mt-5 text-center text-[9px] leading-5 text-slate-400">
-                    Territory status is indicative and subject to verification
-                    during the application and territory assessment process.
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </SectionContainer>
-      </section> */}
-
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
-      <section id="apply" className="bg-brand-90 py-16 sm:py-20 lg:py-24">
+      {/* FINAL CTA */}
+      <section id="apply" className="bg-brand-90 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-12 text-center sm:px-10 sm:py-16">
             <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-lime/10 blur-3xl" />
