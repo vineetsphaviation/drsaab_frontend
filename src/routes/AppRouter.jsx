@@ -5,6 +5,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+import { Toaster } from "sonner";
 import {
   AboutUs,
   ContactUs,
@@ -33,6 +34,7 @@ const AppRouter = () => {
     <>
       <Router>
         <ScrollToTop />
+        <Toaster position="top-right" richColors closeButton />
         <div className="flex flex-col min-h-screen">
           <main className="flex-grow">
             <Routes>

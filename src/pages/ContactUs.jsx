@@ -6,16 +6,13 @@ import {
   GraduationCap,
   MapPin,
   MessageSquare,
-  Newspaper,
   Phone,
   ShieldCheck,
   Truck,
-  UserRound,
   Users,
   Wrench,
   X,
   Landmark,
-  WalletCards,
   MessageCircle,
   Handshake,
   Wallet,
@@ -113,10 +110,7 @@ const enquiryOptions = [
   },
 ];
 
-/* =========================================================
-   CONTACT HERO
-========================================================= */
-
+// CONTACT US HERO COMPONENT
 const ContactUsHero = () => {
   return (
     <section className="relative isolate min-h-[540px] overflow-hidden bg-brand-95">
@@ -326,14 +320,10 @@ const ContactUs = () => {
 
   return (
     <div className="bg-white text-brand-ink">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO SECTION */}
       <ContactUsHero />
 
-      {/* =========================================================
-          SUCCESS STATE
-      ========================================================== */}
+      {/* SUCCESS STATE */}
       {isSuccess && (
         <section className="bg-brand-5 py-8">
           <SectionContainer>
@@ -366,9 +356,7 @@ const ContactUs = () => {
         </section>
       )}
 
-      {/* =========================================================
-          WHAT DO YOU NEED?
-      ========================================================== */}
+      {/* WHAT DO YOU NEED? */}
       <section className="bg-white py-20 lg:py-24">
         <SectionContainer>
           <div className="max-w-[680px]">
@@ -436,9 +424,7 @@ const ContactUs = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          CONTACT FORM
-      ========================================================== */}
+      {/* CONTACT FORM */}
       <section
         id="contact-form"
         className="scroll-mt-24 bg-brand-5/55 py-20 lg:py-24"
@@ -498,9 +484,7 @@ const ContactUs = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          TRUST STRIP
-      ========================================================== */}
+      {/* TRUST STRIP */}
       <section className="bg-white py-12">
         <SectionContainer>
           <div className="grid gap-5 sm:grid-cols-3">
@@ -525,9 +509,7 @@ const ContactUs = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
+      {/* FINAL CTA */}
       <section className="bg-brand-90 py-16 text-white lg:py-20">
         <SectionContainer>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
@@ -555,11 +537,8 @@ const ContactUs = () => {
   );
 };
 
-/* =========================================================
-   FORM COMPONENTS
-========================================================= */
-
-function ContactMiniCard({ icon, title, value }) {
+// REUSABLE COMPONENTS
+const ContactMiniCard = ({ icon, title, value }) => {
   return (
     <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-4 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
       <CircleIcon className="h-9 w-9 bg-brand-5 text-brand-70">
@@ -573,9 +552,9 @@ function ContactMiniCard({ icon, title, value }) {
       </div>
     </div>
   );
-}
+};
 
-function TrustItem({ icon, title, text }) {
+const TrustItem = ({ icon, title, text }) => {
   return (
     <div className="rounded-[13px] border border-brand-90/10 bg-brand-5/40 p-5">
       <div className="text-brand-70">{icon}</div>
@@ -585,6 +564,6 @@ function TrustItem({ icon, title, text }) {
       <p className="mt-2 text-[11px] leading-5 text-brand-ink/50">{text}</p>
     </div>
   );
-}
+};
 
 export default ContactUs;

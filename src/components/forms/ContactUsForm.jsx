@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ArrowRight } from "lucide-react";
+import { toast } from "sonner";
 
 import FormInput from "./fields/FormInput";
 import FormSelect from "./fields/FormSelect";
@@ -87,23 +88,40 @@ const ContactUsForm = ({
     try {
       await onSubmit(payload);
 
+      toast.success("Enquiry sent", {
+        description:
+          "Thank you for contacting Dr. Saab. Our team will follow up with you.",
+      });
+
       reset({
         ...DEFAULT_VALUES,
         enquiryCategory: defaultEnquiry,
       });
     } catch (error) {
-      setSubmitError(
-        getFormErrorMessages(
-          error,
-          "Unable to submit your enquiry. Please try again.",
-        ).join(" "),
-      );
+      const message = getFormErrorMessages(
+        error,
+        "Unable to submit your enquiry. Please try again.",
+      ).join(" ");
+
+      setSubmitError(message);
+      toast.error("Enquiry could not be sent", { description: message });
     }
+  };
+
+  const handleValidationError = (validationErrors) => {
+    setSubmitError("");
+    const messages = Object.values(validationErrors)
+      .map((error) => error.message)
+      .filter(Boolean);
+
+    toast.error("Please check the highlighted fields", {
+      description: messages.join(" "),
+    });
   };
 
   return (
     <form
-      onSubmit={handleSubmit(submitForm)}
+      onSubmit={handleSubmit(submitForm, handleValidationError)}
       noValidate
       className="rounded-[18px] border border-brand-90/10 bg-white p-6 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-8"
     >
