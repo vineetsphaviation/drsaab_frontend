@@ -12,7 +12,6 @@ import {
   Clock3,
   Headphones,
   HelpCircle,
-  Mail,
   MapPin,
   MessageCircle,
   Phone,
@@ -41,7 +40,7 @@ const SUPPORT_OPTIONS = [
     title: "Call Support",
     description: "Talk to the Dr. Saab support team.",
     action: "Call Now",
-    href: "tel:+911800000000",
+    href: "tel:+919728395138",
     icon: <Phone size={23} />,
     badge: "DIRECT SUPPORT",
   },
@@ -49,7 +48,7 @@ const SUPPORT_OPTIONS = [
     title: "WhatsApp Support",
     description: "Send your service requirement directly to the support team.",
     action: "Chat on WhatsApp",
-    href: "https://wa.me/911800000000",
+    href: "https://wa.me/919728395138",
     icon: <MessageCircle size={23} />,
     badge: "FAST RESPONSE",
   },
@@ -160,18 +159,13 @@ const FAQS = [
 const CONTACT_DETAILS = [
   {
     label: "Support Phone",
-    value: "+91 1800 000 000",
+    value: "+91 97283 95138",
     icon: <Phone size={18} />,
   },
   {
     label: "WhatsApp",
-    value: "+91 1800 000 000",
+    value: "+91 97283 95138",
     icon: <MessageCircle size={18} />,
-  },
-  {
-    label: "Support Email",
-    value: "support@drsaab.in",
-    icon: <Mail size={18} />,
   },
 ];
 
@@ -382,7 +376,7 @@ function SupportHero({ onApply }) {
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Button>
 
-              <Button href="tel:+911800000000" variant="outline">
+              <Button href="tel:+919728395138" variant="outline">
                 <PhoneCall className="mr-2 h-3.5 w-3.5" />
                 Talk to Support
               </Button>

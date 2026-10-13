@@ -2,10 +2,17 @@ import { SectionContainer, Eyebrow, Button } from "../ui/UI";
 
 import impact from "../../assets/impact.png";
 import franchise from "../../assets/franchise.png";
+import farmerIcon from "../../assets/e_rickshaw.png";
+import eRickshawIcon from "../../assets/rural_entrepreneures.png";
+import evOwnerIcon from "../../assets/farmer.png";
+import entrepreneurIcon from "../../assets/household.png";
+import institutionIcon from "../../assets/school_and_institutions.png";
+import householdIcon from "../../assets/ev_owners.png";
 
 const useCases = [
   [
-    "♟",
+    farmerIcon,
+    "Farmer using agricultural technology",
     <>
       Farmers
       <br />
@@ -13,16 +20,18 @@ const useCases = [
     </>,
   ],
   [
-    "🛺",
+    eRickshawIcon,
+    "Electric rickshaw",
     <>
       E-Rickshaw
       <br />
       Drivers
     </>,
   ],
-  ["⚡", <>EV Owners</>],
+  [evOwnerIcon, "Electric scooter", <>EV Owners</>],
   [
-    "♟",
+    entrepreneurIcon,
+    "Local entrepreneur with a produce cart",
     <>
       Rural
       <br />
@@ -30,14 +39,15 @@ const useCases = [
     </>,
   ],
   [
-    "▥",
+    institutionIcon,
+    "School building",
     <>
       Schools &
       <br />
       Institutions
     </>,
   ],
-  ["⌂", <>Households</>],
+  [householdIcon, "Household", <>Households</>],
 ];
 
 export default function ImpactSection() {
@@ -154,9 +164,9 @@ export default function ImpactSection() {
               gap-4
             "
           >
-            {useCases.map(([icon, text], index) => (
+            {useCases.map(([icon, alt, text]) => (
               <div
-                key={index}
+                key={alt}
                 className="
                   text-center
                   text-[11px]
@@ -165,22 +175,11 @@ export default function ImpactSection() {
                   text-ink
                 "
               >
-                <div
-                  className="
-                    mx-auto
-                    mb-1
-                    grid
-                    h-12
-                    w-12
-                    place-items-center
-                    rounded-full
-                    bg-brand-50
-                    text-[17px]
-                    text-brand-700
-                  "
-                >
-                  {icon}
-                </div>
+                <img
+                  src={icon}
+                  alt={alt}
+                  className="mx-auto mb-1 h-12 w-12 rounded-full object-contain"
+                />
 
                 {text}
               </div>

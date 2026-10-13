@@ -4,7 +4,6 @@ import {
   Building2,
   Check,
   GraduationCap,
-  Mail,
   MapPin,
   MessageSquare,
   Newspaper,
@@ -32,7 +31,6 @@ import {
 
 import supprtImage from "../assets/images/contact_us_hero.png";
 import ContactUsForm from "../components/forms/ContactUsForm";
-import FormErrorSummary from "../components/forms/fields/FormErrorSummary";
 import { useCreateContactEnquiryMutation } from "../features/contactEnquiries/contactEnquiryApi";
 
 const enquiryOptions = [
@@ -160,12 +158,12 @@ const ContactUsHero = () => {
               </Button>
 
               <Button
-                href="mailto:info@drsaab.in"
+                href="tel:+919728395138"
                 variant="light"
                 className="h-11 px-5"
               >
-                <Mail className="mr-2 h-4 w-4" />
-                Email Us
+                <Phone className="mr-2 h-4 w-4" />
+                Call +91 97283 95138
               </Button>
             </div>
 
@@ -208,28 +206,9 @@ const ContactUsHero = () => {
               </div>
 
               <div className="mt-6 space-y-3">
-                {/* Email */}
-                <a
-                  href="mailto:info@drsaab.in"
-                  className="group flex items-center gap-4 rounded-xl border border-brand-90/10 bg-brand-5/60 p-4 transition hover:border-brand-60/50 hover:bg-brand-5"
-                >
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-brand-90 shadow-sm">
-                    <Mail className="h-4 w-4" />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
-                      Email
-                    </p>
-                    <p className="mt-1 truncate text-sm font-bold text-brand-95">
-                      info@drsaab.in
-                    </p>
-                  </div>
-                </a>
-
                 {/* Phone */}
                 <a
-                  href="tel:+911800000000"
+                  href="tel:+919728395138"
                   className="group flex items-center gap-4 rounded-xl border border-brand-90/10 bg-brand-5/60 p-4 transition hover:border-brand-60/50 hover:bg-brand-5"
                 >
                   <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-brand-90 shadow-sm">
@@ -241,7 +220,7 @@ const ContactUsHero = () => {
                       Phone
                     </p>
                     <p className="mt-1 text-sm font-bold text-brand-95">
-                      +91 1800 000 000
+                      +91 97283 95138
                     </p>
                   </div>
                 </a>
@@ -297,9 +276,7 @@ const ContactUsHero = () => {
 const ContactUs = () => {
   const [selectedEnquiryCategory, setSelectedEnquiryCategory] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
-
-  const [createContactEnquiry, { isLoading, isSuccess, error }] =
+  const [createContactEnquiry, { isLoading, isSuccess }] =
     useCreateContactEnquiryMutation();
 
   const selectedEnquiry = useMemo(
@@ -342,8 +319,8 @@ const ContactUs = () => {
         behavior: "smooth",
       });
     } catch (err) {
-      // RTK Query's `error` state will handle displaying the error.
       console.error("Contact enquiry submission failed:", err);
+      throw err;
     }
   };
 
@@ -506,34 +483,14 @@ const ContactUs = () => {
               <div className="mt-8 space-y-3">
                 <ContactMiniCard
                   icon={<Phone size={17} />}
-                  title="Customer Support"
-                  value="For service & technical assistance"
-                />
-
-                <ContactMiniCard
-                  icon={<MessageSquare size={17} />}
-                  title="Partnerships"
-                  value="For enterprise & ecosystem enquiries"
-                />
-
-                <ContactMiniCard
-                  icon={<Mail size={17} />}
-                  title="Email"
-                  value="For formal communication"
+                  title="Call Dr. Saab"
+                  value="+91 97283 95138"
                 />
               </div>
             </div>
 
-            <FormErrorSummary
-              error={error}
-              fallback="Unable to submit your enquiry. Please try again."
-              className="mb-4 mt-0"
-            />
-
-            {/* Form */}
             <ContactUsForm
               defaultEnquiry={selectedEnquiryCategory}
-              enquiryOptions={enquiryOptions}
               onSubmit={handleContactSubmit}
               isSubmitting={isLoading}
             />

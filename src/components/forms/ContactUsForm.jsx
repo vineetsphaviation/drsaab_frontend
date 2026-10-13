@@ -36,7 +36,11 @@ const ENQUIRY_CATEGORIES = [
   { label: "General Enquiry", value: "GENERAL" },
 ];
 
-const ContactUsForm = ({ defaultEnquiry = "", onSubmit }) => {
+const ContactUsForm = ({
+  defaultEnquiry = "",
+  onSubmit,
+  isSubmitting: isSubmittingFromApi = false,
+}) => {
   const [submitError, setSubmitError] = useState("");
 
   const {
@@ -44,7 +48,7 @@ const ContactUsForm = ({ defaultEnquiry = "", onSubmit }) => {
     handleSubmit,
     reset,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting: isFormSubmitting },
   } = useForm({
     mode: "onBlur",
     reValidateMode: "onChange",
@@ -316,10 +320,10 @@ const ContactUsForm = ({ defaultEnquiry = "", onSubmit }) => {
 
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isFormSubmitting || isSubmittingFromApi}
           className="inline-flex min-h-[44px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-6 py-3 text-[11px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isSubmitting ? (
+          {isFormSubmitting || isSubmittingFromApi ? (
             <>
               <span className="mr-2 h-3.5 w-3.5 animate-spin rounded-full border-2 border-white/30 border-t-white" />
               Submitting...

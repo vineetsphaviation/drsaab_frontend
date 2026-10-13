@@ -120,7 +120,7 @@ const Footer = () => {
       {/* =========================================================
           MAIN FOOTER
       ========================================================== */}
-      <SectionContainer className="py-12 sm:py-14 lg:py-16">
+      <SectionContainer className="py-10 sm:py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.45fr_.8fr_.8fr_1.25fr] lg:gap-12">
           {/* =====================================================
               BRAND
@@ -155,7 +155,7 @@ const Footer = () => {
             </div>
 
             {/* Social links */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <p className="mb-3 text-[10px] font-black uppercase tracking-[1.2px] text-brand-70">
                 Follow Dr. Saab
               </p>
@@ -187,7 +187,7 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* =====================================================
@@ -205,16 +205,14 @@ const Footer = () => {
           ====================================================== */}
           <div>
             <h3 className="text-xs font-black tracking-wide text-brand-ink">
-              Newsletter
+              Contact & Service Network
             </h3>
 
-            <p className="mt-3 max-w-[300px] text-[11px] leading-5 text-gray-500">
+            {/* <p className="mt-3 max-w-[300px] text-[11px] leading-5 text-gray-500">
               Get service tips, updates and opportunities from the Dr. Saab
               network.
-            </p>
-
-            {/* Newsletter form */}
-            <form
+            </p> */}
+            {/* <form
               onSubmit={subscribe}
               className="
                 mt-5
@@ -282,10 +280,9 @@ const Footer = () => {
 
                 {!isSubmitting && <ArrowRight size={12} />}
               </button>
-            </form>
+            </form> */}
 
-            {/* Newsletter feedback */}
-            {message && (
+            {/* {message && (
               <div
                 className={`
                   mt-3
@@ -307,12 +304,11 @@ const Footer = () => {
 
                 {message}
               </div>
-            )}
+            )} */}
 
-            {/* Contact mini cards */}
             <div className="mt-6 space-y-2.5">
               <a
-                href="tel:+919999999999"
+                href="tel:+919728395138"
                 className="
                   group
                   flex
@@ -337,7 +333,7 @@ const Footer = () => {
                   </span>
 
                   <span className="block text-[11px] font-black text-brand-90">
-                    Call Dr. Saab
+                    +91 97283 95138
                   </span>
                 </span>
               </a>

@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import {
   AboutUs,
   ContactUs,
@@ -12,10 +18,21 @@ import {
 } from "../pages";
 import AppLayout from "../layouts/AppLayout";
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 const AppRouter = () => {
   return (
     <>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           <main className="flex-grow">
             <Routes>
