@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 import {
   ArrowRight,
   BatteryCharging,
@@ -11,10 +12,7 @@ import {
   ClipboardCheck,
   CloudCog,
   Cpu,
-  CreditCard,
   Drone,
-  Droplets,
-  Factory,
   FileCheck2,
   Gauge,
   GraduationCap,
@@ -23,7 +21,6 @@ import {
   MapPin,
   Navigation,
   PackageCheck,
-  Phone,
   Route,
   Satellite,
   ShieldCheck,
@@ -45,30 +42,8 @@ import {
 } from "../components/ui/UI";
 import panchayatHeroBg from "../assets/images/panchayat_hero_bg.png";
 import PanchayatModalForm from "../components/forms/PanchayatModalForm";
+import { getFormErrorMessages } from "../components/forms/fields/formErrorUtils";
 import { useCreatePartnerApplicationMutation } from "../features/partnerApplications/partnerApplicationApi";
-
-const TECHNOLOGIES = [
-  {
-    title: "EV",
-    subtitle: "Mobility Support",
-    icon: <Zap size={18} />,
-  },
-  {
-    title: "Battery",
-    subtitle: "Diagnostics & Backup",
-    icon: <BatteryCharging size={18} />,
-  },
-  {
-    title: "Drone",
-    subtitle: "Agri-Tech Support",
-    icon: <Bot size={18} />,
-  },
-  {
-    title: "Solar",
-    subtitle: "Energy Solutions",
-    icon: <SolarPanel size={18} />,
-  },
-];
 
 const WORKSHOP_ITEMS = [
   {
@@ -271,26 +246,9 @@ const NETWORK_NODES = [
   { label: "Village 4", type: "village" },
 ];
 
-function TechnologyPill({ icon, title, subtitle }) {
+const SectionHeading = ({ eyebrow, title, description, light = false }) => {
   return (
-    <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2.5 backdrop-blur-sm">
-      <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-lime text-brand-95">
-        {icon}
-      </span>
-
-      <div>
-        <div className="text-[11px] font-black uppercase tracking-[0.8px] text-white">
-          {title}
-        </div>
-        <div className="mt-0.5 text-[10px] text-white/55">{subtitle}</div>
-      </div>
-    </div>
-  );
-}
-
-function SectionHeading({ eyebrow, title, description, light = false }) {
-  return (
-    <div className="max-w-3xl">
+    <div className="max-w-5xl">
       <Eyebrow light={light}>{eyebrow}</Eyebrow>
 
       <h2
@@ -312,9 +270,9 @@ function SectionHeading({ eyebrow, title, description, light = false }) {
       )}
     </div>
   );
-}
+};
 
-function NetworkNode({ label, type }) {
+const NetworkNode = ({ label, type }) => {
   const isHub = type === "hub";
 
   return (
@@ -338,11 +296,7 @@ function NetworkNode({ label, type }) {
       </div>
     </div>
   );
-}
-
-/* =========================================================
-   PANCHAYAT HERO
-========================================================= */
+};
 
 const PANCHAYAT_SERVICES = [
   {
@@ -386,7 +340,7 @@ const VILLAGES = [
   },
 ];
 
-function VillageNode({ className, label }) {
+const VillageNode = ({ className, label }) => {
   return (
     <div className={`absolute ${className}`}>
       <div className="group flex items-center gap-1.5">
@@ -402,9 +356,9 @@ function VillageNode({ className, label }) {
       </div>
     </div>
   );
-}
+};
 
-function ServiceMarker({ icon: Icon, label, className }) {
+const ServiceMarker = ({ icon: Icon, label, className }) => {
   return (
     <div
       className={`absolute ${className} flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md`}
@@ -418,25 +372,52 @@ function ServiceMarker({ icon: Icon, label, className }) {
       </span>
     </div>
   );
-}
+};
 
-function PanchayatHero({ onApply }) {
+const InvestmentStat = ({
+  label,
+  value,
+  className = "",
+  highlighted = false,
+}) => {
+  return (
+    <div
+      className={`rounded-2xl border p-4 ${
+        highlighted
+          ? "border-brand-90 bg-brand-90 text-white"
+          : "border-brand-10 bg-white text-brand-95"
+      } ${className}`}
+    >
+      <div
+        className={`text-[8px] font-black uppercase tracking-[0.8px] ${
+          highlighted ? "text-white/50" : "text-slate-400"
+        }`}
+      >
+        {label}
+      </div>
+      <div
+        className={`mt-1.5 text-lg font-black leading-tight ${
+          highlighted ? "text-brand-lime" : "text-brand-95"
+        }`}
+      >
+        {value}
+      </div>
+    </div>
+  );
+};
+
+// PANCHAYAT HERO
+const PanchayatHero = ({ onApply }) => {
   return (
     <section className="relative overflow-hidden bg-brand-5">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
 
       <div className="pointer-events-none absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
 
-      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+      <SectionContainer className="relative py-8 sm:py-12 lg:py-14">
         <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================== */}
-
+          {/* LEFT CONTENT */}
           <div className="max-w-[500px]">
             <Eyebrow>PANCHAYAT SERVICE-ON-WHEELS</Eyebrow>
 
@@ -513,20 +494,14 @@ function PanchayatHero({ onApply }) {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — TERRITORY VISUAL
-          ================================================== */}
-
+          {/* RIGHT — TERRITORY VISUAL */}
           <div
             id="territory"
             className="relative min-h-[470px] sm:min-h-[520px]"
           >
             {/* Main visual container */}
             <div className="absolute inset-0 overflow-hidden rounded-[28px] border border-brand-10 bg-[#e8f2ed] shadow-[0_25px_70px_rgba(7,95,69,0.10)]">
-              {/* =================================================
-                  DUMMY RURAL IMAGE
-              ================================================== */}
-
+              {/* RURAL BG IMAGE */}
               <img
                 src={panchayatHeroBg}
                 alt="Rural landscape"
@@ -536,10 +511,7 @@ function PanchayatHero({ onApply }) {
               {/* Green map overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-brand-5/65 via-brand-5/45 to-brand-10/60" />
 
-              {/* =================================================
-                  TOP CARD
-              ================================================== */}
-
+              {/* TOP CARD */}
               <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
                 <div>
                   <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
@@ -560,10 +532,7 @@ function PanchayatHero({ onApply }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  NETWORK ROUTES
-              ================================================== */}
-
+              {/* NETWORK ROUTES */}
               <svg
                 className="absolute inset-0 z-[2] h-full w-full"
                 viewBox="0 0 800 600"
@@ -635,10 +604,7 @@ function PanchayatHero({ onApply }) {
                 />
               </svg>
 
-              {/* =================================================
-                  VILLAGE NODES
-              ================================================== */}
-
+              {/* VILLAGE NODES */}
               <div className="absolute inset-0 z-10">
                 {VILLAGES.map((village) => (
                   <VillageNode
@@ -649,10 +615,7 @@ function PanchayatHero({ onApply }) {
                 ))}
               </div>
 
-              {/* =================================================
-                  CENTRAL DR SAAB HUB
-              ================================================== */}
-
+              {/* CENTRAL DR SAAB HUB */}
               <div className="absolute left-1/2 top-[52%] z-20 -translate-x-1/2 -translate-y-1/2">
                 {/* pulse rings */}
                 <div className="absolute -inset-8 animate-pulse rounded-full border border-brand-60/15" />
@@ -676,10 +639,7 @@ function PanchayatHero({ onApply }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  SERVICE MARKERS
-              ================================================== */}
-
+              {/* SERVICE MARKERS */}
               <ServiceMarker
                 icon={Zap}
                 label="EV"
@@ -704,10 +664,7 @@ function PanchayatHero({ onApply }) {
                 className="right-[24%] bottom-[18%]"
               />
 
-              {/* =================================================
-                  COVERAGE CARD
-              ================================================== */}
-
+              {/* COVERAGE CARD */}
               <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-white/70 bg-white/90 p-3.5 shadow-[0_12px_30px_rgba(7,95,69,0.10)] backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-2.5">
@@ -737,10 +694,7 @@ function PanchayatHero({ onApply }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — TRAINED SUPPORT
-            ================================================== */}
-
+            {/* FLOATING CARD — TRAINED SUPPORT */}
             <div className="absolute -left-4 top-[145px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -759,10 +713,7 @@ function PanchayatHero({ onApply }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — DIGITAL
-            ================================================== */}
-
+            {/* FLOATING CARD — DIGITAL */}
             <div className="absolute -right-4 bottom-[130px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
@@ -785,7 +736,7 @@ function PanchayatHero({ onApply }) {
       </SectionContainer>
     </section>
   );
-}
+};
 
 const PanchayatModal = () => {
   const [activeLaunchStep, setActiveLaunchStep] = useState(0);
@@ -832,23 +783,29 @@ const PanchayatModal = () => {
   const handlePanchayatApplicationSubmit = async (payload) => {
     try {
       await createPartnerApplication(payload).unwrap();
+      toast.success("Application submitted", {
+        description:
+          "Thank you for your interest. Our team will review your application and contact you.",
+      });
     } catch (err) {
       console.error("Panchayat application submission failed:", err);
+      toast.error("Application could not be submitted", {
+        description: getFormErrorMessages(
+          err,
+          "We couldn't submit your application. Please try again.",
+        ).join(" "),
+      });
       throw err;
     }
   };
 
   return (
     <div className="overflow-hidden bg-white">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO */}
       <PanchayatHero onApply={openPanchayatForm} />
 
-      {/* =========================================================
-          WHAT IS THE MODEL
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* WHAT IS THE MODEL */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
@@ -899,10 +856,8 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          ONE PANCHAYAT → ONE DR SAAB
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* ONE PANCHAYAT → ONE DR SAAB */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="THE CORE PROPOSITION"
@@ -961,10 +916,8 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          MOBILE WORKSHOP
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* MOBILE WORKSHOP */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
@@ -1035,10 +988,8 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          TERRITORY
-      ========================================================== */}
-      <section id="territory" className="bg-brand-95 py-16 sm:py-20 lg:py-24">
+      {/* TERRITORY */}
+      <section id="territory" className="bg-brand-95 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <SectionHeading
@@ -1079,10 +1030,8 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          ₹11 LAKH MODEL
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* ₹11 LAKH MODEL */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
@@ -1099,28 +1048,52 @@ const PanchayatModal = () => {
                 capital required to establish the model.
               </p>
 
-              <div className="mt-8 rounded-[26px] bg-brand-95 p-6 text-white shadow-xl shadow-brand-95/10">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-lime text-brand-95">
-                    <IndianRupee size={21} />
-                  </div>
+              <div className="relative mt-8 overflow-hidden rounded-[26px] bg-brand-95 p-6 text-white shadow-xl shadow-brand-95/10">
+                <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full border border-white/10" />
+                <div className="pointer-events-none absolute -bottom-16 -left-12 h-40 w-40 rounded-full bg-brand-60/20 blur-2xl" />
 
-                  <div>
-                    <div className="text-[9px] font-black uppercase tracking-[1px] text-white/45">
-                      Indicative Enterprise Cost
+                <div className="relative">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                      <IndianRupee size={21} />
                     </div>
-                    <div className="mt-1 text-3xl font-black">{totalCost}</div>
+
+                    <div>
+                      <div className="text-[9px] font-black uppercase tracking-[1px] text-white/45">
+                        Indicative Enterprise Cost
+                      </div>
+                      <div className="mt-1 text-3xl font-black">
+                        {totalCost}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
+                    <div className="h-full w-full rounded-full bg-brand-lime" />
+                  </div>
+
+                  <div className="mt-3 flex justify-between text-[9px] uppercase tracking-[0.7px] text-white/40">
+                    <span>Project Cost</span>
+                    <span>₹11.00 Lakh</span>
                   </div>
                 </div>
+              </div>
 
-                <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
-                  <div className="h-full w-full rounded-full bg-brand-lime" />
-                </div>
-
-                <div className="mt-3 flex justify-between text-[9px] uppercase tracking-[0.7px] text-white/40">
-                  <span>Project Cost</span>
-                  <span>₹11.00 Lakh</span>
-                </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                <InvestmentStat
+                  label="Enterprise cost"
+                  value="₹11 Lakh"
+                  className="bg-brand-5"
+                />
+                <InvestmentStat
+                  label="Candidate contribution"
+                  value="₹1 Lakh"
+                />
+                <InvestmentStat
+                  label="Proposed finance facilitation"
+                  value="Up to ₹10 Lakh*"
+                  highlighted
+                />
               </div>
             </div>
 
@@ -1165,36 +1138,6 @@ const PanchayatModal = () => {
                 </div>
               </div>
 
-              {/* Financial summary */}
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-brand-10 bg-brand-5 p-5">
-                  <div className="text-[9px] font-black uppercase tracking-[0.9px] text-slate-400">
-                    Enterprise Cost
-                  </div>
-                  <div className="mt-2 text-xl font-black text-brand-95">
-                    ₹11 Lakh
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-brand-10 bg-white p-5">
-                  <div className="text-[9px] font-black uppercase tracking-[0.9px] text-slate-400">
-                    Candidate Contribution
-                  </div>
-                  <div className="mt-2 text-xl font-black text-brand-95">
-                    ₹1 Lakh
-                  </div>
-                </div>
-
-                <div className="rounded-2xl bg-brand-90 p-5 text-white">
-                  <div className="text-[9px] font-black uppercase tracking-[0.9px] text-white/45">
-                    Proposed Finance Facilitation
-                  </div>
-                  <div className="mt-2 text-xl font-black text-brand-lime">
-                    Up to ₹10 Lakh*
-                  </div>
-                </div>
-              </div>
-
               <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-5">
                 <div className="flex gap-3">
                   <ShieldCheck
@@ -1215,10 +1158,8 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          LAUNCH JOURNEY
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* LAUNCH JOURNEY */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="PANCHAYAT LAUNCH JOURNEY"
@@ -1226,9 +1167,9 @@ const PanchayatModal = () => {
             description="A structured journey helps the entrepreneur move from initial application through territory assessment, training, enterprise setup and launch."
           />
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch xl:gap-8">
             {/* Steps */}
-            <div className="space-y-2">
+            <div className="grid content-start grid-cols-1 gap-2 sm:grid-cols-2">
               {LAUNCH_STEPS.map((step, index) => {
                 const active = index === activeLaunchStep;
 
@@ -1237,7 +1178,7 @@ const PanchayatModal = () => {
                     type="button"
                     key={step.number}
                     onClick={() => setActiveLaunchStep(index)}
-                    className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all ${
+                    className={`flex min-h-[76px] w-full items-center gap-3 rounded-2xl border p-3 text-left transition-all sm:p-3.5 ${
                       active
                         ? "border-brand-60/30 bg-brand-95 text-white shadow-lg shadow-brand-95/10"
                         : "border-brand-10 bg-white text-brand-95 hover:border-brand-60/20"
@@ -1262,7 +1203,7 @@ const PanchayatModal = () => {
                         {step.number}
                       </div>
 
-                      <div className="mt-0.5 text-sm font-black">
+                      <div className="mt-0.5 text-xs font-black leading-snug sm:text-[13px]">
                         {step.title}
                       </div>
                     </div>
@@ -1277,11 +1218,11 @@ const PanchayatModal = () => {
             </div>
 
             {/* Active detail */}
-            <div className="relative overflow-hidden rounded-[30px] bg-brand-95 p-7 text-white sm:p-10">
+            <div className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[30px] bg-brand-95 p-6 text-white sm:p-8 lg:min-h-full">
               <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-brand-lime/10" />
               <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full border border-white/5" />
 
-              <div className="relative">
+              <div className="relative flex flex-1 flex-col">
                 <div className="flex items-center justify-between">
                   <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand-lime text-brand-95">
                     {LAUNCH_STEPS[activeLaunchStep].icon}
@@ -1292,21 +1233,21 @@ const PanchayatModal = () => {
                   </span>
                 </div>
 
-                <div className="mt-12 max-w-lg">
+                <div className="mt-8 max-w-lg flex-1">
                   <div className="text-[10px] font-black uppercase tracking-[1.3px] text-brand-lime">
                     Step {LAUNCH_STEPS[activeLaunchStep].number}
                   </div>
 
-                  <h3 className="mt-3 text-3xl font-black tracking-[-1px]">
+                  <h3 className="mt-3 text-2xl font-black tracking-[-1px] sm:text-3xl">
                     {LAUNCH_STEPS[activeLaunchStep].title}
                   </h3>
 
-                  <p className="mt-5 text-sm leading-7 text-white/60">
+                  <p className="mt-4 text-sm leading-6 text-white/65 sm:leading-7">
                     {LAUNCH_STEPS[activeLaunchStep].description}
                   </p>
                 </div>
 
-                <div className="mt-12">
+                <div className="mt-8">
                   <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-[0.8px] text-white/35">
                     <span>Panchayat launch progress</span>
                     <span>
@@ -1331,12 +1272,10 @@ const PanchayatModal = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          APPLICATION CTA
-      ========================================================== */}
-      <section id="apply" className="bg-brand-90 py-16 sm:py-20 lg:py-24">
+      {/* APPLICATION CTA */}
+      <section id="apply" className="bg-brand-90 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
-          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-12 text-center sm:px-10 sm:py-16">
+          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-8 text-center sm:px-10 sm:py-12">
             <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-lime/10 blur-3xl" />
 
             <div className="relative mx-auto max-w-3xl">
