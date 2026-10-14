@@ -150,14 +150,14 @@ function getErrorMessage(errors, name) {
   return errors[name]?.message;
 }
 
-export default function MechanicForm({
+const MechanicForm = ({
   onSubmit,
   onClose,
   defaultValues = {},
   isLoading = false,
   isSuccess = false,
   apiError = null,
-}) {
+}) => {
   const [activeStep, setActiveStep] = useState(0);
   const [submissionError, setSubmissionError] = useState("");
 
@@ -746,4 +746,6 @@ export default function MechanicForm({
       </div>
     </div>
   );
-}
+};
+
+export default MechanicForm;

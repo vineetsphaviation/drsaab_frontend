@@ -176,7 +176,7 @@ function toPayload(values) {
   return payload;
 }
 
-export default function ServiceRequestForm({
+const ServiceRequestForm = ({
   defaultServiceCategory = "",
   onSubmit,
   onClose,
@@ -184,7 +184,7 @@ export default function ServiceRequestForm({
   isLoading = false,
   isSuccess = false,
   apiError = null,
-}) {
+}) => {
   const formId = useId();
 
   const [activeStep, setActiveStep] = useState(0);
@@ -726,17 +726,14 @@ export default function ServiceRequestForm({
                 </p>
               </div>
 
-              <FormErrorSummary
-                error={apiError}
-                fallback={submissionError}
-              />
+              <FormErrorSummary error={apiError} fallback={submissionError} />
             </form>
           </div>
         </div>
       </div>
     </SectionContainer>
   );
-}
+};
 
 function VisualTrustItem({ icon: Icon, title, description }) {
   return (
@@ -752,3 +749,5 @@ function VisualTrustItem({ icon: Icon, title, description }) {
     </div>
   );
 }
+
+export default ServiceRequestForm;
