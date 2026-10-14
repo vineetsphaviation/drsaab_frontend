@@ -18,6 +18,7 @@ import {
   Wallet,
   Megaphone,
 } from "lucide-react";
+import { toast } from "sonner";
 
 import {
   Button,
@@ -28,6 +29,7 @@ import {
 
 import supprtImage from "../assets/images/contact_us_hero.png";
 import ContactUsForm from "../components/forms/ContactUsForm";
+import { getFormErrorMessages } from "../components/forms/fields/formErrorUtils";
 import { useCreateContactEnquiryMutation } from "../features/contactEnquiries/contactEnquiryApi";
 
 const enquiryOptions = [
@@ -270,8 +272,10 @@ const ContactUsHero = () => {
 const ContactUs = () => {
   const [selectedEnquiryCategory, setSelectedEnquiryCategory] = useState("");
 
-  const [createContactEnquiry, { isLoading, isSuccess }] =
-    useCreateContactEnquiryMutation();
+  const [
+    createContactEnquiry,
+    { isLoading, isSuccess, reset: resetContactEnquiry },
+  ] = useCreateContactEnquiryMutation();
 
   const selectedEnquiry = useMemo(
     () =>
@@ -306,6 +310,11 @@ const ContactUs = () => {
     try {
       await createContactEnquiry(payload).unwrap();
 
+      toast.success("Enquiry sent", {
+        description:
+          "Thank you for contacting Dr. Saab. Our team will follow up with you.",
+      });
+
       setSelectedEnquiryCategory("");
 
       window.scrollTo({
@@ -314,6 +323,11 @@ const ContactUs = () => {
       });
     } catch (err) {
       console.error("Contact enquiry submission failed:", err);
+      const message = getFormErrorMessages(
+        err,
+        "Unable to submit your enquiry. Please try again.",
+      ).join(" ");
+      toast.error("Enquiry could not be sent", { description: message });
       throw err;
     }
   };
@@ -345,7 +359,7 @@ const ContactUs = () => {
 
               <button
                 type="button"
-                onClick={() => createContactEnquiry.reset()}
+                onClick={resetContactEnquiry}
                 className="text-brand-ink/35 transition hover:text-brand-95"
                 aria-label="Close success message"
               >
@@ -357,7 +371,7 @@ const ContactUs = () => {
       )}
 
       {/* WHAT DO YOU NEED? */}
-      <section className="bg-white py-20 lg:py-24">
+      <section className="bg-white py-8 lg:py-12">
         <SectionContainer>
           <div className="max-w-[680px]">
             <Eyebrow>WHAT DO YOU NEED?</Eyebrow>
@@ -372,7 +386,7 @@ const ContactUs = () => {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {enquiryOptions.map((item) => {
               const selected = selectedEnquiryCategory === item.category;
 
@@ -427,30 +441,30 @@ const ContactUs = () => {
       {/* CONTACT FORM */}
       <section
         id="contact-form"
-        className="scroll-mt-24 bg-brand-5/55 py-20 lg:py-24"
+        className="scroll-mt-24 bg-brand-5/55 py-14 lg:py-16"
       >
         <SectionContainer>
-          <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:items-start">
+          <div className="grid gap-8 lg:grid-cols-[.78fr_1.22fr] lg:items-start">
             {/* Form intro */}
             <div className="lg:sticky lg:top-28">
               <Eyebrow>CONTACT FORM</Eyebrow>
 
-              <h2 className="mt-3 text-3xl font-black tracking-[-1px] text-brand-95 sm:text-4xl">
+              <h2 className="mt-2 text-2xl font-black tracking-[-1px] text-brand-95 sm:text-3xl">
                 Tell us a little about yourself.
               </h2>
 
-              <p className="mt-5 text-[14px] leading-7 text-brand-ink/60">
+              <p className="mt-3 text-[13px] leading-6 text-brand-ink/60">
                 A few details will help us understand your requirement and
                 connect you with the appropriate Dr. Saab team.
               </p>
 
               {selectedEnquiry && (
-                <div className="mt-8 rounded-[14px] border border-brand-60/20 bg-white p-5 shadow-sm">
+                <div className="mt-5 rounded-[14px] border border-brand-60/20 bg-white p-4 shadow-sm">
                   <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
                     CURRENT ENQUIRY
                   </div>
 
-                  <div className="mt-3 flex items-center gap-3">
+                  <div className="mt-2 flex items-center gap-3">
                     <CircleIcon>{selectedEnquiry.icon}</CircleIcon>
 
                     <div>
@@ -458,7 +472,7 @@ const ContactUs = () => {
                         {selectedEnquiry.title}
                       </div>
 
-                      <div className="mt-1 text-[10px] text-brand-ink/45">
+                      <div className="mt-0.5 text-[10px] text-brand-ink/45">
                         {selectedEnquiry.description}
                       </div>
                     </div>
@@ -466,12 +480,54 @@ const ContactUs = () => {
                 </div>
               )}
 
-              <div className="mt-8 space-y-3">
+              <div className="mt-5">
                 <ContactMiniCard
                   icon={<Phone size={17} />}
                   title="Call Dr. Saab"
                   value="+91 97283 95138"
                 />
+              </div>
+
+              <div className="mt-4 space-y-2">
+                <TrustItem
+                  icon={<ShieldCheck size={18} />}
+                  title="Structured Enquiries"
+                  text="Your request is captured with a defined enquiry category."
+                />
+
+                <TrustItem
+                  icon={<Users size={18} />}
+                  title="Right Team"
+                  text="Information helps route your enquiry to the appropriate function."
+                />
+
+                <TrustItem
+                  icon={<MessageSquare size={18} />}
+                  title="Clear Communication"
+                  text="A structured form makes the next conversation easier."
+                />
+              </div>
+
+              <div className="mt-4 rounded-2xl bg-brand-90 p-4 text-white">
+                <Eyebrow light>DR. SAAB</Eyebrow>
+
+                <h3 className="mt-2 text-lg font-black leading-tight">
+                  Not sure which option is right for you?
+                </h3>
+
+                <p className="mt-2 text-xs leading-5 text-white/70">
+                  Send a general enquiry and describe what you need. Our team
+                  will help find the right route.
+                </p>
+
+                <Button
+                  href="#contact-form"
+                  variant="light"
+                  className="mt-4 w-full justify-between border-white/20 bg-white/10 px-4 py-2.5 text-white hover:bg-white hover:text-brand-95"
+                >
+                  Send a General Enquiry
+                  <ArrowRight size={14} />
+                </Button>
               </div>
             </div>
 
@@ -484,55 +540,6 @@ const ContactUs = () => {
         </SectionContainer>
       </section>
 
-      {/* TRUST STRIP */}
-      <section className="bg-white py-12">
-        <SectionContainer>
-          <div className="grid gap-5 sm:grid-cols-3">
-            <TrustItem
-              icon={<ShieldCheck size={19} />}
-              title="Structured Enquiries"
-              text="Your request is captured with a defined enquiry category."
-            />
-
-            <TrustItem
-              icon={<Users size={19} />}
-              title="Right Team"
-              text="Information helps route your enquiry to the appropriate function."
-            />
-
-            <TrustItem
-              icon={<MessageSquare size={19} />}
-              title="Clear Communication"
-              text="A structured form makes the next conversation easier."
-            />
-          </div>
-        </SectionContainer>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="bg-brand-90 py-16 text-white lg:py-20">
-        <SectionContainer>
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-[700px]">
-              <Eyebrow light>DR. SAAB</Eyebrow>
-
-              <h2 className="mt-3 text-3xl font-black tracking-[-1px] sm:text-4xl">
-                Not sure which option is right for you?
-              </h2>
-
-              <p className="mt-4 text-[14px] leading-7 text-white/60">
-                That's okay. Submit a general enquiry and describe what you
-                need. Our team can determine the appropriate route.
-              </p>
-            </div>
-
-            <Button href="#contact-form" variant="light" className="shrink-0">
-              Send a General Enquiry
-              <ArrowRight size={14} className="ml-2" />
-            </Button>
-          </div>
-        </SectionContainer>
-      </section>
     </div>
   );
 };
@@ -540,8 +547,8 @@ const ContactUs = () => {
 // REUSABLE COMPONENTS
 const ContactMiniCard = ({ icon, title, value }) => {
   return (
-    <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-4 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
-      <CircleIcon className="h-9 w-9 bg-brand-5 text-brand-70">
+    <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
+      <CircleIcon className="h-8 w-8 bg-brand-5 text-brand-70">
         {icon}
       </CircleIcon>
 
@@ -556,12 +563,16 @@ const ContactMiniCard = ({ icon, title, value }) => {
 
 const TrustItem = ({ icon, title, text }) => {
   return (
-    <div className="rounded-[13px] border border-brand-90/10 bg-brand-5/40 p-5">
-      <div className="text-brand-70">{icon}</div>
+    <div className="flex items-start gap-3 rounded-[13px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
+      <CircleIcon className="h-8 w-8 shrink-0 bg-brand-5 text-brand-70">
+        {icon}
+      </CircleIcon>
 
-      <h3 className="mt-4 text-[12px] font-black text-brand-95">{title}</h3>
+      <div>
+        <h3 className="text-[11px] font-black text-brand-95">{title}</h3>
 
-      <p className="mt-2 text-[11px] leading-5 text-brand-ink/50">{text}</p>
+        <p className="mt-0.5 text-[10px] leading-4 text-brand-ink/55">{text}</p>
+      </div>
     </div>
   );
 };

@@ -88,11 +88,6 @@ const ContactUsForm = ({
     try {
       await onSubmit(payload);
 
-      toast.success("Enquiry sent", {
-        description:
-          "Thank you for contacting Dr. Saab. Our team will follow up with you.",
-      });
-
       reset({
         ...DEFAULT_VALUES,
         enquiryCategory: defaultEnquiry,
@@ -104,7 +99,6 @@ const ContactUsForm = ({
       ).join(" ");
 
       setSubmitError(message);
-      toast.error("Enquiry could not be sent", { description: message });
     }
   };
 
@@ -123,16 +117,9 @@ const ContactUsForm = ({
     <form
       onSubmit={handleSubmit(submitForm, handleValidationError)}
       noValidate
-      className="rounded-[18px] border border-brand-90/10 bg-white p-6 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-8"
+      className="rounded-[18px] border border-brand-90/10 bg-white p-5 shadow-[0_20px_60px_rgba(3,78,55,.06)] sm:p-6"
     >
-      {/* 01 — PERSONAL */}
-      <FormSectionHeading
-        number="01"
-        title="Personal"
-        description="How can we reach you?"
-      />
-
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-x-4 gap-y-3 sm:grid-cols-2">
         <FormInput
           label="Full Name"
           placeholder="Your full name"
@@ -170,7 +157,6 @@ const ContactUsForm = ({
           autoComplete="email"
           required
           maxLength={254}
-          className="sm:col-span-2"
           error={errors.email?.message}
           {...register("email", {
             required: "Please enter your email address.",
@@ -185,18 +171,7 @@ const ContactUsForm = ({
             },
           })}
         />
-      </div>
 
-      <FormDivider />
-
-      {/* 02 — ORGANISATION */}
-      <FormSectionHeading
-        number="02"
-        title="Organisation"
-        description="Tell us about your organisation, if applicable."
-      />
-
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <FormInput
           label="Organisation"
           placeholder="Organisation / company name"
@@ -225,18 +200,7 @@ const ContactUsForm = ({
             },
           })}
         />
-      </div>
 
-      <FormDivider />
-
-      {/* 03 — LOCATION */}
-      <FormSectionHeading
-        number="03"
-        title="Location"
-        description="Where are you based?"
-      />
-
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <FormInput
           label="State"
           placeholder="Enter your state"
@@ -265,18 +229,7 @@ const ContactUsForm = ({
             },
           })}
         />
-      </div>
 
-      <FormDivider />
-
-      {/* 04 — ENQUIRY */}
-      <FormSectionHeading
-        number="04"
-        title="Enquiry"
-        description="What would you like to discuss?"
-      />
-
-      <div className="mt-6">
         <FormSelect
           label="Enquiry Category"
           options={ENQUIRY_CATEGORIES}
@@ -293,11 +246,11 @@ const ContactUsForm = ({
       </div>
 
       <FormTextarea
-        className="mt-5"
+        className="mt-3"
         label="Message"
         placeholder="Tell us about your requirement..."
         required
-        rows={6}
+        rows={4}
         maxLength={5000}
         error={errors.message?.message}
         {...register("message", {
@@ -314,32 +267,31 @@ const ContactUsForm = ({
         })}
       />
 
-      <FormDivider />
-
       {/* CONSENT */}
-      <FormCheckbox
-        label="I agree to be contacted by the Dr. Saab team regarding my enquiry."
-        required
-        error={errors.consent?.message}
-        {...register("consent", {
-          validate: (value) =>
-            value === true || "Consent is required to submit an enquiry.",
-        })}
-      />
+      <div className="mt-4">
+        <FormCheckbox
+          label="I agree to be contacted by the Dr. Saab team regarding my enquiry."
+          required
+          error={errors.consent?.message}
+          {...register("consent", {
+            validate: (value) =>
+              value === true || "Consent is required to submit an enquiry.",
+          })}
+        />
+      </div>
 
-      <FormErrorSummary fallback={submitError} className="mt-5" />
+      <FormErrorSummary fallback={submitError} className="mt-4" />
 
       {/* SUBMIT */}
-      <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[380px] text-[10px] leading-5 text-brand-ink/45">
-          Your information will be used to understand and respond to your
-          enquiry.
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-[300px] text-[10px] leading-4 text-brand-ink/45">
+          We will use your information to respond to your enquiry.
         </p>
 
         <button
           type="submit"
           disabled={isFormSubmitting || isSubmittingFromApi}
-          className="inline-flex min-h-[44px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-6 py-3 text-[11px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-[42px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-5 py-2.5 text-[11px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isFormSubmitting || isSubmittingFromApi ? (
             <>
@@ -357,24 +309,5 @@ const ContactUsForm = ({
     </form>
   );
 };
-
-function FormSectionHeading({ number, title, description }) {
-  return (
-    <div className="flex items-start gap-4">
-      <span className="text-[11px] font-black tracking-[1px] text-brand-60">
-        {number}
-      </span>
-
-      <div>
-        <h3 className="text-[15px] font-black text-brand-95">{title}</h3>
-        <p className="mt-1 text-[11px] text-brand-ink/50">{description}</p>
-      </div>
-    </div>
-  );
-}
-
-function FormDivider() {
-  return <div className="my-8 border-t border-brand-90/10" />;
-}
 
 export default ContactUsForm;
