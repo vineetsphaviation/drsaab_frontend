@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 import {
   AlertTriangle,
   ArrowRight,
@@ -33,6 +34,7 @@ import {
   SectionContainer,
 } from "../components/ui/UI";
 import MechanicForm from "../components/forms/MechanicForm";
+import { getFormErrorMessages } from "../components/forms/fields/formErrorUtils";
 import { useCreateMechanicApplicationMutation } from "../features/mechanicApplications/mechanicApplicationApi";
 
 const SUPPORT_OPTIONS = [
@@ -169,13 +171,13 @@ const CONTACT_DETAILS = [
   },
 ];
 
-function SectionHeading({
+const SectionHeading = ({
   eyebrow,
   title,
   description,
   light = false,
   centered = false,
-}) {
+}) => {
   return (
     <div className={centered ? "mx-auto text-center" : ""}>
       <Eyebrow light={light}>{eyebrow}</Eyebrow>
@@ -199,9 +201,9 @@ function SectionHeading({
       )}
     </div>
   );
-}
+};
 
-function SupportOptionCard({ option }) {
+const SupportOptionCard = ({ option }) => {
   const isExternal =
     option.href.startsWith("tel:") || option.href.startsWith("https://");
 
@@ -258,12 +260,9 @@ function SupportOptionCard({ option }) {
       </div>
     </div>
   );
-}
+};
 
-/* =========================================================
-   SUPPORT HERO
-========================================================= */
-
+// SUPPORT HERO CONSTANT
 const SUPPORT_ACTIONS = [
   {
     title: "Book a Service",
@@ -287,7 +286,7 @@ const SUPPORT_ACTIONS = [
   },
 ];
 
-function SupportAction({ action, active, onClick }) {
+const SupportAction = ({ action, active, onClick }) => {
   const Icon = action.icon;
 
   return (
@@ -336,96 +335,9 @@ function SupportAction({ action, active, onClick }) {
       </div>
     </button>
   );
-}
+};
 
-function SupportHero({ onApply }) {
-  return (
-    <section className="relative overflow-hidden bg-brand-5">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
-
-      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[480px] w-[480px] rounded-full bg-brand-lime/10 blur-3xl" />
-
-      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================== */}
-
-          <div className="max-w-[500px]">
-            <Eyebrow>DR. SAAB SUPPORT</Eyebrow>
-
-            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
-              How Can We
-              <span className="block text-brand-70">Help You?</span>
-            </h1>
-
-            <p className="mt-5 max-w-[450px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
-              Get the right support path without searching through multiple
-              channels. Tell us what you need and we'll help you take the next
-              step.
-            </p>
-
-            {/* CTA */}
-            <div className="mt-7 flex flex-wrap gap-2.5">
-              <Button type="button" onClick={onApply}>
-                Mechanic Registration
-                <ArrowRight className="ml-2 h-3.5 w-3.5" />
-              </Button>
-
-              <Button href="tel:+919728395138" variant="outline">
-                <PhoneCall className="mr-2 h-3.5 w-3.5" />
-                Talk to Support
-              </Button>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-10 pt-5">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 size={13} className="text-brand-60" />
-
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
-                  Clear Assistance
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 size={13} className="text-brand-60" />
-
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
-                  Guided Support
-                </span>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 size={13} className="text-brand-60" />
-
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
-                  One Place
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* =================================================
-              RIGHT — SUPPORT CONSOLE
-          ================================================== */}
-
-          <SupportConsole />
-        </div>
-      </SectionContainer>
-    </section>
-  );
-}
-
-/* =========================================================
-   SUPPORT CONSOLE
-========================================================= */
-
-function SupportConsole() {
+const SupportConsole = () => {
   const [active, setActive] = useState(0);
 
   return (
@@ -586,7 +498,81 @@ function SupportConsole() {
       </div>
     </div>
   );
-}
+};
+
+const SupportHero = ({ onApply }) => {
+  return (
+    <section className="relative overflow-hidden bg-brand-5">
+      {/* BACKGROUND */}
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
+
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[480px] w-[480px] rounded-full bg-brand-lime/10 blur-3xl" />
+
+      <SectionContainer className="relative py-8 sm:py-12 lg:py-14">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
+          {/* LEFT CONTENT */}
+          <div className="max-w-[500px]">
+            <Eyebrow>DR. SAAB SUPPORT</Eyebrow>
+
+            <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
+              How Can We
+              <span className="block text-brand-70">Help You?</span>
+            </h1>
+
+            <p className="mt-5 max-w-[450px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+              Get the right support path without searching through multiple
+              channels. Tell us what you need and we'll help you take the next
+              step.
+            </p>
+
+            {/* CTA */}
+            <div className="mt-7 flex flex-wrap gap-2.5">
+              <Button type="button" onClick={onApply}>
+                Mechanic Registration
+                <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              </Button>
+
+              <Button href="tel:+919728395138" variant="outline">
+                <PhoneCall className="mr-2 h-3.5 w-3.5" />
+                Talk to Support
+              </Button>
+            </div>
+
+            {/* Trust indicators */}
+            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-10 pt-5">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Clear Assistance
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  Guided Support
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-brand-60" />
+
+                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  One Place
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — SUPPORT CONSOLE */}
+          <SupportConsole />
+        </div>
+      </SectionContainer>
+    </section>
+  );
+};
 
 const Support = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -624,8 +610,18 @@ const Support = () => {
   const handleMechanicApplicationSubmit = async (payload) => {
     try {
       await createMechanicApplication(payload).unwrap();
+      toast.success("Application submitted", {
+        description:
+          "Thank you for applying. Our team will review your details and contact you.",
+      });
     } catch (err) {
       console.error("Mechanic application submission failed:", err);
+      toast.error("Application could not be submitted", {
+        description: getFormErrorMessages(
+          err,
+          "We couldn't submit your application. Please try again.",
+        ).join(" "),
+      });
       throw err;
     }
   };
@@ -644,17 +640,13 @@ const Support = () => {
 
   return (
     <div className="overflow-hidden bg-white">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO */}
       <SupportHero onApply={openMechanicForm} />
 
-      {/* =========================================================
-          SUPPORT OPTIONS
-      ========================================================== */}
+      {/* SUPPORT OPTIONS */}
       <section
         id="support-options"
-        className="bg-brand-5 py-16 sm:py-20 lg:py-24"
+        className="bg-brand-5 py-8 sm:py-12 lg:py-14"
       >
         <SectionContainer>
           <SectionHeading
@@ -672,10 +664,8 @@ const Support = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          QUICK HELP
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* QUICK HELP */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="QUICK HELP"
@@ -719,10 +709,8 @@ const Support = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          FAQ
-      ========================================================== */}
-      <section id="faqs" className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* FAQ */}
+      <section id="faqs" className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <div className="lg:sticky lg:top-24">
@@ -762,7 +750,7 @@ const Support = () => {
               </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="grid gap-3 sm:grid-cols-2">
               {filteredFaqs.length === 0 ? (
                 <div className="rounded-2xl border border-brand-10 bg-white p-8 text-center">
                   <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -845,10 +833,8 @@ const Support = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          SERVICE DISCLAIMER
-      ========================================================== */}
-      <section className="bg-white py-12 sm:py-16">
+      {/* SERVICE DISCLAIMER */}
+      <section className="bg-white py-8 sm:py-12">
         <SectionContainer>
           <div className="rounded-[24px] border border-amber-200 bg-amber-50 p-5 sm:p-6">
             <div className="flex items-start gap-4">
@@ -870,87 +856,80 @@ const Support = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          CONTACT SUPPORT
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* CONTACT SUPPORT & FINAL CTA */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
-          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-            <SectionHeading
-              eyebrow="STILL NEED HELP?"
-              title="Talk to the Dr. Saab support team."
-              description="If you cannot find the answer you need, reach out directly and our support team can help guide you to the appropriate service channel."
-            />
+          <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="relative flex flex-col justify-center overflow-hidden rounded-[28px] bg-brand-95 p-7 text-white sm:p-9">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full border border-brand-lime/10" />
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              {CONTACT_DETAILS.map((contact) => (
-                <div
-                  key={contact.label}
-                  className="rounded-2xl border border-brand-10 bg-white p-5"
-                >
-                  <CircleIcon>{contact.icon}</CircleIcon>
-
-                  <div className="mt-5 text-[9px] font-black uppercase tracking-[0.8px] text-brand-60">
-                    {contact.label}
-                  </div>
-
-                  <div className="mt-2 break-words text-xs font-black text-brand-95">
-                    {contact.value}
-                  </div>
+              <div className="relative">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                  <Wrench size={21} />
                 </div>
-              ))}
-            </div>
-          </div>
-        </SectionContainer>
-      </section>
 
-      {/* =========================================================
-          FINAL CTA
-      ========================================================== */}
-      <section className="bg-brand-90 py-16 sm:py-20 lg:py-24">
-        <SectionContainer>
-          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-12 text-center sm:px-10 sm:py-16">
-            <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-lime/10 blur-3xl" />
+                <Eyebrow light className="mt-5">
+                  STILL NEED HELP?
+                </Eyebrow>
 
-            <div className="relative mx-auto max-w-3xl">
-              <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-lime text-brand-95">
-                <Wrench size={24} />
+                <h2 className="mt-3 text-3xl font-black tracking-[-1.2px] sm:text-4xl">
+                  Need service?
+                  <span className="block text-brand-lime">
+                    We're here to help.
+                  </span>
+                </h2>
+
+                <p className="mt-4 max-w-lg text-sm leading-6 text-white/65">
+                  Reach our support team for guidance, service availability or
+                  help with your mechanic upgrade application.
+                </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+                  <Button
+                    type="button"
+                    onClick={openMechanicForm}
+                    className="px-5 py-3"
+                  >
+                    Mechanic Upgrade Registration
+                    <ArrowRight className="ml-2 shrink-0" size={15} />
+                  </Button>
+
+                  <Button
+                    href="#support-options"
+                    variant="light"
+                    className="border-white/20 bg-white/10 px-5 py-3 text-white hover:bg-white hover:text-brand-95"
+                  >
+                    Contact Support
+                    <Phone className="ml-2" size={15} />
+                  </Button>
+                </div>
               </div>
+            </div>
 
-              <Eyebrow light className="mt-6">
-                READY TO GET STARTED?
-              </Eyebrow>
+            <div className="rounded-[28px] border border-brand-10 bg-white p-6 sm:p-8">
+              <SectionHeading
+                eyebrow="CONTACT DR. SAAB"
+                title="Talk to our support team."
+                description="If you haven't found the answer you need, reach out directly. Our team can guide you to the right service channel."
+              />
 
-              <h2 className="mt-4 text-3xl font-black tracking-[-1.5px] text-white sm:text-5xl">
-                Need service?
-                <span className="block text-brand-lime">
-                  We're here to help.
-                </span>
-              </h2>
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                {CONTACT_DETAILS.map((contact) => (
+                  <div
+                    key={contact.label}
+                    className="rounded-2xl border border-brand-10 bg-brand-5/40 p-4 sm:p-5"
+                  >
+                    <CircleIcon>{contact.icon}</CircleIcon>
 
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/55">
-                Book a service, contact support or check availability in your
-                area.
-              </p>
+                    <div className="mt-4 text-[9px] font-black uppercase tracking-[0.8px] text-brand-60">
+                      {contact.label}
+                    </div>
 
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Button
-                  type="button"
-                  onClick={openMechanicForm}
-                  className="px-7 py-3"
-                >
-                  Mechanic Upgrade Registration
-                  <ArrowRight className="ml-2" size={15} />
-                </Button>
-
-                <Button
-                  href="#support-options"
-                  variant="light"
-                  className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-brand-95"
-                >
-                  Contact Support
-                  <Phone className="ml-2" size={15} />
-                </Button>
+                    <div className="mt-2 break-words text-xs font-black leading-5 text-brand-95">
+                      {contact.value}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
