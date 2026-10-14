@@ -2,11 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   BatteryCharging,
-  Bike,
-  Bolt,
   BriefcaseBusiness,
   Building2,
-  CarFront,
   Check,
   ChevronRight,
   ClipboardCheck,
@@ -27,9 +24,7 @@ import {
   Users,
   Wrench,
   Zap,
-  CheckCircle2,
   CircleDot,
-  Radio,
 } from "lucide-react";
 
 import {
@@ -241,13 +236,13 @@ function GraduationCapIcon() {
   );
 }
 
-function SectionHeading({
+const SectionHeading = ({
   eyebrow,
   title,
   description,
   light = false,
   centered = false,
-}) {
+}) => {
   return (
     <div className={centered ? "mx-auto text-center" : ""}>
       <Eyebrow light={light}>{eyebrow}</Eyebrow>
@@ -262,7 +257,7 @@ function SectionHeading({
 
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-4xl text-sm leading-7 sm:text-[15px] ${
             centered ? "mx-auto" : ""
           } ${light ? "text-white/60" : "text-slate-600"}`}
         >
@@ -271,9 +266,9 @@ function SectionHeading({
       )}
     </div>
   );
-}
+};
 
-function ServiceFormatCard({ item }) {
+const ServiceFormatCard = ({ item }) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-brand-10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/30 hover:shadow-xl hover:shadow-brand-95/5">
       <div className="absolute right-0 top-0 h-24 w-24 rounded-bl-full bg-brand-5 transition-colors duration-300 group-hover:bg-brand-10" />
@@ -306,12 +301,9 @@ function ServiceFormatCard({ item }) {
       </div>
     </div>
   );
-}
+};
 
-/* =========================================================
-   URBAN PARTNER HERO DATA
-========================================================= */
-
+// URBAN PARTNER HERO DATA
 const URBAN_SERVICES = [
   {
     label: "EV",
@@ -358,11 +350,8 @@ const SERVICE_POINTS = [
   },
 ];
 
-/* =========================================================
-   SERVICE POINT
-========================================================= */
-
-function ServicePoint({ label, className }) {
+// SERVICE POINT
+const ServicePoint = ({ label, className }) => {
   return (
     <div className={`absolute ${className}`}>
       <div className="relative flex items-center gap-1.5">
@@ -378,29 +367,20 @@ function ServicePoint({ label, className }) {
       </div>
     </div>
   );
-}
+};
 
-/* =========================================================
-   URBAN SERVICE HERO
-========================================================= */
-
-function UrbanPartnerHero({ onApply }) {
+// URBAN SERVICE HERO
+const UrbanPartnerHero = ({ onApply }) => {
   return (
     <section className="relative overflow-hidden bg-brand-5">
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* BACKGROUND */}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-10/60 blur-3xl" />
 
       <div className="pointer-events-none absolute -bottom-48 -left-48 h-[500px] w-[500px] rounded-full bg-brand-lime/10 blur-3xl" />
 
-      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
+      <SectionContainer className="relative py-8 sm:py-12 lg:py-14">
         <div className="grid items-center gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
-          {/* =================================================
-              LEFT CONTENT
-          ================================================== */}
-
+          {/* LEFT CONTENT */}
           <div className="max-w-[500px]">
             <Eyebrow>DR. SAAB CITY SERVICE PARTNER</Eyebrow>
 
@@ -478,16 +458,9 @@ function UrbanPartnerHero({ onApply }) {
             </div>
           </div>
 
-          {/* =================================================
-              RIGHT — URBAN NETWORK
-          ================================================== */}
-
+          {/* RIGHT — URBAN NETWORK */}
           <div className="relative min-h-[470px] sm:min-h-[520px]">
             <div className="absolute inset-0 overflow-hidden rounded-[28px] border border-brand-10 bg-[#e8f2ed] shadow-[0_25px_70px_rgba(7,95,69,0.10)]">
-              {/* =================================================
-                  DUMMY CITY IMAGE
-              ================================================== */}
-
               <img
                 src={urbanCityLandscape}
                 alt="Urban city landscape"
@@ -497,10 +470,7 @@ function UrbanPartnerHero({ onApply }) {
               {/* Green overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-brand-5/65 via-brand-5/45 to-brand-10/60" />
 
-              {/* =================================================
-                  HEADER CARD
-              ================================================== */}
-
+              {/* HEADER CARD */}
               <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
                 <div>
                   <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
@@ -521,10 +491,7 @@ function UrbanPartnerHero({ onApply }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  NETWORK ROUTES
-              ================================================== */}
-
+              {/* NETWORK ROUTES */}
               <svg
                 className="absolute inset-0 z-[2] h-full w-full"
                 viewBox="0 0 800 600"
@@ -605,10 +572,7 @@ function UrbanPartnerHero({ onApply }) {
                 />
               </svg>
 
-              {/* =================================================
-                  SERVICE POINTS
-              ================================================== */}
-
+              {/* SERVICE POINTS */}
               <div className="absolute inset-0 z-10">
                 {SERVICE_POINTS.map((point) => (
                   <ServicePoint
@@ -619,10 +583,7 @@ function UrbanPartnerHero({ onApply }) {
                 ))}
               </div>
 
-              {/* =================================================
-                  CENTRAL PARTNER HUB
-              ================================================== */}
-
+              {/* CENTRAL PARTNER HUB */}
               <div className="absolute left-1/2 top-[53%] z-20 -translate-x-1/2 -translate-y-1/2">
                 <div className="absolute -inset-10 animate-pulse rounded-full border border-brand-60/10" />
 
@@ -645,10 +606,7 @@ function UrbanPartnerHero({ onApply }) {
                 </div>
               </div>
 
-              {/* =================================================
-                  SERVICE MARKERS
-              ================================================== */}
-
+              {/* SERVICE MARKERS */}
               <div className="absolute left-[10%] top-[47%] z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-2 py-1.5 shadow-[0_6px_18px_rgba(7,95,69,0.10)] backdrop-blur-md">
                 <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
                   <Zap size={10} />
@@ -689,10 +647,7 @@ function UrbanPartnerHero({ onApply }) {
                 </span>
               </div>
 
-              {/* =================================================
-                  BOTTOM NETWORK STATUS
-              ================================================== */}
-
+              {/* BOTTOM NETWORK STATUS */}
               <div className="absolute bottom-4 left-4 right-4 z-20 rounded-xl border border-white/70 bg-white/90 p-3.5 shadow-[0_12px_30px_rgba(7,95,69,0.10)] backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5">
                 <div className="grid grid-cols-3 divide-x divide-brand-10">
                   <div className="px-2 text-center first:pl-0">
@@ -728,10 +683,7 @@ function UrbanPartnerHero({ onApply }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — RESPONSE
-            ================================================== */}
-
+            {/* FLOATING CARD — RESPONSE */}
             <div className="absolute -left-4 top-[145px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -750,10 +702,7 @@ function UrbanPartnerHero({ onApply }) {
               </div>
             </div>
 
-            {/* =================================================
-                FLOATING CARD — VERIFIED
-            ================================================== */}
-
+            {/* FLOATING CARD — VERIFIED */}
             <div className="absolute -right-4 bottom-[135px] z-30 hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
@@ -776,7 +725,7 @@ function UrbanPartnerHero({ onApply }) {
       </SectionContainer>
     </section>
   );
-}
+};
 
 const UrbanPartner = () => {
   const [activeJourney, setActiveJourney] = useState(0);
@@ -829,15 +778,11 @@ const UrbanPartner = () => {
 
   return (
     <div className="overflow-hidden bg-white">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* HERO */}
       <UrbanPartnerHero onApply={openUrbanPartnerForm} />
 
-      {/* =========================================================
-          WHAT IS URBAN PARTNER
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* WHAT IS URBAN PARTNER */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="WHAT IS AN URBAN PARTNER?"
@@ -853,12 +798,10 @@ const UrbanPartner = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          URBAN SERVICES
-      ========================================================== */}
+      {/* URBAN SERVICES */}
       <section
         id="urban-services"
-        className="bg-brand-5 py-16 sm:py-20 lg:py-24"
+        className="bg-brand-5 py-8 sm:py-12 lg:py-14"
       >
         <SectionContainer>
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -876,7 +819,7 @@ const UrbanPartner = () => {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {URBAN_SERVICES.map((service, index) => (
               <div
                 key={service.label}
@@ -908,10 +851,8 @@ const UrbanPartner = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          CUSTOMER JOURNEY
-      ========================================================== */}
-      <section className="bg-brand-95 py-16 sm:py-20 lg:py-24">
+      {/* CUSTOMER JOURNEY */}
+      <section className="bg-brand-95 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             light
@@ -1009,10 +950,8 @@ const UrbanPartner = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          WHO IS IT FOR
-      ========================================================== */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24">
+      {/* WHO IS IT FOR */}
+      <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div className="lg:sticky lg:top-24 lg:self-start">
@@ -1045,7 +984,7 @@ const UrbanPartner = () => {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
               {PARTNER_PROFILES.map((profile, index) => (
                 <div
                   key={profile.title}
@@ -1092,10 +1031,8 @@ const UrbanPartner = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          BENEFITS
-      ========================================================== */}
-      <section className="bg-brand-5 py-16 sm:py-20 lg:py-24">
+      {/* BENEFITS */}
+      <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <SectionHeading
             eyebrow="URBAN PARTNER BENEFITS"
@@ -1130,12 +1067,10 @@ const UrbanPartner = () => {
         </SectionContainer>
       </section>
 
-      {/* =========================================================
-          CTA
-      ========================================================== */}
-      <section id="apply" className="bg-brand-90 py-16 sm:py-20 lg:py-24">
+      {/* CTA */}
+      <section id="apply" className="bg-brand-90 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
-          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-12 text-center sm:px-10 sm:py-16">
+          <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-10 text-center sm:px-8 sm:py-12">
             <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-lime/10 blur-3xl" />
 
             <div className="relative mx-auto max-w-3xl">
