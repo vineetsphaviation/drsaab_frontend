@@ -1,39 +1,11 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa";
-import { ArrowRight, Check, Leaf, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Leaf, MapPin, Phone } from "lucide-react";
 
 import { SectionContainer } from "../components/ui/UI";
 import logo from "/dr.saab-logo.png";
 import { quickLinks, supportLinks } from "../utils/constant";
 
-const socialLinks = [
-  {
-    label: "LinkedIn",
-    href: "#",
-    icon: FaLinkedinIn,
-  },
-  {
-    label: "YouTube",
-    href: "#",
-    icon: FaYoutube,
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    icon: FaInstagram,
-  },
-  {
-    label: "Facebook",
-    href: "#",
-    icon: FaFacebookF,
-  },
-];
+
 const FooterLinks = ({ title, links }) => {
   return (
     <div>
@@ -83,48 +55,12 @@ const FooterLinks = ({ title, links }) => {
 };
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const subscribe = async (event) => {
-    event.preventDefault();
-
-    const trimmedEmail = email.trim();
-
-    if (!trimmedEmail) {
-      setMessage("Please enter your email.");
-      return;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(trimmedEmail)) {
-      setMessage("Please enter a valid email.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setMessage("");
-
-    // Replace this with your newsletter API call.
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    setIsSubmitting(false);
-    setEmail("");
-    setMessage("Thank you for subscribing!");
-  };
-
   return (
     <footer className="bg-white">
-      {/* =========================================================
-          MAIN FOOTER
-      ========================================================== */}
+      {/* MAIN FOOTER */}
       <SectionContainer className="py-10 sm:py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.45fr_.8fr_.8fr_1.25fr] lg:gap-12">
-          {/* =====================================================
-              BRAND
-          ====================================================== */}
+          {/* BRAND */}
           <div>
             <Link to="/" aria-label="Dr. Saab Home" className="inline-block">
               <img
@@ -190,19 +126,12 @@ const Footer = () => {
             </div> */}
           </div>
 
-          {/* =====================================================
-              QUICK LINKS
-          ====================================================== */}
+          {/* QUICK LINKS */}
           <FooterLinks title="Quick Links" links={quickLinks} />
 
-          {/* =====================================================
-              SUPPORT
-          ====================================================== */}
+          {/* SUPPORT */}
           <FooterLinks title="Support" links={supportLinks} />
 
-          {/* =====================================================
-              NEWSLETTER
-          ====================================================== */}
           <div>
             <h3 className="text-xs font-black tracking-wide text-brand-ink">
               Contact & Service Network
@@ -358,9 +287,7 @@ const Footer = () => {
         </div>
       </SectionContainer>
 
-      {/* =========================================================
-          BRAND STRIP
-      ========================================================== */}
+      {/* BRAND STRIP */}
       <div className="bg-brand-95">
         <SectionContainer className="flex flex-col gap-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
@@ -382,16 +309,13 @@ const Footer = () => {
         </SectionContainer>
       </div>
 
-      {/* =========================================================
-          COPYRIGHT
-      ========================================================== */}
+      {/* COPYRIGHT */}
       <div className="border-t border-brand-10 bg-white">
         <SectionContainer className="flex flex-col gap-3 py-4 text-[9px] text-gray-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © 2026 Dr. Saab. All rights reserved. An initiative by Techsmart
             Ventures Pvt Limited.
           </p>
-
         </SectionContainer>
       </div>
     </footer>

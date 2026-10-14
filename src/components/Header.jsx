@@ -53,14 +53,10 @@ const Header = () => {
 
   return (
     <>
-      {/* =========================================================
-          HEADER
-      ========================================================== */}
+      {/* HEADER */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-10/80 bg-white/95 shadow-[0_2px_14px_rgba(21,38,39,0.06)] backdrop-blur-xl">
         <SectionContainer className="flex h-[68px] items-center">
-          {/* =====================================================
-              LOGO
-          ====================================================== */}
+          {/* LOGO */}
           <Link
             to="/"
             aria-label="Dr. Saab Home"
@@ -73,9 +69,7 @@ const Header = () => {
             />
           </Link>
 
-          {/* =====================================================
-              DESKTOP NAVIGATION
-          ====================================================== */}
+          {/* DESKTOP NAVIGATION */}
           <nav
             aria-label="Main navigation"
             className="ml-auto hidden min-w-0 items-center xl:flex"
@@ -135,9 +129,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* =====================================================
-              DESKTOP ACTIONS
-          ====================================================== */}
+          {/* DESKTOP ACTIONS */}
           <div className="ml-4 hidden shrink-0 items-center gap-2 xl:flex">
             <Button
               to="/our-services"
@@ -159,9 +151,7 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* =====================================================
-              MOBILE MENU BUTTON
-          ====================================================== */}
+          {/* MOBILE MENU BUTTON */}
           <button
             type="button"
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -197,9 +187,7 @@ const Header = () => {
           </button>
         </SectionContainer>
 
-        {/* =======================================================
-            MOBILE BACKDROP
-        ======================================================== */}
+        {/* MOBILE BACKDROP */}
         <div
           onClick={() => setOpen(false)}
           aria-hidden="true"
@@ -221,9 +209,7 @@ const Header = () => {
           `}
         />
 
-        {/* =======================================================
-            MOBILE NAVIGATION
-        ======================================================== */}
+        {/* MOBILE NAVIGATION */}
         <div
           id="mobile-navigation"
           className={`

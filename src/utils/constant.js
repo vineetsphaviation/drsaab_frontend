@@ -1,3 +1,5 @@
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+
 // Navigation links are objects so their fields stay explicit at each call site.
 export const navItems = [
   { label: "Home", href: "/" },
@@ -36,6 +38,30 @@ export const quickLinks = [
   {
     label: "How It Works",
     href: "/how-it-works",
+  },
+];
+
+// footer social links
+export const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "#",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "YouTube",
+    href: "#",
+    icon: FaYoutube,
+  },
+  {
+    label: "Instagram",
+    href: "#",
+    icon: FaInstagram,
+  },
+  {
+    label: "Facebook",
+    href: "#",
+    icon: FaFacebook,
   },
 ];
 
