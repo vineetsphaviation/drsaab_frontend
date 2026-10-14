@@ -190,7 +190,7 @@ const SectionHeading = ({
 
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-4xl text-sm leading-7 sm:text-[15px] ${
             centered ? "mx-auto" : ""
           } ${light ? "text-white/60" : "text-slate-600"}`}
         >
@@ -636,30 +636,6 @@ const Franchise = () => {
                 title="Built for technical people. Open to new entrepreneurs."
                 description="The franchise ecosystem is designed to bring existing technical capability and new entrepreneurship into the future-ready EV and energy service market."
               />
-
-              <div className="mt-8 rounded-[26px] bg-brand-95 p-6 text-white">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-lime text-brand-95">
-                    <Users size={21} />
-                  </div>
-
-                  <div>
-                    <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-lime">
-                      Applicant Ecosystem
-                    </div>
-
-                    <div className="mt-1 text-sm font-black">
-                      Skills + Enterprise
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-xs leading-6 text-white/45">
-                  Whether you already operate a workshop or are entering the
-                  technical services ecosystem, your profile can be evaluated
-                  against the applicable model requirements.
-                </p>
-              </div>
             </div>
 
             <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
@@ -698,7 +674,7 @@ const Franchise = () => {
             description="The support ecosystem can combine brand, technical, operational, technology and business enablement."
           />
 
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {SUPPORT_ITEMS.map((item) => {
               const Icon = item.icon;
 
@@ -750,74 +726,61 @@ const Franchise = () => {
             description="A structured nine-step process takes the applicant from initial interest through screening, territory assessment, training and enterprise launch."
           />
 
-          <div className="mt-12 grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-            {/* Vertical progress */}
-            <div className="relative">
-              <div className="absolute bottom-5 left-[22px] top-5 w-px bg-brand-10" />
+          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr]">
+            {/* Application steps */}
+            <div className="grid content-start gap-2 sm:grid-cols-2">
+              {APPLICATION_STEPS.map((step, index) => {
+                const active = index === activeStep;
+                const completed = index < activeStep;
 
-              <div
-                className="absolute left-[22px] top-5 w-px bg-brand-60 transition-all duration-500"
-                style={{
-                  height: `${(activeStep / (APPLICATION_STEPS.length - 1)) * 100}%`,
-                }}
-              />
-
-              <div className="relative space-y-2">
-                {APPLICATION_STEPS.map((step, index) => {
-                  const active = index === activeStep;
-                  const completed = index < activeStep;
-
-                  return (
-                    <button
-                      key={step.number}
-                      type="button"
-                      onClick={() => setActiveStep(index)}
-                      className={`relative flex w-full items-center gap-4 rounded-2xl p-3 text-left transition-all ${
+                return (
+                  <button
+                    key={step.number}
+                    type="button"
+                    onClick={() => setActiveStep(index)}
+                    className={`relative flex w-full items-center gap-4 rounded-2xl p-3 text-left transition-all ${
+                      active
+                        ? "bg-brand-95 text-white shadow-lg shadow-brand-95/10"
+                        : "hover:bg-white"
+                    }`}
+                  >
+                    <div
+                      className={`relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 ${
                         active
-                          ? "bg-brand-95 text-white shadow-lg shadow-brand-95/10"
-                          : "hover:bg-white"
+                          ? "border-brand-lime bg-brand-lime text-brand-95"
+                          : completed
+                            ? "border-brand-5 bg-brand-60 text-white"
+                            : "border-white bg-white text-brand-60"
                       }`}
                     >
+                      {completed ? <Check size={16} /> : step.icon}
+                    </div>
+
+                    <div className="flex-1">
                       <div
-                        className={`relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 ${
-                          active
-                            ? "border-brand-lime bg-brand-lime text-brand-95"
-                            : completed
-                              ? "border-brand-5 bg-brand-60 text-white"
-                              : "border-white bg-white text-brand-60"
+                        className={`text-[9px] font-black uppercase tracking-[0.8px] ${
+                          active ? "text-brand-lime" : "text-brand-60"
                         }`}
                       >
-                        {completed ? <Check size={16} /> : step.icon}
+                        {step.number}
                       </div>
 
-                      <div className="flex-1">
-                        <div
-                          className={`text-[9px] font-black uppercase tracking-[0.8px] ${
-                            active ? "text-brand-lime" : "text-brand-60"
-                          }`}
-                        >
-                          {step.number}
-                        </div>
-
-                        <div
-                          className={`mt-0.5 text-sm font-black ${
-                            active ? "text-white" : "text-brand-95"
-                          }`}
-                        >
-                          {step.title}
-                        </div>
+                      <div
+                        className={`mt-0.5 text-sm font-black ${
+                          active ? "text-white" : "text-brand-95"
+                        }`}
+                      >
+                        {step.title}
                       </div>
+                    </div>
 
-                      <ChevronRight
-                        size={15}
-                        className={
-                          active ? "text-brand-lime" : "text-slate-300"
-                        }
-                      />
-                    </button>
-                  );
-                })}
-              </div>
+                    <ChevronRight
+                      size={15}
+                      className={active ? "text-brand-lime" : "text-slate-300"}
+                    />
+                  </button>
+                );
+              })}
             </div>
 
             {/* Detail panel */}
@@ -842,7 +805,7 @@ const Franchise = () => {
                   </div>
                 </div>
 
-                <div className="mt-12 max-w-xl">
+                <div className="mt-6 max-w-xl">
                   <div className="text-[9px] font-black uppercase tracking-[1.2px] text-brand-lime">
                     APPLICATION STEP
                   </div>
@@ -856,7 +819,7 @@ const Franchise = () => {
                   </p>
                 </div>
 
-                <div className="mt-12">
+                <div className="mt-6">
                   <div className="flex justify-between text-[8px] font-black uppercase tracking-[0.8px] text-white/30">
                     <span>Application progress</span>
                     <span>

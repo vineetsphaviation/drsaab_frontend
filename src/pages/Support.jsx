@@ -576,7 +576,7 @@ const SupportHero = ({ onApply }) => {
 
 const Support = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [openFaq, setOpenFaq] = useState(0);
+  const [openFaq, setOpenFaq] = useState(null);
   const [isMechanicFormOpen, setIsMechanicFormOpen] = useState(false);
   const isMechanicFormRef = useRef(null);
   const [
@@ -637,6 +637,68 @@ const Support = () => {
         faq.answer.toLowerCase().includes(query),
     );
   }, [searchQuery]);
+  const faqColumnSplit = Math.ceil(filteredFaqs.length / 2);
+  const faqColumns = [
+    filteredFaqs.slice(0, faqColumnSplit),
+    filteredFaqs.slice(faqColumnSplit),
+  ];
+
+  const renderFaqItem = (faq) => {
+    const isOpen = openFaq === faq.question;
+
+    return (
+      <div
+        key={faq.question}
+        className={`overflow-hidden rounded-2xl border transition-all ${
+          isOpen
+            ? "border-brand-60/30 bg-white shadow-sm"
+            : "border-brand-10 bg-white"
+        }`}
+      >
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          onClick={() => setOpenFaq(isOpen ? null : faq.question)}
+          className="flex w-full items-center gap-4 p-5 text-left sm:p-6"
+        >
+          <span
+            className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${
+              isOpen
+                ? "bg-brand-lime text-brand-95"
+                : "bg-brand-5 text-brand-70"
+            }`}
+          >
+            <HelpCircle size={17} />
+          </span>
+
+          <span className="flex-1 text-sm font-black text-brand-95">
+            {faq.question}
+          </span>
+
+          <ChevronDown
+            size={17}
+            className={`shrink-0 text-brand-60 transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        <div
+          className={`grid transition-all duration-300 ${
+            isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="border-t border-brand-10 px-5 pb-6 pt-4 pl-[68px] sm:px-6 sm:pl-[76px]">
+              <p className="text-xs leading-6 text-slate-500 sm:text-sm">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="overflow-hidden bg-white">
@@ -750,7 +812,7 @@ const Support = () => {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div>
               {filteredFaqs.length === 0 ? (
                 <div className="rounded-2xl border border-brand-10 bg-white p-8 text-center">
                   <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand-5 text-brand-70">
@@ -766,67 +828,22 @@ const Support = () => {
                   </p>
                 </div>
               ) : (
-                filteredFaqs.map((faq, index) => {
-                  const actualIndex = FAQS.findIndex(
-                    (item) => item.question === faq.question,
-                  );
-
-                  const isOpen = openFaq === actualIndex;
-
-                  return (
-                    <div
-                      key={faq.question}
-                      className={`overflow-hidden rounded-2xl border transition-all ${
-                        isOpen
-                          ? "border-brand-60/30 bg-white shadow-sm"
-                          : "border-brand-10 bg-white"
-                      }`}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaq(isOpen ? -1 : actualIndex)}
-                        className="flex w-full items-center gap-4 p-5 text-left sm:p-6"
-                      >
-                        <span
-                          className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${
-                            isOpen
-                              ? "bg-brand-lime text-brand-95"
-                              : "bg-brand-5 text-brand-70"
-                          }`}
-                        >
-                          <HelpCircle size={17} />
-                        </span>
-
-                        <span className="flex-1 text-sm font-black text-brand-95">
-                          {faq.question}
-                        </span>
-
-                        <ChevronDown
-                          size={17}
-                          className={`shrink-0 text-brand-60 transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-
+                <>
+                  <div className="hidden items-start gap-3 sm:grid sm:grid-cols-2">
+                    {faqColumns.map((column, columnIndex) => (
                       <div
-                        className={`grid transition-all duration-300 ${
-                          isOpen
-                            ? "grid-rows-[1fr] opacity-100"
-                            : "grid-rows-[0fr] opacity-0"
-                        }`}
+                        key={columnIndex}
+                        className="grid content-start gap-3"
                       >
-                        <div className="overflow-hidden">
-                          <div className="border-t border-brand-10 px-5 pb-6 pt-4 pl-[68px] sm:px-6 sm:pl-[76px]">
-                            <p className="text-xs leading-6 text-slate-500 sm:text-sm">
-                              {faq.answer}
-                            </p>
-                          </div>
-                        </div>
+                        {column.map(renderFaqItem)}
                       </div>
-                    </div>
-                  );
-                })
+                    ))}
+                  </div>
+
+                  <div className="grid gap-3 sm:hidden">
+                    {filteredFaqs.map(renderFaqItem)}
+                  </div>
+                </>
               )}
             </div>
           </div>

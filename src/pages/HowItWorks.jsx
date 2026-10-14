@@ -476,7 +476,7 @@ const HowItWorks = () => {
       <section
         id="journey"
         ref={journeyRef}
-        className="scroll-mt-20 bg-white py-16 lg:py-24"
+        className="scroll-mt-20 bg-white py-8 lg:py-12"
       >
         <SectionContainer>
           <div className="text-center">
@@ -681,7 +681,7 @@ const HowItWorks = () => {
           </div>
 
           {/* Auto-play toggle */}
-          <div className="mt-5 flex justify-center">
+          {/* <div className="mt-5 flex justify-center">
             <button
               type="button"
               onClick={() => setIsAutoPlaying((current) => !current)}
@@ -691,7 +691,7 @@ const HowItWorks = () => {
                 ? "Pause journey animation"
                 : "Play journey animation"}
             </button>
-          </div>
+          </div> */}
         </SectionContainer>
       </section>
 
@@ -837,7 +837,7 @@ const HowItWorks = () => {
             </div>
 
             {/* Benefits */}
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-3">
               {CUSTOMER_BENEFITS.map(({ icon: Icon, title, description }) => (
                 <div
                   key={title}
