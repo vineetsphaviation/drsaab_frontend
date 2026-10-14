@@ -46,7 +46,7 @@ const items = [
   },
 ];
 
-export default function TrustStrip() {
+const TrustStrip = () => {
   return (
     <section className="bg-white">
       <SectionContainer
@@ -110,3 +110,5 @@ export default function TrustStrip() {
     </section>
   );
 }
+
+export default TrustStrip;

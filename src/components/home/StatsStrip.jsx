@@ -1,5 +1,11 @@
 import { SectionContainer, CircleIcon } from "../ui/UI";
-import { Leaf, MapPinned, PanelsTopLeft, UsersRound, Wrench } from "lucide-react";
+import {
+  Leaf,
+  MapPinned,
+  PanelsTopLeft,
+  UsersRound,
+  Wrench,
+} from "lucide-react";
 
 const stats = [
   [<Wrench size={18} />, "1", "Mobile Workshop"],
@@ -9,7 +15,7 @@ const stats = [
   [<Leaf size={18} />, "Cleaner", "Environment"],
 ];
 
-export default function StatsStrip() {
+const StatsStrip = () => {
   return (
     <section className="bg-white">
       <SectionContainer
@@ -87,4 +93,6 @@ export default function StatsStrip() {
       </SectionContainer>
     </section>
   );
-}
+};
+
+export default StatsStrip;

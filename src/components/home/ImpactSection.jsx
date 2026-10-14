@@ -50,7 +50,7 @@ const useCases = [
   [householdIcon, "Household", <>Households</>],
 ];
 
-export default function ImpactSection() {
+const ImpactSection = () => {
   return (
     <section id="panchayat" className="bg-white pb-6">
       <SectionContainer
@@ -275,4 +275,6 @@ export default function ImpactSection() {
       </SectionContainer>
     </section>
   );
-}
+};
+
+export default ImpactSection;

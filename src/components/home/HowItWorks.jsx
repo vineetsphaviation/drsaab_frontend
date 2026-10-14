@@ -108,7 +108,7 @@ const equipment = [
   ],
 ];
 
-export default function HowItWorks() {
+const HowItWorks = () => {
   return (
     <section
       id="how"
@@ -128,10 +128,7 @@ export default function HowItWorks() {
           lg:gap-6
         "
       >
-        {/* =====================================================
-            HOW IT WORKS
-        ====================================================== */}
-
+        {/* HOW IT WORKS */}
         <div className="min-w-0">
           <Eyebrow>HOW IT WORKS</Eyebrow>
 
@@ -145,7 +142,6 @@ export default function HowItWorks() {
             "
           >
             {/* Connecting line */}
-
             <div
               className="
                 pointer-events-none
@@ -250,10 +246,7 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* =====================================================
-            EQUIPPED WITH
-        ====================================================== */}
-
+        {/* EQUIPPED WITH */}
         <div
           className="
             min-w-0
@@ -341,4 +334,6 @@ export default function HowItWorks() {
       </SectionContainer>
     </section>
   );
-}
+};
+
+export default HowItWorks;

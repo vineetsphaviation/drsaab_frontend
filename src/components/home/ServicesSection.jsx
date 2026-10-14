@@ -26,7 +26,7 @@ const services = [
   ],
 ];
 
-export default function ServicesSection() {
+const ServicesSection = () => {
   return (
     <section id="services" className="bg-white py-1 sm:py-2">
       <SectionContainer
@@ -38,10 +38,7 @@ export default function ServicesSection() {
           lg:gap-5
         "
       >
-        {/* =====================================================
-            OUR PURPOSE
-        ====================================================== */}
-
+        {/* OUR PURPOSE */}
         <aside
           className="
             relative
@@ -129,10 +126,7 @@ export default function ServicesSection() {
           </div>
         </aside>
 
-        {/* =====================================================
-            SERVICES
-        ====================================================== */}
-
+        {/* SERVICES */}
         <div
           className="
             min-w-0
@@ -351,4 +345,6 @@ export default function ServicesSection() {
       </SectionContainer>
     </section>
   );
-}
+};
+
+export default ServicesSection;

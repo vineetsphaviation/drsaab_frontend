@@ -35,7 +35,7 @@ const services = [
   },
 ];
 
-export default function Hero() {
+const Hero = () => {
   return (
     <section
       id="home"
@@ -45,10 +45,7 @@ export default function Hero() {
         bg-brand-5
       "
     >
-      {/* =========================
-          HERO IMAGE
-      ========================== */}
-
+      {/* HERO IMAGE */}
       <div className="pointer-events-none absolute inset-0 lg:hidden">
         <img
           src={heroVisual}
@@ -97,10 +94,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* =========================
-          HERO CONTENT
-      ========================== */}
-
+      {/* HERO CONTENT */}
       <SectionContainer
         className="
           relative
@@ -198,10 +192,7 @@ export default function Hero() {
             Mobile EV, Drone, Battery &amp; Inverter Support Enterprise
           </h2>
 
-          {/* =========================
-              SERVICE ICONS
-          ========================== */}
-
+          {/* SERVICE ICONS */}
           <div
             className="
               mt-4
@@ -262,10 +253,7 @@ export default function Hero() {
             ))}
           </div>
 
-          {/* =========================
-              TAGLINE
-          ========================== */}
-
+          {/* TAGLINE */}
           <p
             className="
               my-3
@@ -284,10 +272,7 @@ export default function Hero() {
             Many Villages
           </p>
 
-          {/* =========================
-              CTA BUTTONS
-          ========================== */}
-
+          {/* CTA BUTTONS */}
           <div
             className="
               flex
@@ -333,7 +318,8 @@ export default function Hero() {
           </div>
         </div>
       </SectionContainer>
-
     </section>
   );
-}
+};
+
+export default Hero;
