@@ -145,7 +145,7 @@ const JourneyStep = ({ step, active }) => {
   const Icon = step.icon;
 
   return (
-    <div className="relative z-10 flex min-w-[82px] flex-1 flex-col items-center text-center">
+    <div className="relative z-10 flex min-w-0 flex-1 flex-col items-center text-center">
       <div
         className={`relative grid h-11 w-11 place-items-center rounded-full border-2 transition-all duration-300 ${
           active
@@ -162,12 +162,12 @@ const JourneyStep = ({ step, active }) => {
         )}
       </div>
 
-      <div className="mt-2">
+      <div className="mt-2 w-full">
         <div className="text-[8px] font-black tracking-[1px] text-brand-60">
           {step.number}
         </div>
 
-        <div className="mt-0.5 text-[9px] font-black tracking-[0.4px] text-brand-95">
+        <div className="mt-0.5 text-[8px] font-black tracking-[0.2px] text-brand-95 sm:text-[9px] sm:tracking-[0.4px]">
           {step.title}
         </div>
 
@@ -188,25 +188,25 @@ const HowItWorksHero = ({ onSeeJourney }) => {
 
       <div className="pointer-events-none absolute -bottom-40 -left-40 h-[360px] w-[360px] rounded-full bg-brand-lime/10 blur-3xl" />
 
-      <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14 xl:grid-cols-[0.85fr_1.15fr]">
+      <SectionContainer className="relative py-8 sm:py-12 lg:py-16">
+        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
           {/* LEFT CONTENT */}
-          <div className="max-w-[500px]">
+          <div className="mx-auto w-full max-w-[560px] lg:mx-0">
             <Eyebrow>HOW DR. SAAB WORKS</Eyebrow>
 
-            <h1 className="mt-4 max-w-[500px] text-[40px] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[48px] lg:text-[52px] xl:text-[56px]">
+            <h1 className="mt-4 max-w-[540px] text-[clamp(2.25rem,7vw,3rem)] font-black leading-[0.98] tracking-[-1.8px] text-brand-95 sm:text-[clamp(3rem,6vw,3.25rem)] lg:text-[3.25rem] xl:text-[3.5rem]">
               From Service Request
               <span className="block text-brand-70">to Support.</span>
             </h1>
 
-            <p className="mt-5 max-w-[440px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-4 max-w-[480px] text-[13px] leading-6 text-brand-ink/65 sm:mt-5 sm:text-[14px] sm:leading-7">
               Dr. Saab brings structure, transparency and technical expertise to
               every service request — from the moment you book to the moment
               your service is completed.
             </p>
 
             {/* Feature pills */}
-            <div className="mt-6 flex max-w-[470px] flex-wrap gap-2">
+            <div className="mt-5 flex max-w-[500px] flex-wrap gap-2 sm:mt-6">
               {[
                 "Simple Booking",
                 "Verified Technicians",
@@ -215,7 +215,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-brand-10 bg-white px-3 py-1.5 text-[8px] font-black uppercase tracking-[0.5px] text-brand-80 shadow-sm sm:text-[9px]"
+                  className="rounded-full border border-brand-10 bg-white px-2.5 py-1.5 text-[8px] font-black uppercase tracking-[0.4px] text-brand-80 shadow-sm sm:px-3 sm:text-[9px] sm:tracking-[0.5px]"
                 >
                   {item}
                 </span>
@@ -223,7 +223,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
             </div>
 
             {/* CTA */}
-            <div className="mt-7 flex flex-wrap gap-2.5">
+            <div className="mt-6 flex flex-col gap-2.5 min-[420px]:flex-row min-[420px]:flex-wrap sm:mt-7">
               <Button to="/our-services" state={{ openBookingForm: true }}>
                 Book a Service
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
@@ -235,7 +235,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
             </div>
 
             {/* Mini trust row */}
-            <div className="mt-7 flex max-w-[450px] items-center gap-3 border-t border-brand-10 pt-5">
+            <div className="mt-6 flex max-w-[480px] items-center gap-3 border-t border-brand-10 pt-4 sm:mt-7 sm:pt-5">
               <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-90 text-white">
                 <Zap size={15} />
               </div>
@@ -253,8 +253,8 @@ const HowItWorksHero = ({ onSeeJourney }) => {
           </div>
 
           {/* RIGHT SERVICE JOURNEY CARD */}
-          <div className="relative">
-            <div className="overflow-hidden rounded-[24px] border border-brand-10 bg-white p-4 shadow-[0_20px_60px_rgba(7,95,69,0.10)] sm:p-5 lg:p-6">
+          <div className="relative mx-auto w-full max-w-[720px] lg:mx-0">
+            <div className="overflow-hidden rounded-[20px] border border-brand-10 bg-white p-3.5 shadow-[0_20px_60px_rgba(7,95,69,0.10)] sm:rounded-[24px] sm:p-5 lg:p-6">
               {/* Card heading */}
               <div className="flex items-center justify-between">
                 <div>
@@ -277,7 +277,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               </div>
 
               {/* BACKGROUND IMAGE */}
-              <div className="relative mt-4 h-[190px] overflow-hidden rounded-[16px] sm:h-[220px] lg:h-[235px]">
+              <div className="relative mt-4 h-[clamp(9rem,35vw,14rem)] overflow-hidden rounded-[14px] sm:rounded-[16px] lg:h-[235px]">
                 <img
                   src={howItWorksBg}
                   alt="Technician servicing a vehicle"
@@ -305,16 +305,13 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               </div>
 
               {/* JOURNEY */}
-              <div
-                id="journey-preview"
-                className="relative mt-6 overflow-x-auto pb-1"
-              >
-                <div className="relative flex min-w-[620px] justify-between px-1">
+              <div id="journey-preview" className="relative mt-5 pb-1 sm:mt-6">
+                <div className="relative grid grid-cols-4 gap-y-4 px-1 md:grid-cols-7 md:gap-3">
                   {/* Base connector */}
-                  <div className="absolute left-[25px] right-[25px] top-[22px] h-px bg-brand-10" />
+                  <div className="absolute left-[7%] right-[7%] top-[22px] hidden h-px bg-brand-10 md:block" />
 
                   {/* Active progress */}
-                  <div className="absolute left-[25px] top-[22px] h-px w-[28%] bg-brand-60" />
+                  <div className="absolute left-[7%] top-[22px] hidden h-px w-[28%] bg-brand-60 md:block" />
 
                   {JOURNEY_STEPS.map((step, index) => (
                     <JourneyStep
@@ -346,7 +343,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
             </div>
 
             {/* FLOATING REQUEST CARD */}
-            <div className="absolute -left-4 top-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+            <div className="absolute -left-4 top-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] lg:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-5 text-brand-70">
                   <CalendarCheck size={13} />
@@ -365,7 +362,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
             </div>
 
             {/* FLOATING FEEDBACK CARD */}
-            <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] sm:block">
+            <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] lg:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
                   <CheckCircle2 size={13} />
@@ -722,7 +719,7 @@ const HowItWorks = () => {
               }}
             />
 
-            <div className="grid grid-cols-2 gap-y-8 md:grid-cols-7 md:gap-3">
+            <div className="grid grid-cols-3 gap-y-8 md:grid-cols-7 md:gap-3">
               {JOURNEY_STEPS.map(
                 ({ number, shortTitle, icon: Icon }, index) => (
                   <button

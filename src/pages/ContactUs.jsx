@@ -246,7 +246,7 @@ const ContactUsHero = () => {
             </div>
 
             {/* Floating Badge */}
-            <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-white/15 bg-brand-95 px-4 py-3 shadow-xl sm:block">
+            {/* <div className="absolute -bottom-5 -left-5 hidden rounded-xl border border-white/15 bg-brand-95 px-4 py-3 shadow-xl sm:block">
               <div className="flex items-center gap-3">
                 <div className="grid h-9 w-9 place-items-center rounded-full bg-brand-lime text-brand-95">
                   <MessageCircle className="h-4 w-4" />
@@ -261,7 +261,7 @@ const ContactUsHero = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </SectionContainer>
