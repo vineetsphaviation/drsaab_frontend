@@ -676,7 +676,9 @@ const ServiceRequestForm = ({
                           </span>
                         </label>
 
-                        {errors.consent && <FormError error={errors.consent} />}
+                        {errors.consent && (
+                          <FormError>{errors.consent.message}</FormError>
+                        )}
                       </div>
                     </div>
                   </div>
