@@ -85,7 +85,7 @@ const Header = () => {
                   whitespace-nowrap
                   px-[7px]
                   py-2
-                  text-[10px]
+                  text-[12px]
                   font-bold
                   tracking-[-0.1px]
                   transition-all

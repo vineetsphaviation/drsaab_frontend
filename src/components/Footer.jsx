@@ -70,7 +70,7 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="mt-4 max-w-[320px] text-[11px] leading-6 text-gray-500">
+            <p className="mt-4 max-w-[320px] text-[12px] leading-6 text-gray-500">
               Post-sales service for EV, Drone, Battery and Inverter support
               across Panchayats and Rural India.
             </p>
@@ -82,11 +82,11 @@ const Footer = () => {
               </div>
 
               <div>
-                <p className="text-[11px] font-black text-brand-90">
+                <p className="text-[13px] font-black text-brand-90">
                   Service Today
                 </p>
 
-                <p className="text-[10px] text-gray-500">A Cleaner Tomorrow</p>
+                <p className="text-[12px] text-gray-500">A Cleaner Tomorrow</p>
               </div>
             </div>
 

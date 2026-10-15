@@ -10,7 +10,7 @@ export const navItems = [
   { label: "Franchise", href: "/franchise" },
   { label: "Support", href: "/support" },
   { label: "About Us", href: "/about-us" },
-  { label: "Contact Us", href: "/contact-us" },
+  // { label: "Contact Us", href: "/contact-us" },
 ];
 
 // Footer links are objects so their fields stay explicit at each call site.

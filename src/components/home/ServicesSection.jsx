@@ -216,12 +216,12 @@ const ServicesSection = () => {
                   className="
                       mt-2
                       min-h-[28px]
-                      text-[13px]
+                      text-[14px]
                       font-black
                       leading-[1.2]
                       text-[#152627]
 
-                      sm:text-[14px]
+                      sm:text-[15px]
                     "
                 >
                   {title}
@@ -233,11 +233,11 @@ const ServicesSection = () => {
                   className="
                       mt-1
                       min-h-[38px]
-                      text-[11px]
+                      text-[13px]
                       leading-[1.4]
                       text-[#687675]
 
-                      sm:text-[11px]
+                      sm:text-[13px]
                     "
                 >
                   {description}

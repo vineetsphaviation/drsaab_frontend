@@ -56,7 +56,7 @@ export function Eyebrow({ children, light = false, className = "" }) {
   return (
     <div
       className={`
-        text-[10px]
+        text-[12px]
         font-black
         uppercase
         tracking-[1.4px]

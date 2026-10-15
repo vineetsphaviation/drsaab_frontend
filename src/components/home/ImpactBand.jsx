@@ -68,7 +68,7 @@ export default function ImpactBand() {
                 shadow-[0_3px_12px_rgba(3,78,55,0.035)]
                 px-2
                 text-center
-                text-[11px]
+                text-[13px]
                 text-ink
               "
             >
@@ -81,7 +81,7 @@ export default function ImpactBand() {
                   place-items-center
                   rounded-full
                   bg-[#edf7f2]
-                  text-[14px]
+                  text-[15px]
                   text-brand-70
                 "
               >

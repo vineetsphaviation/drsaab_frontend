@@ -181,12 +181,12 @@ const Hero = () => {
           <h2
             className="
               mt-3
-              text-[13px]
+              text-[14px]
               font-bold
               leading-tight
               text-brand-80
 
-              sm:text-[14px]
+              sm:text-[15px]
             "
           >
             Mobile EV, Drone, Battery &amp; Inverter Support Enterprise
@@ -239,7 +239,7 @@ const Hero = () => {
                   className="
                     mt-1
                     block
-                    text-[7px]
+                    text-[10px]
                     font-extrabold
                     leading-[1.15]
                     text-brand-ink

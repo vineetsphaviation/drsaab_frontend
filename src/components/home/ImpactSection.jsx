@@ -122,7 +122,7 @@ const ImpactSection = () => {
               className="
                 mt-2
                 max-w-[220px]
-                text-[12px]
+                text-[13px]
                 leading-[1.45]
                 text-ink
               "
@@ -169,7 +169,7 @@ const ImpactSection = () => {
                 key={alt}
                 className="
                   text-center
-                  text-[11px]
+                  text-[12px]
                   font-bold
                   leading-[1.25]
                   text-ink
@@ -250,7 +250,7 @@ const ImpactSection = () => {
               className="
                 mt-2
                 w-[62%]
-                text-[12px]
+                text-[13px]
                 leading-[1.4]
               "
             >

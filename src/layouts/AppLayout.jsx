@@ -7,7 +7,7 @@ const AppLayout = () => {
     <div className="min-h-screen overflow-x-hidden bg-white">
       <Header />
 
-      <main className="pt-[68px]">
+      <main className="pt-[25px]">
         <Outlet />
       </main>
 

@@ -94,12 +94,12 @@ const TrustStrip = () => {
             {/* Text */}
             <span
               className="
-                text-[11px]
+                text-[12px]
                 font-bold
                 leading-[1.3]
                 text-[#152627]
 
-                sm:text-[12px]
+                sm:text-[13px]
               "
             >
               {item.text}

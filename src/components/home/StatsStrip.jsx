@@ -80,7 +80,7 @@ const StatsStrip = () => {
                 className="
                   mt-1
                   block
-                  text-[11px]
+                  text-[14px]
                   leading-[1.25]
                   text-[#687675]
                 "
