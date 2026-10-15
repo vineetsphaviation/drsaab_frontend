@@ -2,7 +2,9 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: calc(100% + 2px);
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -21,5 +23,19 @@ html {
   --color-brand-5: #eaf4ef;
 
   --color-brand-lime: #b7d96b;
-  --color-brand-ink: #152627;
+  --color-brand-ink: #152627;  /* --text-xs: calc(0.75rem + 2px);
+  --text-sm: calc(0.875rem + 2px);
+  --text-base: calc(1rem + 2px);
+  --text-lg: calc(1.125rem + 2px);
+  --text-xl: calc(1.25rem + 2px);
+  --text-2xl: calc(1.5rem + 2px);
+  --text-3xl: calc(1.875rem + 2px);
+  --text-4xl: calc(2.25rem + 2px);
+  --text-5xl: calc(3rem + 2px);
+  --text-6xl: calc(3.75rem + 2px);
+  --text-7xl: calc(4.5rem + 2px);
+  --text-8xl: calc(6rem + 2px);
+  --text-9xl: calc(8rem + 2px);
+
+ */
 }
