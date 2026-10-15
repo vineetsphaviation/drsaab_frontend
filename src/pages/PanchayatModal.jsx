@@ -1161,15 +1161,33 @@ const PanchayatModal = () => {
       {/* LAUNCH JOURNEY */}
       <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
-          <SectionHeading
-            eyebrow="PANCHAYAT LAUNCH JOURNEY"
-            title="From application to your first service call."
-            description="A structured journey helps the entrepreneur move from initial application through territory assessment, training, enterprise setup and launch."
-          />
+          <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-8">
+            <div>
+              <Eyebrow>PANCHAYAT LAUNCH JOURNEY</Eyebrow>
+              <h2 className="mt-3 text-3xl font-black tracking-[-1.5px] text-brand-95 sm:text-4xl lg:text-[48px]">
+                From application to your first service call.
+              </h2>
+            </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch xl:gap-8">
+            <p className="max-w-4xl text-sm leading-7 text-slate-600 sm:text-[15px]">
+              A structured journey helps the entrepreneur move from initial
+              application through territory assessment, training, enterprise
+              setup and launch.
+            </p>
+          </div>
+
+          <div className="mt-8 flex items-center justify-between border-b border-brand-90/10 pb-3">
+            <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-ink/45">
+              Explore the journey
+            </span>
+            <span className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-brand-70 shadow-sm">
+              9 steps
+            </span>
+          </div>
+
+          <div className="mt-4 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start xl:gap-6">
             {/* Steps */}
-            <div className="grid content-start grid-cols-1 gap-2 sm:grid-cols-2">
+            <div className="grid content-start grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {LAUNCH_STEPS.map((step, index) => {
                 const active = index === activeLaunchStep;
 
@@ -1178,14 +1196,15 @@ const PanchayatModal = () => {
                     type="button"
                     key={step.number}
                     onClick={() => setActiveLaunchStep(index)}
-                    className={`flex min-h-[76px] w-full items-center gap-3 rounded-2xl border p-3 text-left transition-all sm:p-3.5 ${
+                    aria-pressed={active}
+                    className={`group flex min-h-[68px] w-full items-center gap-2.5 rounded-xl border p-2.5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60 focus-visible:ring-offset-2 ${
                       active
-                        ? "border-brand-60/30 bg-brand-95 text-white shadow-lg shadow-brand-95/10"
-                        : "border-brand-10 bg-white text-brand-95 hover:border-brand-60/20"
+                        ? "border-brand-95 bg-brand-95 text-white shadow-md shadow-brand-95/15"
+                        : "border-brand-90/10 bg-white text-brand-95 hover:-translate-y-0.5 hover:border-brand-60/30 hover:shadow-sm"
                     }`}
                   >
                     <div
-                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${
                         active
                           ? "bg-brand-lime text-brand-95"
                           : "bg-brand-5 text-brand-70"
@@ -1203,14 +1222,18 @@ const PanchayatModal = () => {
                         {step.number}
                       </div>
 
-                      <div className="mt-0.5 text-xs font-black leading-snug sm:text-[13px]">
+                      <div className="mt-0.5 text-[11px] font-black leading-snug xl:text-xs">
                         {step.title}
                       </div>
                     </div>
 
                     <ChevronRight
-                      size={16}
-                      className={active ? "text-brand-lime" : "text-slate-300"}
+                      size={14}
+                      className={`shrink-0 transition-transform ${
+                        active
+                          ? "translate-x-0.5 text-brand-lime"
+                          : "text-slate-300 group-hover:translate-x-0.5 group-hover:text-brand-60"
+                      }`}
                     />
                   </button>
                 );
@@ -1218,36 +1241,37 @@ const PanchayatModal = () => {
             </div>
 
             {/* Active detail */}
-            <div className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[30px] bg-brand-95 p-6 text-white sm:p-8 lg:min-h-full">
-              <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-brand-lime/10" />
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full border border-white/5" />
+            <div className="relative overflow-hidden rounded-[24px] bg-brand-95 p-5 text-white sm:p-6">
+              <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full border border-brand-lime/10" />
+              <div className="absolute -bottom-24 -left-24 h-52 w-52 rounded-full border border-white/5" />
 
-              <div className="relative flex flex-1 flex-col">
+              <div className="relative">
                 <div className="flex items-center justify-between">
-                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand-lime text-brand-95">
-                    {LAUNCH_STEPS[activeLaunchStep].icon}
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                      {LAUNCH_STEPS[activeLaunchStep].icon}
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
+                      Current step
+                    </span>
                   </div>
 
-                  <span className="text-5xl font-black text-white/10">
+                  <span className="text-5xl font-black leading-none text-white/10">
                     {LAUNCH_STEPS[activeLaunchStep].number}
                   </span>
                 </div>
 
-                <div className="mt-8 max-w-lg flex-1">
-                  <div className="text-[10px] font-black uppercase tracking-[1.3px] text-brand-lime">
-                    Step {LAUNCH_STEPS[activeLaunchStep].number}
-                  </div>
-
-                  <h3 className="mt-3 text-2xl font-black tracking-[-1px] sm:text-3xl">
+                <div className="mt-5">
+                  <h3 className="mt-2 text-xl font-black tracking-[-1px] sm:text-2xl">
                     {LAUNCH_STEPS[activeLaunchStep].title}
                   </h3>
 
-                  <p className="mt-4 text-sm leading-6 text-white/65 sm:leading-7">
+                  <p className="mt-3 min-h-[3rem] text-sm leading-6 text-white/65">
                     {LAUNCH_STEPS[activeLaunchStep].description}
                   </p>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-6">
                   <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-[0.8px] text-white/35">
                     <span>Panchayat launch progress</span>
                     <span>

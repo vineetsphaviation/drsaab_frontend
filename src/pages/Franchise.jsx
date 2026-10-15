@@ -720,15 +720,33 @@ const Franchise = () => {
       {/* APPLICATION JOURNEY */}
       <section className="bg-brand-5 py-8 sm:py-12 lg:py-14">
         <SectionContainer>
-          <SectionHeading
-            eyebrow="APPLICATION JOURNEY"
-            title="From application to launch."
-            description="A structured nine-step process takes the applicant from initial interest through screening, territory assessment, training and enterprise launch."
-          />
+          <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-8">
+            <div>
+              <Eyebrow>APPLICATION JOURNEY</Eyebrow>
+              <h2 className="mt-3 text-3xl font-black tracking-[-1.5px] text-brand-95 sm:text-4xl lg:text-[48px]">
+                From application to launch.
+              </h2>
+            </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1.15fr]">
+            <p className="max-w-4xl text-sm leading-7 text-slate-600 sm:text-[15px] lg:mb-1">
+              A structured nine-step process takes the applicant from initial
+              interest through screening, territory assessment, training and
+              enterprise launch.
+            </p>
+          </div>
+
+          <div className="mt-8 flex items-center justify-between border-b border-brand-90/10 pb-3">
+            <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-ink/45">
+              Explore the journey
+            </span>
+            <span className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-brand-70 shadow-sm">
+              9 steps
+            </span>
+          </div>
+
+          <div className="mt-4 grid gap-5 lg:grid-cols-[1.2fr_0.8fr] lg:items-start xl:gap-6">
             {/* Application steps */}
-            <div className="grid content-start gap-2 sm:grid-cols-2">
+            <div className="grid content-start grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {APPLICATION_STEPS.map((step, index) => {
                 const active = index === activeStep;
                 const completed = index < activeStep;
@@ -738,25 +756,26 @@ const Franchise = () => {
                     key={step.number}
                     type="button"
                     onClick={() => setActiveStep(index)}
-                    className={`relative flex w-full items-center gap-4 rounded-2xl p-3 text-left transition-all ${
+                    aria-pressed={active}
+                    className={`group relative flex min-h-[68px] w-full items-center gap-2.5 rounded-xl border p-2.5 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60 focus-visible:ring-offset-2 ${
                       active
-                        ? "bg-brand-95 text-white shadow-lg shadow-brand-95/10"
-                        : "hover:bg-white"
+                        ? "border-brand-95 bg-brand-95 text-white shadow-md shadow-brand-95/15"
+                        : "border-brand-90/10 bg-white text-brand-95 hover:-translate-y-0.5 hover:border-brand-60/30 hover:shadow-sm"
                     }`}
                   >
                     <div
-                      className={`relative z-10 grid h-11 w-11 shrink-0 place-items-center rounded-full border-4 ${
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${
                         active
-                          ? "border-brand-lime bg-brand-lime text-brand-95"
+                          ? "bg-brand-lime text-brand-95"
                           : completed
-                            ? "border-brand-5 bg-brand-60 text-white"
-                            : "border-white bg-white text-brand-60"
+                            ? "bg-brand-60 text-white"
+                            : "bg-brand-5 text-brand-70"
                       }`}
                     >
                       {completed ? <Check size={16} /> : step.icon}
                     </div>
 
-                    <div className="flex-1">
+                    <div className="min-w-0 flex-1">
                       <div
                         className={`text-[9px] font-black uppercase tracking-[0.8px] ${
                           active ? "text-brand-lime" : "text-brand-60"
@@ -766,17 +785,19 @@ const Franchise = () => {
                       </div>
 
                       <div
-                        className={`mt-0.5 text-sm font-black ${
-                          active ? "text-white" : "text-brand-95"
-                        }`}
+                        className="mt-0.5 text-[11px] font-black leading-snug xl:text-xs"
                       >
                         {step.title}
                       </div>
                     </div>
 
                     <ChevronRight
-                      size={15}
-                      className={active ? "text-brand-lime" : "text-slate-300"}
+                      size={14}
+                      className={`shrink-0 transition-transform ${
+                        active
+                          ? "translate-x-0.5 text-brand-lime"
+                          : "text-slate-300 group-hover:translate-x-0.5 group-hover:text-brand-60"
+                      }`}
                     />
                   </button>
                 );
@@ -784,50 +805,45 @@ const Franchise = () => {
             </div>
 
             {/* Detail panel */}
-            <div className="relative overflow-hidden rounded-[30px] bg-brand-95 p-7 text-white sm:p-10">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full border border-brand-lime/10" />
-
-              <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full border border-white/5" />
+            <div className="relative overflow-hidden rounded-[24px] bg-brand-95 p-5 text-white sm:p-6">
+              <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full border border-brand-lime/10" />
+              <div className="absolute -bottom-24 -left-24 h-52 w-52 rounded-full border border-white/5" />
 
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand-lime text-brand-95">
-                    {APPLICATION_STEPS[activeStep].icon}
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
+                      {APPLICATION_STEPS[activeStep].icon}
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
+                      Current step
+                    </span>
                   </div>
 
-                  <div className="text-right">
-                    <div className="text-5xl font-black text-white/10">
-                      {APPLICATION_STEPS[activeStep].number}
-                    </div>
-                    <div className="text-[8px] font-black uppercase tracking-[1px] text-white/25">
-                      of {APPLICATION_STEPS.length}
-                    </div>
-                  </div>
+                  <span className="text-5xl font-black leading-none text-white/10">
+                    {APPLICATION_STEPS[activeStep].number}
+                  </span>
                 </div>
 
-                <div className="mt-6 max-w-xl">
-                  <div className="text-[9px] font-black uppercase tracking-[1.2px] text-brand-lime">
-                    APPLICATION STEP
-                  </div>
-
-                  <h3 className="mt-3 text-3xl font-black tracking-[-1px]">
+                <div className="mt-5">
+                  <h3 className="text-xl font-black tracking-[-1px] sm:text-2xl">
                     {APPLICATION_STEPS[activeStep].title}
                   </h3>
 
-                  <p className="mt-5 text-sm leading-7 text-white/55">
+                  <p className="mt-3 min-h-[3rem] text-sm leading-6 text-white/65">
                     {APPLICATION_STEPS[activeStep].description}
                   </p>
                 </div>
 
                 <div className="mt-6">
-                  <div className="flex justify-between text-[8px] font-black uppercase tracking-[0.8px] text-white/30">
+                  <div className="flex items-center justify-between text-[9px] font-black uppercase tracking-[0.8px] text-white/35">
                     <span>Application progress</span>
                     <span>
                       {activeStep + 1}/{APPLICATION_STEPS.length}
                     </span>
                   </div>
 
-                  <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/10">
+                  <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10">
                     <div
                       className="h-full rounded-full bg-brand-lime transition-all duration-500"
                       style={{
@@ -836,29 +852,6 @@ const Franchise = () => {
                         }%`,
                       }}
                     />
-                  </div>
-                </div>
-
-                <div className="mt-8 grid grid-cols-3 gap-2">
-                  <div className="rounded-xl bg-white/[0.04] p-3">
-                    <div className="text-xs font-black text-brand-lime">01</div>
-                    <div className="mt-1 text-[8px] uppercase tracking-[0.6px] text-white/30">
-                      Apply
-                    </div>
-                  </div>
-
-                  <div className="rounded-xl bg-white/[0.04] p-3">
-                    <div className="text-xs font-black text-brand-lime">05</div>
-                    <div className="mt-1 text-[8px] uppercase tracking-[0.6px] text-white/30">
-                      Document
-                    </div>
-                  </div>
-
-                  <div className="rounded-xl bg-white/[0.04] p-3">
-                    <div className="text-xs font-black text-brand-lime">09</div>
-                    <div className="mt-1 text-[8px] uppercase tracking-[0.6px] text-white/30">
-                      Launch
-                    </div>
                   </div>
                 </div>
               </div>
