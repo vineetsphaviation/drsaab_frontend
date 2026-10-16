@@ -390,7 +390,7 @@ const UrbanPartnerHero = ({ onApply }) => {
               <span className="block">Accessible.</span>
             </h1>
 
-            <p className="mt-5 max-w-[460px] text-[13px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
+            <p className="mt-5 max-w-[460px] text-[14px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
               Build a trusted technical service presence in your city with EV,
               battery, fleet, charging and roadside support delivered through a
               connected urban partner network.

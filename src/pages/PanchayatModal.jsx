@@ -487,7 +487,7 @@ const PanchayatHero = ({ onApply }) => {
                   01
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[12px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Mobile Unit
                 </div>
               </div>
@@ -821,7 +821,7 @@ const PanchayatModal = () => {
                 </CircleIcon>
 
                 <div>
-                  <div className="text-base font-black text-brand-95">
+                  <div className="text-xl font-black text-brand-95">
                     One Panchayat + Surrounding Villages
                   </div>
                   <p className="mt-1.5 text-lg leading-6 text-slate-500">
