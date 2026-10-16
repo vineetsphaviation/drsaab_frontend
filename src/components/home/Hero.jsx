@@ -125,7 +125,7 @@ const Hero = () => {
 
           <Eyebrow
             className="
-              text-[11px]
+              text-[13px]
               tracking-[1.5px]
 
               sm:text-[12px]
@@ -158,7 +158,7 @@ const Hero = () => {
                 align-top
                 text-[9px]
                 tracking-normal
-                sm:text-[11px]
+                sm:text-[13px]
               "
             >
               ®
@@ -239,7 +239,7 @@ const Hero = () => {
                   className="
                     mt-1
                     block
-                    text-[10px]
+                    text-[12px]
                     font-extrabold
                     leading-[1.15]
                     text-brand-ink
@@ -290,8 +290,8 @@ const Hero = () => {
                 min-w-[143px]
                 rounded-[6px]
                 px-4
-                py-[11px]
-                text-[10px]
+                py-[13px]
+                text-[12px]
                 shadow-sm
               "
             >
@@ -307,8 +307,8 @@ const Hero = () => {
                 rounded-[6px]
                 border-brand-70
                 px-4
-                py-[11px]
-                text-[10px]
+                py-[13px]
+                text-[12px]
                 text-brand-90
               "
             >

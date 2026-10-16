@@ -261,7 +261,7 @@ const SectionHeading = ({ eyebrow, title, description, light = false }) => {
 
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-2xl text-base leading-7 sm:text-[17px] ${
             light ? "text-white/65" : "text-slate-600"
           }`}
         >
@@ -288,7 +288,7 @@ const NetworkNode = ({ label, type }) => {
       </div>
 
       <div
-        className={`mt-3 text-center text-[11px] font-black uppercase tracking-[0.8px] ${
+        className={`mt-3 text-center text-[13px] font-black uppercase tracking-[0.8px] ${
           isHub ? "text-white" : "text-white/75"
         }`}
       >
@@ -426,7 +426,7 @@ const PanchayatHero = ({ onApply }) => {
               <span className="block text-brand-70">One Dr. Saab.</span>
             </h1>
 
-            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-5 max-w-[470px] text-[14px] leading-6 text-brand-ink/65 sm:text-[18px] sm:leading-7">
               A mobile technical service enterprise bringing EV, battery,
               agricultural drone, solar and energy support closer to rural
               customers — one Panchayat and its surrounding villages at a time.
@@ -441,7 +441,7 @@ const PanchayatHero = ({ onApply }) => {
                 >
                   <Icon size={11} className="text-brand-70" />
 
-                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  <span className="text-[12px] font-black uppercase tracking-[0.5px] text-brand-90">
                     {label}
                   </span>
                 </div>
@@ -463,11 +463,11 @@ const PanchayatHero = ({ onApply }) => {
             {/* Trust / model indicators */}
             <div className="mt-7 grid max-w-[470px] grid-cols-3 border-t border-brand-10 pt-5">
               <div className="border-r border-brand-10 pr-3">
-                <div className="text-[19px] font-black tracking-[-0.5px] text-brand-95">
+                <div className="text-[20px] font-black tracking-[-0.5px] text-brand-95">
                   01
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[14px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Panchayat
                 </div>
               </div>
@@ -477,7 +477,7 @@ const PanchayatHero = ({ onApply }) => {
                   4+
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[12px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Tech Verticals
                 </div>
               </div>
@@ -514,11 +514,11 @@ const PanchayatHero = ({ onApply }) => {
               {/* TOP CARD */}
               <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                  <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-60">
                     PANCHAYAT SERVICE NETWORK
                   </div>
 
-                  <div className="mt-1 text-[12px] font-black text-brand-95 sm:text-[14px]">
+                  <div className="mt-1 text-[14px] font-black text-brand-95 sm:text-[16px]">
                     One Local Hub. Multiple Villages.
                   </div>
                 </div>
@@ -526,7 +526,7 @@ const PanchayatHero = ({ onApply }) => {
                 <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
 
-                  <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+                  <span className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-70">
                     Network Active
                   </span>
                 </div>
@@ -629,11 +629,11 @@ const PanchayatHero = ({ onApply }) => {
                 </div>
 
                 <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-brand-95 px-3 py-2 text-center shadow-lg">
-                  <div className="text-[7px] font-bold uppercase tracking-[1px] text-brand-lime">
+                  <div className="text-[10px] font-bold uppercase tracking-[1px] text-brand-lime">
                     SERVICE HUB
                   </div>
 
-                  <div className="mt-0.5 text-[10px] font-black text-white">
+                  <div className="mt-0.5 text-[14px] font-black text-white">
                     Dr. Saab Mobile Unit
                   </div>
                 </div>
@@ -673,11 +673,11 @@ const PanchayatHero = ({ onApply }) => {
                     </div>
 
                     <div>
-                      <div className="text-[7px] font-black uppercase tracking-[0.8px] text-brand-60">
+                      <div className="text-[10px] font-black uppercase tracking-[0.8px] text-brand-60">
                         SERVICE TERRITORY
                       </div>
 
-                      <div className="mt-0.5 text-[11px] font-black text-brand-95">
+                      <div className="mt-0.5 text-[15px] font-black text-brand-95">
                         Panchayat + Surrounding Villages
                       </div>
                     </div>
@@ -686,7 +686,7 @@ const PanchayatHero = ({ onApply }) => {
                   <div className="hidden items-center gap-1.5 sm:flex">
                     <Route size={13} className="text-brand-60" />
 
-                    <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-70">
+                    <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-70">
                       Connected Coverage
                     </span>
                   </div>
@@ -702,11 +702,11 @@ const PanchayatHero = ({ onApply }) => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     SUPPORT
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Trained Technician
                   </div>
                 </div>
@@ -721,11 +721,11 @@ const PanchayatHero = ({ onApply }) => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     DIGITAL
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Service Records
                   </div>
                 </div>
@@ -821,10 +821,10 @@ const PanchayatModal = () => {
                 </CircleIcon>
 
                 <div>
-                  <div className="text-sm font-black text-brand-95">
+                  <div className="text-base font-black text-brand-95">
                     One Panchayat + Surrounding Villages
                   </div>
-                  <p className="mt-1.5 text-xs leading-6 text-slate-500">
+                  <p className="mt-1.5 text-lg leading-6 text-slate-500">
                     The enterprise is designed around a Panchayat hub and its
                     surrounding service territory.
                   </p>
@@ -836,19 +836,21 @@ const PanchayatModal = () => {
               {SERVICE_USERS.map((item) => (
                 <div
                   key={item.title}
-                  className="group rounded-2xl border border-brand-10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/30 hover:shadow-xl hover:shadow-brand-90/5"
+                  className="group flex items-start gap-4 rounded-2xl border border-brand-10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-brand-60/30 hover:shadow-xl hover:shadow-brand-90/5"
                 >
                   <CircleIcon className="transition-colors group-hover:bg-brand-10">
                     {item.icon}
                   </CircleIcon>
 
-                  <h3 className="mt-5 text-sm font-black text-brand-95">
-                    {item.title}
-                  </h3>
+                  <div className="min-w-0">
+                    <h3 className="text-base font-black text-brand-95">
+                      {item.title}
+                    </h3>
 
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    {item.description}
-                  </p>
+                    <p className="mt-1.5 text-lg leading-6 text-slate-500">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -895,7 +897,7 @@ const PanchayatModal = () => {
                       {item.icon}
                     </div>
 
-                    <div className="mt-3 max-w-[120px] text-[9px] font-black uppercase tracking-[1px] text-white/75">
+                    <div className="mt-3 max-w-[120px] text-[12px] font-black uppercase tracking-[1px] text-white/75">
                       {item.label}
                     </div>
                   </div>
@@ -934,10 +936,10 @@ const PanchayatModal = () => {
                   </div>
 
                   <div>
-                    <div className="text-[9px] font-black uppercase tracking-[1.1px] text-brand-lime">
+                    <div className="text-[12px] font-black uppercase tracking-[1.1px] text-brand-lime">
                       Equipped With
                     </div>
-                    <div className="mt-1 text-sm font-black">
+                    <div className="mt-1 text-lg font-black">
                       Field-ready infrastructure
                     </div>
                   </div>
@@ -947,7 +949,7 @@ const PanchayatModal = () => {
                   {["EV", "Battery", "Drone", "Solar"].map((item) => (
                     <div
                       key={item}
-                      className="rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-center text-[10px] font-bold text-white/70"
+                      className="rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-center text-[12px] font-bold text-white/70"
                     >
                       {item}
                     </div>
@@ -964,22 +966,24 @@ const PanchayatModal = () => {
                 >
                   <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-full bg-brand-5 transition-colors group-hover:bg-brand-10" />
 
-                  <div className="relative">
-                    <div className="flex items-center justify-between">
-                      <CircleIcon>{item.icon}</CircleIcon>
+                  <div className="relative flex items-start gap-4">
+                    <CircleIcon className="shrink-0">{item.icon}</CircleIcon>
 
-                      <span className="text-[10px] font-black text-brand-60/50">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-sm font-black text-brand-95">
+                          {item.title}
+                        </h3>
+
+                        <span className="shrink-0 text-[14px] font-black text-brand-60/50">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      <p className="mt-2 text-lg leading-6 text-slate-500">
+                        {item.description}
+                      </p>
                     </div>
-
-                    <h3 className="mt-6 text-sm font-black text-brand-95">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-2 text-xs leading-6 text-slate-500">
-                      {item.description}
-                    </p>
                   </div>
                 </div>
               ))}
@@ -1019,7 +1023,7 @@ const PanchayatModal = () => {
                 {["EV", "Battery", "Drone", "Solar"].map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.8px] text-white/60"
+                    className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[12px] font-black uppercase tracking-[0.8px] text-white/60"
                   >
                     {item}
                   </span>
@@ -1059,7 +1063,7 @@ const PanchayatModal = () => {
                     </div>
 
                     <div>
-                      <div className="text-[9px] font-black uppercase tracking-[1px] text-white/45">
+                      <div className="text-[12px] font-black uppercase tracking-[1px] text-white/45">
                         Indicative Enterprise Cost
                       </div>
                       <div className="mt-1 text-3xl font-black">
@@ -1072,7 +1076,7 @@ const PanchayatModal = () => {
                     <div className="h-full w-full rounded-full bg-brand-lime" />
                   </div>
 
-                  <div className="mt-3 flex justify-between text-[9px] uppercase tracking-[0.7px] text-white/40">
+                  <div className="mt-3 flex justify-between text-[12px] uppercase tracking-[0.7px] text-white/40">
                     <span>Project Cost</span>
                     <span>₹11.00 Lakh</span>
                   </div>
@@ -1099,7 +1103,7 @@ const PanchayatModal = () => {
 
             <div>
               <div className="overflow-hidden rounded-[24px] border border-brand-10">
-                <div className="grid grid-cols-[1fr_auto] bg-brand-95 px-5 py-4 text-[10px] font-black uppercase tracking-[0.8px] text-white sm:px-6">
+                <div className="grid grid-cols-[1fr_auto] bg-brand-95 px-5 py-4 text-[12px] font-black uppercase tracking-[0.8px] text-white sm:px-6">
                   <span>Component</span>
                   <span>Indicative Amount</span>
                 </div>
@@ -1127,7 +1131,7 @@ const PanchayatModal = () => {
                   ))}
 
                   <div className="grid grid-cols-[1fr_auto] items-center bg-brand-5 px-5 py-5 sm:px-6">
-                    <span className="text-sm font-black text-brand-95">
+                    <span className="text-base font-black text-brand-95">
                       Total
                     </span>
 
@@ -1145,7 +1149,7 @@ const PanchayatModal = () => {
                     size={18}
                   />
 
-                  <p className="text-xs leading-6 text-amber-900">
+                  <p className="text-base leading-6 text-amber-900">
                     Finance is not guaranteed. Loan sanction, subsidy, interest
                     support, moratorium and repayment terms remain subject to
                     applicant eligibility, lender appraisal and applicable
@@ -1169,7 +1173,7 @@ const PanchayatModal = () => {
               </h2>
             </div>
 
-            <p className="max-w-4xl text-sm leading-7 text-slate-600 sm:text-[15px]">
+            <p className="max-w-4xl text-base leading-7 text-slate-600 sm:text-[17px]">
               A structured journey helps the entrepreneur move from initial
               application through territory assessment, training, enterprise
               setup and launch.
@@ -1177,10 +1181,10 @@ const PanchayatModal = () => {
           </div>
 
           <div className="mt-8 flex items-center justify-between border-b border-brand-90/10 pb-3">
-            <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-ink/45">
+            <span className="text-[14px] font-black uppercase tracking-[1px] text-brand-ink/45">
               Explore the journey
             </span>
-            <span className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-brand-70 shadow-sm">
+            <span className="rounded-full bg-white px-3 py-1 text-[14px] font-bold text-brand-70 shadow-sm">
               9 steps
             </span>
           </div>
@@ -1215,14 +1219,14 @@ const PanchayatModal = () => {
 
                     <div className="min-w-0 flex-1">
                       <div
-                        className={`text-[9px] font-black uppercase tracking-[0.8px] ${
+                        className={`text-[12px] font-black uppercase tracking-[0.8px] ${
                           active ? "text-brand-lime" : "text-brand-60"
                         }`}
                       >
                         {step.number}
                       </div>
 
-                      <div className="mt-0.5 text-[11px] font-black leading-snug xl:text-xs">
+                      <div className="mt-0.5 text-[15px] font-black leading-snug xl:text-base">
                         {step.title}
                       </div>
                     </div>
@@ -1251,7 +1255,7 @@ const PanchayatModal = () => {
                     <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
                       {LAUNCH_STEPS[activeLaunchStep].icon}
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
+                    <span className="text-[14px] font-black uppercase tracking-[1px] text-brand-lime">
                       Current step
                     </span>
                   </div>
@@ -1310,7 +1314,7 @@ const PanchayatModal = () => {
                 <span className="block text-brand-lime">Dr. Saab.</span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/60 sm:text-[15px]">
+              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/60 sm:text-[16px]">
                 Bring EV, battery, drone and solar support closer to your
                 community through a branded mobile technical enterprise.
               </p>
@@ -1335,7 +1339,7 @@ const PanchayatModal = () => {
                 </Button>
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[10px] font-bold uppercase tracking-[0.8px] text-white/35">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12px] font-bold uppercase tracking-[0.8px] text-white/35">
                 <span className="inline-flex items-center gap-2">
                   <Check size={13} className="text-brand-lime" />
                   Local Enterprise

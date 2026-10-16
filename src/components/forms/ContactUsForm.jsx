@@ -284,14 +284,14 @@ const ContactUsForm = ({
 
       {/* SUBMIT */}
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-[300px] text-[10px] leading-4 text-brand-ink/45">
+        <p className="max-w-[300px] text-[12px] leading-4 text-brand-ink/45">
           We will use your information to respond to your enquiry.
         </p>
 
         <button
           type="submit"
           disabled={isFormSubmitting || isSubmittingFromApi}
-          className="inline-flex min-h-[42px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-5 py-2.5 text-[11px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-[42px] items-center justify-center rounded-[7px] border border-brand-90 bg-brand-90 px-5 py-2.5 text-[13px] font-black text-white transition hover:-translate-y-0.5 hover:bg-brand-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60/40 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isFormSubmitting || isSubmittingFromApi ? (
             <>

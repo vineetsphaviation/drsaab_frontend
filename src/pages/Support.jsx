@@ -237,7 +237,7 @@ const SupportOptionCard = ({ option }) => {
                 ? "noopener noreferrer"
                 : undefined
             }
-            className="inline-flex items-center text-[10px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
+            className="inline-flex items-center text-[12px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
           >
             {option.action}
             <ArrowRight
@@ -248,7 +248,7 @@ const SupportOptionCard = ({ option }) => {
         ) : (
           <a
             href={option.href}
-            className="inline-flex items-center text-[10px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
+            className="inline-flex items-center text-[12px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
           >
             {option.action}
             <ArrowRight
@@ -310,7 +310,7 @@ const SupportAction = ({ action, active, onClick }) => {
 
         <div className="min-w-0 flex-1">
           <div
-            className={`text-[10px] font-black uppercase tracking-[0.4px] ${
+            className={`text-[12px] font-black uppercase tracking-[0.4px] ${
               active ? "text-white" : "text-brand-95"
             }`}
           >

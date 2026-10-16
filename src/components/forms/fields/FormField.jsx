@@ -26,7 +26,7 @@ const FormField = ({
       {label && (
         <label
           htmlFor={fieldId}
-          className="block text-[10px] font-black uppercase tracking-[.8px] text-brand-95"
+          className="block text-[12px] font-black uppercase tracking-[.8px] text-brand-95"
         >
           {label}
 
@@ -50,7 +50,7 @@ const FormField = ({
       {hint && !error && (
         <p
           id={hintId}
-          className="mt-1.5 text-[10px] leading-4 text-brand-ink/50"
+          className="mt-1.5 text-[12px] leading-4 text-brand-ink/50"
         >
           {hint}
         </p>

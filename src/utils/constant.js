@@ -8,7 +8,7 @@ export const navItems = [
   { label: "Panchayat Model", href: "/panchayat-modal" },
   { label: "Urban Partner", href: "/urban-partner" },
   { label: "Franchise", href: "/franchise" },
-  { label: "Support", href: "/support" },
+  // { label: "Support", href: "/support" },
   { label: "About Us", href: "/about-us" },
   // { label: "Contact Us", href: "/contact-us" },
 ];

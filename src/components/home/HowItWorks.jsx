@@ -197,7 +197,7 @@ const HowItWorks = () => {
                   className="
                       mt-1
                       block
-                      text-[11px]
+                      text-[13px]
                       font-black
                       leading-none
                       text-[#152627]
@@ -317,12 +317,12 @@ const HowItWorks = () => {
                   className="
                     mt-1
                     block
-                    text-[10px]
+                    text-[12px]
                     font-medium
                     leading-[1.15]
                     text-[#152627]
 
-                    sm:text-[11px]
+                    sm:text-[13px]
                   "
                 >
                   {label}

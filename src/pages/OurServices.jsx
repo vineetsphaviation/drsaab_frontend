@@ -415,12 +415,20 @@ const OurServices = () => {
       });
     } catch (err) {
       console.error("Service request submission failed:", err);
-      toast.error("Service request could not be sent", {
-        description: getFormErrorMessages(
-          err,
-          "We couldn't submit your request. Please try again.",
-        ).join(" "),
-      });
+      const errorMessages = getFormErrorMessages(
+        err,
+        "We couldn't submit your request. Please try again.",
+      );
+      const issueDescriptionError = errorMessages.some((message) =>
+        /issue[\s_-]*description|describe the issue/i.test(message),
+      );
+
+      if (!issueDescriptionError) {
+        toast.error("Service request could not be sent", {
+          description: errorMessages.join(" "),
+        });
+      }
+
       throw err;
     }
   };
@@ -523,7 +531,7 @@ const OurServices = () => {
                           Technical Service
                         </div>
 
-                        <p className="mt-1.5 max-w-[390px] text-[10px] leading-5 text-white/55">
+                        <p className="mt-1.5 max-w-[390px] text-[12px] leading-5 text-white/55">
                           Diagnostics, maintenance and technical support for
                           emerging mobility and energy technologies.
                         </p>
@@ -556,7 +564,7 @@ const OurServices = () => {
                   </div>
 
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-[.7px] text-brand-95">
+                    <div className="text-[12px] font-black uppercase tracking-[.7px] text-brand-95">
                       Trained Support
                     </div>
 
@@ -599,7 +607,7 @@ const OurServices = () => {
                   {title}
                 </h3>
 
-                <p className="mt-1 text-[10px] leading-4 text-gray-500">
+                <p className="mt-1 text-[12px] leading-4 text-gray-500">
                   {text}
                 </p>
               </div>
@@ -619,7 +627,7 @@ const OurServices = () => {
                 Technical support that comes closer to your community.
               </h2>
 
-              <p className="mt-5 max-w-lg text-sm leading-7 text-gray-600">
+              <p className="mt-5 max-w-lg text-lg leading-7 text-gray-600">
                 Dr. Saab brings practical post-sales support closer to the
                 people, vehicles and energy systems that depend on them every
                 day.
@@ -631,11 +639,11 @@ const OurServices = () => {
                 </CircleIcon>
 
                 <div>
-                  <p className="text-sm font-black text-brand-ink">
+                  <p className="text-lg font-black text-brand-ink">
                     Local-first service network
                   </p>
 
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="mt-1 text-lg text-gray-500">
                     Doorstep support through trained technicians
                   </p>
                 </div>
@@ -677,11 +685,11 @@ const OurServices = () => {
                     <Icon size={20} />
                   </CircleIcon>
 
-                  <h3 className="mt-4 text-sm font-black text-brand-95">
+                  <h3 className="mt-4 text-base font-black text-brand-95">
                     {title}
                   </h3>
 
-                  <p className="mt-2 text-xs leading-5 text-gray-500">
+                  <p className="mt-2 text-lg leading-5 text-gray-500">
                     {description}
                   </p>
                 </div>
@@ -705,7 +713,7 @@ const OurServices = () => {
               on.
             </h2>
 
-            <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-500">
+            <p className="mt-4 max-w-2xl text-lg leading-6 text-gray-500">
               Choose a service category to explore the support available through
               the Dr. Saab network.
             </p>
@@ -722,7 +730,7 @@ const OurServices = () => {
                   className={`
                     flex h-11 w-[calc((100%-0.5rem)/2)] items-center justify-center rounded-full border px-3 text-center
                     sm:w-[calc((100%-1rem)/3)] lg:w-[calc((100%-2rem)/5)]
-                    text-[10px] font-bold leading-tight
+                    text-[12px] font-bold leading-tight
                     transition-all duration-200
                     ${
                       selectedCategory === category
@@ -764,7 +772,7 @@ const OurServices = () => {
                       </div>
                     </div>
 
-                    <p className="mt-3 text-xs leading-6 text-gray-500">
+                    <p className="mt-3 text-base leading-6 text-gray-500">
                       {service.description}
                     </p>
 
@@ -773,7 +781,7 @@ const OurServices = () => {
                       {service.services.slice(0, 10).map((item) => (
                         <div
                           key={item}
-                          className="flex items-start gap-2 text-[11px] text-gray-600"
+                          className="flex items-start gap-2 text-[13px] text-gray-600"
                         >
                           <span className="mt-[2px] grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-5 text-brand-70">
                             <Check size={9} strokeWidth={3} />
@@ -791,7 +799,7 @@ const OurServices = () => {
                           setActiveService(service);
                           setShowAdditionalServices(true);
                         }}
-                        className="mt-3 text-[11px] font-black text-brand-70 hover:text-brand-90"
+                        className="mt-3 text-[13px] font-black text-brand-70 hover:text-brand-90"
                       >
                         + {service.services.length - 10} more services
                       </button>
@@ -805,7 +813,7 @@ const OurServices = () => {
                             className="mt-0.5 shrink-0 text-amber-600"
                           />
 
-                          <p className="text-[10px] leading-5 text-amber-800">
+                          <p className="text-[12px] leading-5 text-amber-800">
                             {service.note}
                           </p>
                         </div>
@@ -849,11 +857,11 @@ const OurServices = () => {
               </CircleIcon>
 
               <div>
-                <p className="text-lg font-black leading-none text-brand-95">
+                <p className="text-xl font-black leading-none text-brand-95">
                   {value}
                 </p>
 
-                <p className="mt-1 text-[9px] font-semibold text-gray-500">
+                <p className="mt-1 text-[14px] font-semibold text-gray-500">
                   {label}
                 </p>
               </div>
@@ -872,7 +880,7 @@ const OurServices = () => {
               From service request to support.
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-gray-500">
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-gray-600">
               A simple process designed to get the right support closer to you.
             </p>
           </div>
@@ -891,15 +899,15 @@ const OurServices = () => {
                     <Icon size={21} />
                   </CircleIcon>
 
-                  <span className="mt-3 text-[9px] font-black tracking-[1px] text-brand-60">
+                  <span className="mt-3 text-[12px] font-black tracking-[1px] text-brand-60">
                     {number}
                   </span>
 
-                  <h3 className="mt-1 text-xs font-black text-brand-95">
+                  <h3 className="mt-1 text-base font-black text-brand-95">
                     {title}
                   </h3>
 
-                  <p className="mt-1 max-w-[130px] text-[10px] leading-4 text-gray-500">
+                  <p className="mt-1 max-w-[130px] text-[14px] leading-4 text-gray-500">
                     {description}
                   </p>
                 </div>
@@ -964,7 +972,7 @@ const OurServices = () => {
             Book a Dr. Saab service.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/75 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-7 text-white/75 sm:text-xl">
             Connect with the nearest available technician and get practical
             support for your EV, battery, drone, solar or energy system.
           </p>
@@ -1062,7 +1070,7 @@ const OurServices = () => {
                 ).map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 rounded-xl bg-brand-5 px-4 py-3 text-[11px] font-semibold text-brand-ink"
+                    className="flex items-center gap-3 rounded-xl bg-brand-5 px-4 py-3 text-[13px] font-semibold text-brand-ink"
                   >
                     <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-70 text-white">
                       <Check size={10} strokeWidth={3} />
@@ -1083,7 +1091,7 @@ const OurServices = () => {
                     {activeService.suitableFor.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full bg-brand-5 px-3 py-2 text-[10px] font-bold text-brand-70"
+                        className="rounded-full bg-brand-5 px-3 py-2 text-[12px] font-bold text-brand-70"
                       >
                         {item}
                       </span>
@@ -1093,7 +1101,7 @@ const OurServices = () => {
               )}
 
               {activeService.note && (
-                <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4 text-[11px] leading-5 text-amber-800">
+                <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-4 text-[13px] leading-5 text-amber-800">
                   <div className="flex gap-2">
                     <CircleAlert size={15} className="shrink-0" />
                     {activeService.note}

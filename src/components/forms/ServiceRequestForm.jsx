@@ -124,6 +124,9 @@ const inputRules = {
   },
   issueDescription: {
     required: "Please describe the issue.",
+    validate: (value) =>
+      value.trim().length >= 10 ||
+      "Please describe the issue in at least 10 characters.",
     maxLength: {
       value: 3000,
       message: "Description cannot exceed 3000 characters.",
@@ -195,6 +198,7 @@ const ServiceRequestForm = ({
     handleSubmit,
     trigger,
     setValue,
+    setError,
     watch,
     formState: { errors },
   } = useForm({
@@ -235,6 +239,16 @@ const ServiceRequestForm = ({
     setActiveStep((step) => Math.max(step - 1, 0));
   };
 
+  const handleInvalidSubmit = (validationErrors) => {
+    const invalidStep = STEPS.findIndex(({ fields }) =>
+      fields.some((field) => validationErrors[field]),
+    );
+
+    if (invalidStep !== -1) {
+      setActiveStep(invalidStep);
+    }
+  };
+
   const submitForm = async (values) => {
     if (typeof onSubmit !== "function") {
       setSubmissionError("Service request submission is not configured yet.");
@@ -246,6 +260,25 @@ const ServiceRequestForm = ({
     try {
       await onSubmit(toPayload(values));
     } catch (error) {
+      const issueDescriptionError = getFormErrorMessages(error).find((message) =>
+        /issue[\s_-]*description|describe the issue/i.test(message),
+      );
+
+      if (issueDescriptionError) {
+        setError("issueDescription", {
+          type: "server",
+          message: issueDescriptionError.replace(
+            /^[-\s]*issue[\s_-]*description:\s*/i,
+            "",
+          ),
+        });
+        setActiveStep(
+          STEPS.findIndex((step) => step.fields.includes("issueDescription")),
+        );
+        setSubmissionError("");
+        return;
+      }
+
       setSubmissionError(
         getFormErrorMessages(
           error,
@@ -397,7 +430,7 @@ const ServiceRequestForm = ({
                 {STEPS.map((step, index) => (
                   <div
                     key={step.number}
-                    className={`text-[10px] font-bold uppercase tracking-wide sm:text-xs ${
+                    className={`text-[12px] font-bold uppercase tracking-wide sm:text-xs ${
                       index <= activeStep
                         ? "text-brand-90"
                         : "text-brand-ink/35"
@@ -410,7 +443,10 @@ const ServiceRequestForm = ({
               </div>
             </div>
 
-            <form onSubmit={handleSubmit(submitForm)} noValidate>
+            <form
+              onSubmit={handleSubmit(submitForm, handleInvalidSubmit)}
+              noValidate
+            >
               <div className="overflow-hidden">
                 <div className="w-full">
                   {/* Step 1: Contact details */}
@@ -443,7 +479,7 @@ const ServiceRequestForm = ({
                         />
                       </div>
 
-                      <div>
+                      {/* <div>
                         <FormInput
                           label="WhatsApp number"
                           type="tel"
@@ -452,9 +488,9 @@ const ServiceRequestForm = ({
                           error={errors.whatsappNumber}
                           {...register("whatsappNumber")}
                         />
-                      </div>
+                      </div> */}
 
-                      <div className="sm:col-span-2">
+                      <div>
                         <FormInput
                           label="Email address"
                           type="email"
@@ -728,7 +764,16 @@ const ServiceRequestForm = ({
                 </p>
               </div>
 
-              <FormErrorSummary error={apiError} fallback={submissionError} />
+              <FormErrorSummary
+                error={
+                  getFormErrorMessages(apiError).some((message) =>
+                    /issue[\s_-]*description|describe the issue/i.test(message),
+                  )
+                    ? null
+                    : apiError
+                }
+                fallback={submissionError}
+              />
             </form>
           </div>
         </div>

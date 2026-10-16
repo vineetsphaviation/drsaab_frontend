@@ -439,7 +439,7 @@ const MechanicForm = ({
               {STEPS.map((step, index) => (
                 <div
                   key={step.title}
-                  className={`text-[10px] font-bold uppercase tracking-wide sm:text-xs ${
+                  className={`text-[12px] font-bold uppercase tracking-wide sm:text-xs ${
                     index <= activeStep ? "text-brand-90" : "text-brand-ink/35"
                   }`}
                 >

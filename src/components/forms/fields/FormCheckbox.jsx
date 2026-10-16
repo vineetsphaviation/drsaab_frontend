@@ -47,7 +47,7 @@ const FormCheckbox = forwardRef(
             "
           />
 
-          <span className="text-[11px] leading-5 text-brand-ink/65">
+          <span className="text-[13px] leading-5 text-brand-ink/65">
             {label}
 
             {required && (
@@ -61,7 +61,7 @@ const FormCheckbox = forwardRef(
         {hint && !error && (
           <p
             id={hintId}
-            className="ml-7 mt-1.5 text-[10px] leading-4 text-brand-ink/50"
+            className="ml-7 mt-1.5 text-[12px] leading-4 text-brand-ink/50"
           >
             {hint}
           </p>

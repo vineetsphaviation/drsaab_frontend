@@ -137,7 +137,7 @@ const ImpactSection = () => {
                 mt-2
                 px-3
                 py-2
-                text-[11px]
+                text-[13px]
               "
             >
               Our Impact&nbsp; →
@@ -265,7 +265,7 @@ const ImpactSection = () => {
                 mt-2
                 px-3
                 py-2
-                text-[11px]
+                text-[13px]
               "
             >
               Apply for Franchise&nbsp; →

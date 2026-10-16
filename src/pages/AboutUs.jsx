@@ -288,7 +288,7 @@ const AboutHero = () => {
               battery, drone and energy landscape.
             </p>
 
-            <p className="mt-3 max-w-[440px] text-[11px] leading-5 text-brand-ink/50">
+            <p className="mt-3 max-w-[440px] text-[13px] leading-5 text-brand-ink/50">
               We believe technical service should be easier to access, easier to
               understand and easier to trust.
             </p>
@@ -371,7 +371,7 @@ const AboutHero = () => {
                     OUR APPROACH
                   </div>
 
-                  <div className="mt-1 text-[10px] font-black text-brand-95">
+                  <div className="mt-1 text-[12px] font-black text-brand-95">
                     Like a Good Doctor
                   </div>
                 </div>
@@ -412,7 +412,7 @@ const AboutHero = () => {
             </div>
 
             {/* BOTTOM FLOATING LABEL */}
-            <div className="absolute -bottom-4 left-8 hidden items-center gap-2 rounded-full border border-brand-10 bg-white px-3.5 py-2.5 shadow-[0_10px_25px_rgba(7,95,69,0.10)] sm:flex">
+            <div className="absolute -bottom-4 left-8 hidden items-center gap-2 rounded-full border border-brand-10 bg-white px-3.5 py-2.5 shadow-[0_12px_25px_rgba(7,95,69,0.10)] sm:flex">
               <div className="h-2 w-2 rounded-full bg-brand-60" />
 
               <span className="text-[8px] font-black uppercase tracking-[0.7px] text-brand-90">
@@ -436,7 +436,7 @@ const About = () => {
       <section className="bg-white py-8 sm:py-12 lg:py-14">
         <SectionContainer>
           <div className="grid gap-8 lg:grid-cols-[.82fr_1.18fr] lg:gap-14">
-            <div className="relative overflow-hidden rounded-[28px] bg-brand-95 p-7 text-white sm:p-9 lg:min-h-[510px] lg:p-10">
+            <div className="relative overflow-hidden rounded-[28px] bg-brand-95 p-7 text-white sm:p-9 lg:min-h-[512px] lg:p-10">
               <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border border-white/10" />
               <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full bg-brand-60/25 blur-3xl" />
 
@@ -448,7 +448,7 @@ const About = () => {
                   service.
                 </h2>
 
-                <p className="mt-5 max-w-[410px] text-sm leading-7 text-white/70">
+                <p className="mt-5 max-w-[412px] text-sm leading-7 text-white/70">
                   We bring capable local technicians, trusted processes and
                   emerging technology into one practical service model.
                 </p>
@@ -460,7 +460,7 @@ const About = () => {
                     </div>
 
                     <div>
-                      <p className="text-[10px] font-black uppercase tracking-[.14em] text-brand-lime">
+                      <p className="text-[12px] font-black uppercase tracking-[.14em] text-brand-lime">
                         One connected model
                       </p>
                       <p className="mt-1 text-xs leading-5 text-white/65">
@@ -573,7 +573,7 @@ const About = () => {
                 key={item.title}
                 className="group relative rounded-[14px] border border-brand-90/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-60/25 hover:shadow-[0_15px_45px_rgba(3,78,55,.08)]"
               >
-                <div className="absolute right-5 top-5 text-[10px] font-black text-brand-90/15">
+                <div className="absolute right-5 top-5 text-[12px] font-black text-brand-90/15">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
@@ -629,7 +629,7 @@ const About = () => {
                     key={step.number}
                     className="relative rounded-[13px] border border-white/10 bg-white/[0.045] p-4 transition-all hover:-translate-y-1 hover:border-brand-lime/30 hover:bg-white/[0.07]"
                   >
-                    <div className="text-[11px] font-black tracking-[1px] text-brand-lime">
+                    <div className="text-[13px] font-black tracking-[1px] text-brand-lime">
                       {step.number}
                     </div>
 
@@ -837,7 +837,7 @@ const EcosystemNode = ({
           {title}
         </span>
         {description && (
-          <span className="mt-1 block text-[11px] leading-4 text-white/60">
+          <span className="mt-1 block text-[13px] leading-4 text-white/60">
             {description}
           </span>
         )}

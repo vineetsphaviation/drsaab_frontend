@@ -163,15 +163,15 @@ const JourneyStep = ({ step, active }) => {
       </div>
 
       <div className="mt-2 w-full">
-        <div className="text-[8px] font-black tracking-[1px] text-brand-60">
+        <div className="text-[12px] font-black tracking-[1px] text-brand-60">
           {step.number}
         </div>
 
-        <div className="mt-0.5 text-[8px] font-black tracking-[0.2px] text-brand-95 sm:text-[9px] sm:tracking-[0.4px]">
+        <div className="mt-0.5 text-12px] font-black tracking-[0.2px] text-brand-95 sm:text-[16px] sm:tracking-[0.4px]">
           {step.title}
         </div>
 
-        <div className="mt-0.5 hidden text-[8px] leading-3 text-brand-ink/50 sm:block">
+        <div className="mt-0.5 hidden text-[14px] leading-3 text-brand-ink/50 sm:block">
           {step.label}
         </div>
       </div>
@@ -188,7 +188,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
 
       <div className="pointer-events-none absolute -bottom-40 -left-40 h-[360px] w-[360px] rounded-full bg-brand-lime/10 blur-3xl" />
 
-      <SectionContainer className="relative py-8 sm:py-12 lg:py-16">
+      <SectionContainer className="relative py-6 sm:py-8 lg:py-12">
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:grid-cols-[0.85fr_1.15fr] xl:gap-14">
           {/* LEFT CONTENT */}
           <div className="mx-auto w-full max-w-[560px] lg:mx-0">
@@ -199,14 +199,14 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               <span className="block text-brand-70">to Support.</span>
             </h1>
 
-            <p className="mt-4 max-w-[480px] text-[13px] leading-6 text-brand-ink/65 sm:mt-5 sm:text-[14px] sm:leading-7">
+            <p className="mt-4 max-w-[480px] text-[16px] leading-6 text-brand-ink/65 sm:mt-5 sm:text-[17  px] sm:leading-7">
               Dr. Saab brings structure, transparency and technical expertise to
               every service request — from the moment you book to the moment
               your service is completed.
             </p>
 
             {/* Feature pills */}
-            <div className="mt-5 flex max-w-[500px] flex-wrap gap-2 sm:mt-6">
+            <div className="flex max-w-[500px] flex-wrap gap-2 mt-2">
               {[
                 "Simple Booking",
                 "Verified Technicians",
@@ -241,11 +241,11 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               </div>
 
               <div>
-                <div className="text-[9px] font-black uppercase tracking-[0.8px] text-brand-95">
+                <div className="text-[12px] font-black uppercase tracking-[0.8px] text-brand-95">
                   One Connected Journey
                 </div>
 
-                <p className="mt-0.5 text-[9px] leading-4 text-brand-ink/50">
+                <p className="mt-0.5 text-[12px] le4ding-4 text-brand-ink/50">
                   Every request moves through a structured service process.
                 </p>
               </div>
@@ -258,11 +258,11 @@ const HowItWorksHero = ({ onSeeJourney }) => {
               {/* Card heading */}
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-60">
+                  <div className="text-[10px] font-black uppercase tracking-[1.2px] text-brand-60">
                     LIVE SERVICE JOURNEY
                   </div>
 
-                  <h2 className="mt-1 text-[14px] font-black text-brand-95 sm:text-[16px]">
+                  <h2 className="mt-1 text-[16px] font-black text-brand-95 sm:text-[18px]">
                     Your request, step by step
                   </h2>
                 </div>
@@ -270,7 +270,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
                 <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
 
-                  <span className="text-[7px] font-black uppercase tracking-[0.8px] text-brand-70">
+                  <span className="text-[10px] font-black uppercase tracking-[0.8px] text-brand-70">
                     Connected
                   </span>
                 </div>
@@ -293,7 +293,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
                       CURRENT STATUS
                     </div>
 
-                    <div className="mt-0.5 text-[11px] font-black text-white sm:text-[12px]">
+                    <div className="mt-0.5 text-[13px] font-black text-white sm:text-[12px]">
                       Technician Assigned
                     </div>
                   </div>
@@ -362,7 +362,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
             </div>
 
             {/* FLOATING FEEDBACK CARD */}
-            <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] lg:block">
+            {/* <div className="absolute -right-4 bottom-[105px] hidden rounded-xl border border-brand-10 bg-white px-3 py-2.5 shadow-[0_12px_30px_rgba(7,95,69,0.12)] lg:block">
               <div className="flex items-center gap-2">
                 <div className="grid h-7 w-7 place-items-center rounded-full bg-brand-lime/50 text-brand-95">
                   <CheckCircle2 size={13} />
@@ -378,7 +378,7 @@ const HowItWorksHero = ({ onSeeJourney }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </SectionContainer>
@@ -406,6 +406,7 @@ const HowItWorks = () => {
   }, [isAutoPlaying]);
 
   const selectedStep = JOURNEY_STEPS[activeStep];
+  const ActiveStepIcon = selectedStep.icon;
 
   const handleStepClick = (index) => {
     setActiveStep(index);
@@ -433,9 +434,9 @@ const HowItWorks = () => {
             </CircleIcon>
 
             <div>
-              <p className="text-xs font-black text-brand-95">Simple</p>
+              <p className="text-base font-black text-brand-95">Simple</p>
 
-              <p className="text-[10px] text-gray-500">Easy service request</p>
+              <p className="text-[18px] text-gray-500">Easy service request</p>
             </div>
           </div>
 
@@ -445,9 +446,9 @@ const HowItWorks = () => {
             </CircleIcon>
 
             <div>
-              <p className="text-xs font-black text-brand-95">Digital</p>
+              <p className="text-baser font-black text-brand-95">Digital</p>
 
-              <p className="text-[10px] text-gray-500">
+              <p className="text-[18px] text-gray-500">
                 Service records & invoices
               </p>
             </div>
@@ -459,9 +460,9 @@ const HowItWorks = () => {
             </CircleIcon>
 
             <div>
-              <p className="text-xs font-black text-brand-95">Transparent</p>
+              <p className="text-base font-black text-brand-95">Transparent</p>
 
-              <p className="text-[10px] text-gray-500">
+              <p className="text-[18px] text-gray-500">
                 Clear support & escalation
               </p>
             </div>
@@ -483,7 +484,7 @@ const HowItWorks = () => {
               One clear journey from request to follow-up.
             </h2>
 
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-gray-500">
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-6 text-gray-500">
               Every service request moves through a structured process so
               customers know what happens next.
             </p>
@@ -533,7 +534,7 @@ const HowItWorks = () => {
                     </div>
 
                     <div>
-                      <p className="text-[10px] font-black uppercase tracking-[1.5px] text-brand-lime">
+                      <p className="text-[16px] font-black uppercase tracking-[1.5px] text-brand-lime">
                         Step {selectedStep.number}
                       </p>
 
@@ -543,13 +544,13 @@ const HowItWorks = () => {
                     </div>
                   </div>
 
-                  <p className="mt-7 max-w-md text-sm leading-7 text-white/65">
+                  <p className="mt-7 max-w-md text-lg leading-7 text-white/65">
                     {selectedStep.description}
                   </p>
 
                   {/* Progress */}
                   <div className="mt-8">
-                    <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-wide text-white/40">
+                    <div className="flex items-center justify-between text-[12px] font-bold uppercase tracking-wide text-white/40">
                       <span>Journey Progress</span>
 
                       <span>
@@ -593,11 +594,11 @@ const HowItWorks = () => {
                             </CircleIcon>
 
                             <div>
-                              <p className="text-xs font-black text-brand-95">
+                              <p className="text-base font-black text-brand-95">
                                 {title}
                               </p>
 
-                              <p className="mt-0.5 text-[9px] text-gray-500">
+                              <p className="mt-0.5 text-[11px] text-gray-500">
                                 {description}
                               </p>
                             </div>
@@ -614,7 +615,7 @@ const HowItWorks = () => {
                       {selectedStep.title}
                     </h4>
 
-                    <p className="mt-4 max-w-xl text-sm leading-6 text-gray-500">
+                    <p className="mt-4 max-w-xl text-base leading-6 text-gray-500">
                       {selectedStep.description}
                     </p>
 
@@ -627,7 +628,7 @@ const HowItWorks = () => {
                       ].map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-[10px] font-bold text-brand-ink"
+                          className="flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-[12px] font-bold text-brand-ink"
                         >
                           <span className="grid h-5 w-5 place-items-center rounded-full bg-brand-5 text-brand-70">
                             <Check size={10} strokeWidth={3} />
@@ -649,7 +650,7 @@ const HowItWorks = () => {
                       setActiveStep((current) => Math.max(0, current - 1));
                       setIsAutoPlaying(false);
                     }}
-                    className="text-[10px] font-black text-brand-70 disabled:cursor-not-allowed disabled:opacity-30"
+                    className="text-[12px] font-black text-brand-70 disabled:cursor-not-allowed disabled:opacity-30"
                   >
                     ← Previous
                   </button>
@@ -664,7 +665,7 @@ const HowItWorks = () => {
                       );
                       setIsAutoPlaying(false);
                     }}
-                    className="inline-flex items-center gap-2 rounded-lg bg-brand-90 px-4 py-2.5 text-[10px] font-black text-white transition hover:bg-brand-80"
+                    className="inline-flex items-center gap-2 rounded-lg bg-brand-90 px-4 py-2.5 text-[12px] font-black text-white transition hover:bg-brand-80"
                   >
                     {activeStep === JOURNEY_STEPS.length - 1
                       ? "Start Again"
@@ -693,106 +694,112 @@ const HowItWorks = () => {
       </section>
 
       {/* VISUAL JOURNEY PATH */}
-      <section className="overflow-hidden bg-brand-5 py-8 lg:py-14">
+      <section className="overflow-hidden bg-gradient-to-b from-brand-5 to-white py-12 sm:py-14 lg:py-16">
         <SectionContainer>
-          <div className="text-center">
+          <div className="mx-auto max-w-2xl text-center">
             <Eyebrow>The Dr. Saab Journey</Eyebrow>
 
-            <h2 className="mt-3 text-3xl font-black text-brand-95 sm:text-4xl">
-              BOOK → ASSIGN → DIAGNOSE → SERVICE
+            <h2 className="mt-3 text-3xl font-black leading-tight text-brand-95 sm:text-4xl">
+              A clear path from request to resolution.
             </h2>
 
-            <p className="mt-3 text-sm text-gray-500">
-              ESCALATE → DIGITAL RECORD → FEEDBACK
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-brand-ink/60 sm:text-base">
+              Follow each stage of your service request, from booking through
+              to feedback.
             </p>
           </div>
 
           {/* Journey visualization */}
-          <div className="relative mx-auto mt-14 max-w-5xl">
-            {/* Path */}
-            <div className="absolute left-[7%] right-[7%] top-1/2 hidden h-1 -translate-y-1/2 rounded-full bg-brand-10 md:block" />
+          <div className="mx-auto mt-8 max-w-6xl overflow-hidden rounded-3xl border border-brand-90/10 bg-white shadow-[0_20px_60px_rgba(7,95,69,0.08)] sm:mt-10">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-brand-90/10 px-5 py-4 sm:px-8">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-5 text-brand-80">
+                  <ActiveStepIcon size={19} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-brand-ink/50">
+                    Current stage
+                  </p>
+                  <p className="mt-0.5 text-base font-extrabold text-brand-95">
+                    {selectedStep.label}
+                  </p>
+                </div>
+              </div>
 
-            <div
-              className="absolute left-[7%] top-1/2 hidden h-1 -translate-y-1/2 rounded-full bg-brand-70 transition-all duration-700 md:block"
-              style={{
-                width: `${(activeStep / 6) * 86}%`,
-              }}
-            />
-
-            <div className="grid grid-cols-3 gap-y-8 md:grid-cols-7 md:gap-3">
-              {JOURNEY_STEPS.map(
-                ({ number, shortTitle, icon: Icon }, index) => (
-                  <button
-                    key={number}
-                    type="button"
-                    onClick={() => handleStepClick(index)}
-                    className="group relative z-10 flex flex-col items-center"
-                  >
-                    <div
-                      className={`
-                        grid
-                        h-14
-                        w-14
-                        place-items-center
-                        rounded-full
-                        border-4
-                        border-brand-5
-                        transition-all
-                        duration-300
-                        ${
-                          activeStep === index
-                            ? "scale-110 bg-brand-70 text-white shadow-lg"
-                            : "bg-white text-brand-70 shadow-sm group-hover:bg-brand-70 group-hover:text-white"
-                        }
-                      `}
-                    >
-                      <Icon size={20} />
-                    </div>
-
-                    <span
-                      className={`
-                        mt-3
-                        text-[9px]
-                        font-black
-                        uppercase
-                        tracking-[.7px]
-                        ${
-                          activeStep === index
-                            ? "text-brand-90"
-                            : "text-gray-500"
-                        }
-                      `}
-                    >
-                      {number} — {shortTitle}
-                    </span>
-                  </button>
-                ),
-              )}
+              <span className="rounded-full bg-brand-5 px-3 py-1.5 text-base font-bold text-brand-80">
+                Step {activeStep + 1} of {JOURNEY_STEPS.length}
+              </span>
             </div>
 
-            {/* Moving vehicle */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-[7%]
-                top-1/2
-                hidden
-                -translate-y-[38px]
-                transition-all
-                duration-700
-                md:block
-              "
-              style={{
-                transform: `translateX(${
-                  (activeStep / 6) * 86
-                }%) translateY(-38px)`,
-              }}
-            >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-95 text-brand-lime shadow-xl">
-                <Truck size={21} />
+            <div className="overflow-x-auto px-5 py-7 sm:px-8 sm:py-9">
+              <div className="relative min-w-[720px]">
+                <div
+                  className="absolute left-[7.15%] right-[7.15%] top-6 h-1 rounded-full bg-brand-10"
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute left-[7.15%] top-6 h-1 rounded-full bg-brand-70 transition-[width] duration-500"
+                  style={{
+                    width: `${(activeStep / (JOURNEY_STEPS.length - 1)) * 85.7}%`,
+                  }}
+                  aria-hidden="true"
+                />
+
+                <div className="relative grid grid-cols-7">
+                  {JOURNEY_STEPS.map(
+                    ({ number, title, icon: Icon, label }, index) => {
+                      const isActive = activeStep === index;
+                      const isComplete = activeStep > index;
+
+                      return (
+                        <button
+                          key={number}
+                          type="button"
+                          onClick={() => handleStepClick(index)}
+                          aria-current={isActive ? "step" : undefined}
+                          aria-label={`${number}: ${title} — ${label}`}
+                          className="group flex min-w-0 flex-col items-center rounded-xl px-1 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-60 focus-visible:ring-offset-4"
+                        >
+                          <span
+                            className={`relative z-10 grid h-12 w-12 place-items-center rounded-full border-4 border-white transition-all duration-200 ${
+                              isActive
+                                ? "scale-110 bg-brand-90 text-white shadow-[0_8px_20px_rgba(7,95,69,0.25)]"
+                                : isComplete
+                                  ? "bg-brand-70 text-white shadow-sm"
+                                  : "bg-brand-5 text-brand-70 group-hover:bg-brand-10"
+                            }`}
+                          >
+                            <Icon size={19} aria-hidden="true" />
+                          </span>
+
+                          <span
+                            className={`mt-3 text-[13px] font-black tracking-[0.08em] ${
+                              isActive ? "text-brand-90" : "text-brand-ink/50"
+                            }`}
+                          >
+                            {number}
+                          </span>
+                          <span
+                            className={`mt-1 text-base font-extrabold ${
+                              isActive ? "text-brand-95" : "text-brand-ink/75"
+                            }`}
+                          >
+                            {title}
+                          </span>
+                          <span className="mt-1 text-[13px] text-brand-ink/50">
+                            {label}
+                          </span>
+                        </button>
+                      );
+                    },
+                  )}
+                </div>
               </div>
             </div>
+
+            <p className="border-t border-brand-90/10 px-5 py-3 text-center text-xs text-brand-ink/50 sm:hidden">
+              Swipe to explore each stage
+            </p>
           </div>
         </SectionContainer>
       </section>
@@ -809,7 +816,7 @@ const HowItWorks = () => {
                 Support designed around your experience.
               </h2>
 
-              <p className="mt-5 max-w-md text-sm leading-6 text-gray-500">
+              <p className="mt-5 max-w-md text-lg leading-6 text-gray-600">
                 From the first service request to post-service follow-up, every
                 stage is designed to keep the customer informed.
               </p>
@@ -821,11 +828,11 @@ const HowItWorks = () => {
                   </div>
 
                   <div>
-                    <p className="text-xs font-black text-white">
+                    <p className="text-base font-black text-white">
                       Simple. Digital. Transparent.
                     </p>
 
-                    <p className="mt-1 text-[10px] text-white/50">
+                    <p className="mt-1 text-[18px] text-white/50">
                       That's the Dr. Saab service experience.
                     </p>
                   </div>
@@ -856,11 +863,11 @@ const HowItWorks = () => {
                     <Icon size={19} />
                   </CircleIcon>
 
-                  <h3 className="mt-4 text-sm font-black text-brand-95">
+                  <h3 className="mt-4 text-base font-black text-brand-95">
                     {title}
                   </h3>
 
-                  <p className="mt-2 text-[11px] leading-5 text-gray-500">
+                  <p className="mt-2 text-[16px] leading-5 text-gray-500">
                     {description}
                   </p>
                 </div>
@@ -880,7 +887,7 @@ const HowItWorks = () => {
               Choose the way that works for you.
             </h2>
 
-            <p className="mx-auto mt-4 max-w-xl text-sm text-gray-500">
+            <p className="mx-auto mt-4 max-w-xl text-base text-gray-500">
               Reach Dr. Saab through the channel that is most convenient.
             </p>
           </div>
@@ -907,11 +914,11 @@ const HowItWorks = () => {
                   <Icon size={21} />
                 </div>
 
-                <h3 className="mt-4 text-sm font-black text-brand-95">
+                <h3 className="mt-4 text-base font-black text-brand-95">
                   {title}
                 </h3>
 
-                <p className="mt-2 text-[10px] leading-5 text-gray-500">
+                <p className="mt-2 text-[16px] leading-5 text-gray-500">
                   {description}
                 </p>
               </div>
@@ -942,7 +949,7 @@ const HowItWorks = () => {
             Book Your Service
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/75 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/75 sm:text-lg">
             Start your service request and connect with the nearest available
             Dr. Saab technician.
           </p>

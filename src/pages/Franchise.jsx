@@ -299,7 +299,7 @@ const FranchiseHero = () => {
       <SectionContainer className="relative py-10 sm:py-14 lg:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-[0.84fr_1.16fr] lg:gap-14 xl:grid-cols-[0.86fr_1.14fr]">
           {/* LEFT CONTENT */}
-          <div className="max-w-[510px]">
+          <div className="max-w-[512px]">
             <Eyebrow>DR. SAAB FRANCHISE</Eyebrow>
 
             <h1 className="mt-4 text-[40px] font-black leading-[0.98] tracking-[-1.9px] text-brand-95 sm:text-[48px] lg:text-[54px] xl:text-[58px]">
@@ -736,10 +736,10 @@ const Franchise = () => {
           </div>
 
           <div className="mt-8 flex items-center justify-between border-b border-brand-90/10 pb-3">
-            <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-ink/45">
+            <span className="text-[12px] font-black uppercase tracking-[1px] text-brand-ink/45">
               Explore the journey
             </span>
-            <span className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-brand-70 shadow-sm">
+            <span className="rounded-full bg-white px-3 py-1 text-[12px] font-bold text-brand-70 shadow-sm">
               9 steps
             </span>
           </div>
@@ -785,7 +785,7 @@ const Franchise = () => {
                       </div>
 
                       <div
-                        className="mt-0.5 text-[11px] font-black leading-snug xl:text-xs"
+                        className="mt-0.5 text-[13px] font-black leading-snug xl:text-xs"
                       >
                         {step.title}
                       </div>
@@ -815,7 +815,7 @@ const Franchise = () => {
                     <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
                       {APPLICATION_STEPS[activeStep].icon}
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
+                    <span className="text-[12px] font-black uppercase tracking-[1px] text-brand-lime">
                       Current step
                     </span>
                   </div>

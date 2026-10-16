@@ -72,7 +72,7 @@ const Header = () => {
           {/* DESKTOP NAVIGATION */}
           <nav
             aria-label="Main navigation"
-            className="ml-auto hidden min-w-0 items-center xl:flex"
+            className="mx-auto hidden min-w-0 items-center xl:flex"
           >
             {navItems.map(({ label, href }) => (
               <NavLink
@@ -85,7 +85,7 @@ const Header = () => {
                   whitespace-nowrap
                   px-[7px]
                   py-2
-                  text-[12px]
+                  text-[14px]
                   font-bold
                   tracking-[-0.1px]
                   transition-all
@@ -130,12 +130,12 @@ const Header = () => {
           </nav>
 
           {/* DESKTOP ACTIONS */}
-          <div className="ml-4 hidden shrink-0 items-center gap-2 xl:flex">
+          <div className="ml-4 hidden shrink-0 items-center justify-center gap-2 xl:flex">
             <Button
               to="/our-services"
               state={{ openBookingForm: true }}
               variant="primary"
-              className="min-h-[38px] whitespace-nowrap px-3.5 text-[10px] 2xl:px-4"
+              className="min-h-[38px] whitespace-nowrap px-3.5 text-[12px] 2xl:px-4"
             >
               <CalendarDays size={14} strokeWidth={2.2} />
               Book a Service
@@ -144,7 +144,7 @@ const Header = () => {
             <Button
               href="/franchise"
               variant="outline"
-              className="min-h-[38px] whitespace-nowrap px-3.5 text-[10px] 2xl:px-4"
+              className="min-h-[38px] whitespace-nowrap px-3.5 text-[12px] 2xl:px-4"
             >
               <Handshake size={14} strokeWidth={2.2} />
               Become a Partner
@@ -310,11 +310,11 @@ const Header = () => {
 
               {/* Mobile trust message */}
               <div className="mt-4 rounded-xl bg-brand-5 px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[1.2px] text-brand-70">
+                <p className="text-[12px] font-bold uppercase tracking-[1.2px] text-brand-70">
                   Dr. Saab
                 </p>
 
-                <p className="mt-1 text-[11px] leading-5 text-gray-500">
+                <p className="mt-1 text-[14px] leading-5 text-gray-500">
                   Post-sales support for EVs, batteries, drones and energy
                   systems.
                 </p>

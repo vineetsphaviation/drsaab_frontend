@@ -9,7 +9,7 @@ import { quickLinks, supportLinks } from "../utils/constant";
 const FooterLinks = ({ title, links }) => {
   return (
     <div>
-      <h3 className="text-xs font-black tracking-wide text-brand-ink">
+      <h3 className="text-medium font-black tracking-wide text-gray-800">
         {title}
       </h3>
 
@@ -23,9 +23,10 @@ const FooterLinks = ({ title, links }) => {
                 inline-flex
                 items-center
                 gap-1
-                text-[11px]
+                text-[14px]
+                font-semibold
                 leading-5
-                text-gray-500
+                text-gray-800
                 transition-colors
                 duration-200
                 hover:text-brand-70
@@ -70,7 +71,7 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="mt-4 max-w-[320px] text-[12px] leading-6 text-gray-500">
+            <p className="mt-4 max-w-[320px] text-[16px] leading-6 text-gray-600">
               Post-sales service for EV, Drone, Battery and Inverter support
               across Panchayats and Rural India.
             </p>
@@ -82,17 +83,17 @@ const Footer = () => {
               </div>
 
               <div>
-                <p className="text-[13px] font-black text-brand-90">
+                <p className="text-[15px] font-black text-brand-90">
                   Service Today
                 </p>
 
-                <p className="text-[12px] text-gray-500">A Cleaner Tomorrow</p>
+                <p className="text-[14px] text-gray-500">A Cleaner Tomorrow</p>
               </div>
             </div>
 
             {/* Social links */}
             {/* <div className="mt-6">
-              <p className="mb-3 text-[10px] font-black uppercase tracking-[1.2px] text-brand-70">
+              <p className="mb-3 text-[12px] font-black uppercase tracking-[1.2px] text-brand-70">
                 Follow Dr. Saab
               </p>
 
@@ -133,11 +134,11 @@ const Footer = () => {
           <FooterLinks title="Support" links={supportLinks} />
 
           <div>
-            <h3 className="text-xs font-black tracking-wide text-brand-ink">
+            <h3 className="text-base font-black tracking-wide text-brand-ink">
               Contact & Service Network
             </h3>
 
-            {/* <p className="mt-3 max-w-[300px] text-[11px] leading-5 text-gray-500">
+            {/* <p className="mt-3 max-w-[300px] text-[13px] leading-5 text-gray-500">
               Get service tips, updates and opportunities from the Dr. Saab
               network.
             </p> */}
@@ -160,7 +161,7 @@ const Footer = () => {
               "
             >
               <div className="flex min-w-0 flex-1 items-center gap-2 px-2">
-                <Mail size={14} className="shrink-0 text-gray-400" />
+                <Mail size={14} className="shrink-0 text-gray-600" />
 
                 <input
                   type="email"
@@ -176,10 +177,10 @@ const Footer = () => {
                     flex-1
                     bg-transparent
                     py-2.5
-                    text-[10px]
+                    text-[12px]
                     text-brand-ink
                     outline-none
-                    placeholder:text-gray-400
+                    placeholder:text-gray-600
                   "
                 />
               </div>
@@ -196,7 +197,7 @@ const Footer = () => {
                   bg-brand-70
                   px-3
                   py-2
-                  text-[10px]
+                  text-[12px]
                   font-black
                   text-white
                   transition-all
@@ -218,7 +219,7 @@ const Footer = () => {
                   flex
                   items-center
                   gap-2
-                  text-[10px]
+                  text-[12px]
                   font-bold
                   ${
                     message.includes("Thank") ? "text-brand-70" : "text-red-600"
@@ -257,11 +258,11 @@ const Footer = () => {
                 </span>
 
                 <span>
-                  <span className="block text-[9px] font-bold uppercase tracking-wide text-gray-400">
+                  <span className="block text-[14px] font-bold uppercase tracking-wide text-gray-800">
                     Need Help?
                   </span>
 
-                  <span className="block text-[11px] font-black text-brand-90">
+                  <span className="block text-[14px] font-black text-brand-90">
                     +91 97283 95138
                   </span>
                 </span>
@@ -273,11 +274,11 @@ const Footer = () => {
                 </span>
 
                 <span>
-                  <span className="block text-[9px] font-bold uppercase tracking-wide text-gray-400">
+                  <span className="block text-[14px] font-bold uppercase tracking-wide text-gray-600">
                     Service Network
                   </span>
 
-                  <span className="block text-[11px] font-black text-brand-90">
+                  <span className="block text-[14px] font-black text-brand-90">
                     Panchayats & Rural India
                   </span>
                 </span>
@@ -295,12 +296,12 @@ const Footer = () => {
               <Leaf size={16} />
             </span>
 
-            <p className="text-[11px] font-bold text-white">
+            <p className="text-[14px] font-bold text-white">
               A Cleaner, Brighter & More Connected Rural India
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[9px] font-semibold text-white/60">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-[14px] font-semibold text-white/60">
             <span>Local Employment</span>
             <span>Reduced Downtime</span>
             <span>Supports EV Adoption</span>
@@ -311,7 +312,7 @@ const Footer = () => {
 
       {/* COPYRIGHT */}
       <div className="border-t border-brand-10 bg-white">
-        <SectionContainer className="flex flex-col gap-3 py-4 text-[9px] text-gray-400 sm:flex-row sm:items-center sm:justify-between">
+        <SectionContainer className="flex flex-col gap-3 py-4 text-[14px] text-gray-600 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © 2026 Dr. Saab. All rights reserved. An initiative by Techsmart
             Ventures Pvt Limited.

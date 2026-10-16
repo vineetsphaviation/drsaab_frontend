@@ -54,7 +54,7 @@ const ServicesSection = () => {
 
             sm:px-8
             sm:py-8
-            lg:min-h-[310px]
+            lg:min-h-[312px]
           "
         >
           {/* Subtle background effect */}
@@ -115,7 +115,7 @@ const ServicesSection = () => {
                 bg-[#17905f]
                 px-3.5
                 py-[9px]
-                text-[11px]
+                text-[13px]
                 text-white
                 hover:bg-[#0b6f4f]
               "
@@ -251,17 +251,17 @@ const ServicesSection = () => {
                       mt-2
                       inline-flex
                       items-center
-                      text-[11px]
+                      text-[13px]
                       font-black
                       text-[#0b6f4f]
                       transition-colors
                       hover:text-[#034e37]
 
-                      sm:text-[11px]
+                      sm:text-[13px]
                     "
                 >
                   Know More
-                  <span className="ml-1 text-[11px]">→</span>
+                  <span className="ml-1 text-[13px]">→</span>
                 </Link>
               </article>
             ))}
@@ -288,7 +288,7 @@ const ServicesSection = () => {
             via-white
             to-brand-10/60
             p-5
-            shadow-[0_10px_30px_rgba(3,78,55,0.07)]
+            shadow-[0_12px_30px_rgba(3,78,55,0.07)]
             lg:mt-[7px]
           "
         >
@@ -317,7 +317,7 @@ const ServicesSection = () => {
 
           <div className="mt-4 flex items-center gap-2 rounded-lg border border-brand-90/10 bg-white/75 px-3 py-2.5">
             <MapPin size={15} className="shrink-0 text-brand-70" />
-            <span className="text-[10px] font-semibold leading-4 text-brand-ink/70">
+            <span className="text-[12px] font-semibold leading-4 text-brand-ink/70">
               Rural and urban service areas
             </span>
           </div>
@@ -326,7 +326,7 @@ const ServicesSection = () => {
             <Button
               to="/our-services"
               state={{ openBookingForm: true }}
-              className="w-full justify-between rounded-lg px-3 py-3 text-[11px]"
+              className="w-full justify-between rounded-lg px-3 py-3 text-[13px]"
             >
               Book a Service
               <ArrowRight size={15} />
@@ -335,7 +335,7 @@ const ServicesSection = () => {
             <Button
               href="tel:+919728395138"
               variant="outline"
-              className="w-full rounded-lg border-brand-90/15 bg-white/80 px-3 py-2.5 text-[11px] text-brand-90"
+              className="w-full rounded-lg border-brand-90/15 bg-white/80 px-3 py-2.5 text-[13px] text-brand-90"
             >
               <Phone size={14} />
               Call Now

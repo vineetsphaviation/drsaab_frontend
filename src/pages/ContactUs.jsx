@@ -164,7 +164,7 @@ const ContactUsHero = () => {
             </div>
 
             {/* Trust Line */}
-            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[11px] font-bold uppercase tracking-[1px] text-white/65">
+            <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-[13px] font-bold uppercase tracking-[1px] text-white/65">
               <span className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-lime" />
                 Clear Communication
@@ -187,7 +187,7 @@ const ContactUsHero = () => {
             <div className="rounded-2xl border border-white/15 bg-white/[0.94] p-6 shadow-2xl backdrop-blur-md sm:p-7">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-[1.5px] text-brand-70">
+                  <p className="text-[12px] font-black uppercase tracking-[1.5px] text-brand-70">
                     CONTACT DESK
                   </p>
 
@@ -239,7 +239,7 @@ const ContactUsHero = () => {
               </div>
 
               {/* Response note */}
-              <div className="mt-5 flex items-center gap-2 border-t border-brand-90/10 pt-5 text-[11px] font-semibold text-brand-ink/60">
+              <div className="mt-5 flex items-center gap-2 border-t border-brand-90/10 pt-5 text-[13px] font-semibold text-brand-ink/60">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-brand-60" />
                 Our team is ready to assist you.
               </div>
@@ -398,7 +398,7 @@ const ContactUs = () => {
                   className={`group relative text-left rounded-[14px] border p-5 transition-all duration-200 hover:-translate-y-1 ${
                     selected
                       ? "border-brand-60 bg-brand-5 shadow-[0_12px_35px_rgba(23,144,95,.10)]"
-                      : "border-brand-90/10 bg-white shadow-[0_2px_10px_rgba(3,78,55,.025)] hover:border-brand-60/25 hover:shadow-[0_12px_35px_rgba(3,78,55,.07)]"
+                      : "border-brand-90/10 bg-white shadow-[0_2px_12px_rgba(3,78,55,.025)] hover:border-brand-60/25 hover:shadow-[0_12px_35px_rgba(3,78,55,.07)]"
                   }`}
                 >
                   {selected && (
@@ -472,7 +472,7 @@ const ContactUs = () => {
                         {selectedEnquiry.title}
                       </div>
 
-                      <div className="mt-0.5 text-[10px] text-brand-ink/45">
+                      <div className="mt-0.5 text-[12px] text-brand-ink/45">
                         {selectedEnquiry.description}
                       </div>
                     </div>
@@ -547,15 +547,15 @@ const ContactUs = () => {
 // REUSABLE COMPONENTS
 const ContactMiniCard = ({ icon, title, value }) => {
   return (
-    <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
+    <div className="flex items-center gap-3 rounded-[12px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_12px_rgba(3,78,55,.025)]">
       <CircleIcon className="h-8 w-8 bg-brand-5 text-brand-70">
         {icon}
       </CircleIcon>
 
       <div>
-        <div className="text-[11px] font-black text-brand-95">{title}</div>
+        <div className="text-[13px] font-black text-brand-95">{title}</div>
 
-        <div className="mt-0.5 text-[10px] text-brand-ink/45">{value}</div>
+        <div className="mt-0.5 text-[12px] text-brand-ink/45">{value}</div>
       </div>
     </div>
   );
@@ -563,15 +563,15 @@ const ContactMiniCard = ({ icon, title, value }) => {
 
 const TrustItem = ({ icon, title, text }) => {
   return (
-    <div className="flex items-start gap-3 rounded-[13px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_10px_rgba(3,78,55,.025)]">
+    <div className="flex items-start gap-3 rounded-[13px] border border-brand-90/10 bg-white p-3 shadow-[0_2px_12px_rgba(3,78,55,.025)]">
       <CircleIcon className="h-8 w-8 shrink-0 bg-brand-5 text-brand-70">
         {icon}
       </CircleIcon>
 
       <div>
-        <h3 className="text-[11px] font-black text-brand-95">{title}</h3>
+        <h3 className="text-[13px] font-black text-brand-95">{title}</h3>
 
-        <p className="mt-0.5 text-[10px] leading-4 text-brand-ink/55">{text}</p>
+        <p className="mt-0.5 text-[12px] leading-4 text-brand-ink/55">{text}</p>
       </div>
     </div>
   );

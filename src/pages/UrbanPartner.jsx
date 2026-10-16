@@ -257,7 +257,7 @@ const SectionHeading = ({
 
       {description && (
         <p
-          className={`mt-5 max-w-4xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-4xl text-base leading-7 sm:text-[17px] ${
             centered ? "mx-auto" : ""
           } ${light ? "text-white/60" : "text-slate-600"}`}
         >
@@ -277,20 +277,20 @@ const ServiceFormatCard = ({ item }) => {
         <div className="flex items-start justify-between">
           <CircleIcon>{item.icon}</CircleIcon>
 
-          <span className="rounded-full bg-brand-5 px-2.5 py-1 text-[8px] font-black uppercase tracking-[0.8px] text-brand-70">
+          <span className="rounded-full bg-brand-5 px-2.5 py-1 text-[12px] font-black uppercase tracking-[0.8px] text-brand-70">
             {item.tag}
           </span>
         </div>
 
-        <div className="mt-6 text-[9px] font-black tracking-[1px] text-brand-60/60">
+        <div className="mt-6 text-[12px] font-black tracking-[1px] text-brand-60/60">
           {item.number}
         </div>
 
-        <h3 className="mt-1 text-base font-black text-brand-95">
+        <h3 className="mt-1 text-lg font-black text-brand-95">
           {item.title}
         </h3>
 
-        <p className="mt-2 text-xs leading-6 text-slate-500">
+        <p className="mt-2 text-lg leading-6 text-slate-500">
           {item.description}
         </p>
 
@@ -390,7 +390,7 @@ const UrbanPartnerHero = ({ onApply }) => {
               <span className="block">Accessible.</span>
             </h1>
 
-            <p className="mt-5 max-w-[460px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-5 max-w-[460px] text-[13px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
               Build a trusted technical service presence in your city with EV,
               battery, fleet, charging and roadside support delivered through a
               connected urban partner network.
@@ -403,9 +403,9 @@ const UrbanPartnerHero = ({ onApply }) => {
                   key={label}
                   className="flex items-center gap-1.5 rounded-full border border-brand-10 bg-white px-3 py-1.5 shadow-sm"
                 >
-                  <Icon size={11} className="text-brand-70" />
+                  <Icon size={12} className="text-brand-70" />
 
-                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  <span className="text-[12px] font-black uppercase tracking-[0.5px] text-brand-90">
                     {label}
                   </span>
                 </div>
@@ -431,7 +431,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   CITY
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[12px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Focused
                 </div>
               </div>
@@ -441,7 +441,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   24/7
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[12px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Requests
                 </div>
               </div>
@@ -451,7 +451,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   360°
                 </div>
 
-                <div className="mt-1 text-[8px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
+                <div className="mt-1 text-[12px] font-bold uppercase leading-3 tracking-[0.5px] text-brand-ink/50">
                   Service
                 </div>
               </div>
@@ -473,7 +473,7 @@ const UrbanPartnerHero = ({ onApply }) => {
               {/* HEADER CARD */}
               <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between rounded-xl border border-white/70 bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md sm:left-5 sm:right-5 sm:top-5">
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                  <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-60">
                     CITY SERVICE NETWORK
                   </div>
 
@@ -485,7 +485,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                 <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
 
-                  <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+                  <span className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-70">
                     Network Live
                   </span>
                 </div>
@@ -596,11 +596,11 @@ const UrbanPartnerHero = ({ onApply }) => {
                 </div>
 
                 <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-lg bg-brand-95 px-3 py-2 text-center shadow-lg">
-                  <div className="text-[7px] font-bold uppercase tracking-[1px] text-brand-lime">
+                  <div className="text-[10px] font-bold uppercase tracking-[1px] text-brand-lime">
                     CITY PARTNER
                   </div>
 
-                  <div className="mt-0.5 text-[10px] font-black text-white">
+                  <div className="mt-0.5 text-[12px] font-black text-white">
                     Dr. Saab Service Hub
                   </div>
                 </div>
@@ -612,7 +612,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   <Zap size={10} />
                 </span>
 
-                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   EV
                 </span>
               </div>
@@ -622,7 +622,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   <BatteryCharging size={10} />
                 </span>
 
-                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   Battery
                 </span>
               </div>
@@ -632,7 +632,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   <Users size={10} />
                 </span>
 
-                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   Fleet
                 </span>
               </div>
@@ -642,7 +642,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                   <Wrench size={10} />
                 </span>
 
-                <span className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   Roadside
                 </span>
               </div>
@@ -655,7 +655,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                       08
                     </div>
 
-                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                    <div className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
                       Service Points
                     </div>
                   </div>
@@ -665,7 +665,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                       24/7
                     </div>
 
-                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                    <div className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
                       Requests
                     </div>
                   </div>
@@ -675,7 +675,7 @@ const UrbanPartnerHero = ({ onApply }) => {
                       360°
                     </div>
 
-                    <div className="mt-0.5 text-[7px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
+                    <div className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.5px] text-brand-ink/45">
                       Support
                     </div>
                   </div>
@@ -691,11 +691,11 @@ const UrbanPartnerHero = ({ onApply }) => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     RESPONSE
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Nearby Partner
                   </div>
                 </div>
@@ -710,11 +710,11 @@ const UrbanPartnerHero = ({ onApply }) => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     SERVICE
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Verified Support
                   </div>
                 </div>
@@ -830,7 +830,7 @@ const UrbanPartner = () => {
                     <service.icon size={19} />
                   </CircleIcon>
 
-                  <span className="text-[8px] font-black uppercase tracking-[1px] text-brand-60/60">
+                  <span className="text-[12px] font-black uppercase tracking-[1px] text-brand-60/60">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -885,7 +885,7 @@ const UrbanPartner = () => {
                       </div>
 
                       <div
-                        className={`mt-4 text-[9px] font-black uppercase tracking-[0.9px] ${
+                        className={`mt-4 text-[12px] font-black uppercase tracking-[0.9px] ${
                           active ? "text-brand-lime" : "text-white/35"
                         }`}
                       >
@@ -893,7 +893,7 @@ const UrbanPartner = () => {
                       </div>
 
                       <div
-                        className={`mt-1 text-xs font-black ${
+                        className={`mt-1 text-base font-black ${
                           active ? "text-white" : "text-white/55"
                         }`}
                       >
@@ -925,7 +925,7 @@ const UrbanPartner = () => {
             </div>
 
             <div>
-              <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-lime">
+              <div className="text-[12px] font-black uppercase tracking-[1px] text-brand-lime">
                 Step {CUSTOMER_JOURNEY[activeJourney].number}
               </div>
 
@@ -933,7 +933,7 @@ const UrbanPartner = () => {
                 {CUSTOMER_JOURNEY[activeJourney].title}
               </h3>
 
-              <p className="mt-2 max-w-2xl text-xs leading-6 text-white/50">
+              <p className="mt-2 max-w-2xl text-base leading-6 text-white/50">
                 {CUSTOMER_JOURNEY[activeJourney].description}
               </p>
             </div>
@@ -942,7 +942,7 @@ const UrbanPartner = () => {
               <div className="text-3xl font-black text-white/10">
                 {String(activeJourney + 1).padStart(2, "0")}
               </div>
-              <div className="text-[8px] font-black uppercase tracking-[1px] text-white/25">
+              <div className="text-[10px] font-black uppercase tracking-[1px] text-white/25">
                 of {CUSTOMER_JOURNEY.length}
               </div>
             </div>
@@ -968,16 +968,16 @@ const UrbanPartner = () => {
                   </div>
 
                   <div>
-                    <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-lime">
+                    <div className="text-[12px] font-black uppercase tracking-[1px] text-brand-lime">
                       Partner Network
                     </div>
-                    <div className="mt-1 text-sm font-black">
+                    <div className="mt-1 text-base font-black">
                       City-ready talent
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-center gap-2 text-[10px] text-white/45">
+                <div className="mt-6 flex items-center gap-2 text-[14px] text-white/45">
                   <span className="h-2 w-2 rounded-full bg-brand-lime" />
                   Workshop + Technician + Fleet + Battery
                 </div>
@@ -993,16 +993,16 @@ const UrbanPartner = () => {
                   <div className="flex items-center justify-between">
                     <CircleIcon>{profile.icon}</CircleIcon>
 
-                    <span className="text-[9px] font-black text-brand-60/50">
+                    <span className="text-[14px] font-black text-brand-60/50">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-sm font-black text-brand-95">
+                  <h3 className="mt-6 text-lg font-black text-brand-95">
                     {profile.title}
                   </h3>
 
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
+                  <p className="mt-2 text-lg leading-6 text-slate-500">
                     {profile.description}
                   </p>
                 </div>
@@ -1011,14 +1011,14 @@ const UrbanPartner = () => {
               <div className="rounded-2xl border border-dashed border-brand-60/30 bg-brand-5 p-6 sm:col-span-2">
                 <div className="flex items-center gap-3">
                   <div className="grid h-10 w-10 place-items-center rounded-full bg-brand-lime text-brand-95">
-                    <Check size={18} />
+                    <Check size={20} />
                   </div>
 
                   <div>
-                    <div className="text-sm font-black text-brand-95">
+                    <div className="text-base font-black text-brand-95">
                       Technical capability matters.
                     </div>
-                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                    <p className="mt-1 text-lg leading-5 text-slate-500">
                       The model is designed for people who can build or develop
                       the technical capability required for responsible urban
                       service delivery.
@@ -1049,16 +1049,16 @@ const UrbanPartner = () => {
                 <div className="flex items-center gap-3">
                   <CircleIcon>{benefit.icon}</CircleIcon>
 
-                  <span className="text-[9px] font-black text-brand-60/50">
+                  <span className="text-[14px] font-black text-brand-60/50">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <h3 className="mt-5 text-sm font-black text-brand-95">
+                <h3 className="mt-5 text-lg font-black text-brand-95">
                   {benefit.title}
                 </h3>
 
-                <p className="mt-2 text-xs leading-6 text-slate-500">
+                <p className="mt-2 text-xl leading-6 text-slate-500">
                   {benefit.description}
                 </p>
               </div>
@@ -1087,7 +1087,7 @@ const UrbanPartner = () => {
                 <span className="text-brand-lime"> City Service Partner.</span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/55 sm:text-[15px]">
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/55 sm:text-[17px]">
                 Build a structured EV and energy service presence in your city
                 with a defined territory, digital bookings and technical
                 ecosystem support.
@@ -1113,7 +1113,7 @@ const UrbanPartner = () => {
                 </Button>
               </div>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[9px] font-black uppercase tracking-[0.8px] text-white/30">
+              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[12px] font-black uppercase tracking-[0.8px] text-white/30">
                 <span className="inline-flex items-center gap-2">
                   <Check size={12} className="text-brand-lime" />
                   Defined Territory
