@@ -192,7 +192,7 @@ const SectionHeading = ({
 
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-2xl text-base leading-7 sm:text-[17px] ${
             centered ? "mx-auto" : ""
           } ${light ? "text-white/60" : "text-slate-600"}`}
         >
@@ -214,16 +214,16 @@ const SupportOptionCard = ({ option }) => {
           {option.icon}
         </div>
 
-        <span className="rounded-full bg-brand-5 px-2.5 py-1 text-[7px] font-black uppercase tracking-[0.9px] text-brand-70">
+        <span className="rounded-full bg-brand-5 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.9px] text-brand-70">
           {option.badge}
         </span>
       </div>
 
-      <h3 className="mt-6 text-base font-black text-brand-95">
+      <h3 className="mt-6 text-lg font-black text-brand-95">
         {option.title}
       </h3>
 
-      <p className="mt-2 min-h-[48px] text-xs leading-6 text-slate-500">
+      <p className="mt-2 min-h-[48px] text-sm leading-6 text-slate-500">
         {option.description}
       </p>
 
@@ -237,7 +237,7 @@ const SupportOptionCard = ({ option }) => {
                 ? "noopener noreferrer"
                 : undefined
             }
-            className="inline-flex items-center text-[12px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
+            className="inline-flex items-center text-[13px] font-black uppercase tracking-[0.8px] text-brand-70 transition-colors hover:text-brand-60"
           >
             {option.action}
             <ArrowRight
@@ -310,7 +310,7 @@ const SupportAction = ({ action, active, onClick }) => {
 
         <div className="min-w-0 flex-1">
           <div
-            className={`text-[12px] font-black uppercase tracking-[0.4px] ${
+            className={`text-[14px] font-black uppercase tracking-[0.4px] ${
               active ? "text-white" : "text-brand-95"
             }`}
           >
@@ -318,7 +318,7 @@ const SupportAction = ({ action, active, onClick }) => {
           </div>
 
           <div
-            className={`mt-1 text-[8px] leading-3.5 ${
+            className={`mt-1 text-[10px] leading-3.5 ${
               active ? "text-white/55" : "text-brand-ink/45"
             }`}
           >
@@ -351,11 +351,11 @@ const SupportConsole = () => {
             </div>
 
             <div>
-              <div className="text-[8px] font-black uppercase tracking-[1.1px] text-brand-60">
+              <div className="text-[10px] font-black uppercase tracking-[1.1px] text-brand-60">
                 SUPPORT DESK
               </div>
 
-              <div className="mt-1 text-[14px] font-black text-brand-95 sm:text-[16px]">
+              <div className="mt-1 text-[15px] font-black text-brand-95 sm:text-[17px]">
                 What do you need help with?
               </div>
             </div>
@@ -364,7 +364,7 @@ const SupportConsole = () => {
           <div className="flex items-center gap-1.5 rounded-full bg-brand-5 px-2.5 py-1.5">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-60" />
 
-            <span className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-70">
+            <span className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-70">
               Online
             </span>
           </div>
@@ -386,15 +386,15 @@ const SupportConsole = () => {
         <div className="mt-5 overflow-hidden rounded-2xl bg-brand-95 p-4 sm:p-5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-lime">
+              <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
                 SELECTED SUPPORT
               </div>
 
-              <div className="mt-1 text-[15px] font-black text-white">
+              <div className="mt-1 text-[16px] font-black text-white">
                 {SUPPORT_ACTIONS[active].title}
               </div>
 
-              <p className="mt-1 max-w-[320px] text-[9px] leading-4 text-white/50">
+              <p className="mt-1 max-w-[320px] text-[11px] leading-4 text-white/50">
                 {SUPPORT_ACTIONS[active].description} We'll guide you to the
                 appropriate next step.
               </p>
@@ -433,11 +433,11 @@ const SupportConsole = () => {
             <Clock3 size={13} className="text-brand-70" />
 
             <div>
-              <div className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
+              <div className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
                 SUPPORT
               </div>
 
-              <div className="text-[9px] font-black text-brand-90">
+              <div className="text-[11px] font-black text-brand-90">
                 Guided Assistance
               </div>
             </div>
@@ -447,11 +447,11 @@ const SupportConsole = () => {
             <Smartphone size={13} className="text-brand-70" />
 
             <div>
-              <div className="text-[7px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
+              <div className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-ink/40">
                 CHANNELS
               </div>
 
-              <div className="text-[9px] font-black text-brand-90">
+              <div className="text-[11px] font-black text-brand-90">
                 Digital + Phone
               </div>
             </div>
@@ -467,11 +467,11 @@ const SupportConsole = () => {
           </div>
 
           <div>
-            <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+            <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
               SUPPORT
             </div>
 
-            <div className="text-[9px] font-black text-brand-95">
+            <div className="text-[11px] font-black text-brand-95">
               Talk to Us
             </div>
           </div>
@@ -486,11 +486,11 @@ const SupportConsole = () => {
           </div>
 
           <div>
-            <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+            <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
               STATUS
             </div>
 
-            <div className="text-[9px] font-black text-brand-95">
+            <div className="text-[11px] font-black text-brand-95">
               Help Available
             </div>
           </div>
@@ -519,7 +519,7 @@ const SupportHero = ({ onApply }) => {
               <span className="block text-brand-70">Help You?</span>
             </h1>
 
-            <p className="mt-5 max-w-[450px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-5 max-w-[450px] text-[14px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
               Get the right support path without searching through multiple
               channels. Tell us what you need and we'll help you take the next
               step.
@@ -543,7 +543,7 @@ const SupportHero = ({ onApply }) => {
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={13} className="text-brand-60" />
 
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   Clear Assistance
                 </span>
               </div>
@@ -551,7 +551,7 @@ const SupportHero = ({ onApply }) => {
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={13} className="text-brand-60" />
 
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   Guided Support
                 </span>
               </div>
@@ -559,7 +559,7 @@ const SupportHero = ({ onApply }) => {
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 size={13} className="text-brand-60" />
 
-                <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                <span className="text-[10px] font-black uppercase tracking-[0.5px] text-brand-90">
                   One Place
                 </span>
               </div>
@@ -745,20 +745,20 @@ const Support = () => {
                 <div className="flex items-center justify-between">
                   <CircleIcon>{item.icon}</CircleIcon>
 
-                  <span className="text-[9px] font-black text-brand-60/50">
+                  <span className="text-[11px] font-black text-brand-60/50">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
-                <h3 className="mt-5 text-sm font-black text-brand-95">
+                <h3 className="mt-5 text-base font-black text-brand-95">
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-xs leading-6 text-slate-500">
+                <p className="mt-2 text-base leading-6 text-slate-500">
                   {item.description}
                 </p>
 
-                <div className="mt-5 flex items-center text-[9px] font-black uppercase tracking-[0.8px] text-brand-70">
+                <div className="mt-5 flex items-center text-[11px] font-black uppercase tracking-[0.8px] text-brand-70">
                   Get Help
                   <ArrowRight
                     size={12}
@@ -862,7 +862,7 @@ const Support = () => {
               <div>
                 <Eyebrow className="text-amber-700">SERVICE DISCLAIMER</Eyebrow>
 
-                <p className="mt-3 max-w-4xl text-xs leading-6 text-amber-900 sm:text-sm">
+                <p className="mt-3 max-w-4xl text-sm leading-6 text-amber-900 sm:text-base">
                   Service availability depends on technician certification,
                   equipment capability, product compatibility, location and
                   partner/OEM authorisation.
@@ -896,7 +896,7 @@ const Support = () => {
                   </span>
                 </h2>
 
-                <p className="mt-4 max-w-lg text-sm leading-6 text-white/65">
+                <p className="mt-4 max-w-lg text-base leading-6 text-white/65">
                   Reach our support team for guidance, service availability or
                   help with your mechanic upgrade application.
                 </p>
@@ -938,11 +938,11 @@ const Support = () => {
                   >
                     <CircleIcon>{contact.icon}</CircleIcon>
 
-                    <div className="mt-4 text-[9px] font-black uppercase tracking-[0.8px] text-brand-60">
+                    <div className="mt-4 text-[11px] font-black uppercase tracking-[0.8px] text-brand-60">
                       {contact.label}
                     </div>
 
-                    <div className="mt-2 break-words text-xs font-black leading-5 text-brand-95">
+                    <div className="mt-2 break-words text-sm font-black leading-5 text-brand-95">
                       {contact.value}
                     </div>
                   </div>

@@ -380,7 +380,7 @@ const ContactUs = () => {
               Start with the reason you're contacting us.
             </h2>
 
-            <p className="mt-4 text-[14px] leading-7 text-brand-ink/60">
+            <p className="mt-4 text-[15px] leading-7 text-brand-ink/60">
               Select an enquiry category below. We'll use it to understand which
               Dr. Saab team should handle your request.
             </p>
@@ -413,16 +413,16 @@ const ContactUs = () => {
                     {item.icon}
                   </CircleIcon>
 
-                  <h3 className="mt-5 text-[14px] font-black text-brand-95">
+                  <h3 className="mt-5 text-[15px] font-black text-brand-95">
                     {item.title}
                   </h3>
 
-                  <p className="mt-1.5 text-[12px] leading-5 text-brand-ink/55">
+                  <p className="mt-1.5 text-[14px] leading-5 text-brand-ink/55">
                     {item.description}
                   </p>
 
                   <div
-                    className={`mt-5 flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[.8px] ${
+                    className={`mt-5 flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[.8px] ${
                       selected
                         ? "text-brand-70"
                         : "text-brand-ink/30 group-hover:text-brand-70"
@@ -453,14 +453,14 @@ const ContactUs = () => {
                 Tell us a little about yourself.
               </h2>
 
-              <p className="mt-3 text-[13px] leading-6 text-brand-ink/60">
+              <p className="mt-3 text-[14px] leading-6 text-brand-ink/60">
                 A few details will help us understand your requirement and
                 connect you with the appropriate Dr. Saab team.
               </p>
 
               {selectedEnquiry && (
                 <div className="mt-5 rounded-[14px] border border-brand-60/20 bg-white p-4 shadow-sm">
-                  <div className="text-[9px] font-black uppercase tracking-[1px] text-brand-70">
+                  <div className="text-[11px] font-black uppercase tracking-[1px] text-brand-70">
                     CURRENT ENQUIRY
                   </div>
 
@@ -468,11 +468,11 @@ const ContactUs = () => {
                     <CircleIcon>{selectedEnquiry.icon}</CircleIcon>
 
                     <div>
-                      <div className="text-[13px] font-black text-brand-95">
+                      <div className="text-[14px] font-black text-brand-95">
                         {selectedEnquiry.title}
                       </div>
 
-                      <div className="mt-0.5 text-[12px] text-brand-ink/45">
+                      <div className="mt-0.5 text-[13px] text-brand-ink/45">
                         {selectedEnquiry.description}
                       </div>
                     </div>

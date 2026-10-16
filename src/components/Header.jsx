@@ -65,7 +65,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Dr. Saab"
-              className="h-auto w-[132px] transition-transform duration-200 group-hover:scale-[1.02] sm:w-[140px]"
+              className="h-auto w-[135px] transition-transform duration-200 group-hover:scale-[1.02] sm:w-[150px]"
             />
           </Link>
 

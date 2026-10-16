@@ -190,7 +190,7 @@ const SectionHeading = ({
 
       {description && (
         <p
-          className={`mt-5 max-w-4xl text-sm leading-7 sm:text-[15px] ${
+          className={`mt-5 max-w-4xl text-sm leading-7 sm:text-[17px] ${
             centered ? "mx-auto" : ""
           } ${light ? "text-white/60" : "text-slate-600"}`}
         >
@@ -307,7 +307,7 @@ const FranchiseHero = () => {
               <span className="block text-brand-70">of Your Area.</span>
             </h1>
 
-            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-5 max-w-[470px] text-[14px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
               Start a future-ready technical service enterprise combining EV,
               battery, agricultural drone and solar support — backed by an
               organised service ecosystem.
@@ -320,9 +320,9 @@ const FranchiseHero = () => {
                   key={label}
                   className="flex items-center gap-1.5 rounded-full border border-brand-10 bg-white px-3 py-1.5 shadow-sm"
                 >
-                  <Icon size={11} className="text-brand-70" />
+                  <Icon size={12} className="text-brand-70" />
 
-                  <span className="text-[8px] font-black uppercase tracking-[0.5px] text-brand-90">
+                  <span className="text-[11px] font-black uppercase tracking-[0.5px] text-brand-90">
                     {label}
                   </span>
                 </div>
@@ -347,12 +347,12 @@ const FranchiseHero = () => {
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={13} className="text-brand-60" />
 
-                  <span className="text-[9px] font-black text-brand-95">
+                  <span className="text-[12px] font-black text-brand-95">
                     Training
                   </span>
                 </div>
 
-                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                <p className="mt-1 text-[11px] leading-3 text-brand-ink/45">
                   Technical capability
                 </p>
               </div>
@@ -361,12 +361,12 @@ const FranchiseHero = () => {
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={13} className="text-brand-60" />
 
-                  <span className="text-[9px] font-black text-brand-95">
+                  <span className="text-[12px] font-black text-brand-95">
                     Network
                   </span>
                 </div>
 
-                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                <p className="mt-1 text-[11px] leading-3 text-brand-ink/45">
                   Connected support
                 </p>
               </div>
@@ -375,12 +375,12 @@ const FranchiseHero = () => {
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 size={13} className="text-brand-60" />
 
-                  <span className="text-[9px] font-black text-brand-95">
+                  <span className="text-[12px] font-black text-brand-95">
                     Territory
                   </span>
                 </div>
 
-                <p className="mt-1 text-[8px] leading-3 text-brand-ink/45">
+                <p className="mt-1 text-[11px] leading-3 text-brand-ink/45">
                   Local opportunity
                 </p>
               </div>
@@ -396,7 +396,7 @@ const FranchiseHero = () => {
 
               <div className="flex items-center justify-between border-b border-brand-5 pb-5">
                 <div>
-                  <div className="text-[8px] font-black uppercase tracking-[1.2px] text-brand-60">
+                  <div className="text-[12px] font-black uppercase tracking-[1.2px] text-brand-60">
                     FRANCHISE OPPORTUNITY
                   </div>
 
@@ -418,16 +418,16 @@ const FranchiseHero = () => {
                       <Truck size={16} />
                     </div>
 
-                    <span className="rounded-full bg-brand-lime/50 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-95">
+                    <span className="rounded-full bg-brand-lime/50 px-2 py-1 text-[10px] font-black uppercase tracking-[0.5px] text-brand-95">
                       Rural
                     </span>
                   </div>
 
-                  <div className="mt-4 text-[12px] font-black text-brand-95">
+                  <div className="mt-4 text-[14px] font-black text-brand-95">
                     Panchayat Franchise
                   </div>
 
-                  <p className="mt-1 text-[9px] leading-4 text-brand-ink/50">
+                  <p className="mt-1 text-[11px] leading-4 text-brand-ink/50">
                     Mobile service enterprise for a Panchayat and surrounding
                     villages.
                   </p>
@@ -439,16 +439,16 @@ const FranchiseHero = () => {
                       <Wrench size={16} />
                     </div>
 
-                    <span className="rounded-full bg-brand-5 px-2 py-1 text-[7px] font-black uppercase tracking-[0.5px] text-brand-70">
+                    <span className="rounded-full bg-brand-5 px-2 py-1 text-[10px] font-black uppercase tracking-[0.5px] text-brand-70">
                       Urban
                     </span>
                   </div>
 
-                  <div className="mt-4 text-[12px] font-black text-brand-95">
+                  <div className="mt-4 text-[14px] font-black text-brand-95">
                     City Franchise
                   </div>
 
-                  <p className="mt-1 text-[9px] leading-4 text-brand-ink/50">
+                  <p className="mt-1 text-[11px] leading-4 text-brand-ink/50">
                     Connected EV, battery, fleet and roadside service network.
                   </p>
                 </div>
@@ -457,11 +457,11 @@ const FranchiseHero = () => {
               {/* TECHNOLOGY COVERAGE */}
               <div className="mt-5">
                 <div className="flex items-center justify-between">
-                  <div className="text-[8px] font-black uppercase tracking-[0.9px] text-brand-ink/45">
+                  <div className="text-1px] font-black uppercase tracking-[0.9px] text-brand-ink/45">
                     BUSINESS VERTICALS
                   </div>
 
-                  <div className="text-[8px] font-bold text-brand-60">
+                  <div className="text-[10px] font-bold text-brand-60">
                     04 ACTIVE
                   </div>
                 </div>
@@ -474,7 +474,7 @@ const FranchiseHero = () => {
                     >
                       <Icon size={15} className="text-brand-70" />
 
-                      <span className="mt-1.5 text-[7px] font-black uppercase tracking-[0.4px] text-brand-90">
+                      <span className="mt-1.5 text-[10px] font-black uppercase tracking-[0.4px] text-brand-90">
                         {label}
                       </span>
 
@@ -488,11 +488,11 @@ const FranchiseHero = () => {
               <div className="mt-5 rounded-2xl bg-brand-95 p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-lime">
+                    <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-lime">
                       DR. SAAB ECOSYSTEM
                     </div>
 
-                    <div className="mt-1 text-[12px] font-black text-white">
+                    <div className="mt-1 text-[14px] font-black text-white">
                       What supports your journey
                     </div>
                   </div>
@@ -514,11 +514,11 @@ const FranchiseHero = () => {
                         </div>
 
                         <div>
-                          <div className="text-[7px] font-bold text-white/40">
+                          <div className="text-[10px] font-bold text-white/40">
                             {item.number}
                           </div>
 
-                          <div className="text-[8px] font-black uppercase tracking-[0.4px] text-white">
+                          <div className="text-[11px] font-black uppercase tracking-[0.4px] text-white">
                             {item.title}
                           </div>
                         </div>
@@ -535,11 +535,11 @@ const FranchiseHero = () => {
                 </div>
 
                 <div className="flex-1">
-                  <div className="text-[8px] font-black uppercase tracking-[0.7px] text-brand-90">
+                  <div className="text-[12px] font-black uppercase tracking-[0.7px] text-brand-90">
                     Find Your Opportunity
                   </div>
 
-                  <p className="mt-0.5 text-[8px] leading-3.5 text-brand-ink/50">
+                  <p className="mt-0.5 text-[12px] leading-3.5 text-brand-ink/50">
                     Check whether your preferred territory is available.
                   </p>
                 </div>
@@ -556,11 +556,11 @@ const FranchiseHero = () => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     PARTNER
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Local Entrepreneur
                   </div>
                 </div>
@@ -575,11 +575,11 @@ const FranchiseHero = () => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     SUPPORT
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[12px] font-black text-brand-95">
                     Digital Ecosystem
                   </div>
                 </div>
@@ -649,12 +649,12 @@ const Franchise = () => {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="text-xs font-black leading-5 text-brand-95">
+                    <div className="text-base font-black leading-5 text-brand-95">
                       {applicant.title}
                     </div>
                   </div>
 
-                  <span className="text-[8px] font-black text-brand-60/40">
+                  <span className="text-[10px] font-black text-brand-60/40">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -688,16 +688,16 @@ const Franchise = () => {
                       <Icon size={21} />
                     </div>
 
-                    <span className="text-[9px] font-black text-white/20">
+                    <span className="text-[11px] font-black text-white/20">
                       {item.number}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-sm font-black text-white">
+                  <h3 className="mt-6 text-base font-black text-white">
                     {item.title}
                   </h3>
 
-                  <p className="mt-2 text-xs leading-6 text-white/45">
+                  <p className="mt-2 text-sm leading-6 text-white/45">
                     {item.description}
                   </p>
                 </div>
@@ -708,7 +708,7 @@ const Franchise = () => {
           <div className="mt-8 flex items-center gap-3 rounded-2xl border border-brand-lime/10 bg-brand-lime/[0.04] p-5">
             <ShieldCheck className="shrink-0 text-brand-lime" size={19} />
 
-            <p className="text-xs leading-6 text-white/50">
+            <p className="text-sm leading-6 text-white/50">
               Support, equipment, training and finance facilitation are subject
               to the applicable model, eligibility, programme conditions and
               operational requirements.
@@ -728,7 +728,7 @@ const Franchise = () => {
               </h2>
             </div>
 
-            <p className="max-w-4xl text-sm leading-7 text-slate-600 sm:text-[15px] lg:mb-1">
+            <p className="max-w-4xl text-base leading-7 text-slate-600 sm:text-[17px] lg:mb-1">
               A structured nine-step process takes the applicant from initial
               interest through screening, territory assessment, training and
               enterprise launch.
@@ -777,7 +777,7 @@ const Franchise = () => {
 
                     <div className="min-w-0 flex-1">
                       <div
-                        className={`text-[9px] font-black uppercase tracking-[0.8px] ${
+                        className={`text-[12px] font-black uppercase tracking-[0.8px] ${
                           active ? "text-brand-lime" : "text-brand-60"
                         }`}
                       >
@@ -785,7 +785,7 @@ const Franchise = () => {
                       </div>
 
                       <div
-                        className="mt-0.5 text-[13px] font-black leading-snug xl:text-xs"
+                        className="mt-0.5 text-[15px] font-black leading-snug xl:text-xs"
                       >
                         {step.title}
                       </div>
@@ -815,7 +815,7 @@ const Franchise = () => {
                     <div className="grid h-12 w-12 place-items-center rounded-xl bg-brand-lime text-brand-95">
                       {APPLICATION_STEPS[activeStep].icon}
                     </div>
-                    <span className="text-[12px] font-black uppercase tracking-[1px] text-brand-lime">
+                    <span className="text-[14px] font-black uppercase tracking-[1px] text-brand-lime">
                       Current step
                     </span>
                   </div>
@@ -861,7 +861,7 @@ const Franchise = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section id="apply" className="bg-brand-90 py-8 sm:py-12 lg:py-14">
+      <section id="apply" className="bg-brand-90 py-8 sm:py-12">
         <SectionContainer>
           <div className="relative overflow-hidden rounded-[34px] border border-white/10 bg-brand-95 px-6 py-12 text-center sm:px-10 sm:py-16">
             <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-lime/10 blur-3xl" />
@@ -871,7 +871,7 @@ const Franchise = () => {
                 <Handshake size={24} />
               </div>
 
-              <Eyebrow light className="mt-6">
+              <Eyebrow light className="mt-3">
                 START YOUR JOURNEY
               </Eyebrow>
 
@@ -882,12 +882,12 @@ const Franchise = () => {
                 </span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/55 sm:text-[15px]">
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/55 sm:text-[15px]">
                 Choose your model, check your territory and take the first step
                 toward building a future-ready technical service enterprise.
               </p>
 
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <Button href="/contact-us" className="px-7 py-3">
                   Apply Now
                   <ArrowRight className="ml-2" size={15} />
@@ -903,7 +903,7 @@ const Franchise = () => {
                 </Button> */}
               </div>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[9px] font-black uppercase tracking-[0.8px] text-white/30">
+              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[12px] font-black uppercase tracking-[0.8px] text-white/30">
                 <span className="inline-flex items-center gap-2">
                   <Check size={12} className="text-brand-lime" />
                   Panchayat Model

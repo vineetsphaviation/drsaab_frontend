@@ -247,11 +247,11 @@ const ApproachStep = ({ step, active }) => {
       </div>
 
       <div className="flex-1">
-        <div className="text-[7px] font-bold tracking-[0.7px] text-brand-60">
+        <div className="text-[10px] font-bold tracking-[0.7px] text-brand-60">
           {step.number}
         </div>
 
-        <div className="text-[9px] font-black tracking-[0.6px] text-brand-95">
+        <div className="text-[11px] font-black tracking-[0.6px] text-brand-95">
           {step.label}
         </div>
       </div>
@@ -282,13 +282,13 @@ const AboutHero = () => {
               </span>
             </h1>
 
-            <p className="mt-5 max-w-[470px] text-[13px] leading-6 text-brand-ink/65 sm:text-[14px] sm:leading-7">
+            <p className="mt-5 max-w-[470px] text-[14px] leading-6 text-brand-ink/65 sm:text-[17px] sm:leading-7">
               Dr. Saab is building an organised after-sales service and
               technical entrepreneurship ecosystem for India's evolving EV,
               battery, drone and energy landscape.
             </p>
 
-            <p className="mt-3 max-w-[440px] text-[13px] leading-5 text-brand-ink/50">
+            <p className="mt-3 max-w-[440px] text-[14px] leading-5 text-brand-ink/50">
               We believe technical service should be easier to access, easier to
               understand and easier to trust.
             </p>
@@ -312,11 +312,11 @@ const AboutHero = () => {
               </div>
 
               <div>
-                <div className="text-[9px] font-black uppercase tracking-[0.8px] text-brand-95">
+                <div className="text-[12px] font-black uppercase tracking-[0.8px] text-brand-95">
                   A Different Approach to Technical Service
                 </div>
 
-                <p className="mt-0.5 text-[9px] leading-4 text-brand-ink/50">
+                <p className="mt-0.5 text-[12px] leading-4 text-brand-ink/50">
                   Diagnose first. Explain clearly. Service responsibly.
                 </p>
               </div>
@@ -345,15 +345,15 @@ const AboutHero = () => {
                     </div>
 
                     <div>
-                      <div className="text-[8px] font-black uppercase tracking-[1px] text-brand-lime">
+                      <div className="text-[11px] font-black uppercase tracking-[1px] text-brand-lime">
                         THE DR. SAAB PRINCIPLE
                       </div>
 
-                      <div className="mt-1 text-[13px] font-black text-white">
+                      <div className="mt-1 text-[14px] font-black text-white">
                         Technical work should inspire confidence.
                       </div>
 
-                      <p className="mt-1 text-[9px] leading-4 text-white/55">
+                      <p className="mt-1 text-[11px] leading-4 text-white/55">
                         Every interaction should leave the customer knowing what
                         happened, why it happened and what comes next.
                       </p>
@@ -367,11 +367,11 @@ const AboutHero = () => {
             <div className="absolute -left-5 top-12 hidden w-[205px] rounded-2xl border border-brand-10 bg-white p-3 shadow-[0_18px_45px_rgba(7,95,69,0.14)] sm:block">
               <div className="mb-3 flex items-center justify-between">
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[1px] text-brand-60">
+                  <div className="text-[10px] font-black uppercase tracking-[1px] text-brand-60">
                     OUR APPROACH
                   </div>
 
-                  <div className="mt-1 text-[12px] font-black text-brand-95">
+                  <div className="mt-1 text-[14px] font-black text-brand-95">
                     Like a Good Doctor
                   </div>
                 </div>
@@ -400,11 +400,11 @@ const AboutHero = () => {
                 </div>
 
                 <div>
-                  <div className="text-[7px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
+                  <div className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-ink/40">
                     PRINCIPLE
                   </div>
 
-                  <div className="text-[9px] font-black text-brand-95">
+                  <div className="text-[11px] font-black text-brand-95">
                     Service You Can Trust
                   </div>
                 </div>
@@ -415,7 +415,7 @@ const AboutHero = () => {
             <div className="absolute -bottom-4 left-8 hidden items-center gap-2 rounded-full border border-brand-10 bg-white px-3.5 py-2.5 shadow-[0_12px_25px_rgba(7,95,69,0.10)] sm:flex">
               <div className="h-2 w-2 rounded-full bg-brand-60" />
 
-              <span className="text-[8px] font-black uppercase tracking-[0.7px] text-brand-90">
+              <span className="text-[10px] font-black uppercase tracking-[0.7px] text-brand-90">
                 Built Around Trust
               </span>
             </div>
@@ -448,7 +448,7 @@ const About = () => {
                   service.
                 </h2>
 
-                <p className="mt-5 max-w-[412px] text-sm leading-7 text-white/70">
+                <p className="mt-5 max-w-[412px] text-base leading-7 text-white/70">
                   We bring capable local technicians, trusted processes and
                   emerging technology into one practical service model.
                 </p>
@@ -463,7 +463,7 @@ const About = () => {
                       <p className="text-[12px] font-black uppercase tracking-[.14em] text-brand-lime">
                         One connected model
                       </p>
-                      <p className="mt-1 text-xs leading-5 text-white/65">
+                      <p className="mt-1 text-base leading-5 text-white/65">
                         Rural reach. Urban capability. Local trust.
                       </p>
                     </div>
@@ -478,7 +478,7 @@ const About = () => {
                 mechanic-upgradation and technical-entrepreneurship initiative.
               </p>
 
-              <p className="mt-5 text-[16px] leading-8 text-brand-ink/80">
+              <p className="mt-3 text-[16px] leading-8 text-brand-ink/80">
                 The initiative aims to create a network of trained local
                 technicians capable of supporting emerging technologies while
                 making technical service more accessible, organised and
@@ -489,7 +489,7 @@ const About = () => {
                 <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-brand-70 shadow-sm">
                   <ShieldCheck size={20} />
                 </div>
-                <p className="mt-3 text-sm leading-6 text-brand-ink/70 sm:mt-0">
+                <p className="mt-3 text-base leading-6 text-brand-ink/70 sm:mt-0">
                   Our role is to make technical support feel clear, capable and
                   dependable—from first diagnosis to the next best action.
                 </p>
@@ -509,11 +509,11 @@ const About = () => {
                       {item.icon}
                     </CircleIcon>
 
-                    <h3 className="mt-4 text-[14px] font-black text-brand-95">
+                    <h3 className="mt-4 text-[15px] font-black text-brand-95">
                       {item.title}
                     </h3>
 
-                    <p className="mt-2 max-w-[250px] text-[13px] leading-6 text-brand-ink/70">
+                    <p className="mt-2 max-w-[250px] text-[14px] leading-6 text-brand-ink/70">
                       {item.text}
                     </p>
                   </div>
@@ -525,7 +525,7 @@ const About = () => {
       </section>
 
       {/* VISION */}
-      <section className="relative overflow-hidden bg-brand-5 py-8 sm:py-12 lg:py-14">
+      <section className="relative overflow-hidden bg-brand-5 py-8 sm:py-12">
         <div className="absolute right-[-120px] top-[-120px] h-[360px] w-[360px] rounded-full bg-brand-lime/15 blur-3xl" />
 
         <SectionContainer className="relative">
@@ -541,7 +541,7 @@ const About = () => {
               Trusted Service.
             </div>
 
-            <p className="mx-auto mt-7 max-w-[680px] text-[16px] leading-7 text-brand-ink/75">
+            <p className="mx-auto mt-7 max-w-[680px] text-[17px] leading-7 text-brand-ink/75">
               A future where technical service is not limited by geography,
               where mechanics have access to better skills and tools, and
               customers know where to turn when technology needs support.
@@ -560,7 +560,7 @@ const About = () => {
               Turning technical capability into trusted local service.
             </h2>
 
-            <p className="mt-5 text-[16px] leading-7 text-brand-ink/75">
+            <p className="mt-3 text-[17px] leading-7 text-brand-ink/75">
               Dr. Saab's mission is to strengthen the complete service ecosystem
               — from the mechanic and technician to the customer, OEM, training
               institution and enterprise partner.
@@ -579,11 +579,11 @@ const About = () => {
 
                 <CircleIcon>{item.icon}</CircleIcon>
 
-                <h3 className="mt-5 text-[14px] font-black text-brand-95">
+                <h3 className="mt-5 text-[15px] font-black text-brand-95">
                   {item.title}
                 </h3>
 
-                <p className="mt-2 text-[13px] leading-6 text-brand-ink/75">
+                <p className="mt-2 text-[14px] leading-6 text-brand-ink/75">
                   {item.text}
                 </p>
               </div>
@@ -608,12 +608,12 @@ const About = () => {
                 represent?
               </h2>
 
-              <p className="mt-6 text-[16px] leading-7 text-white/75">
+              <p className="mt-5 text-[17px] leading-7 text-white/75">
                 A doctor does not begin by prescribing a solution. A doctor
                 first listens, examines and diagnoses the problem.
               </p>
 
-              <p className="mt-4 text-[16px] leading-7 text-white/75">
+              <p className="mt-3 text-[17px] leading-7 text-white/75">
                 Dr. Saab applies the same philosophy to technical service.
                 Diagnose first. Explain clearly. Service responsibly. Escalate
                 when necessary. Record the outcome.
@@ -629,7 +629,7 @@ const About = () => {
                     key={step.number}
                     className="relative rounded-[13px] border border-white/10 bg-white/[0.045] p-4 transition-all hover:-translate-y-1 hover:border-brand-lime/30 hover:bg-white/[0.07]"
                   >
-                    <div className="text-[13px] font-black tracking-[1px] text-brand-lime">
+                    <div className="text-[14px] font-black tracking-[1px] text-brand-lime">
                       {step.number}
                     </div>
 
@@ -643,7 +643,7 @@ const About = () => {
                       {index === 6 && <Check size={16} />}
                     </div>
 
-                    <h3 className="mt-4 text-[15px] font-black">
+                    <h3 className="mt-4 text-[16px] font-black">
                       {step.title}
                     </h3>
 
@@ -746,7 +746,7 @@ const About = () => {
                 An initiative built around the future of technical service.
               </h2>
 
-              <p className="mt-5 max-w-[750px] text-[15px] leading-7 text-brand-ink/75">
+              <p className="mt-5 max-w-[750px] text-[16px] leading-7 text-brand-ink/75">
                 Dr. Saab is an initiative by{" "}
                 <strong className="font-black text-brand-95">
                   Techsmart Ventures Pvt Limited
@@ -754,7 +754,7 @@ const About = () => {
                 .
               </p>
 
-              <p className="mt-3 max-w-[750px] text-[14px] leading-6 text-brand-ink/70">
+              <p className="mt-3 max-w-[750px] text-[16px] leading-6 text-brand-ink/70">
                 The initiative is focused on creating an organised ecosystem for
                 after-sales service, mechanic upgradation and technical
                 entrepreneurship across emerging technology categories.
